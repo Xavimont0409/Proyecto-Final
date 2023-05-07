@@ -16,7 +16,6 @@ function objetName(){
     } else {
       return numero.toString(16); // convierte a hexadecimal
     }
-  }
 
 function Leandro() {
     return {
