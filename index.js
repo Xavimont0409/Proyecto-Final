@@ -8,19 +8,12 @@ function laCajaDePandora(numero){
     }
   }
 
-  function Leandro() {
+function Leandro() {
     return {
     name: 'Leandro',
     age: '18',
     nationality: 'Argentina'
     }
-    }
-    
-
- if(numero%2 === 0) {
-    return numero.toString(2)
- } 
- return numero.toString(16);
 }
 
 
@@ -29,6 +22,14 @@ const Joel = () => {
         name: "Joel",
         edad: 31,
         nacionalidad: "Argentina"
+    }
+}
+
+function gaspar(){
+    return {
+        name: "Gaspar",
+        age: 22,
+        country: "Argentina"
     }
 }
 
