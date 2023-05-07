@@ -13,5 +13,3 @@ const Joel = () => {
         nacionalidad: "Argentina"
     }
 }
-
-
