@@ -7,3 +7,11 @@ function laCajaDePandora(numero) {
         return numero.toString(16);
     }
 }
+
+function gaspar(){
+    return {
+        name: "Gaspar",
+        age: 22,
+        country: "Argentina"
+    }
+}
