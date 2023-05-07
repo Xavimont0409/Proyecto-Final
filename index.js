@@ -1,8 +1,15 @@
 function laCajaDePandora(numero){
-<<<<<<< HEAD
-    // proximamente escribiremos codigo aqui
-    }
-=======
-// proximamente escribiremos codigo aqui
+ if(numero%2 === 0) {
+    return numero.toString(2)
+ } 
+ return numero.toString(16);
 }
->>>>>>> 995ee04ec17dc876a618de5ff0af4b35792abcc2
+
+
+const Joel = () => {
+    return {
+        name: "Joel",
+        edad: 31,
+        nacionalidad: "Argentina"
+    }
+}
