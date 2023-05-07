@@ -1,5 +1,5 @@
 function laCajaDePandora(numero){
- numero%2 === 0 ?  parseInt(numero, 2) : numero,toString(2);
+ numero%2 === 0 ?   numero.toString(2):parseInt(numero, 16);
     }
 
 
