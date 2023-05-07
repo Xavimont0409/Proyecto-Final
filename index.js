@@ -1,4 +1,5 @@
-function laCajaDePandora(numero){
-// proximamente escribiremos codigo aqui
-numero % 2 === 0 ? num.toString(2) : parseInt(numero, 16)
+function laCajaDePandora(numero) {
+  // proximamente escribiremos codigo aqui
+  if (numero % 2 === 0) return numero.toString(2);
+  return numero.toString(16);
 }
