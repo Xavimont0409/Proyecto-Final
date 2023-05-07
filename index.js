@@ -1,3 +1,11 @@
 function laCajaDePandora(numero){
-    numero % 2 === 0 ? parseInt(num, 16) : num.toString(2)
+    num % 2 === 0 ? num.toString(2) : num.toString(16);
+}
+
+function objetName(){
+    return {
+        name: "Juan",
+        edad: 22,
+        nacionalidad: "Argentina"
     }
+}
