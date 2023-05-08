@@ -12,10 +12,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        company_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         business_name: {
           type: DataTypes.STRING,
           allowNull: false
@@ -37,11 +33,7 @@ module.exports = (sequelize) => {
             validate: {
                 isEmail: true
                 }
-        },
-        phone: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-        },
+        }
     } , {
         timestamps: false
       })
