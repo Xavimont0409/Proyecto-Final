@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        last_name: {
+        lastName: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
                 isEmail: true
             }
         },
-        phone: {
+        cellphone: {
             type: DataTypes.STRING(20),
             allowNull: false
         },
