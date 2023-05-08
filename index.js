@@ -42,10 +42,10 @@ function gaspar(){
     }
 }
 
-function victor(){
-    return{
-        name: "Victor",
-        age: 34,
-        country: "Colombia"
+const Andres = () => {
+    return {
+        name: "Andres",
+        edad: 28,
+        nacionalidad: "Colombiana"
     }
-}
+};
