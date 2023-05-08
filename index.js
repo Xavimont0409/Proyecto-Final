@@ -41,3 +41,11 @@ function gaspar(){
         country: "Argentina"
     }
 }
+
+function victor(){
+    return{
+        name: "Victor",
+        age: 34,
+        country: "Colombia"
+    }
+}
