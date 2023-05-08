@@ -1,7 +1,7 @@
 const {DataTypes} = require("sequelize");
 
 module.exports = (sequelize) => {
-    sequelize.define('loginCompany', {
+    sequelize.define('LoginCompany', {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        RUC: {
+        ruc: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER(11),
             allowNull: false
         },
-        mail: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
