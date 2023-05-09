@@ -1,4 +1,5 @@
 const errorUser = require("../../helpers/errors");
+const { postApplicant } = require('../../controllers/ApplicantController/ApplicantControllerPost')
 
 const applicantHandlersPost = async (req, res) => {
   const { name, lastName, email, password, cellphone } = req.body;
