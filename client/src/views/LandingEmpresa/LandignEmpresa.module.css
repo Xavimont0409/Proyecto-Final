@@ -1,0 +1,13 @@
+.container{
+background-color: rgb(177, 180, 180);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 50px;
+}
+
+.planes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
