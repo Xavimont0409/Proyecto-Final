@@ -1,6 +1,6 @@
 const errorUser = require('../../helpers/errors')
 
-function companysHandlerGet(req, res){
+const companysHandlerPost = (req, res) =>{
     try {
         
     } catch (error) {
@@ -9,6 +9,6 @@ function companysHandlerGet(req, res){
     }
 }
 
-module.export={
-    companysHandlerGet
+module.exports={
+    companysHandlerPost
 }
