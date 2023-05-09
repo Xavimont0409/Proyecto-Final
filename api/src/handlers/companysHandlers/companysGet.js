@@ -1,6 +1,6 @@
 const errorUser = require('../../helpers/errors')
 
-const companysHandlerGet = (req, res) =>{
+function companysHandlerGet(req, res){
     try {
         
     } catch (error) {

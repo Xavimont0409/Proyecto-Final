@@ -8,3 +8,5 @@ const router = Router();
 router.use("/applicant", applicantRouter)
 router.use("/job", vacantRouter)
 router.use("/company", companysRouter)
+
+module.exports = router;
