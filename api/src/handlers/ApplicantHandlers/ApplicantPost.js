@@ -1,13 +1,16 @@
-const errorUser = require('../../helpers/errors')
+const errorUser = require("../../helpers/errors");
 
-const applicantHandlersPost = (req, res) =>{
-    try {
-        
-    } catch (error) {
-        errorUser(error, res);
-    }
-}
+const applicantHandlersPost = async (req, res) => {
+  const { name, lastName, email, password, cellphone } = req.body;
+  try {
+    res
+      .status(200)
+      .json(await postApplicant(name, lastName, email, password, cellphone));
+  } catch (error) {
+    errorUser(error, res);
+  }
+};
 
 module.exports = {
-    applicantHandlersPost
-}
+  applicantHandlersPost,
+};
