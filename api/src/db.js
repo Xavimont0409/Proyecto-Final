@@ -24,7 +24,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Admin, Applicant, Company, Cv, Document, Journey, PaymentMethod, Seniority, TaxStatus, Vacant, WorkMethod} = sequelize.models;
+const { Admin, Applicant, Company, Cv, Document, Journey, Operations, PaymentMethod, Seniority, TaxStatus, Vacant, WorkMethod} = sequelize.models;
 
 Applicant.hasOne(Cv);
 Cv.belongsTo(Applicant);
@@ -32,7 +32,7 @@ Cv.belongsTo(Applicant);
 Vacant.hasMany(Company);
 Company.belongsTo(Vacant);
 
-Journey.hasMany(Vacant);
+Journey.hasMany(Vacant); 
 Vacant.belongsTo(Journey);
 
 Seniority.hasMany(Vacant);
@@ -43,9 +43,6 @@ Vacant.belongsTo(WorkMethod);
 
 Company.belongsToMany(PaymentMethod, {though: Operations})
 PaymentMethod.belongsToMany(Company, {though: Operations})
-
-Vacant.belongsToMany(Applicant, {though: ApplicantVacant})
-Applicant.belongsToMany(Vacant, {though: ApplicantVacant})
 
 Vacant.belongsToMany(Applicant, {though: ApplicantVacant})
 Applicant.belongsToMany(Vacant, {though: ApplicantVacant})
