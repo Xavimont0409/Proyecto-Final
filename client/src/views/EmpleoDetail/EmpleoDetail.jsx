@@ -1,6 +1,7 @@
 import style from "./EmpleoDetail.module.css";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import CardEmpleoDetail from "../../components/CardEmpleoDetail/CardEmpleoDetail";
 
 
 
@@ -22,7 +23,9 @@ const EmpleoDetail = () => {
             justify
             >
              <Tab eventKey="home" title="Home">
-             <div className={style.containerDetail}>ACÁ VA LA CARD DE DETALLE DEL EMPLEO</div>
+             <div className={style.containerDetail}>
+                <CardEmpleoDetail/>
+             </div>
             </Tab>
             <Tab eventKey="profile" title="Profile">
              <div className={style.containerDetail}>ACÁ VA LA CARD DE DETALLE DE LA EMPRESA</div>
