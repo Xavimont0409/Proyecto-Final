@@ -1,17 +1,20 @@
 import './App.css';
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import EmpleoDetail from './views/EmpleoDetail/EmpleoDetail';
-import LandingEmpresa from './views/LandingEmpresa/LandingEmpresa';
+import {EmpleoDetail, Empleos, Landing, LandingEmpresa} from './views';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {
   return (
     <div className="App">
-      <h1>App de empleos</h1>
+     
       <Routes>
+        <Route  exact path="/" element={<Landing/>}></Route>
         <Route path ="/empleoDetail" element={<EmpleoDetail/>} />
-        <Route path='/empresa' element={<LandingEmpresa/>}></Route>
+        <Route path='/empleos' element={<Empleos></Empleos>}></Route>
+        <Route path="/empresa" element={<LandingEmpresa/>}></Route>
+
       </Routes>
 
 
