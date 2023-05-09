@@ -1,0 +1,39 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContainer2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.containerEmpleosRel{
+    width: 28%;
+    border: 2px solid aqua;
+    display: flex;
+    flex-direction: column;   
+}
+
+.mainContainer3{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.containerButtons{
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.btn{
+    width: 100%;
+}
+
+.containerDetail{
+    height: 100vh;
+}
