@@ -3,8 +3,8 @@ const { vacantHandlerGetId, vacantHandlerGet } = require('../handlers/VacantHand
 
 const vacantRouter = Router()
 
-jobsRouter.get('/', vacantHandlerGet)//!Todos los empleos y empleo por body input
-jobsRouter.get('/:id', vacantHandlerGetId)
+vacantRouter.get('/', vacantHandlerGet)//!Todos los empleos y empleo por body input
+vacantRouter.get('/:id', vacantHandlerGetId)
 
 
 module.exports = vacantRouter;
