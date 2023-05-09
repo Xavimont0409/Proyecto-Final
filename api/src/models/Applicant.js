@@ -23,6 +23,13 @@ module.exports = (sequelize) => {
                 isEmail: true
             }
         },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                is: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/
+            }
+        },
         cellphone: {
             type: DataTypes.STRING(20),
             allowNull: false
