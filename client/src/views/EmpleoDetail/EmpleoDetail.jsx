@@ -7,7 +7,6 @@ import Tabs from 'react-bootstrap/Tabs';
 const EmpleoDetail = () => {
 
 
-
     return(
     <div className={style.mainContainer}>
         <h1>ACÁ VA LA NAVBAR</h1>
