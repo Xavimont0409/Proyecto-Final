@@ -8,7 +8,6 @@ import CardEmpleoDetail from "../../components/CardEmpleoDetail/CardEmpleoDetail
 const EmpleoDetail = () => {
 
 
-
     return(
     <div className={style.mainContainer}>
         <h1>ACÁ VA LA NAVBAR</h1>
