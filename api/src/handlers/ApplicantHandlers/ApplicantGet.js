@@ -1,9 +1,9 @@
 const errorUser = require('../../helpers/errors')
-const { ApplicantControllerGet }= require('../../controllers/ApplicantController/ApplicantControllerGet')
+const { allApplicant } = require('../../controllers/ApplicantController/ApplicantControllerGet')
 
 const applicantHandlerGet = async(req, res) =>{
     try {
-        res.status(200).json( await ApplicantControllerGet())
+        res.status(200).json( await allApplicant())
     } catch (error) {
         errorUser(error, res);
     }
