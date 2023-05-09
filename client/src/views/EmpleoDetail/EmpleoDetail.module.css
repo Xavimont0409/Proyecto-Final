@@ -4,20 +4,27 @@
 }
 
 .mainContainer2{
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .containerEmpleosRel{
+    margin-left: 1%;
     width: 28%;
-    border: 2px solid aqua;
+    border: 2px solid rgb(10, 154, 41);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;   
+    overflow-y: scroll;
+    max-height: 100vh; /* Ajusta la altura máxima según tus necesidades */
+
 }
 
 .mainContainer3{
-    border: 2px solid black;
+    border: 2px solid rgb(10, 154, 41);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -35,5 +42,5 @@
 }
 
 .containerDetail{
-    height: 100vh;
+    height: 100%;
 }

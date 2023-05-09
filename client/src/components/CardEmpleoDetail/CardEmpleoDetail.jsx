@@ -1,10 +1,14 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import style from "./CardEmpleoDetail.module.css";
 
 const CardEmpleoDetail = () => {
   return (
     <Card style={{ width: '100%' }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+      <div className={style.containerImgEmpresa}>
+      <Card.Img variant="top" src="https://2.bp.blogspot.com/-8nygkHc09a4/XELAYyOEjZI/AAAAAAAAGLg/kiGoQYw5Xtccv4PPFZA_9SXANdV4CaxFACLcBGAs/s1600/globant_logo.jpg"/>
+      </div>
       <Card.Body>
         <Card.Title>NOMBRE DE LA PUBLICACIÓN</Card.Title>
         <Card.Text>
@@ -18,7 +22,7 @@ const CardEmpleoDetail = () => {
         <ListGroup.Item>Experiencia</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Card.Link href="#">POSTULARME</Card.Link>
+      <Button className={style.btn} variant="outline-success">POSTULARME</Button>{' '}
       </Card.Body>
     </Card>
   );
