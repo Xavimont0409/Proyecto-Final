@@ -1,16 +1,15 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-    sequelize.define('payMethods', {
+    sequelize.define('operations', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        name: {
-            type: DataTypes.STRING,
+        cost: {
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false,
-
         }
     }, {
         timestamps: false
