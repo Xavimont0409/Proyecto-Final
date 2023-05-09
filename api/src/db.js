@@ -32,8 +32,14 @@ Cv.belongsTo(Applicant);
 Vacant.hasMany(Company);
 Company.belongsTo(Vacant);
 
-Journey.hasMany(Vacant);
+Journey.hasMany(Vacant); 
 Vacant.belongsTo(Journey);
+
+/* Team.hasMany(Player);
+Player.belongsTo(Team); 
+
+Ojo que en el modelo de entidad relacion estan al reves ahi lo cambio
+*/
 
 Seniority.hasMany(Vacant);
 Vacant.belongsTo(Seniority);
@@ -43,9 +49,6 @@ Vacant.belongsTo(WorkMethod);
 
 Company.belongsToMany(PaymentMethod, {though: Operations})
 PaymentMethod.belongsToMany(Company, {though: Operations})
-
-Vacant.belongsToMany(Applicant, {though: ApplicantVacant})
-Applicant.belongsToMany(Vacant, {though: ApplicantVacant})
 
 Vacant.belongsToMany(Applicant, {though: ApplicantVacant})
 Applicant.belongsToMany(Vacant, {though: ApplicantVacant})
