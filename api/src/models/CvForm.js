@@ -1,47 +1,47 @@
-const {DataTypes} = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-    sequelize.define('CvForm', {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-          },
-          dni: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
-          address: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
-          photo: {
-            type: DataTypes.STRING,
-            allowNull: true
-          },
-          profession: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
-          github: {
-            type: DataTypes.STRING,
-            allowNull: true
-          },
-          linkedin: {
-            type: DataTypes.STRING,
-            allowNull: true
-          },
-          work_experience: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
-          personal_description: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
-          education: {
-            type: DataTypes.STRING,
-            allowNull: false
-          }
-    });
+  sequelize.define('cvForm', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    dni: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    photo: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    profession: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    github: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    linkedin: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    work_experience: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    personal_description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    education: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+  });
 };
