@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
-    sequelize.define('applicant', {
+    sequelize.define('Applicant', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -21,6 +21,13 @@ module.exports = (sequelize) => {
             unique: true,
             validate: {
                 isEmail: true
+            }
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                is: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/
             }
         },
         cellphone: {
