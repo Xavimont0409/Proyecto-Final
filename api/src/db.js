@@ -24,7 +24,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Admin, Applicant, Company, Cv, Document, Journey, PaymentMethod, Seniority, TaxStatus, Vacant, WorkMethod} = sequelize.models;
+const { Admin, Applicant, Company, Cv, Document, Journey, Operations, PaymentMethod, Seniority, TaxStatus, Vacant, WorkMethod} = sequelize.models;
 
 Applicant.hasOne(Cv);
 Cv.belongsTo(Applicant);
@@ -34,12 +34,6 @@ Company.belongsTo(Vacant);
 
 Journey.hasMany(Vacant); 
 Vacant.belongsTo(Journey);
-
-/* Team.hasMany(Player);
-Player.belongsTo(Team); 
-
-Ojo que en el modelo de entidad relacion estan al reves ahi lo cambio
-*/
 
 Seniority.hasMany(Vacant);
 Vacant.belongsTo(Seniority);
