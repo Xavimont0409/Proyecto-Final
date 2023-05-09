@@ -1,8 +1,8 @@
-const {DataTypes} = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define('Company', {
-        id:{
+        id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
@@ -13,8 +13,8 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         business_name: {
-          type: DataTypes.STRING,
-          allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false
         },
         ruc: {
             type: DataTypes.STRING(13),
@@ -32,9 +32,9 @@ module.exports = (sequelize) => {
             unique: true,
             validate: {
                 isEmail: true
-                }
+            }
         }
-    } , {
+    }, {
         timestamps: false
-      })
+    })
 }
