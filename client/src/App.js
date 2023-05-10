@@ -13,7 +13,7 @@ function App() {
      
       <Routes>
         <Route  exact path="/" element={<Landing/>}></Route>
-        <Route path ="/empleoDetail" element={<EmpleoDetail/>} />
+        <Route path ="/empleoDetail/:detailId" element={<EmpleoDetail/>} />
         <Route path='/empleos' element={<Empleos></Empleos>}></Route>
         <Route path="/empresa" element={<LandingEmpresa/>}></Route>
         <Route path="/navbar" element={<NavBar/>}></Route>
