@@ -1,0 +1,12 @@
+.MainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 230px;
+    height: 300px;
+    line-height: 1em;
+    align-items: center;
+    background-color: aliceblue;
+}

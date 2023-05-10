@@ -1,9 +1,9 @@
-const { Vacant } = require('../../db');
+const { Vacant } = require('../../db')
 
 const getAllVacant = () =>{
-  return Vacant.findAll();
+    return Vacant.findAll()
 }
 
-module.exports={
-  getAllVacant
+module.exports = {
+    getAllVacant
 }

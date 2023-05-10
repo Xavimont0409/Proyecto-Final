@@ -5,3 +5,7 @@ const postApplicant = async(name, lastName, email, password, cellphone) =>{
     //newApplicant.addCv()
     return newApplicant
 }
+
+module.exports = {
+    postApplicant,
+}
