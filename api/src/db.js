@@ -29,8 +29,8 @@ const { Admin, Applicant, Company, Cv, Document, Journey, Operation, PayMethod, 
 Applicant.hasOne(Cv);
 Cv.belongsTo(Applicant);
 
-Vacant.hasMany(Company);
-Company.belongsTo(Vacant);
+Company.hasMany(Vacant);
+Vacant.belongsTo(Company);
 
 Journey.hasMany(Vacant); 
 Vacant.belongsTo(Journey);
