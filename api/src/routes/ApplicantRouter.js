@@ -1,6 +1,6 @@
 const { Router } = require('express')
-const applicantHandlerGet = require('../handlers/ApplicantHandlers/ApplicantGet')
-const applicantHandlersPost = require('../handlers/ApplicantHandlers/ApplicantPost')
+const { applicantHandlerGet } = require('../handlers/ApplicantHandlers/ApplicantGet')
+const { applicantHandlersPost }= require('../handlers/ApplicantHandlers/ApplicantPost')
 
 const applicantRouter = Router();
 

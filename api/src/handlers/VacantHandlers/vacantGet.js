@@ -1,18 +1,18 @@
 const errorUser = require('../../helpers/errors')
-
-const vacantHandlerGetId = (req, res) =>{
+const { getVacantId } = require('../../controllers/VacantController/VacantGetById')
+const { getAllVacant } = require('../../controllers/VacantController/VacantGet')
+const vacantHandlerGetId = async(req, res) =>{
     const { id } = req.params;
     try {
-        
+        res.status(200).json(await getVacantId(id))
     } catch (error) {
-        errorUser(error, res);
-        
+        errorUser(error, res);        
     }
 }
 
-const vacantHandlerGet = (req, res) =>{
+const vacantHandlerGet = async(req, res) =>{
     try {
-        
+        res.status(200).json(await getAllVacant())
     } catch (error) {
         errorUser(error, res)
     }
