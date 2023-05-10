@@ -1,0 +1,50 @@
+.mainContainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    /* border: solid black 1px ; */
+    border-radius: 10px;
+    width: 300px;
+    gap: 30px;
+    background:  linear-gradient(45deg, #818885 20%, #babebe 50%);
+}
+
+.mainContainer select{
+    width: 200px;
+    border-radius: 5px;
+}
+
+
+
+.cardsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    gap: 1em;
+    border: 1px;
+
+    background-color: aqua;
+}
+
+.filterContainer{
+   
+    line-height:0em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0px;
+    /* border: solid black 1px; */
+    /* background-color: aqua; */
+}
+
+.orderContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: aqua; */
+
+}
