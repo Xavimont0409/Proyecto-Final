@@ -1,16 +1,20 @@
 import style from "./EmpleoDetail.module.css";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { Container, Row, Col } from "react-bootstrap";
 import CardEmpleoDetail from "../../components/CardEmpleoDetail/CardEmpleoDetail";
 import NavBar from "../../components/NavBar/NavBar";
 import CardEmpresaDetail from "../../components/CardEmpresaDetail/CardEmpresaDetail";
 import MiniCardEmpleosRel from "../../components/MiniCardEmpleosRel/MiniCardEmpleosRel";
+import { useParams } from "react-router-dom";
+import arrayEmpleosFake from "./arrayEmpleosFake";
 
 
 
 const EmpleoDetail = () => {
 
+    const {detailId} = useParams();
+
+    const empleoSelected = arrayEmpleosFake().find((empl) => empl.id === +detailId);
 
     return(
     <div className={style.mainContainer}>
@@ -34,7 +38,7 @@ const EmpleoDetail = () => {
             >
              <Tab eventKey="DETALLE DEL EMPLEO" title="DETALLE DEL EMPLEO">
              <div className={style.containerDetail}>
-                <CardEmpleoDetail/>
+                <CardEmpleoDetail empleoSelected={empleoSelected}/>
              </div>
             </Tab>
             <Tab eventKey="DETALLE DE LA EMPRESA" title="DETALLE DE LA EMPRESA">
