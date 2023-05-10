@@ -1,17 +1,18 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function MiniCardEmpleosRel() {
+function MiniCardEmpleosRel({id, title, SeniorityId}) {
+  
   return (
     <Card className="text-center">
       <Card.Header>Vacante sugerida</Card.Header>
       <Card.Body>
-        <Card.Title>Nombre de la publicación</Card.Title>
+        <Card.Title>{title}</Card.Title>
         <Card.Text>
-          Experiencia
+          Seniority: {SeniorityId}
         </Card.Text>
         <Card.Text>
-          Salario
+         Salario: Salario
         </Card.Text>
         <Button variant="outline-success">POSTULARME</Button>{' '}
       </Card.Body>
