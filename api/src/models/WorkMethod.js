@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
             autoIncrement: true
         },
         name: {
-            type: DataTypes.ENUM('face-to-face', 'hybrid', 'remote'),
+            type: DataTypes.STRING,
             allowNull: false
         },
     },

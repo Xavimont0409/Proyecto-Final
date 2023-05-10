@@ -5,7 +5,7 @@ const NavBar = () => {
         <>
             <Navbar bg="light" expand="sm">
                 <Container fluid>
-                    <Navbar.Brand href="/empleos">JobPortalX</Navbar.Brand>
+                    <Navbar.Brand href="/">JobPortalX</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Form className="ms-auto">
