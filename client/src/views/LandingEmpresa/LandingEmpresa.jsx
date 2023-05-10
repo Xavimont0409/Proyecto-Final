@@ -1,6 +1,6 @@
 import style from "./LandignEmpresa.module.css"
 import UncontrolledExample from "../../components/Carousel/Carousel"
-import NavBar from "../../components/NavBar/NavBar";
+import NavBar from "../../components/NavBar/NavBarUnlog";
 import CardPlan from "../../components/CardPlan/CardPlan";
 
 const LandingEmpresa = () => {
