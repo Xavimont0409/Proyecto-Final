@@ -1,4 +1,4 @@
-import NavBar from "../../components/NavBar/NavBar"
+import NavBar from "../../components/NavBar/NavBarUnlog"
 import CardsContainerEmpleo from "../../components/CardsContainerEmpleo/CardsContainerEmpleo";
 import Filter from "../../components/Filter/Filter"
 import style from "./Empleos.module.css"
