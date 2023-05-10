@@ -1,7 +1,7 @@
 import './App.css';
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister} from './views';
+import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarCliente from './components/NavBar/NavBarLog';
 
@@ -16,7 +16,11 @@ function App() {
         <Route path="/empresa" element={<LandingEmpresa />}></Route>
         <Route path="/navbarCliente" element={<NavBarCliente />}></Route>
         <Route path="/iniciarSesion" element={<IniciarSesion />}></Route>
-        <Route path="/inicioSesion" element={<FormRegister />}></Route>
+        <Route path="/registro-usuario" element={<FormRegister />}></Route>
+        <Route path="/registro-cv" element={<FormCv />}></Route>
+        <Route path="/registro-empresa" element={<FormEmpresa />}></Route>
+        <Route path="/registro-vacante" element={<FormVacante />}></Route>
+
       </Routes>
     </div>
   );
