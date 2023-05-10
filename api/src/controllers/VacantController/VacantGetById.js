@@ -1,11 +1,11 @@
-const { Vacant } = require('../../db')
+const { Vacant, Journey } = require("../../db");
 
-const getVacantId = async(id) =>{
-    const findVacant = await Vacant.findAll({where : { id }})
+const getVacantId = async (id) => {
+  const findVacant = await Vacant.findAll({where: { id }});
 
-    return findVacant
-}
+  return findVacant;
+};
 
-module.exports={
-    getVacantId
-}
+module.exports = {
+  getVacantId,
+};
