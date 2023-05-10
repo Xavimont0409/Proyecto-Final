@@ -1,0 +1,60 @@
+.form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ccc;
+    min-height: 100vh;
+}
+
+.nav-wrapper {
+    margin-bottom: 25px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.input-wrapper div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-wrapper label {
+    font-weight: bold;
+}
+
+.input-wrapper input {
+    padding: 10px;
+    border-bottom: 2px solid ;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-bottom: 2px solid #007bff;
+}
+
+.input-wrapper span {
+    display: none;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-wrapper button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+}
+
+.button-wrapper button:hover {
+    background-color: #0062cc;
+}

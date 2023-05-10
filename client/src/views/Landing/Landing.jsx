@@ -1,7 +1,6 @@
 import style from './Landing.module.css';
 import img from './viejo feliz.jpg';
-import NavBar from '../../components/NavBar/NavBar';
-
+import NavBar from "../../components/NavBar/NavBarUnlog";
 const Landing = () => {
 
     return (
