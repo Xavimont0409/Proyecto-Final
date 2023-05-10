@@ -3,7 +3,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Container, Row, Col } from "react-bootstrap";
 import CardEmpleoDetail from "../../components/CardEmpleoDetail/CardEmpleoDetail";
-import NavBar from "../../components/NavBar/NavBar";
+import NavBar from "../../components/NavBar/NavBarUnlog";
 import CardEmpresaDetail from "../../components/CardEmpresaDetail/CardEmpresaDetail";
 import MiniCardEmpleosRel from "../../components/MiniCardEmpleosRel/MiniCardEmpleosRel";
 
