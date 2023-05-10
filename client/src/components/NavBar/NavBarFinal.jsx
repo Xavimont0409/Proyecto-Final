@@ -1,5 +1,5 @@
-import NavBarCliente from "./NavBarLog";
-import Navbar from "./NavBarUnlog";
+import NavBarLog from "./NavBarLog";
+import NavbarUnlog from "./NavBarUnlog";
 
 
 const NavBarFinal = () => {
@@ -9,7 +9,7 @@ const NavBarFinal = () => {
     return (
         <div>
             {
-                (usuarioLogueado) ? (<NavBarCliente/>) : (<Navbar/>)
+                (usuarioLogueado) ? (<NavBarLog/>) : (<NavbarUnlog/>)
             }
         </div>
     )
