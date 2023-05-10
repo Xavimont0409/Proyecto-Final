@@ -1,9 +1,8 @@
 import './App.css';
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import {EmpleoDetail, Empleos, Landing, LandingEmpresa} from './views';
+import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBar from './components/NavBar/NavBarUnlog';
 import NavBarCliente from './components/NavBar/NavBarLog';
 
 
@@ -16,8 +15,8 @@ function App() {
         <Route path ="/empleoDetail/:detailId" element={<EmpleoDetail/>} />
         <Route path='/empleos' element={<Empleos></Empleos>}></Route>
         <Route path="/empresa" element={<LandingEmpresa/>}></Route>
-        <Route path="/navbar" element={<NavBar/>}></Route>
         <Route path="/navbarCliente" element={<NavBarCliente/>}></Route>
+        <Route path="/iniciarSesion" element={<IniciarSesion/>}></Route>
       </Routes>
 
 
