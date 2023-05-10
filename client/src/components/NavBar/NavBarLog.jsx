@@ -30,7 +30,7 @@ const NavBarCliente = () => {
                                     Curriculum vitae
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="/landing">
+                                <NavDropdown.Item href="/">
                                     cerrar sesion
                                 </NavDropdown.Item>
                             </NavDropdown>
