@@ -1,5 +1,6 @@
 const errorUser = require('../../helpers/errors')
-const { getAllCompany } = require('../../controllers/CompaniesController/CompanyControllerGet')
+const { getAllCompany, getCompanyId } = require('../../controllers/CompaniesController/CompanyControllerGet')
+
 
 async function companysHandlerGet(req, res){
     try {
@@ -10,6 +11,16 @@ async function companysHandlerGet(req, res){
     }
 }
 
+
+const companysHandlerGetId = async(req, res) =>{
+    const { id } = req.params
+    try {
+        res.status(200).json(await getCompanyId(id) )
+    } catch (error) {
+        
+    }
+}
 module.exports={
-    companysHandlerGet
+    companysHandlerGet,
+    companysHandlerGetId
 }
