@@ -6,6 +6,7 @@
     /* border: solid black 1px ; */
     border-radius: 10px;
     width: 300px;
+    height: 500px;
     gap: 30px;
     background:  linear-gradient(45deg, #818885 20%, #babebe 50%);
 }
@@ -26,7 +27,6 @@
     flex-wrap: wrap;
     gap: 1em;
     border: 1px;
-
     background-color: aqua;
 }
 
