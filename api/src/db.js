@@ -24,15 +24,15 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Admin, Applicant, Company, Cv, Document, Journey, PaymentMethod, Seniority, TaxStatus, Vacant, WorkMethod, Operations} = sequelize.models;
+const { Admin, Applicant, Company, Cv, Document, Journey, Operation, PayMethod, Seniority, Tax_Condition, Vacant, WorkMethod, Operations} = sequelize.models;
 
 Applicant.hasOne(Cv);
 Cv.belongsTo(Applicant);
 
-Vacant.hasMany(Company);
-Company.belongsTo(Vacant);
+Company.hasMany(Vacant);
+Vacant.belongsTo(Company);
 
-Journey.hasMany(Vacant);
+Journey.hasMany(Vacant); 
 Vacant.belongsTo(Journey);
 
 Seniority.hasMany(Vacant);
@@ -41,17 +41,14 @@ Vacant.belongsTo(Seniority);
 WorkMethod.hasMany(Vacant);
 Vacant.belongsTo(WorkMethod);
 
-Company.belongsToMany(PaymentMethod, {though: Operations})
-PaymentMethod.belongsToMany(Company, {though: Operations})
+Company.belongsToMany(PayMethod, {through: Operation})
+PayMethod.belongsToMany(Company, {through: Operation})
 
-Vacant.belongsToMany(Applicant, {though: ApplicantVacant})
-Applicant.belongsToMany(Vacant, {though: ApplicantVacant})
+Vacant.belongsToMany(Applicant, {through: 'ApplicantVacant'})
+Applicant.belongsToMany(Vacant, {through: 'ApplicantVacant'})
 
-Vacant.belongsToMany(Applicant, {though: ApplicantVacant})
-Applicant.belongsToMany(Vacant, {though: ApplicantVacant})
-
-Applicant.belongsToMany(PaymentMethod, {though: Operations})
-PaymentMethod.belongsToMany(Applicant, {though: Operations})
+Applicant.belongsToMany(PayMethod, {through: Operation})
+PayMethod.belongsToMany(Applicant, {through: Operation})
 
 module.exports = {
   ...sequelize.models, 

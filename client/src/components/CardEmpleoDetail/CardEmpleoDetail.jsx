@@ -1,24 +1,29 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import style from "./CardEmpleoDetail.module.css";
 
-const CardEmpleoDetail = () => {
+
+
+const CardEmpleoDetail = ({empleoSelected}) => {
+  
   return (
     <Card style={{ width: '100%' }}>
-      <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+      <div className={style.containerImgEmpresa}>
+      <Card.Img variant="top" src="https://2.bp.blogspot.com/-8nygkHc09a4/XELAYyOEjZI/AAAAAAAAGLg/kiGoQYw5Xtccv4PPFZA_9SXANdV4CaxFACLcBGAs/s1600/globant_logo.jpg"/>
+      </div>
       <Card.Body>
-        <Card.Title>NOMBRE DE LA PUBLICACIÓN</Card.Title>
-        <Card.Text>
-          Descripción
-        </Card.Text>
+        <Card.Title>{empleoSelected.title}</Card.Title>
+        <Card.Text>{empleoSelected.description}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>Jornada laboral</ListGroup.Item>
-        <ListGroup.Item>Salario</ListGroup.Item>
-        <ListGroup.Item>Modalidad: presencial o remoto</ListGroup.Item>
-        <ListGroup.Item>Experiencia</ListGroup.Item>
+        <ListGroup.Item>Jornada: {empleoSelected.JourneyId}</ListGroup.Item>
+        <ListGroup.Item>Salario: Salario???</ListGroup.Item>
+        <ListGroup.Item>Modalidad: {empleoSelected.WorkMethodId}</ListGroup.Item>
+        <ListGroup.Item>Seniority: {empleoSelected.SeniorityId}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Card.Link href="#">POSTULARME</Card.Link>
+      <Button className={style.btn} variant="outline-success">POSTULARME</Button>{' '}
       </Card.Body>
     </Card>
   );
