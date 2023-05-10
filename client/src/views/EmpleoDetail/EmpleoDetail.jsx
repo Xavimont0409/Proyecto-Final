@@ -6,15 +6,26 @@ import NavBar from "../../components/NavBar/NavBarUnlog";
 import CardEmpresaDetail from "../../components/CardEmpresaDetail/CardEmpresaDetail";
 import MiniCardEmpleosRel from "../../components/MiniCardEmpleosRel/MiniCardEmpleosRel";
 import { useParams } from "react-router-dom";
-import arrayEmpleosFake from "./arrayEmpleosFake";
+import {useSelector} from "react-redux";
 
 
 
 const EmpleoDetail = () => {
 
     const {detailId} = useParams();
+    const empleos = useSelector(state => state.publications);
 
-    const empleoSelected = arrayEmpleosFake().find((empl) => empl.id === +detailId);
+    const empleoSelected = empleos.find((empl) => empl.id === +detailId);
+    const wordKeysRaw = empleoSelected.title.toLowerCase().split(' ');
+    const wordKeys = wordKeysRaw.filter((wrd) => wrd.length > 3);
+    const empleosRelSelected = empleos.filter((emple) => {
+        return wordKeys.some((word) => emple.title.toLowerCase().includes(word) ) 
+    });
+
+    console.log(wordKeys);
+    console.log(empleosRelSelected);
+    
+
 
     return(
     <div className={style.mainContainer}>
@@ -22,11 +33,13 @@ const EmpleoDetail = () => {
         <div className={style.mainContainer2}>
             
             <div className={style.containerEmpleosRel}>
-            <MiniCardEmpleosRel/>
-            <MiniCardEmpleosRel/>
-            <MiniCardEmpleosRel/>
-            <MiniCardEmpleosRel/>
-            <MiniCardEmpleosRel/>
+              {empleosRelSelected.map((empleo)=> {
+                return <MiniCardEmpleosRel 
+                id = {empleo.id}
+                title = {empleo.title}
+                SeniorityId = {empleo.SeniorityId}
+                />
+              })}
             </div>
 
             <div className={style.mainContainer3}>
