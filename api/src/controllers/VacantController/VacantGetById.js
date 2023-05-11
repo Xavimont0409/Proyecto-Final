@@ -1,14 +1,24 @@
-const { Vacant, Workday } = require("../../db");
+const { Vacant, Workday, WorkMethod, Seniority } = require("../../db");
 
 const getVacantId = async (id) => {
   const findVacant = await Vacant.findAll({
-    where: {id},
-    attributes:["id","title", "description"],
-    include: {
-      model:Workday,
-      attributes: ["name"]
-    }
-  })
+    where: { id },
+    attributes: ["id", "title", "description"],
+    include: [
+      {
+        model: Workday,
+        attributes: ["name"],
+      },
+      {
+        model: WorkMethod,
+        attributes: ["name"]
+      },
+      {
+        model: Seniority,
+        attributes: ["name"]
+      }
+    ],
+  });
 
   return findVacant;
 };
