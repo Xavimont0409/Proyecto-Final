@@ -29,6 +29,9 @@ const { Admin, Applicant, Company, Cv, Document, Workday, Operation, PayMethod, 
 Applicant.hasOne(Cv);
 Cv.belongsTo(Applicant);
 
+Applicant.hasOne(Document);
+Document.belongsTo(Applicant);
+
 Cv.hasMany(Experience);
 Experience.belongsTo(Cv);
 
