@@ -1,0 +1,15 @@
+.Form {
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(45deg, #818885 20%, #babebe 50%);
+  height: 500px;
+  width: 700px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+
+}

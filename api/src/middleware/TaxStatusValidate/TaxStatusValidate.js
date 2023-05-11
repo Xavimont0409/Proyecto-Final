@@ -1,8 +1,9 @@
+const validateRequiredField = require('../../helpers/requiredFieldsHelper');
+
 const validateTaxStatus = async (req, res, next) => {
     try {
         const { taxStatus } = req.body;
-        if (!taxStatus)
-            throw new Error('Tax Status does not exist');
+        validateRequiredField(taxStatus, 'Tax Stastus');
         next();
     } catch (error) {
         res.status(400).send(error.message);

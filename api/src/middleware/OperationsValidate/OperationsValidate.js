@@ -1,8 +1,9 @@
+const validateRequiredField = require('../../helpers/requiredFieldsHelper');
+
 const validateOperations = async (req, res, next) => {
     try {
         const { cost } = req.body;
-        if (!cost)
-            throw new Error('Cost value does not exist');
+        validateRequiredField(cost , 'Cost')
         if (cost < 0)
             throw new Error('Cost value must be positive or zero');
         next();
@@ -14,3 +15,4 @@ const validateOperations = async (req, res, next) => {
 module.exports = {
     validateOperations,
 };
+
