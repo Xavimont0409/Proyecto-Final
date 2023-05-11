@@ -1,4 +1,4 @@
-const { Vacant } = require('../../db')
+const { Vacant, WorkMethod } = require('../../db')
 
 const getAllVacant = () =>{
     return Vacant.findAll()

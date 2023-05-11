@@ -1,11 +1,26 @@
-const { Company, Vacant } = require('../../db');
+const { Company, Vacant,Workday } = require('../../db');
 
 const getAllCompany = () =>{
-  return Company.findAll({include: {model: Vacant}});
+  return Company.findAll({include:{
+    model: Vacant,
+    attributes: ["title","description"],
+    include:{ model : Workday,
+    attributes : ["name"]
+    }
+  }});
 }
 
 const getCompanyId = (id) =>{
-  return Company.findByPk(id, {include: {model: Vacant}});
+  return Company.findAll({
+    where: { id },
+    include: {
+      model: Vacant,
+      attributes: ["title","description"],
+      include:{ model : Workday,
+      attributes : ["name"]
+      }
+    }
+  });
 }
 module.exports={
   getAllCompany,
