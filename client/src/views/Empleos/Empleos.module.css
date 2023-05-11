@@ -1,15 +1,44 @@
 .mainContainer{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 15px;
 }
-
 
 .filterAndCardsContainer{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
 }
 
+.filters{
+    margin-left: 3px;
+}
 
+.cardsDiv{
+    width: 1000px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+@media (max-width: 780px) {
+    .mainContainer {
+        gap: 20px;
+    }
+
+    .filterAndCardsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cardsDiv {
+        max-width: 475px;
+        margin-top: 7px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .filters {
+    }
+}

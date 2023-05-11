@@ -10,7 +10,7 @@ const CardsContainerEmpleo = ({ currentCard }) => {
                     return <Card
                         key={vacancy.id}
                         id={vacancy.id}
-                        logo={vacancy.logo}
+                        // logo={vacancy.logo}
                         title={vacancy.title}
                         description={vacancy.description} />
                 })}
