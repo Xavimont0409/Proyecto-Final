@@ -216,7 +216,7 @@ const handleSubmit = (event) => {
         <Form.Check
           required
           label="Aceptas proporcionar tus datos a JobPortalX y que este haga un manejo adecuado de los mismos"
-          feedback="Debes aceptar antes de enviar tu formulario"
+          feedback="Debes aceptar los terminos antes de enviar tu formulario"
           feedbackType="invalid"
         />
       </Form.Group>
