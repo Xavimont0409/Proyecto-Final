@@ -1,15 +1,11 @@
-const { Cv } = require('../models/Cv');
+const { Cv } = require('../../db');
 
-const createCv = async (req, res) => {
-    try {
-      const { dni, name, lastName, address, photo, profesion, github, linkedin, work_experience, personal_description, education } = req.body;
-      const cv = await Cv.create({ dni, name, lastName, address, photo, profesion, github, linkedin, work_experience, personal_description, education });
-      res.status(201).json(cv);
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
+const createCv = async (dni, name, lastName, address, photo, profession, github, linkedin, work_experience, personal_description, education, ApplicantId) => {
+  const newCv = await Cv.create({ dni, name, lastName, address, photo, profession, github, linkedin,  work_experience, personal_description, education, ApplicantId });
+
+  return newCv
 };
 
 module.exports = {
-    createCv,
+  createCv,
 };

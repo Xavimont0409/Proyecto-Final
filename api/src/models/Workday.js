@@ -1,14 +1,14 @@
 const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('Journey', {
+    sequelize.define('Workday', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         name: {
-            type: DataTypes.ENUM('fulltime', 'part-time'),
+            type: DataTypes.STRING,
             allowNull: false
         },
     },
