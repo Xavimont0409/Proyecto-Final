@@ -1,8 +1,9 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion} from './views';
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 import NavBarCliente from './components/NavBar/NavBarLog';
 
 

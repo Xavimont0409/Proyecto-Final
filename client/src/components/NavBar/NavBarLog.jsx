@@ -1,6 +1,7 @@
 import { Button , Form , Container, NavDropdown , Nav , Navbar , Col , Row} from "react-bootstrap";
 
 const NavBarCliente = () => { 
+    
     return (
         <>
             <Navbar bg="light" expand="sm">
@@ -30,7 +31,7 @@ const NavBarCliente = () => {
                                     Curriculum vitae
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="/">
+                                <NavDropdown.Item>
                                     cerrar sesion
                                 </NavDropdown.Item>
                             </NavDropdown>
