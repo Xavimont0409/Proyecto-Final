@@ -1,9 +1,25 @@
-const { Vacant } = require('../../db')
+const { Vacant, Workday, WorkMethod, Seniority } = require("../../db");
 
-const getAllVacant = () =>{
-    return Vacant.findAll()
-}
+const getAllVacant = () => {
+  return Vacant.findAll({
+    attributes: ["id", "title", "description"],
+    include: [
+      {
+        model: Workday,
+        attributes: ["name"],
+      },
+      {
+        model: WorkMethod,
+        attributes: ["name"]
+      },
+      {
+        model: Seniority,
+        attributes: ["name"]
+      }
+    ],
+  });
+};
 
 module.exports = {
-    getAllVacant
-}
+  getAllVacant,
+};
