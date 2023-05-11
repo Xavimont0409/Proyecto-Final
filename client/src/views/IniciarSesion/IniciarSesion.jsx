@@ -1,7 +1,6 @@
-import { Form , Button, Container} from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 const IniciarSesion = () => {
-    
     return(
         <div>
             <Container>

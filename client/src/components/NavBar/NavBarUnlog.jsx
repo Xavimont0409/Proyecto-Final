@@ -1,6 +1,10 @@
-import { Button , Navbar, Container, Form} from "react-bootstrap";
+import { Button, Navbar, Container, Nav, NavDropdown, Form } from "react-bootstrap";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
+
+    const { loginWithRedirect } = useAuth0();
 
     return (
         <>
@@ -10,9 +14,11 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Form className="ms-auto">
-                            <Button variant="outline-secondary" className="ms-auto">Iniciar sesion</Button>
+                            <Button variant="outline-secondary" className="ms-auto" onClick={() => loginWithRedirect()}>Iniciar sesion</Button>
                             <div className="vr" />
-                            <Button variant="secondary" className="ms-auto">Registrarme</Button>
+                            <Link to="/registro-usuario">
+                                <Button variant="secondary" className="ms-auto">Registrarme</Button>    
+                            </Link>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
