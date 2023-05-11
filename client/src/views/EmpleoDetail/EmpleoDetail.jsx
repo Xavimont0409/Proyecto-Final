@@ -6,7 +6,9 @@ import NavBar from "../../components/NavBar/NavBarUnlog";
 import CardEmpresaDetail from "../../components/CardEmpresaDetail/CardEmpresaDetail";
 import MiniCardEmpleosRel from "../../components/MiniCardEmpleosRel/MiniCardEmpleosRel";
 import { useParams } from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from 'react';
+import Loading from "../../components/Loading/Loading";
 
 
 
@@ -14,6 +16,7 @@ const EmpleoDetail = () => {
 
     const {detailId} = useParams();
     const empleos = useSelector(state => state.publications);
+    const [isLoading, setIsLoading] = useState(true);
 
     const empleoSelected = empleos.find((empl) => empl.id === +detailId);
     const wordKeysRaw = empleoSelected.title.toLowerCase().split(' ');
@@ -21,12 +24,20 @@ const EmpleoDetail = () => {
     const empleosRelSelected = empleos.filter((emple) => {
         return wordKeys.some((word) => emple.title.toLowerCase().includes(word) ) 
     });
-
+    
     console.log(wordKeys);
     console.log(empleosRelSelected);
+  
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+    }, []);
+
+    if (isLoading) {
+        return <Loading/>;
+    };
     
-
-
     return(
     <div className={style.mainContainer}>
         <NavBar/>
