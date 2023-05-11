@@ -24,10 +24,16 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Admin, Applicant, Company, Cv, Document, Workday, Operation, PayMethod, Seniority, Tax_Condition, Vacant, WorkMethod, Operations} = sequelize.models;
+const { Admin, Applicant, Company, Cv, Document, Workday, Operation, PayMethod, Seniority, Tax_Condition, Vacant, WorkMethod, Experience, Formation } = sequelize.models;
 
 Applicant.hasOne(Cv);
 Cv.belongsTo(Applicant);
+
+Cv.hasMany(Experience);
+Experience.belongsTo(Cv);
+
+Cv.hasMany(Formation);
+Experience.belongsTo(Cv);
 
 Company.hasMany(Vacant);
 Vacant.belongsTo(Company);
@@ -41,14 +47,14 @@ Vacant.belongsTo(Seniority);
 WorkMethod.hasMany(Vacant);
 Vacant.belongsTo(WorkMethod);
 
-Company.belongsToMany(PayMethod, {through: Operation})
-PayMethod.belongsToMany(Company, {through: Operation})
+Company.belongsToMany(PayMethod, {through: Operation});
+PayMethod.belongsToMany(Company, {through: Operation});
 
-Vacant.belongsToMany(Applicant, {through: 'ApplicantVacant'})
-Applicant.belongsToMany(Vacant, {through: 'ApplicantVacant'})
+Vacant.belongsToMany(Applicant, {through: 'ApplicantVacant'});
+Applicant.belongsToMany(Vacant, {through: 'ApplicantVacant'});
 
-Applicant.belongsToMany(PayMethod, {through: Operation})
-PayMethod.belongsToMany(Applicant, {through: Operation})
+Applicant.belongsToMany(PayMethod, {through: Operation});
+PayMethod.belongsToMany(Applicant, {through: Operation});
 
 module.exports = {
   ...sequelize.models, 
