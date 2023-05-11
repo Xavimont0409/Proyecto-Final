@@ -1,0 +1,81 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.doubleBounce1,
+.doubleBounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #44bd32;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.doubleBounce2 {
+    animation-delay: -1s;
+}
+
+.text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .spinner {
+        width: 30px;
+        height: 30px;
+    }
+
+    .text {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .spinner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .text {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .spinner {
+        width: 40px;
+        height: 40px;
+    }
+
+    .text {
+        font-size: 1.4rem;
+    }
+}

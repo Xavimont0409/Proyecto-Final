@@ -1,8 +1,9 @@
 .mainContainer{
-
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: fit-content;
+    height: fit-content;
     /* background-color: aquamarine; */
     justify-content: start;
     /* margin-top: 50px; */
@@ -18,8 +19,17 @@
     gap: 1em;
     overflow-y: scroll;
     /* max-height: 100vh; */
-    
+    overflow: hidden;
 
     /* background-color: red; */
 }
 
+@media (max-width: 768px) {
+    .mainContainer {
+    }
+
+    .cardsContainer {
+        max-width: 457px;
+        border-radius: 3px;
+    }
+}
