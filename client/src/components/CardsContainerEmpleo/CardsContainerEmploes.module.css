@@ -14,11 +14,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* flex-wrap: wrap; */
     gap: 1em;
     overflow-y: scroll;
-    /* max-height: 100vh; */
-    
+    max-height: 100vh;
 
     /* background-color: red; */
 }
