@@ -7,6 +7,7 @@ import Loading from "../../components/Loading/Loading";
 import CardsEquipo from '../../components/CardEquipo/CardEquipo';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Footer from '../../components/Footer/Footer';
 
 const Landing = () => {
 
@@ -45,8 +46,12 @@ const Landing = () => {
                     
                 </div>
             </div>
+
                 <MisionVisión />
                 <CardsEquipo />
+
+            <Footer/>
+
         </div>
     )
 }
