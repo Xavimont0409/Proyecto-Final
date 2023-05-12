@@ -1,7 +1,7 @@
 import style from './Landing.module.css';
 import { Button } from 'react-bootstrap';
 import img from './viejo feliz.jpg';
-import NavBar from '../../components/NavBar/NavBarUnlog';
+import NavBar from '../../components/NavBar/NavBar';
 import Loading from "../../components/Loading/Loading";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';

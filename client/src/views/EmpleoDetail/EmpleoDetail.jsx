@@ -2,7 +2,7 @@ import style from "./EmpleoDetail.module.css";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import CardEmpleoDetail from "../../components/CardEmpleoDetail/CardEmpleoDetail";
-import NavBar from "../../components/NavBar/NavBarUnlog";
+import NavBar from "../../components/NavBar/NavBar";
 import CardEmpresaDetail from "../../components/CardEmpresaDetail/CardEmpresaDetail";
 import MiniCardEmpleosRel from "../../components/MiniCardEmpleosRel/MiniCardEmpleosRel";
 import { useParams } from "react-router-dom";
