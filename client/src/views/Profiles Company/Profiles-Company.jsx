@@ -5,9 +5,10 @@ import CardProfileCompany from '../../components/CardsProfilesCompany/CardsProfi
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
+import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
 const ProfilesCompany = () => {
-    //const company = useSelector(state => state.company);
+    const company = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
     const [companiesPerPage, setusersPerPage] = useState(4);
     const indexOfLastCharacter = currentPage * companiesPerPage;
@@ -17,6 +18,7 @@ const ProfilesCompany = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
+            getAllCompanys();
         }, 2000);
     }, []);
 
@@ -38,7 +40,7 @@ const ProfilesCompany = () => {
             <NavBar />
             <Page
                 companiesPerPage={companiesPerPage}
-                //companies={}
+                companies={company}
                 paginated={paginated}
             />
             {  isLoading ? (
@@ -47,17 +49,17 @@ const ProfilesCompany = () => {
                     <div className={styles.cardsContainer}>
                         {
                             currentCompanies?.map(company => {
-                                // return (
-                                    // <div key={company.id} className={styles.cardDiv}>
-                                    //     <CardProfileCompany
-                                    //     key={company.id}
-                                    //     id={company.id}
-                                    //     business_name={company.business_name}
-                                    //     email={company.email}
-                                    //     country={company.country}
-                                    //     />
-                                    // </div>
-                                // )
+                                return (
+                                    <div key={company.id} className={styles.cardDiv}>
+                                        <CardProfileCompany
+                                        key={company.id}
+                                        id={company.id}
+                                        business_name={company.business_name}
+                                        email={company.email}
+                                        country={company.country}
+                                        />
+                                    </div>
+                                )
                             })
                         }
                     </div>
