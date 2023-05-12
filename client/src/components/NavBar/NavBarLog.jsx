@@ -27,7 +27,7 @@ const NavBarCliente = () => {
                             navbarScroll
                         >
                             <NavDropdown title="Cuenta" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="/perfil">
+                                <NavDropdown.Item href="/MiPerfil">
                                     Mi perfil
                                 </NavDropdown.Item>
                                 <NavDropdown.Item href="/registro-cv">

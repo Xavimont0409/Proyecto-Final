@@ -2,9 +2,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany} from './views';
+import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import PruebasJuan from './views/PruebasJuan/PruebasJuan';
 
 function App() {
   return (
@@ -23,7 +22,7 @@ function App() {
         <Route path='/profiles-company' element={<ProfilesCompany/>} />
 
 
-        <Route path="/PruebasJuan" element={<PruebasJuan />}></Route>
+        <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
       </Routes>
     </div>
   );
