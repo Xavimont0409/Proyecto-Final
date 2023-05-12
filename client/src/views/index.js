@@ -11,6 +11,7 @@ import FormEmpresa from "./FormEmpresa/FormEmpresa";
 import Profiles from "./Profiles/Profiles";
 import MiPerfil from "./MiPerfil/MiPerfil";
 import Applicant from "./Applicant/Applicant";
+import ProfilesCompany from "./Profiles Company/Profiles-Company";
 
 export {
     EmpleoDetail, 
@@ -25,5 +26,6 @@ export {
     FormEmpresa, 
     Profiles,
     MiPerfil,
-    Applicant
+    Applicant,
+    ProfilesCompany,
 }

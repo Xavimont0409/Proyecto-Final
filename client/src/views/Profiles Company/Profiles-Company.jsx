@@ -26,7 +26,7 @@ const ProfilesCompany = () => {
         setCurrentPage(pageNumber)
     };
 
-    const currentCompanies = users.slice(indexOfFirstCharacter, indexOfLastCharacter);
+    const currentCompanies = company.slice(indexOfFirstCharacter, indexOfLastCharacter);
 
     useEffect(() => {
         if (currentCompanies.length === 0 && users.length > 0) {
