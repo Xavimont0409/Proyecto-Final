@@ -1,0 +1,33 @@
+.containerPadre{
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container{
+    width: 20vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #000;
+    border-radius: 20px;
+    margin: 2vh 1.5vw;
+}
+
+.img{
+    width: 10vw;
+    height: 20vh;
+}
+
+.title{
+    font-size: 150%;
+}
+.text{
+    margin: 0.5vh 0.8vw;
+}

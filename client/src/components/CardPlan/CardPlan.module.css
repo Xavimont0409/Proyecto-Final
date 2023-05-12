@@ -8,13 +8,12 @@
     height: 32vh;
     line-height: 1.3em;
     align-items: center;
-    background-color: rgb(209, 210, 249);
+    background-color: rgba(180, 184, 188, 0.427);
     transition: all 0.3s;
 }
 
 .MainContainer:hover {
     width: 14vw;
     height: 34vh;
-    box-shadow: 10px px 30px 10px red;
-    background-color: rgb(163, 188, 249);
+    background-color: var(--caribbean-current);
 }

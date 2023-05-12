@@ -1,41 +1,76 @@
-import React from "react";
-import {  Form, Row, Col, FormGroup, FormLabel, FormSelect } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Row, Col, FormGroup, FormLabel, FormSelect } from "react-bootstrap";
 import style from "./Step2FormCv.module.css"
+import countries from "countries-list";
+import Button from 'react-bootstrap/Button';
 
 
-function Step2FormCv({ formacion, setFormacion, handlerChange }) {
+function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nextStep }) {
+  
+  const [validated, setValidated] = useState();
+
+  const handleNextStep = (event) => {
+   
+    if (event.currentTarget.checkValidity() === true) {
+      setValidated(true);
+      if(validated) nextStep();
+      return;
+    }
+  }
+
+  const countriesNames = Object.values(countries.countries).map(
+    (country) => country
+);
+  
+  
   return (
-    <Form className={style.Form}>
 
-      <Row>
-        <Col>
-          <FormGroup>
+    <div className={style.maincontainer3}>
+
+
+    <Form validated={validated}   >
+
+      <Row className="mb-3">
+      
+          <FormGroup as={Col} md="6">
             <FormLabel>Título / Carrera</FormLabel>
-            <Form.Control name='titulo'
+            <Form.Control 
+              name='titulo'
+              placeholder="titulo"
               value={formacion.titulo}
-              type="text"
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
-              required 
-              autoComplete="on"/>
+              type="text"
+              required/>
+              <Form.Control.Feedback type="invalid">
+                Rellena este campo.
+              </Form.Control.Feedback>
           </FormGroup>
-        </Col>
-        <Col>
-          <FormGroup>
+       
+
+
+       
+          <FormGroup as={Col} md="6" className="mb-5 ">
             <FormLabel>País</FormLabel>
-            <Form.Control name='pais'
+            <FormSelect
+              name='pais'
               value={formacion.pais}
-              type="text"
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
-              required />
+              required>
+                <option disabled></option>
+               {countriesNames.map((count) => <option id={count.emoji} value={count.name}>{count.name}</option>)}
+            </FormSelect>
+            <Form.Control.Feedback type="invalid">
+              Seleciona una opcion.
+            </Form.Control.Feedback>
           </FormGroup>
-        </Col>
+       
       </Row>
 
 
-      <Row>
-        <Col>
-          <FormGroup className="form-inline mx-">
-            <FormLabel className="me-2">Tipo de estudio</FormLabel>
+      <Row className="mb-3 ">
+       
+          <FormGroup as={Col} md="6" className="mb-3 ">
+            <FormLabel >Tipo de estudio</FormLabel>
             <FormSelect name='tipo_estudio'
               value={formacion.tipo_estudio}
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
@@ -49,38 +84,53 @@ function Step2FormCv({ formacion, setFormacion, handlerChange }) {
               <option value="Otro">Otro</option>
 
             </FormSelect>
+            <Form.Control.Feedback type="invalid">
+              Seleciona una opcion.
+            </Form.Control.Feedback>
           </FormGroup>
-        </Col>
 
-        <Col>
-          <FormGroup>
-            <FormLabel>Area de estudio</FormLabel>
-            <Form.Control name='area_estudio'
+
+
+          <FormGroup as={Col} md="6" className="mb-3 ">
+            <FormLabel >Area de estudio</FormLabel>
+            <Form.Control
+              name='area_estudio'
+              placeholder="area de estudio"
               value={formacion.area_estudio}
-              type="text"
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              type="text"
               required />
+            <Form.Control.Feedback type="invalid">
+              Rellena este campo.
+            </Form.Control.Feedback>
           </FormGroup>
-        </Col>
+       
       </Row>
 
 
-      <Row>
-        <Col>
-          <FormGroup>
+      <Row className="mb-3 ">
+        
+          <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel>Institución</FormLabel>
-            <Form.Control name='institucion'
+            <Form.Control
+              name='institucion'
+              placeholder="Nombre de la institucion"
               value={formacion.institucion}
               type="text"
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
               required />
+            <Form.Control.Feedback type="invalid">
+              Rellena este campo.
+            </Form.Control.Feedback>
           </FormGroup>
-        </Col>
+          
 
-        <Col>
-          <FormGroup className="form-inline mx-2">
-            <FormLabel className="me-2">Estado</FormLabel>
-            <FormSelect name='estado'
+
+        
+          <FormGroup as={Col} md="6" className="mb-3 ">
+            <FormLabel >Estado</FormLabel>
+            <FormSelect
+              name='estado'
               value={formacion.estado}
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
               required>
@@ -88,37 +138,60 @@ function Step2FormCv({ formacion, setFormacion, handlerChange }) {
               <option value="cursando">En curso</option>
               <option value="graduado">Graduado</option>
               <option value="abandonado">Abandonado</option>
-
             </FormSelect>
+            <Form.Control.Feedback type="invalid">
+              Selecciona una opcion.
+            </Form.Control.Feedback>
           </FormGroup>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <FormGroup>
+
+        </Row>
+
+        <Row className="mb-3 ">
+
+          <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel>Fecha de inicio</FormLabel>
-            <Form.Control name='fecha_inicio'
+            <Form.Control
+              name='fecha_inicio'
               value={formacion.fecha_inicio}
               type="date"
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
               required />
+            <Form.Control.Feedback type="invalid">
+              Rellena este campo.
+            </Form.Control.Feedback>
           </FormGroup>
-        </Col>
 
-        <Col>
-          <FormGroup>
+
+
+
+          <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel>Fecha de Finalización</FormLabel>
-            <Form.Control name='fecha_fin'
+            <Form.Control
+              name='fecha_fin'
               value={formacion.fecha_fin}
               type="date"
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
-              required />
+              required /><Form.Control.Feedback type="invalid">
+              Rellena este campo.
+            </Form.Control.Feedback>
           </FormGroup>
-        </Col>
+
+
+          
 
       </Row>
 
-    </Form>
+      </Form>
+
+  
+     <FormGroup as={Col} md="6" className="mb-3">
+        <Button style={{margin:'20px'}} onClick={previousStep} >Anterior </Button>
+        <Button  style={{margin:'20px'}}onClick={handleNextStep} >Siguiente</Button>
+     </FormGroup>
+      
+      
+
+    </div>
   );
 }
 

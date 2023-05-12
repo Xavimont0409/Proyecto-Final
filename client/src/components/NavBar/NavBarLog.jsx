@@ -1,6 +1,10 @@
 import { Button , Form , Container, NavDropdown , Nav , Navbar , Col , Row} from "react-bootstrap";
+import  { useAuth0 } from "@auth0/auth0-react";
 
 const NavBarCliente = () => { 
+    
+    const { logout, isAuthenticated } = useAuth0();
+
     return (
         <>
             <Navbar bg="light" expand="sm">
@@ -23,14 +27,14 @@ const NavBarCliente = () => {
                             navbarScroll
                         >
                             <NavDropdown title="Cuenta" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#miperfil">
+                                <NavDropdown.Item href="/MiPerfil">
                                     Mi perfil
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#CV">
+                                <NavDropdown.Item href="/registro-cv">
                                     Curriculum vitae
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="/">
+                                <NavDropdown.Item onClick={() => logout({ returnTo: window.location.origin})}>
                                     cerrar sesion
                                 </NavDropdown.Item>
                             </NavDropdown>
