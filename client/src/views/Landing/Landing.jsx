@@ -5,6 +5,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import Loading from "../../components/Loading/Loading";
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Footer from '../../components/Footer/Footer';
 
 const Landing = () => {
 
@@ -39,6 +40,7 @@ const Landing = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }
