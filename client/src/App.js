@@ -4,6 +4,9 @@ import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles, MiPerfil} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import NavBarCliente from './components/NavBar/NavBarLog';
+import axios from 'axios'
+axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
   return (
