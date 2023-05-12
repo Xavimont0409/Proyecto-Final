@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles} from './views';
+import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PruebasJuan from './views/PruebasJuan/PruebasJuan';
 
@@ -20,6 +20,7 @@ function App() {
         <Route path="/registro-empresa" element={<FormEmpresa />}></Route>
         <Route path="/registro-vacante" element={<FormVacante />}></Route>
         <Route path='/profiles' element={<Profiles/>} />
+        <Route path='/profiles-company' element={<ProfilesCompany/>} />
 
 
         <Route path="/PruebasJuan" element={<PruebasJuan />}></Route>
