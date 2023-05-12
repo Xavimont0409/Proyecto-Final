@@ -1,39 +1,65 @@
-import React from "react";
-import { Form, FormLabel, FormSelect, FormGroup, Row, Col, FormCheck } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, FormLabel, FormSelect, FormGroup, Row, Col, FormCheck, } from "react-bootstrap";
 import style from "./Step3FormCv.module.css"
+import countries from "countries-list";
+import Button from 'react-bootstrap/Button';
 
-function Step3FormCv({ experiencia, setExperiencia, handlerChange }) {
+function Step3FormCv({ experiencia, setExperiencia, handlerChange, previousStep }) {
+    
+    const [validated, setValidated] = useState(false);
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const formCheck = event.currentTarget;
+      if (formCheck.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+      }else{
+        setValidated(true);
+      
+       
+      }
+    };
+
+    const countriesNames = Object.values(countries.countries).map(
+        (country) => country
+    );
+    
+    
     return (
 
-        <Form className={style.Form}>
+        <div className={style.maincontainer3}>
 
-            <Row>
-                <Col>
-                    <FormGroup>
+            <Form noValidate className={style.Form} onSubmit={handleSubmit}>
+              
+                <Row className="mb-3">
+                    <FormGroup as={Col} md='6' className="mb-3">
                         <FormLabel>Empresa</FormLabel>
-                        <Form.Control name='empresa'
+                        <Form.Control
+                            name='empresa'
                             value={experiencia.empresa}
                             type="text"
                             onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
                             required />
                     </FormGroup>
-                </Col>
-                <Col>
-                    <FormGroup>
+
+                    <FormGroup as={Col} md='6' className="mb-3">
                         <FormLabel>Puesto</FormLabel>
-                        <Form.Control name='puesto'
+                        <Form.Control 
+                            name='puesto'
+                            placeholder="Nombre del cargo"
                             value={experiencia.puesto}
                             type="text"
                             onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
                             required />
                     </FormGroup>
-                </Col>
-            </Row>
+
+                </Row>
 
 
-            <Row>
-                <Col>
-                    <FormGroup className="form-inline mx-">
+
+                <Row className="mb-3">
+                    <FormGroup as={Col} md="6" className="mb-5 ">
                         <FormLabel className="me-2">Experiencia</FormLabel>
                         <FormSelect name='nivel_experiencia'
                             value={experiencia.nivel_experiencia}
@@ -47,24 +73,31 @@ function Step3FormCv({ experiencia, setExperiencia, handlerChange }) {
                             <option value="Senior">Senior</option>
                         </FormSelect>
                     </FormGroup>
-                </Col>
 
-                <Col>
-                    <FormGroup>
-                        <FormLabel>Ubicación</FormLabel>
-                        <Form.Control name='ubicacion'
+
+
+                    <FormGroup as={Col} md='6' className="mb-5">
+                    <FormLabel>Ubicación</FormLabel>
+                        <FormSelect
+                            name='ubicación'
                             value={experiencia.ubicacion}
-                            type="text"
                             onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
-                            required />
+                            required>
+                            <option disabled></option>
+                            {countriesNames.map((count) => <option id={count.emoji} value={count.name}>{count.name}</option>)}
+                        </FormSelect>
+
+
+                        <Form.Control.Feedback type="invalid">
+                            Seleciona una opcion.
+                        </Form.Control.Feedback>
                     </FormGroup>
-                </Col>
-            </Row>
 
+                </Row>
 
-            <Row>
-                <Col>
-                    <FormGroup>
+                <Row className="mb-3">
+
+                    <FormGroup as={Col} md="6" className="mb-3 ">
                         <FormLabel>Fecha de inicio</FormLabel>
                         <Form.Control name='fecha_inicio'
                             value={experiencia.fecha_inicio}
@@ -72,9 +105,8 @@ function Step3FormCv({ experiencia, setExperiencia, handlerChange }) {
                             onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
                             required />
                     </FormGroup>
-                </Col>
-                <Col>
-                    <FormGroup>
+
+                    <FormGroup as={Col} md="6" className="mb-3 ">
                         <FormLabel>Fecha de Finalización</FormLabel>
                         <Form.Control name='fecha_fin'
                             value={experiencia.fecha_fin}
@@ -82,16 +114,24 @@ function Step3FormCv({ experiencia, setExperiencia, handlerChange }) {
                             onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
                             required />
                     </FormGroup>
-                </Col>
-            </Row>
 
-            <FormGroup>
-                <FormLabel>Trabajo actualmente en esta empresa</FormLabel>
-                <FormCheck name='actualmente'
-                    onChange={(event) => setExperiencia({ ...experiencia, actualmente: event.target.checked })}
-                />
+                </Row>
+
+                <FormGroup>
+                    <FormLabel>Trabajo actualmente en esta empresa</FormLabel>
+                    <FormCheck name='actualmente'
+                        onChange={(event) => setExperiencia({ ...experiencia, actualmente: event.target.checked })}
+                    />
+                </FormGroup>
+            </Form>
+
+
+            <FormGroup as={Col} md="6" className="mb-3">
+                <Button style={{ margin: '20px' }} onClick={() => previousStep()} >Anterior </Button>
+                <Button style={{ margin: '20px' }} type='submit' >Cargar CV</Button>
             </FormGroup>
-        </Form>
+
+        </div>
     );
 }
 
