@@ -6,7 +6,6 @@ import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegis
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PruebasJuan from './views/PruebasJuan/PruebasJuan';
 
-
 function App() {
   return (
     <div className="App">
