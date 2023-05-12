@@ -1,6 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
 import CardCarousel from '../CardCarousel/CardCarousel';
-import style from "./Carousel.module.css"
+import style from "./Carousel.module.css";
+import { Link } from 'react-router-dom';
 
 
 function UncontrolledExample() {
@@ -12,15 +13,14 @@ function UncontrolledExample() {
         <div className={style.container}>
 
           <img
-            //   className="d-block w-100"
+            className={style.image}
             src='https://www.bumeran.com.pe/company/static/media/aviso-gratis-desktop.fa0af790.svg'
             alt="First slide"
-            style={{ height: "500px", width: "400px" }}
           />
           <CardCarousel tittle='Publica tu Vacante Ya!'
             text='Encuentra el talento que necesitas, publica hasta 3 avisos gratis al mes y atrae a los mejores candidatos para tu empresa'
             textButton='Publicar vacante' />
-
+          <Link><button>Publicar vacante</button></Link>
         </div>
 
         <Carousel.Caption>
@@ -31,10 +31,10 @@ function UncontrolledExample() {
       <Carousel.Item>
         <div className={style.container}>
           <img
-            //   className="d-block w-100"
+            className={style.image}
             src='https://www.bumeran.com.pe/company/static/media/busqueda-en-base-desktop-tropicalized.61e5410a.svg'
             alt="Second slide"
-            style={{ height: "500px", width: "400px" }}
+
           />
 
           <CardCarousel tittle='Encuentra tu candidato ideal!'
@@ -47,16 +47,13 @@ function UncontrolledExample() {
         </div>
 
       </Carousel.Item>
-
-
+      
       <Carousel.Item>
         <div className={style.container}>
           <img
-            //   className="d-block w-100"
+            className={style.image}
             src='https://www.bumeran.com.pe/company/static/media/aviso-talento-desktop-tropicalized.b8ef6b32.svg'
             alt="Third slide"
-            style={{ height: "500px", width: "400px" }}
-
           />
 
           <CardCarousel tittle='Aviso Talento!'
