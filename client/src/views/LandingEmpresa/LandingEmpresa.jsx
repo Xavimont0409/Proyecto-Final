@@ -13,7 +13,8 @@ const LandingEmpresa = () => {
             </div>
 
             <div className={style.planes}>
-                <CardPlan tittle='Plan Basico'
+                <CardPlan 
+                tittle='Plan Basico'
                 text ='Publica 1 vacante por semana con duracion de una semana'
                 price = '3'/>
                 <CardPlan tittle='Plan Intermedio'
