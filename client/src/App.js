@@ -2,10 +2,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil} from './views';
+import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarCliente from './components/NavBar/NavBarLog';
 import axios from 'axios'
+
 axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
@@ -22,9 +23,8 @@ function App() {
         <Route path="/registro-empresa" element={<FormEmpresa />}></Route>
         <Route path="/registro-vacante" element={<FormVacante />}></Route>
         <Route path='/profiles' element={<Profiles/>} />
+        <Route path='/applicant' element={<Applicant/>} />
         <Route path='/profiles-company' element={<ProfilesCompany/>} />
-
-
         <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
       </Routes>
     </div>

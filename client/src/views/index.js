@@ -10,6 +10,7 @@ import FormVacante from "./FormVacante/FormVacante";
 import FormEmpresa from "./FormEmpresa/FormEmpresa";
 import Profiles from "./Profiles/Profiles";
 import MiPerfil from "./MiPerfil/MiPerfil";
+import Applicant from "./Applicant/Applicant";
 import ProfilesCompany from "./Profiles Company/Profiles-Company";
 
 export {
@@ -25,5 +26,6 @@ export {
     FormEmpresa, 
     Profiles,
     MiPerfil,
-    ProfilesCompany
+    Applicant,
+    ProfilesCompany,
 }
