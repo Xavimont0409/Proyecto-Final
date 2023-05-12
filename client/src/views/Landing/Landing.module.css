@@ -1,7 +1,7 @@
 .landingDiv{
     min-height: 100vh;
     overflow: hidden;
-    background-color: #ccc;
+   /*  background-color: #ccc; */
 }
 
 .container{
@@ -11,30 +11,27 @@
     justify-content: center;
 }
 
-.imgDiv{
-    margin-top: 20px;
-    margin-bottom: 15px;
-    margin-left: 5px;
-    border-radius: 3px;
-}
-
-.img{
-    width: 500px;
-    height: 800px;
-    border-radius: 3px;
+.videoDiv{
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
 }
 
 .searchDiv{
     display: flex;
     flex-direction: column;
-    width: 500px;
-    height: fit-content;
-    margin-top: 0;
-    margin-left: 7px;
-    margin-right: 5px;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.616);
+    border-radius: 20px;
+    z-index: 2;
+    backdrop-filter: blur(4px) saturate(1000%)
 }
 
 .input{
+    width: 20vw;
     margin-bottom: 5px;
     margin-top: 20px;
     border-radius: 3px;
@@ -43,11 +40,24 @@
 
 .paragraph{
     margin-top: 30px;
-    margin-bottom: 35px;
-    height: fit-content;
+    margin-bottom: 8vh;
+    height: 10vh;
+}
+
+.title{
+    font-size: 400%;
+    color:white;
+}
+
+.text{
+    margin-top: 3vh auto;
+    width: 30vw;
+    font-size: 120%;
+    color:white;
 }
 
 .buttonDiv{
+    margin-top: 2vh;
 }
 
 @media (max-width: 780px) {
