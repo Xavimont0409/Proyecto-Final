@@ -36,16 +36,18 @@ export const getCompanyDetail = (id) => {
 };
 
 export const postCompany = (payload) => {
-  return async function(dispatch){
+  return async function (dispatch) {
     try {
-      const json = await axios.post('/company', payload)
-      const data = json.data
+      const json = await axios.post("/company", payload);
+      const data = json.data;
       return dispatch({
         type: POST_COMPANY,
-        payload: data
-      }) ? alert('creado') : data
+        payload: data,
+      })
+        ? alert("creado")
+        : data;
     } catch (error) {
-      return alert(error.response.data.error)
+      return alert(error.response.data.error);
     }
-  }
-}
+  };
+};

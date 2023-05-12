@@ -7,6 +7,8 @@ export const GET_COMPANY_DETAIL = "GET_COMPANY_DETAIL"
 export const GET_VACANT_DETAIL="GET_VACANT_DETAIL"
 export const GET_USERS_DETAIL = "GET_USERS_DETAIL"
 
+
 export const POST_USER = "POST_USER"
 export const POST_COMPANY = "POST_COMPANY"
 export const POST_VACANT = "POST_VACANT"
+export const POST_CV = "POST_CV"
