@@ -12,7 +12,7 @@ import {
 } from "../Actions/actions-types/action-types";
 
 const initialState = {
-  Companys: [],
+  Company: [],
   CompanyDetail: {},
 
   Users: [],
