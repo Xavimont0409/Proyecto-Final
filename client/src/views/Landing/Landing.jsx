@@ -45,8 +45,10 @@ const Landing = () => {
                     
                 </div>
             </div>
+
                 <MisionVisión />
                 <CardsEquipo />
+
         </div>
     )
 }
