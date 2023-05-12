@@ -47,15 +47,21 @@ const Profiles = () => {
                     <div className={styles.cardsContainer}>
                         {
                             currentUsers?.map(user => {
-                                return (
+                                return ( 
                                     <div key={user.id} className={styles.cardDiv}>
                                         <CardProfile
                                         key={user.id}
                                         id={user.id}
+                                        image={user.image}
                                         name={user.name}
-                                        email={user.email}
+                                        profession={user.profession}
+                                        description={user.description}
                                         skills={user.skills}
-                                        experience={user.experience}
+                                        dni={user.dni}
+                                        phone={user.phone}
+                                        email={user.email}
+                                        seniority={user.seniority}
+                                        linkedin={user.linkedin}
                                         />
                                     </div>
                                 )
