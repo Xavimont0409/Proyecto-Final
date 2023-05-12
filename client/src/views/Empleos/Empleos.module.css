@@ -16,9 +16,12 @@
 }
 
 .cardsDiv{
+
     width: 1000px;
     margin-left: 3px;
     margin-right: 3px;
+    overflow-y: scroll;
+    overflow: hidden;
 }
 
 @media (max-width: 780px) {
@@ -37,6 +40,9 @@
         align-items: center;
         display: flex;
         flex-direction: column;
+        max-height: 1000px;
+        overflow-y: scroll;
+        overflow: hidden;
     }
 
     .filters {

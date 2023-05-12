@@ -1,103 +1,45 @@
-.landingDiv{
-    min-height: 100vh;
-    overflow: hidden;
-    background-color: #ccc;
-}
-
 .container{
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.imgDiv{
-    margin-top: 20px;
-    margin-bottom: 15px;
-    margin-left: 5px;
-    border-radius: 3px;
-}
-
-.img{
-    width: 500px;
-    height: 800px;
-    border-radius: 3px;
-}
-
-.searchDiv{
     display: flex;
     flex-direction: column;
-    width: 500px;
-    height: fit-content;
-    margin-top: 0;
-    margin-left: 7px;
-    margin-right: 5px;
+    justify-content: space-evenly;
+    gap: 50px;
+    background: linear-gradient(-45deg, var(--mustard), var( --avocado), white, var(--caribbean-current));
+    background-size: 400% 400%;
+    animation: container 10s ease infinite;
 }
 
-.input{
-    margin-bottom: 5px;
-    margin-top: 20px;
-    border-radius: 3px;
-    background-color: white;
+.planes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 5vh;
+    color: var(--jet);
 }
 
-.paragraph{
-    margin-top: 30px;
-    margin-bottom: 35px;
-    height: fit-content;
+.containerPerfiles{
+ margin: 2vh 1vw 5vh 2vw;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+
 }
 
-.buttonDiv{
+.subtitle{
+    color: var(--jet);
+    margin-bottom: 5vh;
 }
 
-@media (max-width: 780px) {
-    .landingDiv {
-        min-height: 100vh;
+@keyframes container {
+    0%{
+        background-position: 0 50%;
     }
-
-    .container {
-        display: -webkit-flex;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 90vh;
-        max-width: 100%;
-        overflow: hidden;
+    50%{
+        background-position: 100% 50%
     }
-
-    .imgDiv {
-        margin-top: 20px;
-        margin-bottom: 15px;
-        margin-left: 5px;
-        border-radius: 3px;
+    100%{
+        background-position: 0 50%;
     }
-
-    .img {
-        width: 300px;
-        height: 700px;
-        border-radius: 3px;
-    }
-
-    .searchDiv {
-        display: flex;
-        flex-direction: column;
-        width: 500px;
-        height: fit-content;
-        margin-top: 0;
-        margin-left: 7px;
-        margin-right: 5px;
-    }
-
-    .input {
-        margin-bottom: 5px;
-        margin-top: 20px;
-        border-radius: 3px;
-        background-color: white;
-    }
-
-    .paragraph {
-        margin-top: 30px;
-        margin-bottom: 35px;
-        height: fit-content;
-    }
+    
 }
+
