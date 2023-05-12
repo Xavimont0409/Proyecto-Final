@@ -3,6 +3,7 @@ import { Form, Row, Col, FormGroup, FormLabel, FormControl } from "react-bootstr
 import Button from 'react-bootstrap/Button';
 import style from "./Step1FormCv.module.css"
 import { useState } from "react";
+import ButtonGeneral from "../Button/ButtonGeneral";
 
 
 
@@ -11,11 +12,12 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep })
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event) => {
+    
     event.preventDefault();
     const formCheck = event.currentTarget;
     if (formCheck.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
+      event.preventDefault();
+      event.stopPropagation();
     }else{
       setValidated(true);
       nextStep();
@@ -26,9 +28,9 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep })
 
   return (
 
-    <div className={style.maincontainer3}>
-
-      <Form   validated={validated}  >
+    <div className={style.mainContainer}>
+      <h2 style={{ 'margin': '30px' }}>Información personal</h2>
+      <Form className={style.Form} validated>
 
           <Row className="mb-3 ">
 
@@ -124,18 +126,13 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep })
               required />
             <Form.Control.Feedback type="invalid">
               Rellena este campo
-            </Form.Control.Feedback>
-          </FormGroup>
-      
+          </Form.Control.Feedback>
+        </FormGroup>
+
 
       </Form>
 
-
-
-
-      <Button style={{ margin: '20px' }} type='submit' onClick={handleSubmit}  >
-      Siguiente
-      </Button>
+      <Button  style={{margin:'20px'}}onClick={handleSubmit} >Siguiente</Button>
 
 
 

@@ -25,10 +25,10 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
   
   return (
 
-    <div className={style.maincontainer3}>
+    <div className={style.mainContainer}>
+      <h2 style={{ 'margin': '30px' }}>Información Académica</h2>
+      <Form className={style.Form} validated>
 
-
-    <Form validated={validated}   >
 
       <Row className="mb-3">
       
@@ -46,10 +46,8 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
               </Form.Control.Feedback>
           </FormGroup>
        
-
-
        
-          <FormGroup as={Col} md="6" className="mb-5 ">
+          <FormGroup as={Col} md="6" >
             <FormLabel>País</FormLabel>
             <FormSelect
               name='pais'
