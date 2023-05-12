@@ -10,7 +10,7 @@ import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompa
 const ProfilesCompany = () => {
     const company = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
-    const [companiesPerPage, setusersPerPage] = useState(4);
+    const [companiesPerPage, setcompaniesPerPage] = useState(4);
     const indexOfLastCharacter = currentPage * companiesPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - companiesPerPage;
     const [isLoading, setIsLoading] = useState(true);
@@ -29,8 +29,8 @@ const ProfilesCompany = () => {
     const currentCompanies = company.slice(indexOfFirstCharacter, indexOfLastCharacter);
 
     useEffect(() => {
-        if (currentCompanies.length === 0 && users.length > 0) {
-            const newPage = Math.ceil(users.length / companiesPerPage);
+        if (currentCompanies.length === 0 && company.length > 0) {
+            const newPage = Math.ceil(company.length / companiesPerPage);
             setCurrentPage(newPage);
     }
     }, [currentCompanies, ]);
