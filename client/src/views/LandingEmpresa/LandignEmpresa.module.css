@@ -1,13 +1,45 @@
 .container{
-background-color: rgb(177, 180, 180);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     gap: 50px;
+    background: linear-gradient(-45deg, var(--mustard), var( --avocado), white, var(--caribbean-current));
+    background-size: 400% 400%;
+    animation: container 10s ease infinite;
 }
 
 .planes {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-bottom: 5vh;
+    color: var(--jet);
 }
+
+.containerPerfiles{
+ margin: 2vh 1vw 5vh 2vw;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+
+}
+
+.subtitle{
+    color: var(--jet);
+    margin-bottom: 5vh;
+}
+
+@keyframes container {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%
+    }
+    100%{
+        background-position: 0 50%;
+    }
+    
+}
+

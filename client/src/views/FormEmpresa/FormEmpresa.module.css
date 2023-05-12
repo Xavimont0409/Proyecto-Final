@@ -17,7 +17,7 @@
     flex-direction: row ;
     justify-content:space-between;
     align-items: center;
-    height: 90%;
+    height: fit-content;
     width: 90%;
 }
 
@@ -30,7 +30,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 95%;
+    height: fit-content;
     width: 55%;
 }
 
