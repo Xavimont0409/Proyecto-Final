@@ -1,5 +1,5 @@
 import DatosAuth from "../../components/NavBar/DatosAuth";
-import NavBar from "../../components/NavBar/NavBarUnlog";
+import NavBar from "../../components/NavBar/NavBar";
 
 const PruebasJuan = () => {
     return (

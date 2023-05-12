@@ -3,6 +3,7 @@ import Loading from "../Loading/Loading";
 
 const DatosAuth = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
+    console.log(user);
 
     if(isLoading) {
         return <div><Loading/></div>
