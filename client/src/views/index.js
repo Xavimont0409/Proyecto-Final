@@ -9,5 +9,19 @@ import FormCv from "./FormCv/FormCv";
 import FormVacante from "./FormVacante/FormVacante";
 import FormEmpresa from "./FormEmpresa/FormEmpresa";
 import Profiles from "./Profiles/Profiles";
+import MiPerfil from "./MiPerfil/MiPerfil";
 
-export {EmpleoDetail, Empleos, Landing, LandingEmpresa, Register, IniciarSesion, FormRegister, FormCv, FormVacante, FormEmpresa, Profiles}
+export {
+    EmpleoDetail, 
+    Empleos, 
+    Landing, 
+    LandingEmpresa, 
+    Register, 
+    IniciarSesion, 
+    FormRegister, 
+    FormCv, 
+    FormVacante, 
+    FormEmpresa, 
+    Profiles,
+    MiPerfil
+}
