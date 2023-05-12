@@ -10,4 +10,5 @@ background-color: rgb(177, 180, 180);
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-bottom: 5vh;
 }

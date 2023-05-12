@@ -39,17 +39,9 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true
           },
-          work_experience: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
           personal_description: {
             type: DataTypes.STRING,
             allowNull: false
           },
-          education: {
-            type: DataTypes.STRING,
-            allowNull: false
-          }
     });
 };
