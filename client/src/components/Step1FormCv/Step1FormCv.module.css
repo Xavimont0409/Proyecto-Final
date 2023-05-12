@@ -13,3 +13,27 @@
     font-size: 1.5rem;
   
   }
+  .maincontainer3{
+    margin: auto;
+    /* margin-bottom: 30px; */
+    background-color: #ececec;
+    padding: 1%;
+    /* align-self: center; */
+    border: 1px solid #385170;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 50%;
+  }
+  
+  .custom-label {
+    width: 200px;
+  }
+  
+  .custom-input {
+    width: 400px;
+  }
+  
