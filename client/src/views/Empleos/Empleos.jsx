@@ -32,11 +32,12 @@ const Empleos = () => {
             <NavBar></NavBar>
             <div className={style.filterAndCardsContainer}>
                 <div className={style.filters}>
-                    <Filter></Filter>
+                    <Filter className={style.containerFilter}></Filter>
                 </div>
                 <div className={style.cardsDiv}>
 
-                    <CardsContainerEmpleo
+                    <CardsContainerEmpleo 
+                        className={style.cards}
                         currentCard={currentCard} />
 
                 </div>
