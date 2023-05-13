@@ -2,27 +2,57 @@
     width: 100vw;
     height: fit-content;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 8vh;
+}
+
+.firstTitle{
+    font-size:250%;
+    font-style: italic;
+    margin-bottom: 5vh;
+}
+
+.firstContainer{
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .container{
-    width: 20vw;
-    height: 40vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    border: 1px solid #000;
+    width: 11vw;
+    height: 22vh;
     border-radius: 20px;
-    margin: 2vh 1.5vw;
+    margin: 2vh 0.5vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 2px 5px 15px black
 }
 
-.img{
-    width: 10vw;
-    height: 20vh;
+.content{  
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    border-radius: 20px;
+    transition: all ease 0.4s;
+}
+
+
+.content:hover{
+    background-color: #00000093;
+    backdrop-filter: blur(4px) saturate(1000%);
+    opacity: 1;
+    color: white;
 }
 
 .title{
@@ -30,4 +60,17 @@
 }
 .text{
     margin: 0.5vh 0.8vw;
+}
+
+.containerLinks{
+    width: 100%;
+}
+
+.Links{
+    font-size:200%;
+    margin: 0.5vh 0.8vw;
+}
+
+.Links:hover{
+    color: white;
 }
