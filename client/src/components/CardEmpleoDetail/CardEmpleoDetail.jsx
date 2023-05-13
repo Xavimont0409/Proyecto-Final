@@ -5,22 +5,21 @@ import style from "./CardEmpleoDetail.module.css";
 
 
 
-const CardEmpleoDetail = ({empleoSelected}) => {
+const CardEmpleoDetail = ({id, idEmpresa, logo, title, description, createdAt, updatedAt, JourneyId, SeniorityId, WorkMethodId}) => {
   
   return (
     <Card style={{ width: '100%' }}>
-      <div className={style.containerImgEmpresa}>
-      <Card.Img variant="top" src="https://2.bp.blogspot.com/-8nygkHc09a4/XELAYyOEjZI/AAAAAAAAGLg/kiGoQYw5Xtccv4PPFZA_9SXANdV4CaxFACLcBGAs/s1600/globant_logo.jpg"/>
+      <div>
+      <Card.Img className={style.logo} variant="top" src={logo}/>
       </div>
       <Card.Body>
-        <Card.Title>{empleoSelected.title}</Card.Title>
-        <Card.Text>{empleoSelected.description}</Card.Text>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>Jornada: {empleoSelected.JourneyId}</ListGroup.Item>
-        <ListGroup.Item>Salario: Salario???</ListGroup.Item>
-        <ListGroup.Item>Modalidad: {empleoSelected.WorkMethodId}</ListGroup.Item>
-        <ListGroup.Item>Seniority: {empleoSelected.SeniorityId}</ListGroup.Item>
+        <ListGroup.Item>Jornada: {JourneyId}</ListGroup.Item>
+        <ListGroup.Item>Modalidad: {WorkMethodId}</ListGroup.Item>
+        <ListGroup.Item>Seniority: {SeniorityId}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
       <Button className={style.btn} variant="outline-success">POSTULARME</Button>{' '}
