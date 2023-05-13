@@ -16,7 +16,7 @@ const NavBar = () => {
                         <Form className="ms-auto">
                             <Button variant="outline-secondary" className="ms-auto" onClick={() => loginWithRedirect()}>Iniciar sesion</Button>
                             <div className="vr" />
-                            <Link to="/registro-usuario">
+                            <Link to="/registro">
                                 <Button variant="secondary" className="ms-auto">Registrarme</Button>    
                             </Link>
                         </Form>

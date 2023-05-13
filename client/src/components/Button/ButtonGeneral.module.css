@@ -1,6 +1,4 @@
 .button {
-    width: fit-content;
-    height:8%;
     background-color: var(--battleship-gray);
     color: black;
     padding: 1%;
