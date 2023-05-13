@@ -1,7 +1,9 @@
-const { Cv } = require('../../db');
+const { Cv, Experience } = require('../../db');
 
 const getAllCv = () =>{
-  return Cv.findAll();
+  return Cv.findAll({include:{
+    model: Experience
+  }});
 }
 
 module.exports={

@@ -1,7 +1,12 @@
-const { Cv } = require('../../db');
+const { Cv, Experience } = require('../../db');
 
 const getIdCv = async (id) =>{
-    const findCv = await Cv.findByPk(id)
+    const findCv = await Cv.findAll({
+        where: { id } ,
+        include: {
+            model : Experience
+        }
+    })
 
     return findCv
 }
