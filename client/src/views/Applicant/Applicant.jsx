@@ -21,7 +21,7 @@ export default function Applicant() {
           />
           <Carousel.Caption>
             <h3>Acme Technologies</h3>
-            <p>Click to view details</p>
+            <p>Click para más detalle</p>
           </Carousel.Caption>
         </Carousel.Item>
         {/* Slide 2 */}
@@ -33,7 +33,7 @@ export default function Applicant() {
           />
           <Carousel.Caption>
             <h3>Green Energy Solutions</h3>
-            <p>Click to view details</p>
+            <p>Click para más detalle</p>
           </Carousel.Caption>
         </Carousel.Item>
         {/* Slide 3 */}
@@ -45,7 +45,7 @@ export default function Applicant() {
           />
           <Carousel.Caption>
             <h3>Stellar Consulting</h3>
-            <p>Click to view details</p>
+            <p>Click para más detalle</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
@@ -55,52 +55,52 @@ export default function Applicant() {
         </Button>
 
       <div className={styles.SuggestedJob}>
-        <h4>Suggested Job Vacancies</h4>
+        <h4>Sugerencias de vacantes</h4>
         <div className={styles.Vacancies}>
           <Card className={styles.job}>
             <Card.Body>
-              <Card.Title>Job 1</Card.Title>
-              <Card.Text>Job description 1</Card.Text>
+              <Card.Title>Desarrollador de software</Card.Title>
+              <Card.Text>Responsable de diseñar, desarrollar y mantener soluciones de software innovadoras para impulsar la transformación digital de los clientes.</Card.Text>
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
 
           <Card className={styles.job}>
             <Card.Body>
-              <Card.Title>Job 2</Card.Title>
-              <Card.Text>Job description 2</Card.Text>
+              <Card.Title>Gerente de proyectos</Card.Title>
+              <Card.Text>Responsable de planificar, ejecutar y supervisar proyectos para garantizar su éxito y cumplimiento de los objetivos establecidos.</Card.Text>
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
 
           <Card className={styles.job}>
             <Card.Body>
-              <Card.Title>Job 3</Card.Title>
-              <Card.Text>Job description 2</Card.Text>
+              <Card.Title>Técnico de instalaciones solares</Card.Title>
+              <Card.Text>Encargado de instalar y mantener sistemas de energía solar en residencias o empresas.</Card.Text>
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
 
             <Card className={styles.job}>
           <Card.Body>
-              <Card.Title>Job 4</Card.Title>
-              <Card.Text>Job description 2</Card.Text>
+              <Card.Title>Analista de impacto ambiental</Card.Title>
+              <Card.Text>Responsable de evaluar el impacto ambiental de proyectos y proponer medidas para minimizar su huella ambiental.</Card.Text>
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
 
         <Card className={styles.job}>
             <Card.Body>
-              <Card.Title>Job 5</Card.Title>
-              <Card.Text>Job description 2</Card.Text>
+              <Card.Title>Consultor estratégico</Card.Title>
+              <Card.Text>Encargado de brindar asesoramiento estratégico a las empresas clientes para mejorar su rendimiento y alcanzar sus objetivos de negocio.</Card.Text>
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
 
         <Card className={styles.job}>
             <Card.Body>
-              <Card.Title>Job 6</Card.Title>
-              <Card.Text>Job description 2</Card.Text>
+              <Card.Title>Analista de datos</Card.Title>
+              <Card.Text>Responsable de recopilar, analizar y presentar datos relevantes para ayudar en la toma de decisiones informadas.</Card.Text>
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
