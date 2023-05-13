@@ -17,8 +17,6 @@ const Filter = () => {
 
     return (
         <div className={style.mainContainer}>
-
-
             <div className={style.allFilters}>
                 <div className={style.filterContainer}>
                     <p className={style.p}>Ciudad</p>
@@ -33,7 +31,7 @@ const Filter = () => {
 
                 <div className={style.filterContainer}>
                     <p className={style.p}>Fecha de publicación</p>
-                    <select name="FilterByFecha" className={style.selectSpecial} >
+                    <select name="FilterByFecha"  className={style.select} >
                         <option value="Filter" >Todos</option>
                         <option value="hoy">Hoy</option>
                         <option value='semana'>Esta semana</option>
@@ -69,7 +67,7 @@ const Filter = () => {
                     </select>
                 </div>
                 <div className={style.emptyFilters}>
-                    <button style={{'borderRadius':'5px'}}>Limpiar filtros</button>
+                    <button className={style.button} style={{'borderRadius':'5px'}}>Limpiar filtros</button>
                 </div>
             </div>
         </div>

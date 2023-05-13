@@ -8,12 +8,19 @@
     width: 300px;
     height: 500px;
     gap: 30px;
-    background:  linear-gradient(45deg, #818885 20%, #babebe 50%);
+    background: var(--sub-white);
+    margin-top: 20px;
 }
 
 .select{
     border-radius: 3px;
-    background-color: white;
+    background-color: var(--battleship);
+}
+
+.button{
+    background-color: var(--battleship);
+    width: 7vw;
+    height: 3.5vh;
 }
 
 .selectSpecial{
@@ -36,6 +43,7 @@
 .allFilters{
     height: 600px;
     width: 270px;
+    
 }
 
 .filterContainer{

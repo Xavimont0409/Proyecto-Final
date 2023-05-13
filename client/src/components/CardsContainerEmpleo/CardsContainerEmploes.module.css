@@ -2,25 +2,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
+    width: 60vw;
     height: fit-content;
-    /* background-color: aquamarine; */
     justify-content: start;
-    /* margin-top: 50px; */
+
+
 }
 
 
 .cardsContainer{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1em;
+    padding: 20px;
     overflow-y: scroll;
-    /* max-height: 100vh; */
     overflow: hidden;
-
-    /* background-color: red; */
 }
 
 @media (max-width: 768px) {
