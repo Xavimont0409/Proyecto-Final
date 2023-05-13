@@ -2,9 +2,19 @@ import style from "./Filter.module.css"
 //import { useState, useEffect } from "react"
 // import { useDispatch, useSelector } from "react-redux"
 // import { filterByTemperaments, resetFilter } from "../../Redux/actions"
+import { filterPerSeniority, filterPerWordkmethod } from "../../Redux/Actions/actionsFunction/FiltersHome";
+import { useDispatch } from "react-redux";
 
 const Filter = () => {
-  
+    const dispatch = useDispatch()
+
+    const handlerFilterSeniority = (event) => {
+        dispatch(filterPerSeniority(event.target.value))
+    }
+    const handlerFilterWordkMethod = (event)=>{
+        dispatch(filterPerWordkmethod(event.target.value))
+    }   
+
     return (
         <div className={style.mainContainer}>
 
@@ -23,7 +33,7 @@ const Filter = () => {
 
                 <div className={style.filterContainer}>
                     <p className={style.p}>Fecha de publicación</p>
-                    <select name="FilterByFecha" className={style.selectSpecial}>
+                    <select name="FilterByFecha" className={style.selectSpecial} >
                         <option value="Filter" >Todos</option>
                         <option value="hoy">Hoy</option>
                         <option value='semana'>Esta semana</option>
@@ -38,10 +48,10 @@ const Filter = () => {
 
                 <div className={style.filterContainer}>
                     <p className={style.p}>Experiencia</p>
-                    <select name="FilerByArea" className={style.select}>
-                        <option value="Filter" >Todos</option>
+                    <select name="FilerByArea" className={style.select} onChange={(event)=> handlerFilterSeniority(event)}>
+                        <option value="0" >Todos</option>
                         <option value='senior'>Senior</option>
-                        <option value='semi_senior'>Semi-Senior</option>
+                        <option value='semiSenior'>Semi-Senior</option>
                         <option value='junior'>Junior</option>             
                         <option value='trainee'>Trainee</option>
                     </select>
@@ -51,11 +61,11 @@ const Filter = () => {
 
                 <div className={style.filterContainer}>
                     <p className={style.p}>Modalidad</p>
-                    <select name="FilterByModalidad" className={style.select}>
-                        <option value="Filter" >Todos</option>
-                        <option value="face-to-face">Presencial</option>
-                        <option value='hybrid'>Hibrido</option>
-                        <option value='remote'>Remoto</option>
+                    <select name="FilterByModalidad" className={style.select} onChange={(event)=>handlerFilterWordkMethod(event)} >
+                        <option value="All" >Todos</option>
+                        <option value="presencial">Presencial</option>
+                        <option value='hibrido'>Hibrido</option>
+                        <option value='remoto'>Remoto</option>
                     </select>
                 </div>
                 <div className={style.emptyFilters}>
