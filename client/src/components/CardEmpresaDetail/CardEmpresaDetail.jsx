@@ -1,30 +1,33 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
 import style from "./CardEmpresaDetail.module.css";
+import {TbWorldWww} from "react-icons/tb";
+import {TfiEmail} from "react-icons/tfi";
+import {BsFillTelephoneFill} from "react-icons/bs";
 
-const CardEmpresaDetail = () => {
+
+
+const CardEmpresaDetail = ({id, logo, name, business_name, cuit, country, city, headOffice, phone, email, website, worksector, about}) => {
   return (
     <Card style={{ width: '100%' }}>
-      <div className={style.containerImgEmpresa}>
-      <Card.Img variant="top" src="https://2.bp.blogspot.com/-8nygkHc09a4/XELAYyOEjZI/AAAAAAAAGLg/kiGoQYw5Xtccv4PPFZA_9SXANdV4CaxFACLcBGAs/s1600/globant_logo.jpg"/>
+      <div>
+      <Card.Img className={style.logo} variant="top" src={logo}/>
       </div>
       <Card.Body>
-        <Card.Title>NOMBRE DE LA EMPRESA</Card.Title>
-        <Card.Text>
-          Resumen de la empresa
-        </Card.Text>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>{about}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
         <ListGroup.Item>
-        <Card.Link href="#">Sitio web de la empresa</Card.Link>
+        <TbWorldWww className={style.icon}/>
+        <Card.Link href={website}>{website}</Card.Link>
         </ListGroup.Item>
-        <ListGroup.Item>Correo de la empresa</ListGroup.Item>
-        <ListGroup.Item>Sector de trabajo</ListGroup.Item>
-        <ListGroup.Item>Tamaño</ListGroup.Item>
-        <ListGroup.Item>Sede principal</ListGroup.Item>
-        <ListGroup.Item>Fundación</ListGroup.Item>
-        <ListGroup.Item>Ubicación</ListGroup.Item>
+        <ListGroup.Item> <TfiEmail className={style.icon}/>{email}</ListGroup.Item>
+        <ListGroup.Item> <BsFillTelephoneFill className={style.icon}/> {phone}</ListGroup.Item>
+        <ListGroup.Item>Sector de trabajo: {worksector}</ListGroup.Item>
+        <ListGroup.Item>País: {country}</ListGroup.Item>
+        <ListGroup.Item>Ciudad: {city} </ListGroup.Item>
+        <ListGroup.Item>Oficina Central: {headOffice}</ListGroup.Item>
       </ListGroup>
     </Card>
   );

@@ -3,6 +3,7 @@ import { Form, Row, Col, FormGroup, FormLabel, FormSelect } from "react-bootstra
 import style from "./Step2FormCv.module.css"
 import countries from "countries-list";
 import Button from 'react-bootstrap/Button';
+import ButtonGeneral from "../Button/ButtonGeneral";
 
 
 function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nextStep }) {
@@ -25,10 +26,10 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
   
   return (
 
-    <div className={style.maincontainer3}>
+    <div className={style.mainContainer}>
+      <h2 style={{ 'margin': '30px' }}>Información Académica</h2>
+      <Form className={style.Form} validated>
 
-
-    <Form validated={validated}   >
 
       <Row className="mb-3">
       
@@ -46,10 +47,8 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
               </Form.Control.Feedback>
           </FormGroup>
        
-
-
        
-          <FormGroup as={Col} md="6" className="mb-5 ">
+          <FormGroup as={Col} md="6" >
             <FormLabel>País</FormLabel>
             <FormSelect
               name='pais'
@@ -183,11 +182,19 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
 
       </Form>
 
-  
-     <FormGroup as={Col} md="6" className="mb-3">
-        <Button style={{margin:'20px'}} onClick={previousStep} >Anterior </Button>
-        <Button  style={{margin:'20px'}}onClick={handleNextStep} >Siguiente</Button>
-     </FormGroup>
+
+      <FormGroup as={Col} md="6" className="mb-3 ">
+        <ButtonGeneral
+          textButton="Anterior"
+          handlerClick={previousStep}
+        />
+        <ButtonGeneral
+          textButton="Siguiente"
+          handlerClick={handleNextStep}
+        />
+      </FormGroup>
+     
+
       
       
 

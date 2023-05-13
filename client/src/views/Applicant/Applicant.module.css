@@ -1,0 +1,21 @@
+.slide {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.SuggestedJob {
+    margin: 30px
+}
+
+.Vacancies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.job {
+    margin: 8px;
+    width: 18rem;
+}

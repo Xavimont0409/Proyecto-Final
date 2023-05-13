@@ -1,5 +1,5 @@
 import styles from './Profiles.module.css';
-import NavBar from '../../components/NavBar/NavBarUnlog';
+import NavBar from '../../components/NavBar/NavBar';
 import Page from '../../components/Paginated/Page';
 import CardProfile from '../../components/CardsProfiles/CardsProfiles';
 import { useSelector } from 'react-redux';
@@ -47,15 +47,21 @@ const Profiles = () => {
                     <div className={styles.cardsContainer}>
                         {
                             currentUsers?.map(user => {
-                                return (
+                                return ( 
                                     <div key={user.id} className={styles.cardDiv}>
                                         <CardProfile
                                         key={user.id}
                                         id={user.id}
+                                        image={user.image}
                                         name={user.name}
-                                        email={user.email}
+                                        profession={user.profession}
+                                        description={user.description}
                                         skills={user.skills}
-                                        experience={user.experience}
+                                        dni={user.dni}
+                                        phone={user.phone}
+                                        email={user.email}
+                                        seniority={user.seniority}
+                                        linkedin={user.linkedin}
                                         />
                                     </div>
                                 )

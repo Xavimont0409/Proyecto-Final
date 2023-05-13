@@ -1,111 +1,20 @@
-  .Form {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    background: linear-gradient(45deg, #818885 20%, #babebe 50%);
-    height: 600px;
-    width: 800px;
-    border-radius: 10px;
-    font-size: large;
+ .mainContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, var(--mustard), var(--avocado), white, var(--caribbean-current));
+  background-size: cover;
+  overflow: visible;
+  animation: container 1s ease infinite;
+ }
+ 
+ .Form {
+  margin: 10px;
+  background-color: var(--battleship-gray);
+  width: 50%;
+  border-radius: 10px;
+  padding: 1%;
+  font-size: large;
 
-  }
-
-  
-  .label {
-    font-weight: bold;
-    font-family: cursive;
-    font-size: 1.5em;
-    color: #c24d2c;
-  }
-  
-  
-  .inputEmail {
-    width: 250px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box;
-  }
-  
-  .input {
-    box-sizing: border-box;
-    width: fit-content;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  
-  
-  .warning {
-    border-color: red;
-  }
-  
-  .danger {
-    display: block;
-    margin-left: 180px;
-    margin-top: -10px;
-    color: red;
-    font-size: 14px;
-    height: min-content;
-    width: fit-content;
-  }
-  
-  
-  .dangerEmail {
-    display: block;
-    margin-left: 210px;
-    margin-top: -10px;
-    color: red;
-    font-size: 14px;
-    height: min-content;
-    width: fit-content;
-  }
-  
-  
-  .buttonContainer {
-    display: flex;
-    /* justify-content: space-between; */
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .button {
-    margin: 100px;
-    min-width: 130px;
-    height: 40px;
-    background-color: #3e4a61;
-    color: black;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.1s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 5px;
-    z-index: 0;
-    overflow: hidden;
-    border: 2px solid #adb5bd;
-    color: #adb5bd;
-  }
-  
-  .button:hover {
-    color: white
-  }
-  
-  .button:hover:after {
-    width: 100%;
-  }
-  
-  .button:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    transition: all 0.3s ease;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background: #1a2639;
   }

@@ -2,9 +2,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
-import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles} from './views';
+import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegister, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import PruebasJuan from './views/PruebasJuan/PruebasJuan';
+import NavBarCliente from './components/NavBar/NavBarLog';
+import axios from 'axios'
+import Error404 from './components/Error404/Error404';
+
+axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
   return (
@@ -15,14 +19,16 @@ function App() {
         <Route path="/empleos" element={<Empleos/>}></Route>
         <Route path="/empresa" element={<LandingEmpresa />}></Route>
         <Route path="/iniciarSesion" element={<IniciarSesion />}></Route>
+        <Route path="/registro" element={<Registro />}></Route>
         <Route path="/registro-usuario" element={<FormRegister />}></Route>
         <Route path="/registro-cv" element={<FormCv />}></Route>
         <Route path="/registro-empresa" element={<FormEmpresa />}></Route>
         <Route path="/registro-vacante" element={<FormVacante />}></Route>
         <Route path='/profiles' element={<Profiles/>} />
-
-
-        <Route path="/PruebasJuan" element={<PruebasJuan />}></Route>
+        <Route path='/applicant' element={<Applicant/>} />
+        <Route path='/profiles-company' element={<ProfilesCompany/>} />
+        <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

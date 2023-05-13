@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
 import NavBar from "../../components/NavBar/NavBarLog"
 import Step1FormCv from "../../components/Step1FormCv/Step1FormCv";
 import Step2FormCv from "../../components/Step2FormCv/Step2FormCv";
@@ -8,8 +7,6 @@ import Step3FormCv from "../../components/Step3FormCv/Step3FormCv";
 
 
 function FormCv() {
-
-
   
   const [infoPersonal, setInfoPersonal] = useState({
     dni:'',
@@ -67,13 +64,13 @@ function FormCv() {
        
             <NavBar></NavBar>
             {step === 1 && 
-            <><h2 style={{ 'margin': '20px' }}>Información personal</h2><Step1FormCv
+            <><Step1FormCv
             infoPersonal={infoPersonal}
             setInfoPersonal={setInfoPersonal}
             handlerChange={handlerChange}
             nextStep={nextStep} /></>}
 
-            {step === 2 && <><h2 style={{'margin':'20px'}}>Formación académica</h2>
+            {step === 2 && <>
                 <Step2FormCv
                     formacion={formacion}
                     setFormacion={setFormacion}
@@ -83,7 +80,7 @@ function FormCv() {
                      />
             </>}
 
-            {step === 3 && <><h2 style={{'margin':'20px'}}>Experiencia Profesional</h2>
+            {step === 3 && <>
                 <Step3FormCv
                     experiencia={experiencia}
                     setExperiencia={setExperiencia}

@@ -1,10 +1,14 @@
 import Form from 'react-bootstrap/Form';
 import style from "./FormVacante.module.css"
 import { useState } from "react";
-import { FormGroup, FormLabel, FormSelect } from 'react-bootstrap';
-
+import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
+import NavBar from "../../components/NavBar/NavBarLog"
+import ButtonGeneral from '../../components/Button/ButtonGeneral';
 
 export default function FormVacante() {
+
+
+    const [submitted, setSubmitted] = useState(false);
 
     const [newVacant, setNewVacant] = useState({
         title: "",
@@ -15,7 +19,6 @@ export default function FormVacante() {
     });
 
 
-
     const handleInputChange = (event) => {
         const property = event.target.name;
         const value = event.target.value;
@@ -23,80 +26,127 @@ export default function FormVacante() {
 
     }
 
+   
     const handleSubmit = (event) => {
+        event.preventDefault() 
+        console.log(event)
+       
+      };
+
+      const validateForm = (event) => {
         event.preventDefault();
-    
-    }
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+          event.stopPropagation();
+        } else {
+          setSubmitted(true);
+          handleSubmit();
+        }
+      };
+
 
     return (
 
-        <Form className={style.Form}>
-           
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                <Form.Label>Titulo de la vacante</Form.Label>
-                <Form.Control name='title' 
-                value={newVacant.title}
-                type="text" 
-                onChange={handleInputChange}
-                required/>
-            </Form.Group>
+        <div className={style.mainContainer}>
+            <NavBar></NavBar>
+            <h2 style={{ 'margin': '20px' }}>Crear nueva vacante</h2>
+            <Form className={style.Form} onSubmit={validateForm} validated={submitted} noValidate>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Descripcion de la vacante</Form.Label>
-                <Form.Control name='description'
-                    value={newVacant.description}
-                    as="textarea"
-                    rows={5}
-                    onChange={handleInputChange}
-                    required/>
-            </Form.Group>
+                <Form.Group as={Col} md='12' className="mb-3"  >
+                    <FormLabel>Titulo de la vacante</FormLabel>
+                    <FormControl
+                        name='title'
+                        placeholder='Titulo de tu nuvea vacante'
+                        value={newVacant.title}
+                        type="text"
+                        onChange={handleInputChange}
+                        required />
+                    <Form.Control.Feedback type="invalid">
+                        Rellena este campo
+                    </Form.Control.Feedback>
+                </Form.Group>
 
-            <div className="d-flex justify-content-center">
-              
-                <FormGroup className="form-inline mx-3">
-                    <FormLabel className="me-2">Modalidad</FormLabel>
-                    <FormSelect name='workMethod'
-                    value={newVacant.workMethod}
-                    onChange={handleInputChange}
-                    required>
-                        <option disabled></option>
-                        <option value='Presencial'>Presencial</option>
-                        <option value='Hibrido' >Hibrido</option>
-                        <option  value='Remoto'>Remoto</option>
-                    </FormSelect>
-                </FormGroup>
-                
-                <FormGroup className="form-inline mx-3">
-                    <FormLabel className="me-2">Jornada</FormLabel>
-                    <FormSelect name='workday'
-                    value={newVacant.workday}
-                    onChange={handleInputChange}
-                    required>
-                        <option disabled ></option>
-                        <option value="Tiempo completo">Tiempo completo</option>
-                        <option value="Medio tiempo">Medio tiempo</option>
-                        <option value="Otro">Otro</option>
-                    </FormSelect>
-                </FormGroup>
-                <FormGroup className="form-inline mx-3">
-                    <FormLabel className="me-2">Experiencia</FormLabel>
-                    <FormSelect name='seniority'
-                    value={newVacant.seniority}
-                    onChange={handleInputChange}
-                    required>
-                        <option disabled ></option>
-                        <option value="Sin Experiencia">Sin Experiencia</option>
-                        <option value="Trainee">Trainee</option>
-                        <option value="Junior">Junior</option>
-                        <option value="Semi-senior">Semi-senior</option>
-                        <option value="Senior">Senior</option>
-                    </FormSelect>
-                </FormGroup>
-            </div>
-            <div  >
-            <button className={style.button} type="submit">Crear Vacante</button>
-            </div>
-        </Form>
+                <Form.Group as={Col} md='12' className="mb-3" >
+                    <Form.Label>Descripcion de la vacante</Form.Label>
+                    <Form.Control
+                        name='description'
+                        value={newVacant.description}
+                        placeholder='Realiza una descripción detallada de tu vacante'
+                        as="textarea"
+                        rows={5}
+                        onChange={handleInputChange}
+                        required />
+                    <Form.Control.Feedback type="invalid">
+                        Rellena este campo
+                    </Form.Control.Feedback>
+                </Form.Group>
+
+                <Row>
+
+                    <FormGroup as={Col} md='4'>
+                        <FormLabel className="me-2">Modalidad</FormLabel>
+                        <FormSelect name='workMethod'
+                            value={newVacant.workMethod}
+                            onChange={handleInputChange}
+                            required>
+                            <option disabled></option>
+                            <option value='Presencial'>Presencial</option>
+                            <option value='Hibrido' >Hibrido</option>
+                            <option value='Remoto'>Remoto</option>
+                        </FormSelect>
+                        <Form.Control.Feedback type="invalid">
+                            Selecciona una opcion
+                        </Form.Control.Feedback>
+                    </FormGroup>
+
+                    <FormGroup as={Col} md='4'>
+                        <FormLabel className="me-2">Jornada</FormLabel>
+                        <FormSelect name='workday'
+                            value={newVacant.workday}
+                            onChange={handleInputChange}
+                            required>
+                            <option disabled ></option>
+                            <option value="Tiempo completo">Tiempo completo</option>
+                            <option value="Medio tiempo">Medio tiempo</option>
+                            <option value="Otro">Otro</option>
+                        </FormSelect>
+                        <Form.Control.Feedback type="invalid">
+                            Selecciona una opcion
+                        </Form.Control.Feedback>
+                    </FormGroup>
+
+                    <FormGroup as={Col} md='4'>
+                        <FormLabel className="me-2">Experiencia</FormLabel>
+                        <FormSelect name='seniority'
+                            value={newVacant.seniority}
+                            onChange={handleInputChange}
+                            required>
+                            <option disabled ></option>
+                            <option value="Sin Experiencia">Sin Experiencia</option>
+                            <option value="Trainee">Trainee</option>
+                            <option value="Junior">Junior</option>
+                            <option value="Semi-senior">Semi-senior</option>
+                            <option value="Senior">Senior</option>
+                        </FormSelect>
+                        <Form.Control.Feedback type="invalid">
+                            Selecciona una opcion
+                        </Form.Control.Feedback>
+                    </FormGroup>
+
+                </Row>
+
+            </Form>
+            <FormGroup as={Col} md="6" className="mb-3 ">
+
+                <ButtonGeneral
+                    textButton='Crear vacante'
+                    type='submit'
+                    handlerClick={handleSubmit}
+                    ></ButtonGeneral>
+            </FormGroup>
+
+
+        </div>
     )
 }
 

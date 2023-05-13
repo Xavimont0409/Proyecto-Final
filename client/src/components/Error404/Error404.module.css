@@ -1,0 +1,29 @@
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.errorImage {
+    width: 80%;
+    margin-bottom: 5%;
+    height: auto;
+}
+
+.h3 {
+    font-size: 1px;
+}
+
+
+.errorButton {
+    margin-top: 50px;
+    align-self: center;
+    font-size: 1.4em;
+    padding: 10px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 8px;
+}
