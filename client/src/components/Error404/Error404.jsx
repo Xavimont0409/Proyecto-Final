@@ -9,8 +9,14 @@ const Error404 = () => {
 
   return (
     <div className={styles.errorContainer}>
+        <div className={styles.imgYp}>
       <img src={ImgError404} alt="Error 404" className={styles.errorImage}/>
-      <button onClick={handleGoHome} className={styles.errorButton}>Volver al inicio</button>
+      <div className={styles.parrafo}>
+      <h3>Esta página no está disponible. </h3>
+      <h3>Intente más tarde.</h3>
+      </div>
+        </div>
+      <button onClick={handleGoHome} className={styles.errorButton}>Volver</button>
     </div>
   );
 };

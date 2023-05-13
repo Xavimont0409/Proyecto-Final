@@ -6,6 +6,7 @@ import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormRegis
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavBarCliente from './components/NavBar/NavBarLog';
 import axios from 'axios'
+import Error404 from './components/Error404/Error404';
 
 axios.defaults.baseURL = 'http://localhost:3001'
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/applicant' element={<Applicant/>} />
         <Route path='/profiles-company' element={<ProfilesCompany/>} />
         <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );
