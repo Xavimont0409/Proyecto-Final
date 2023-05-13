@@ -1,8 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router-dom";
+import style from "./MiniCardEmpleosRel.module.css";
 
-function MiniCardEmpleosRel({id, title, SeniorityId}) {
+function MiniCardEmpleosRel({id, title, SeniorityId, WorkMethodId}) {
   
 const navigation = useNavigate();
 
@@ -15,9 +16,9 @@ const navigation = useNavigate();
           Seniority: {SeniorityId}
         </Card.Text>
         <Card.Text>
-         Salario: Salario
+         Método: {WorkMethodId}
         </Card.Text>
-        <Button onClick={()=> navigation(`/empleoDetail/${id}`)} variant="outline-success">VER DETALLE</Button>{' '}
+        <Button className={style.btn} onClick={()=> navigation(`/empleoDetail/${id}`)} variant="outline-success">VER DETALLE</Button>{' '}
       </Card.Body>
       <Card.Footer className="text-muted">2 days ago</Card.Footer>
     </Card>
