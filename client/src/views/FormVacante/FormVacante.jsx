@@ -2,10 +2,13 @@ import Form from 'react-bootstrap/Form';
 import style from "./FormVacante.module.css"
 import { useState } from "react";
 import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
-import NavBarLog from "../../components/NavBar/NavBarLog"
+import NavBar from "../../components/NavBar/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
 
 export default function FormVacante() {
+
+
+    const [submitted, setSubmitted] = useState(false);
 
     const [newVacant, setNewVacant] = useState({
         title: "",
@@ -16,7 +19,6 @@ export default function FormVacante() {
     });
 
 
-
     const handleInputChange = (event) => {
         const property = event.target.name;
         const value = event.target.value;
@@ -24,17 +26,31 @@ export default function FormVacante() {
 
     }
 
+   
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault() 
+        console.log(event)
+       
+      };
 
-    }
+      const validateForm = (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+          event.stopPropagation();
+        } else {
+          setSubmitted(true);
+          handleSubmit();
+        }
+      };
+
 
     return (
 
         <div className={style.mainContainer}>
-            <NavBarLog></NavBarLog>
+            <NavBar></NavBar>
             <h2 style={{ 'margin': '20px' }}>Crear nueva vacante</h2>
-            <Form className={style.Form} validated>
+            <Form className={style.Form} onSubmit={validateForm} validated={submitted} noValidate>
 
                 <Form.Group as={Col} md='12' className="mb-3"  >
                     <FormLabel>Titulo de la vacante</FormLabel>
@@ -120,11 +136,14 @@ export default function FormVacante() {
                 </Row>
 
             </Form>
-            <ButtonGeneral
-                stuyle={{ margin: '40px' }}
-                textButton='Crear vacante'
-                tipo='submit'
-                handlerClick={handleSubmit}></ButtonGeneral>
+            <FormGroup as={Col} md="6" className="mb-3 ">
+
+                <ButtonGeneral
+                    textButton='Crear vacante'
+                    type='submit'
+                    handlerClick={handleSubmit}
+                    ></ButtonGeneral>
+            </FormGroup>
 
 
         </div>

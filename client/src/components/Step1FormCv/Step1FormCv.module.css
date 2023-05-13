@@ -1,19 +1,21 @@
-.mainContainer{
-  height: 100vh;
-  background: linear-gradient(-45deg, var(--mustard), var( --avocado), white, var(--caribbean-current));
-  background-size:cover;
-  overflow:visible;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, var(--mustard), var(--avocado), white, var(--caribbean-current));
+  background-size: cover;
+  overflow: visible;
   animation: container 1s ease infinite;
- }
- 
- .Form {
-    margin: auto;
-    background-color:var(--battleship-gray);
-    height:90vh;
-    width: 50%;
-    border-radius: 10px;
-    padding: 1%;
-    font-size: large;
-  }
+}
+
+.Form {
+  margin: 10px;
+  background-color: var(--battleship-gray);
+  width: 50%;
+  border-radius: 10px;
+  padding: 1%;
+  font-size: large;
+}
   
   
