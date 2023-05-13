@@ -11,12 +11,8 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
           },
-          name: {
-            type: DataTypes.STRING,
-            allowNull: false
-          },
-          lastName: {
-            type: DataTypes.STRING,
+          phone: {
+            type: DataTypes.INTEGER,
             allowNull: false
           },
           address: {
@@ -31,10 +27,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
           },
-          github: {
-            type: DataTypes.STRING,
-            allowNull: true
-          },
           linkedin: {
             type: DataTypes.STRING,
             allowNull: true
@@ -43,5 +35,29 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
           },
+          skill: {
+            type: DataTypes.STRING,
+            allowNull: false
+          },
+          country: {
+            type: DataTypes.STRING,
+            allowNull: false
+          },
+          educational_institution:{
+            type: DataTypes.STRING,
+            allowNull: false
+          },
+          state:{
+            type: DataTypes.STRING,
+            allowNull: false
+          },
+          initial_date : {
+            type: DataTypes.STRING,
+            allowNull: false
+          },
+          finish_date: {
+            type: DataTypes.STRING,
+            allowNull: false
+          }
     });
 };
