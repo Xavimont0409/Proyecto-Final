@@ -3,15 +3,19 @@ import CardsContainerEmpleo from "../../components/CardsContainerEmpleo/CardsCon
 import Filter from "../../components/Filter/Filter";
 import Loading from "../../components/Loading/Loading";
 import style from "./Empleos.module.css";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { getAllVacants} from '../../Redux/Actions/actionsFunction/axtionsVacants'
 
 
 const Empleos = () => {
-
+    const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
-    const currentCard = useSelector(state => state.publications)
+    const currentCard = useSelector(state => state.Vacant)
     console.log(currentCard);
+    useEffect(()=>{
+        dispatch(getAllVacants())
+    },[dispatch, getAllVacants])
 
     useEffect(() => {
         setTimeout(() => {
