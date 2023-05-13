@@ -2,13 +2,14 @@ const errorUser = require('../../helpers/errors')
 const { postVacant } = require('../../controllers/VacantController/VacantPost')
 
 const vacantHandlerPost = async(req, res) =>{
-    const { title, description, CompanyId,WorkdayId, WorkMethodId, SeniorityId } = req.body
+    const { title, description, CompanyId,WorkdayId, WorkMethodId, SeniorityId, creation_date } = req.body
     try {
-        res.status(200).json(await postVacant(title, description, CompanyId, WorkdayId, WorkMethodId, SeniorityId ))
+        res.status(200).json(await postVacant(title, description, CompanyId, WorkdayId, WorkMethodId, SeniorityId, creation_date ))
     } catch (error) {
         errorUser(error, res)
     }
 }
+
 module.exports={
     vacantHandlerPost
 }
