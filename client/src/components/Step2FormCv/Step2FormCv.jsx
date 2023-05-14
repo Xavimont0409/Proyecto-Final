@@ -2,22 +2,26 @@ import React, { useState } from "react";
 import { Form, Row, Col, FormGroup, FormLabel, FormSelect } from "react-bootstrap";
 import style from "./Step2FormCv.module.css"
 import countries from "countries-list";
-import Button from 'react-bootstrap/Button';
 import ButtonGeneral from "../Button/ButtonGeneral";
+import validateFormInputs from "../../views/FormVacante/validation";
 
 
 function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nextStep }) {
   
+  const enCurso = formacion.estado === 'cursando' ? true : false
   const [validated, setValidated] = useState();
 
-  const handleNextStep = (event) => {
-   
-    if (event.currentTarget.checkValidity() === true) {
-      setValidated(true);
-      if(validated) nextStep();
-      return;
+
+  const handleNext = (event) => {
+    event.preventDefault();
+    if(!validateFormInputs(formacion)){
+      alert('Completa todos los campos')
+    }else{
+      setValidated(true)
+      nextStep()
     }
-  }
+  };
+
 
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
@@ -28,14 +32,13 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
 
     <div className={style.mainContainer}>
       <h2 style={{ 'margin': '30px' }}>Información Académica</h2>
-      <Form className={style.Form} validated>
+    
+      <Form className={style.Form} validated={!validated}>
+        <Row className="mb-3">
 
-
-      <Row className="mb-3">
-      
           <FormGroup as={Col} md="6">
             <FormLabel>Título / Carrera</FormLabel>
-            <Form.Control 
+            <Form.Control
               name='titulo'
               placeholder="titulo"
               value={formacion.titulo}
@@ -170,7 +173,7 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
               value={formacion.fecha_fin}
               type="date"
               onChange={(event) => handlerChange(event, formacion, setFormacion)}
-              required /><Form.Control.Feedback type="invalid">
+              required = {!enCurso} /><Form.Control.Feedback type="invalid">
               Rellena este campo.
             </Form.Control.Feedback>
           </FormGroup>
@@ -190,7 +193,7 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
         />
         <ButtonGeneral
           textButton="Siguiente"
-          handlerClick={handleNextStep}
+          handlerClick={handleNext}
         />
       </FormGroup>
      
