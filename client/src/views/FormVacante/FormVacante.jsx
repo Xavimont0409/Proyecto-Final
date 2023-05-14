@@ -4,11 +4,15 @@ import { useState } from "react";
 import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
 import NavBar from "../../components/NavBar/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
+import { useDispatch } from "react-redux";
+import { postVacant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
+import validateFormInputs from './validation';
 
 export default function FormVacante() {
 
+    const dispatch = useDispatch();
 
-    const [submitted, setSubmitted] = useState(false);
+    const [validated, setValidated] = useState(false);
 
     const [newVacant, setNewVacant] = useState({
         title: "",
@@ -23,34 +27,37 @@ export default function FormVacante() {
         const property = event.target.name;
         const value = event.target.value;
         setNewVacant({ ...newVacant, [property]: value });
-
     }
 
    
     const handleSubmit = (event) => {
-        event.preventDefault() 
-        console.log(event)
-       
-      };
-
-      const validateForm = (event) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-          event.stopPropagation();
+        event.preventDefault()
+        if (!validateFormInputs(newVacant)) {
+            alert('Completa todos los campos')
         } else {
-          setSubmitted(true);
-          handleSubmit();
+            setValidated(true)
+            dispatch(postVacant(newVacant))
+            setNewVacant({
+                title: "",
+                description: "",
+                workMethod: "",
+                workday: "",
+                seniority: "",
+            })
+            setValidated(false)
         }
-      };
+    };
 
 
     return (
 
         <div className={style.mainContainer}>
+            
             <NavBar></NavBar>
+
+            
             <h2 style={{ 'margin': '20px' }}>Crear nueva vacante</h2>
-            <Form className={style.Form} onSubmit={validateForm} validated={submitted} noValidate>
+            <Form  validated={!validated}  className={style.Form} onSubmit={handleSubmit} >
 
                 <Form.Group as={Col} md='12' className="mb-3"  >
                     <FormLabel>Titulo de la vacante</FormLabel>
@@ -132,19 +139,16 @@ export default function FormVacante() {
                             Selecciona una opcion
                         </Form.Control.Feedback>
                     </FormGroup>
-
                 </Row>
-
             </Form>
-            <FormGroup as={Col} md="6" className="mb-3 ">
 
+            <div>
                 <ButtonGeneral
                     textButton='Crear vacante'
                     type='submit'
-                    handlerClick={handleSubmit}
-                    ></ButtonGeneral>
-            </FormGroup>
-
+                    handlerClick={handleSubmit}>
+                </ButtonGeneral>
+            </div>     
 
         </div>
     )

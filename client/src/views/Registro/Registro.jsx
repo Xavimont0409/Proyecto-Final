@@ -19,7 +19,7 @@ const Registro = () => {
     return (
 
 
-        <div className={style.mainContainer}>
+        <div className={style.container}>
 
             <NavBar></NavBar>
             <h1>¿Aún no estas registrado?</h1>

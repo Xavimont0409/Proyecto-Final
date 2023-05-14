@@ -3,23 +3,33 @@ import { Form, FormLabel, FormSelect, FormGroup, Row, Col, FormCheck, } from "re
 import style from "./Step3FormCv.module.css"
 import countries from "countries-list";
 import ButtonGeneral from "../Button/ButtonGeneral";
+import validateFormInputs from "../../views/FormVacante/validation";
 
-function Step3FormCv({ experiencia, setExperiencia, handlerChange, previousStep }) {
+function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, experiencia, setExperiencia, handlerChange, previousStep }) {
 
     const fecharequired = experiencia.actualmente;
     const [validated, setValidated] = useState(false);
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
-        const formCheck = event.currentTarget;
-        if (formCheck.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
+        if(!validateFormInputs(experiencia)){
+            alert('Completa todos los campos')
+          }else{
             setValidated(true);
+            
 
-
+            setInfoPersonal({
+                titulo: '',
+                pais: '',            //! lo deje input pero debe ser Select
+                tipo_estudio: '',    //! Select
+                area_estudio: '',    //! lo deje input pero deberia ser Select (despues lo podriamos organizar)
+                institucion: '',     //! Lo deje input, pero podriamos considerar Select 
+                estado: '',          //! Select
+                fecha_inicio: '',
+                fecha_fin: ''
+            
+              })
+          
         }
     };
 
@@ -32,7 +42,7 @@ function Step3FormCv({ experiencia, setExperiencia, handlerChange, previousStep 
 
         <div className={style.mainContainer}>
             <h2 style={{ 'margin': '30px' }}>Experiencia Profesional</h2>
-            <Form className={style.Form} validated>
+            <Form className={style.Form} validated={!validated}>
 
                 <Row className="mb-3">
                     <FormGroup as={Col} md='6' className="mb-3">

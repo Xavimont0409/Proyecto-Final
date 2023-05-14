@@ -1,27 +1,22 @@
 import React from "react";
 import { Form, Row, Col, FormGroup, FormLabel, FormControl } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
 import style from "./Step1FormCv.module.css"
 import { useState } from "react";
 import ButtonGeneral from "../Button/ButtonGeneral";
-
+import validateFormInputs from "../../views/FormVacante/validation";
 
 
 function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep }) {
 
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = (event) => {
-    
+  const handleNext = (event) => {
     event.preventDefault();
-    const formCheck = event.currentTarget;
-    if (formCheck.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+    if(!validateFormInputs(infoPersonal)){
+      alert('Completa todos los campos')
     }else{
-      setValidated(true);
-      nextStep();
-     
+      setValidated(true)
+      nextStep()
     }
   };
 
@@ -30,7 +25,7 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep })
 
     <div className={style.mainContainer}>
       <h2 style={{ 'margin': '30px' }}>Información personal</h2>
-      <Form className={style.Form} validated>
+      <Form className={style.Form}  validated={!validated}>
 
         <Row className="mb-3 ">
 
@@ -133,7 +128,7 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep })
       <FormGroup as={Col} md="6" className="mb-3 ">
         <ButtonGeneral
           textButton="Siguiente"
-          handlerClick={handleSubmit}
+          handlerClick={handleNext}
         />
       </FormGroup>
 
