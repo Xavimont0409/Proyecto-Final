@@ -64,6 +64,10 @@ const Reducer = (state = initialState, action) => {
         ...state,
         VacantDetail: action.payload,
       };
+    case GET_COMPANY_DETAIL:
+      return{
+        
+      }  
 
     case FILTER_PER_SENIORITY:
         const seniorityVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;

@@ -3,7 +3,6 @@ const { Op } = require('sequelize')
 
 const getAllVacant = () => {
   return Vacant.findAll({
-    attributes: ["id", "title", "description", "createdAt"],
     include: [
       {
         model: Workday,
@@ -25,7 +24,6 @@ const getVacantByName = async (name) => {
   console.log(name);
   const findVacant = await Vacant.findAll({
     where: { title: {[Op.iLike]: `%${name}%` } },
-    attributes: ["id", "title", "description", "createdAt"],
     include: [
       {
         model: Workday,
