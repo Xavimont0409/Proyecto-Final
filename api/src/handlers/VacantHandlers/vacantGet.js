@@ -18,7 +18,20 @@ const vacantHandlerGet = async(req, res) =>{
     }
 }
 
+const vacantHandlerGetByName = async(req, res) =>{
+    const { title } = req.query;
+    try{
+     const results = title
+     ? await getVacantByName(title)
+     : await getAllVacant();
+     res.status(200).json(results)
+    } catch (error) {
+        errorUser(error, res)
+    }
+}
+
 module.exports={
     vacantHandlerGetId,
-    vacantHandlerGet
+    vacantHandlerGet,
+    vacantHandlerGetByName,
 }
