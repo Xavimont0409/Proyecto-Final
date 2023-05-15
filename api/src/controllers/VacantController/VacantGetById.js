@@ -14,7 +14,7 @@ const getVacantId = async (id) => {
         attributes: ["name"]
       },
       {
-        model: WorkMethod,
+        model: Seniority,
         attributes: ["name"]
       }
     ],
