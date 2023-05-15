@@ -1,14 +1,14 @@
-import style from "./LandignEmpresa.module.css"
-import UncontrolledExample from "../../components/Carousel/Carousel"
-import NavBar from "../../components/NavBar/NavBar";
+import style from "./LandignEmpresa.module.css";
+import UncontrolledExample from "../../components/Carousel/Carousel";
+import NavBar from '../../components/NavBar/NavBar';
 import CardPlan from "../../components/CardPlan/CardPlan";
 import CarouselPerfiles from "../../components/CarouselPerfiles/CarouselPerfiles";
 
 const LandingEmpresa = () => {
     return (
         <div className={style.container}>
-            <div>
-
+          
+           <div className={style.containerComponents}> 
                 <NavBar></NavBar>
                 <UncontrolledExample/>
             </div>

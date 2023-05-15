@@ -14,11 +14,11 @@ const CardCarousel = ({tittle, text, textButton, route}) => {
             <p>{text}</p>
             
             {
-                route === '/registro-cv' 
-                ? <Button onClick={()=>navigator('/registro-cv')} style={{width:'200px'}}>{textButton}</Button> 
-                : route === '/registro-empresa' 
-                ?<Button onClick={()=>navigator('/registro-empresa')} style={{width:'200px'}}>{textButton}</Button>
-                : <Button onClick={()=>navigator('/registro-vacante')} style={{width:'200px'}}>{textButton}</Button>
+                route === '/profiles' 
+                ? <Button onClick={()=>navigator('/profiles')} style={{width:'200px'}}>{textButton}</Button> 
+                : (route === '/profiles-company' 
+                ?<Button onClick={()=>navigator('/profiles-company')} style={{width:'200px'}}>{textButton}</Button>
+                : <Button onClick={()=>navigator('/registro-vacante')} style={{width:'200px'}}>{textButton}</Button>)
                 
             }
            
