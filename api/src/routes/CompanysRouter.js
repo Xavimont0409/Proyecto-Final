@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const { companysHandlerGet, companysHandlerGetId } = require('../handlers/companysHandlers/companyGet')
-const { companysHandlerPost } = require('../handlers/companysHandlers/companyPost')
+const { companysHandlerGet, companysHandlerGetId } = require('../handlers/companysHandlers/companyGet');
+const { companysHandlerPost } = require('../handlers/companysHandlers/companyPost');
  
 const companysRouter = Router();
 

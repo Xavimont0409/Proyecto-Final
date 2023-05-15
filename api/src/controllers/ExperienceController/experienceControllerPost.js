@@ -20,7 +20,7 @@ const createExperience = async (
     still_working,
     CvId
   });
-  return newExperience
+  return newExperience;
 };
 
 module.exports={

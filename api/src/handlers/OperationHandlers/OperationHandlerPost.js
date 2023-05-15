@@ -1,13 +1,13 @@
-const errorUser = require('../../helpers/errors')
+const errorUser = require('../../helpers/errors');
 
 
 const operationHandlerPost = async(req, res) =>{
-    const { id } = req.params
-    const { cost, PayMethodId } = req.body
+    const { id } = req.params;
+    const { cost, PayMethodId } = req.body;
     try {
-        res.status(200).json(await createOperation(id, cost, PayMethodId))
+        res.status(200).json(await createOperation(id, cost, PayMethodId));
     } catch (error) {
-        errorUser(error,res)
+        errorUser(error,res);
     }
 }
 
