@@ -20,6 +20,20 @@ const getAllVacant = () => {
   });
 };
 
+const getVacantByName = async (title) => {
+  const vacant = await Vacant.findAll({
+  where: { name: {[Op.iLike]: `%${title}%` }},
+  include: {
+    model: Workday, 
+    attibutes : ['name'],
+    through: {
+      attibutes: [],
+    },
+  }});
+  return vacant;
+}
+
 module.exports = {
   getAllVacant,
+  getVacantByName,
 };

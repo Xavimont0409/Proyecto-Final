@@ -1,8 +1,8 @@
-const { Router } = require('express')
-const { experienceHandlersPost } = require('../handlers/ExperienceHandlers/experienceHandlersPost')
+const { Router } = require('express');
+const { experienceHandlersPost } = require('../handlers/ExperienceHandlers/experienceHandlersPost');
 
-const experienceRouter = Router()
+const experienceRouter = Router();
 
-experienceRouter.post('/', experienceHandlersPost)
+experienceRouter.post('/', experienceHandlersPost);
 
-module.exports = experienceRouter
+module.exports = experienceRouter;
