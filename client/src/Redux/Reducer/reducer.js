@@ -17,7 +17,7 @@ import {
 
 const initialState = {
   Company: [],
-  CompanyDetail: {},
+  CompanyDetail: [],
 
   Users: [],
   UserDetail: {},
@@ -67,7 +67,10 @@ const Reducer = (state = initialState, action) => {
       };
     case GET_COMPANY_DETAIL:
       return{
-
+        return {
+          ...state,
+          CompanyDetail: action.payload
+        }
       }  
 
     case FILTER_PER_SENIORITY:
