@@ -2,7 +2,7 @@ import style from "./Filter.module.css"
 //import { useState, useEffect } from "react"
 // import { useDispatch, useSelector } from "react-redux"
 // import { filterByTemperaments, resetFilter } from "../../Redux/actions"
-import { filterPerSeniority, filterPerWordkmethod } from "../../Redux/Actions/actionsFunction/FiltersHome";
+import { filterPerSeniority, filterPerWordkmethod, filterPerTime } from "../../Redux/Actions/actionsFunction/FiltersHome";
 import { useDispatch } from "react-redux";
 
 const Filter = () => {
@@ -13,6 +13,9 @@ const Filter = () => {
     }
     const handlerFilterWordkMethod = (event)=>{
         dispatch(filterPerWordkmethod(event.target.value))
+    }
+    const handlerFilterTime = (event)=>{
+        dispatch(filterPerTime(event.target.value))
     }   
 
     return (
@@ -31,11 +34,11 @@ const Filter = () => {
 
                 <div className={style.filterContainer}>
                     <p className={style.p}>Fecha de publicación</p>
-                    <select name="FilterByFecha"  className={style.select} >
+                    <select name="FilterByFecha"  className={style.select} onChange={(event)=>handlerFilterTime(event)}>
                         <option value="Filter" >Todos</option>
-                        <option value="hoy">Hoy</option>
-                        <option value='semana'>Esta semana</option>
-                        <option value='mes'>Este mes</option>
+                        <option value="Hoy">Hoy</option>
+                        <option value='Semana'>Esta semana</option>
+                        <option value='Mes'>Este mes</option>
                     </select>
                 </div>
 
