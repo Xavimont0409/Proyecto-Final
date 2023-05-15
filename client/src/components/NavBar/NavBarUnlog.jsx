@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
 
-    const { loginWithRedirect } = useAuth0();
-
     return (
         <>
             <Navbar bg="light" expand="sm">
@@ -14,7 +12,10 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Form className="ms-auto">
-                            <Button variant="outline-secondary" className="ms-auto" onClick={() => loginWithRedirect()}>Iniciar sesion</Button>
+                            <Link to="/iniciarSesion">
+                                <Button variant="outline-secondary" className="ms-auto">Iniciar sesion</Button>
+                            </Link>
+                        
                             <div className="vr" />
                             <Link to="/registro">
                                 <Button variant="secondary" className="ms-auto">Registrarme</Button>    
