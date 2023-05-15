@@ -23,7 +23,6 @@ const getAllVacant = () => {
 
 const getVacantByName = async (name) => {
   console.log(name);
-  //{[Op.iLike]: `%${title}%` }
   const findVacant = await Vacant.findAll({
     where: { title: {[Op.iLike]: `%${name}%` } },
     attributes: ["id", "title", "description", "createdAt"],
