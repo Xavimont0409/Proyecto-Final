@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import {FormLabel, FormControl, Col } from 'react-bootstrap';
-import NavBar from "../../components/NavBar/NavBar"
+import NavBar from "../../components/NavBar/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
 import { useDispatch } from "react-redux";
 import validateFormInputs from '../FormVacante/validation';
