@@ -3,7 +3,7 @@ const validateRequiredField = require('../../helpers/requiredFieldsHelper');
 const validateOperations = async (req, res, next) => {
     try {
         const { cost } = req.body;
-        validateRequiredField(cost , 'Cost')
+        validateRequiredField(cost , 'Cost');
         if (cost < 0)
             throw new Error('Cost value must be positive or zero');
         next();

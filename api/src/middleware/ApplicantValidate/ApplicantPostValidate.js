@@ -1,6 +1,6 @@
 const { validateRequiredField } = require('../../helpers/requiredFieldsHelper');
-const { validateEmailFormat } = require('../../helpers/EmailHelper')
-const { validatePasswordFormat } = require('../../helpers/PasswordHelper')
+const { validateEmailFormat } = require('../../helpers/EmailHelper');
+const { validatePasswordFormat } = require('../../helpers/PasswordHelper');
 const validateApplicant = async (req, res, next) => {
   try {
     const { name, lastName, email, password, cellphone } = req.body;

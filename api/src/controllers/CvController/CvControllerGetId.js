@@ -8,7 +8,7 @@ const getIdCv = async (id) =>{
         }
     })
 
-    return findCv
+    return findCv;
 }
 
 module.exports = {
