@@ -7,9 +7,8 @@ import validateFormInputs from '../FormVacante/validation';
 import Loading from '../../components/Loading/Loading';
 import style from './FormRegistroUsuario.module.css';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { postUser } from '../../Redux/Actions/actionsFunction/actionsUsers';
-
 
 const FormRegistroUsuario = () => {
 
@@ -157,14 +156,14 @@ const FormRegistroUsuario = () => {
 
           </Form>
 
-
-          <ButtonGeneral
-            textButton='Registrarse'
-            type='submit'
-            handlerClick={handleSubmit}>
-          </ButtonGeneral>
-
-
+          <Link to="/empleos">
+            <ButtonGeneral
+              textButton='Registrarse'
+              type='submit'
+              //handlerClick={handleSubmit}
+            >
+            </ButtonGeneral>
+          </Link>
         </div>
 
         <div className={style.container3}>
