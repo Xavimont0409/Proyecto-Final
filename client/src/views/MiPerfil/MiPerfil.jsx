@@ -4,9 +4,16 @@ import DatosAuth from "../../components/NavBar/DatosAuth";
 const MiPerfil = () => {
     return (
         <div>
-            <NavBar/>
-            <DatosAuth/>
-
+            <div>
+                datos personales
+            </div>
+            <div>
+                datos de contacto
+            </div>
+            <button> Desacargar CV </button>
+            <div> 
+                Formacion academica
+            </div>
         </div>
     )
 }
