@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 
 const Profiles = () => {
-    const users = useSelector(state => state.users);
+    const users = useSelector(state => state.Users);
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setusersPerPage] = useState(4);
     const indexOfLastCharacter = currentPage * usersPerPage;
