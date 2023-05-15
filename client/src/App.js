@@ -4,7 +4,6 @@ import { Route} from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBarCliente from './components/NavBar/NavBarLog';
 import axios from 'axios'
 import Error404 from './components/Error404/Error404';
 
