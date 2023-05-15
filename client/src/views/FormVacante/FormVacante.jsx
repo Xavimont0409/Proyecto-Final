@@ -4,22 +4,34 @@ import { useState } from "react";
 import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
 import NavBar from "../../components/NavBar/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postVacant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 import validateFormInputs from './validation';
+import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
 export default function FormVacante() {
 
     const dispatch = useDispatch();
+    // dispatch(getAllCompanys())
+    // const a = useSelector(state=>state.Company)
+    // console.log(a)
 
     const [validated, setValidated] = useState(false);
 
     const [newVacant, setNewVacant] = useState({
         title: "",
         description: "",
-        workMethod: "",
-        workday: "",
-        seniority: "",
+        CompanyId:'308e1d59-30f6-4379-866c-b71643a2c5f5',
+        WorkdayId:'2',
+        WorkMethodId:'1',
+        SeniorityId:'1',
+        creation_date:'2023-05-14'
+
+
+
+        // workMethod: "1",
+        // workday: "2",
+        // seniority: "2",
     });
 
 

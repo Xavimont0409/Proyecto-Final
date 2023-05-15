@@ -18,11 +18,11 @@ function FormCv() {
   });
   const [formacion, setFormacion] = useState({
     titulo: '',
-    pais: '',            
-    tipo_estudio: '',    
-    area_estudio: '',  
-    institucion: '',     
-    estado: '',          
+    pais: '',
+    tipo_estudio: '',
+    area_estudio: '',
+    institucion: '',
+    estado: '',
     fecha_inicio: '',
     fecha_fin: ''
 
@@ -31,10 +31,10 @@ function FormCv() {
     empresa: '',
     puesto: '',
     nivel_experiencia: '',
-    ubicacion: '',       
+    ubicacion: '',
     fecha_inicio: '',
     fecha_fin: '',
-    actualmente: false  
+    actualmente: false
 
   });
   const [step, setStep] = useState(1);
@@ -61,39 +61,45 @@ function FormCv() {
 
       <NavBar></NavBar>
 
+      <div className={style.container2} style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ flex: 1 }}>
+          {step === 1 &&
+            <Step1FormCv
+              infoPersonal={infoPersonal}
+              setInfoPersonal={setInfoPersonal}
+              handlerChange={handlerChange}
+              nextStep={nextStep} />
+          }
 
-      {step === 1 &&
-        <Step1FormCv
-          infoPersonal={infoPersonal}
-          setInfoPersonal={setInfoPersonal}
-          handlerChange={handlerChange}
-          nextStep={nextStep} />
-      }
+          {step === 2 &&
+            <Step2FormCv
+              formacion={formacion}
+              setFormacion={setFormacion}
+              handlerChange={handlerChange}
+              previousStep={previousStep}
+              nextStep={nextStep} />
+          }
 
-      {step === 2 &&
-        <Step2FormCv
-          formacion={formacion}
-          setFormacion={setFormacion}
-          handlerChange={handlerChange}
-          previousStep={previousStep}
-          nextStep={nextStep} />
-      }
+          {step === 3 &&
+            <Step3FormCv
+              infoPersonal={infoPersonal}
+              setInfoPersonal={setInfoPersonal}
+              formacion={formacion}
+              setFormacion={setFormacion}
+              experiencia={experiencia}
+              setExperiencia={setExperiencia}
+              handlerChange={handlerChange}
+              previousStep={previousStep}
+            />
+          }
+        </div>
 
-      {step === 3 &&
-        <Step3FormCv
-          infoPersonal={infoPersonal}
-          setInfoPersonal={setInfoPersonal}
-          formacion={formacion}
-          setFormacion={setFormacion}
-          experiencia={experiencia}
-          setExperiencia={setExperiencia}
-          handlerChange={handlerChange}
-          previousStep={previousStep}
-        />
-      }
+        <div style={{ flex: 0.2, marginRight: '100px', marginLeft: '-300px', marginTop: '-300px' }}>
+          <h4>Paso {step} de 3</h4>
+        </div>
+      </div>
 
     </div>
-
   );
 }
 

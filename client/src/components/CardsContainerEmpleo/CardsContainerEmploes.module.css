@@ -19,7 +19,9 @@
     gap: 1em;
     padding: 20px;
     overflow-y: scroll;
-    overflow: hidden;
+    height: 80vh;
+    max-height: 800px;
+    justify-content: start;
 }
 
 @media (max-width: 768px) {
