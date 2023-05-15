@@ -8,7 +8,7 @@ import validateFormInputs from '../FormVacante/validation';
 import Loading from '../../components/Loading/Loading';
 import style from './FormRegistroEmpesa.module.css';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import countries from "countries-list";
 
 
@@ -195,12 +195,14 @@ const FormRegisterEmpresa = () => {
 
           </Form>
 
-          <ButtonGeneral
-            textButton='Registrarse'
-            type='submit'
-            handlerClick={handleSubmit}>
-          </ButtonGeneral>
-
+          <Link to="/empresa">
+            <ButtonGeneral
+              textButton='Registrarse'
+              type='submit'
+              //handlerClick={handleSubmit}
+              >
+            </ButtonGeneral>
+          </Link>
         </div>
 
 
