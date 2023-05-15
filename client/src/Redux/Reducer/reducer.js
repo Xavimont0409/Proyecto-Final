@@ -11,7 +11,8 @@ import {
   POST_VACANT,
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
-  FIND_PER_NAME
+  FIND_PER_NAME,
+  FILTER_PER_TIME
 } from "../Actions/actions-types/action-types";
 
 const initialState = {
@@ -66,7 +67,7 @@ const Reducer = (state = initialState, action) => {
       };
     case GET_COMPANY_DETAIL:
       return{
-        
+
       }  
 
     case FILTER_PER_SENIORITY:
@@ -105,7 +106,27 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         Vacant: action.payload,
-      }  
+      }
+    case FILTER_PER_TIME:
+      const timeVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
+      let hoy = new Date();
+      let dia = hoy.getDate();
+      let month = hoy.getMonth() + 1
+      let anios = hoy.getFullYear()
+        dia = ('0' + dia).slice(-2)
+        month = ('0' + month).slice(-2)
+      const filterPerTime = 
+        action.payload === 'Hoy'
+        ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) === `${anios}-${month}-${dia}`)
+        : action.payload === 'Esta semana'
+        ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) > `${anios}-${month}-${dia - 8}`)
+        : action.payload === 'Este mes'
+        ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) > `${anios}-${month - 1}-${dia}`)
+        : state.AuxVacant2     
+      return{
+        ...state,
+        Vacant: filterPerTime
+      }    
 
     //! LOS CASOS POST TAMBIEN SE TRAEN AL REDUCER POR BUENAS PRACTICAS
     case POST_COMPANY:

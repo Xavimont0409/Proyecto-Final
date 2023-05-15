@@ -21,9 +21,9 @@ const getAllVacant = () => {
 };  
 
 const getVacantByName = async (name) => {
-  console.log(name);
+  const nameUpper = name.toUpperCase()
   const findVacant = await Vacant.findAll({
-    where: { title: {[Op.iLike]: `%${name}%` } },
+    where: { title: {[Op.iLike]: `%${nameUpper}%` } },
     include: [
       {
         model: Workday,
