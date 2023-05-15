@@ -2,11 +2,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    gap: 50px;
     background: linear-gradient(-40deg, var(--mustard), var( --avocado), white, var(--caribbean-current));
     background-size: 400% 400%;
     animation: container 10s ease infinite;
-    height: 100vh;
+   
+}
+
+.containerComponents{
+    height: fit-content;
+    margin-bottom: 5vh;
 }
 
 .planes {

@@ -17,7 +17,8 @@ function UncontrolledExample() {
           />
           <CardCarousel tittle='Publica tu Vacante Ya!'
             text='Encuentra el talento que necesitas, publica hasta 3 avisos gratis al mes y atrae a los mejores candidatos para tu empresa'
-            textButton='Publicar vacante' />
+            textButton='Publicar vacante'
+            route='/registro-vacante' />
         </div>
 
         <Carousel.Caption>
@@ -34,7 +35,7 @@ function UncontrolledExample() {
           <CardCarousel tittle='Encuentra tu candidato ideal!'
             text='Encuentra el perfil que estas buscando, consultando y filtrando con nuestra Búsqueda en base. Recomendado para encontrar perfiles específicos o cubrir vacantes de forma rápida.'
             textButton='Ver candidatos' 
-            route='/registro-cv'/>
+            route='/profiles'/>
 
           <Carousel.Caption>
           </Carousel.Caption>
@@ -49,19 +50,13 @@ function UncontrolledExample() {
             alt="Third slide"
           />
 
-          <CardCarousel tittle='Aviso Talento!'
-            text='Producto exclusivo para consultoras de RRHH.
-          Publica gratis y paga solamente por los perfiles que más te interesen'
-            textButton='Conoce mas' 
-            route='/registro-empresa'/>
+          <CardCarousel tittle='Aviso Empresas!'
+            text='Encuentra empresas que pueden interesarte en nuestra base de datos, revisa sus datos mas relevantes y posiblemente puedas hacer acuerdos comerciales'
+            textButton='Conoce otras empresas' 
+            route='/profiles-company'/>
           <Carousel.Caption>
 
           </Carousel.Caption>
-
-
-
-
-
         </div>
       </Carousel.Item>
 
