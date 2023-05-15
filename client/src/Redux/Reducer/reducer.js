@@ -25,7 +25,7 @@ const initialState = {
   Vacant: [],
   AuxVacant: [],
   AuxVacant2: [],
-  VacantDetail: {},
+  VacantDetail: [],
 
   filtrosCombinados: [],
 };
@@ -64,14 +64,7 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         VacantDetail: action.payload,
-      };
-    case GET_COMPANY_DETAIL:
-      return{
-        return {
-          ...state,
-          CompanyDetail: action.payload
-        }
-      }  
+      }; 
 
     case FILTER_PER_SENIORITY:
         const seniorityVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
