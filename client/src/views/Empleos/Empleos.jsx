@@ -32,7 +32,7 @@ const Empleos = () => {
             <NavBar></NavBar>
             <div className={style.filterAndCardsContainer}>
                 <div className={style.filters}>
-                    <Filter className={style.containerFilter}></Filter>
+                    <Filter></Filter>
                 </div>
                 <div className={style.cardsDiv}>
 

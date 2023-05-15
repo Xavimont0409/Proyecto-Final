@@ -5,10 +5,7 @@
     width: 60vw;
     height: fit-content;
     justify-content: start;
-
-
 }
-
 
 .cardsContainer{
     width: 100%;
@@ -24,10 +21,23 @@
 
 @media (max-width: 768px) {
     .mainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 93vw;
+        height: fit-content;
+        justify-content: start;
     }
 
     .cardsContainer {
-        max-width: 457px;
-        border-radius: 3px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        padding: 20px;
+        overflow-y: scroll;
+        overflow: hidden;
     }
 }

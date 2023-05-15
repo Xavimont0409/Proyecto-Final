@@ -1,16 +1,15 @@
 .container{
-    margin: 30vh auto;
-    width: 70vw;
-    height: 30vh;
+    margin: 25vh auto 9vh;
+    width: 85vw;
+    height: 60vh;
     display: flex;
     justify-content:space-evenly;
     align-items: center;
-    
 }
 
 .box{
-    width: 30%;
-    height:40vh;
+    width: 35%;
+    height: 50vh;
     background-color: var(--jet);
     position: relative;
     display: flex;
@@ -42,7 +41,28 @@
 }
 
 .text{
-    width: 70%;
+    width: 90%;
     margin: 2vh auto;
     text-align: justify;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        margin: 10vh auto;
+        width: 90vw;
+        height: 60vh;
+        flex-direction: column;
+        gap: 3vh;
+    }
+
+    .box {
+        width: 75%;
+        height: 25vh;
+    }
+
+    .text {
+        width: 90%;
+        margin: 2vh auto;
+        text-align: justify;
+    }
 }

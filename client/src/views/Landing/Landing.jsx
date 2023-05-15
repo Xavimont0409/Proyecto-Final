@@ -28,21 +28,20 @@ const Landing = () => {
             <div className={style.container}>
                 <div className={style.videoDiv}>
                     <video loop autoPlay muted>
-                    <source src={video} type="video/mp4" />
+                        <source src={video} type="video/mp4" />
                     </video>
-                </div>
-                <div className={style.searchDiv}>
-                <div className={style.paragraph}>
+                    </div>
+                    <div className={style.searchDiv}>
+                    <div className={style.paragraph}>
                         <h1 className={style.title}>JobPortalX</h1>
                         <p className={style.text}>Somos el nuevo portal de trabajo, con mas dinamismo del mercado, donde encontrarás las mejores oportunidades laborales</p>
                     </div>
-                    <input className={style.input} placeholder='' />
                     <div className={style.buttonDiv}>
+                        <input className={style.input} placeholder='' />
                         <Link to="/empleos">
                             <Button variant="outline-secondary" className="ms-auto">Busca Tu Trabajo</Button>
                         </Link>
                     </div>
-                    
                 </div>
             </div>
 

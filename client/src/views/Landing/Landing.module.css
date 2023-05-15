@@ -21,11 +21,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40vw;
+    width: 60vw;
     height: 40vh;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.616);
-    border-radius: 20px;
+    border-radius: 10px;
     z-index: 2;
     backdrop-filter: blur(4px) saturate(1000%)
 }
@@ -33,15 +33,15 @@
 .input{
     width: 20vw;
     margin-bottom: 5px;
-    margin-top: 20px;
+    margin-top: 5px;
     border-radius: 3px;
     background-color: white;
 }
 
 .paragraph{
-    margin-top: 30px;
-    margin-bottom: 8vh;
-    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title{
@@ -57,6 +57,8 @@
 }
 
 .buttonDiv{
+    display: flex;
+    flex-direction: column;
     margin-top: 2vh;
 }
 
@@ -75,6 +77,12 @@
         overflow: hidden;
     }
 
+    .videoDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .imgDiv {
         margin-top: 20px;
         margin-bottom: 15px;
@@ -91,23 +99,30 @@
     .searchDiv {
         display: flex;
         flex-direction: column;
-        width: 500px;
+        width: 80vw;
         height: fit-content;
         margin-top: 0;
-        margin-left: 7px;
-        margin-right: 5px;
-    }
-
-    .input {
-        margin-bottom: 5px;
-        margin-top: 20px;
-        border-radius: 3px;
-        background-color: white;
     }
 
     .paragraph {
-        margin-top: 30px;
-        margin-bottom: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
         height: fit-content;
+    }
+
+    .buttonDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 7px;
+    }
+
+    .input {
+        width: 35vw;
+        margin-bottom: 3px;
+        border-radius: 3px;
+        background-color: white;
     }
 }

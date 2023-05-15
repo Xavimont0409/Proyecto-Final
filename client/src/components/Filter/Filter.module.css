@@ -5,11 +5,12 @@
     align-items: center;
     /* border: solid black 1px ; */
     border-radius: 10px;
-    width: 300px;
-    height: 500px;
-    gap: 30px;
+    width: 25vw;
+    height: 60vh;
     background: var(--sub-white);
-    margin-top: 20px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-top: 2vh;
 }
 
 .select{
@@ -19,13 +20,17 @@
 
 .button{
     background-color: var(--battleship);
-    width: 7vw;
+    width: 15vw;
     height: 3.5vh;
 }
 
 .selectSpecial{
-    border-radius: 3px;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* border: solid black 1px; */
+    /* background-color: aqua; */
+    margin-top: 33px;
 }
 
 .cardsContainer{
@@ -41,9 +46,8 @@
 }
 
 .allFilters{
-    height: 600px;
-    width: 270px;
-    
+    height: 55vh;
+    width: 22vw;
 }
 
 .filterContainer{
@@ -68,43 +72,69 @@
 
 @media screen and (max-width: 780px) {
     .mainContainer {
-        width: 465px;
-        max-height: 100px;
+        align-items: center;
+        width: 93vw;
+        height: 13vh;
     }
 
     .allFilters{
         display: flex;
         flex-direction: row;
+        justify-content: space-around;
         align-items: flex-start;
-        width: 460px;
-        height: 50px;
+        width: 90vw;
+        height: 12vh;
     }
 
     .filterContainer {
         display: flex;
         flex-direction: column;
         text-align: left;
-        width: fit-content;
-        margin-top: 0px;
-        margin-right: 5px;
-        margin-left: 3px;
+        margin-top: 1vh;
+        width: 17vw;
+        height: 10vh;
     }
 
     .select{
-        max-width: 75px;
+        width: 16vw;
     }
 
     .selectSpecial{
-        width: 140px;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 17vw;
+        height: 10vh;
+        margin-top: 1vh;
     }
 
     .p{
-        font-size: 15px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 4vh;
+    }
+
+    .pSpecial{
+        font-size: 0.9rem;
+        font-weight: bold;
     }
 
     .emptyFilters{
-        max-width: 10px;
-        margin-left: 1px;
-        margin-top: 2px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 13vw;
+        height: 10vw;
+        margin-top: 3vh;
+    }
+
+    .button{
+        text-align: center;
+        font-weight: bold;
+        font-size: 0.9rem;
+        width: 13vw;
+        height: 10vw;
+        border-radius: 20%;
     }
 }

@@ -28,9 +28,8 @@ const Filter = () => {
                     </select>
                 </div>
 
-
-                <div className={style.filterContainer}>
-                    <p className={style.p}>Fecha de publicación</p>
+                <div className={style.selectSpecial}>
+                    <p className={style.pSpecial}>Fecha de publicación</p>
                     <select name="FilterByFecha"  className={style.select} >
                         <option value="Filter" >Todos</option>
                         <option value="hoy">Hoy</option>
@@ -38,11 +37,6 @@ const Filter = () => {
                         <option value='mes'>Este mes</option>
                     </select>
                 </div>
-
-
-
-
-
 
                 <div className={style.filterContainer}>
                     <p className={style.p}>Experiencia</p>
@@ -55,8 +49,6 @@ const Filter = () => {
                     </select>
                 </div>
 
-
-
                 <div className={style.filterContainer}>
                     <p className={style.p}>Modalidad</p>
                     <select name="FilterByModalidad" className={style.select} onChange={(event)=>handlerFilterWordkMethod(event)} >
@@ -67,14 +59,11 @@ const Filter = () => {
                     </select>
                 </div>
                 <div className={style.emptyFilters}>
-                    <button className={style.button} style={{'borderRadius':'5px'}}>Limpiar filtros</button>
+                    <button className={style.button}>Limpiar filtros</button>
                 </div>
             </div>
         </div>
-
     )
-
-
 };
 
 export default Filter;
