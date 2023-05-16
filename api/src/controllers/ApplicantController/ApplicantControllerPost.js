@@ -1,8 +1,8 @@
-const { Applicant, Cv, Vacant, PayMethod } = require('../../db')
+const { Applicant } = require('../../db')
 
-const postApplicant = async(name, lastName, email, password, cellphone) =>{
-    const newApplicant = await Applicant.create({name, lastName, email, password, cellphone});
-    //newApplicant.addCv()
+const postApplicant = async( name, lastName, email, cellphone, registed ) =>{
+    const newApplicant = await Applicant.create({name, lastName, email, cellphone, registed });
+
     return newApplicant;
 }
 
