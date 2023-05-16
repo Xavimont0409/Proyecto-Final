@@ -41,7 +41,7 @@ return (
                 </div>
             </div>
         </Link>
-  )
+    )
 }
 
 export default CardEmpleo;
