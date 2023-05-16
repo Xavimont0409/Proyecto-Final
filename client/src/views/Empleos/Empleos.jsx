@@ -5,17 +5,17 @@ import Loading from "../../components/Loading/Loading";
 import style from "./Empleos.module.css";
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllVacants} from '../../Redux/Actions/actionsFunction/axtionsVacants'
+import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants'
 
 
 const Empleos = () => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
     const currentCard = useSelector(state => state.Vacant)
-    console.log(currentCard);
+
     useEffect(()=>{
         dispatch(getAllVacants())
-    },[dispatch, getAllVacants])
+    },[dispatch])
 
     useEffect(() => {
         setTimeout(() => {

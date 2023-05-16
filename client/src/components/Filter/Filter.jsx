@@ -4,6 +4,7 @@ import style from "./Filter.module.css"
 // import { filterByTemperaments, resetFilter } from "../../Redux/actions"
 import { filterPerSeniority, filterPerWordkmethod, filterPerTime } from "../../Redux/Actions/actionsFunction/FiltersHome";
 import { useDispatch } from "react-redux";
+import { getAllVacants } from "../../Redux/Actions/actionsFunction/axtionsVacants";
 
 const Filter = () => {
     const dispatch = useDispatch()
@@ -70,7 +71,7 @@ const Filter = () => {
                     </select>
                 </div>
                 <div className={style.emptyFilters}>
-                    <button className={style.button} style={{'borderRadius':'5px'}}>Limpiar filtros</button>
+                    <button className={style.button} style={{'borderRadius':'5px'}}onClick={()=>dispatch(getAllVacants())} >Limpiar filtros</button>
                 </div>
             </div>
         </div>
