@@ -11,7 +11,6 @@ import {
   POST_VACANT,
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
-  FIND_PER_NAME
 } from "../Actions/actions-types/action-types";
 
 const initialState = {
@@ -64,10 +63,6 @@ const Reducer = (state = initialState, action) => {
         ...state,
         VacantDetail: action.payload,
       };
-    case GET_COMPANY_DETAIL:
-      return{
-        
-      }  
 
     case FILTER_PER_SENIORITY:
         const seniorityVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
@@ -101,11 +96,6 @@ const Reducer = (state = initialState, action) => {
         ...state,
         Vacant: filterPerWordkmethod,
       };
-    case FIND_PER_NAME:
-      return {
-        ...state,
-        Vacant: action.payload,
-      }  
 
     //! LOS CASOS POST TAMBIEN SE TRAEN AL REDUCER POR BUENAS PRACTICAS
     case POST_COMPANY:

@@ -6,16 +6,27 @@ import NavBar from "../../components/NavBar/NavBar";
 import CardEmpresaDetail from "../../components/CardEmpresaDetail/CardEmpresaDetail";
 import MiniCardEmpleosRel from "../../components/MiniCardEmpleosRel/MiniCardEmpleosRel";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from 'react';
 import Loading from "../../components/Loading/Loading";
+import { getVacantDetail } from "../../Redux/Actions/actionsFunction/axtionsVacants";
 
 
 
 const EmpleoDetail = () => {
 
+    
+
     const {detailId} = useParams();
-    // const empleos = useSelector(state => state.publications);
+
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        dispatch(getVacantDetail(detailId))
+    },[dispatch])
+
+    const empleoSelected = useSelector(state => state.VacantDetail[0]);
+    console.log(empleoSelected);
     const empleos = [
         {
           id: 1,
@@ -245,32 +256,32 @@ const EmpleoDetail = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const empleoSelected = empleos.find((empl) => empl.id === +detailId);
-    const empresaSelected = empresas.find((empr) => empr.id === empleoSelected.idEmpresa);
-    const wordKeysRaw = empleoSelected.title.toLowerCase().split(' ');
-    const wordKeys = wordKeysRaw.filter((wrd) => wrd.length > 3);
-    const empleosRelSelected = empleos.filter((emple) => {
-        if(emple.id !== empleoSelected.id ){
-        return wordKeys.some((word) => emple.title.toLowerCase().includes(word) ) 
-        }
-
-    });
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-    }, []);
-
-    if (isLoading) {
-        return <Loading/>;
-    };
-    
-    return(
-    <div className={style.mainContainer}>
+    // const empleoSelected = empleos.find((empl) => empl.id === +detailId);
+    // const wordKeysRaw = empleoSelected.title.split(' ');
+    // const wordKeys = wordKeysRaw.filter((wrd) => wrd.length > 3);
+    // const empleosRelSelected = empleos.filter((emple) => {
+        //     if(emple.id !== empleoSelected.id ){
+            //     return wordKeys.some((word) => emple.title.includes(word) ) 
+            //     }
+            // });
+            
+            useEffect(() => {
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 2000);
+            }, []);
+            
+            if (isLoading) {
+                return <Loading/>;
+            };
+            
+            const empresaSelected = empresas.find((empr) => empr.id === empleoSelected.CompanyId);
+            return(
+                <div className={style.mainContainer}>
         <NavBar/>
         <div className={style.mainContainer2}>
             
-            <div className={style.containerEmpleosRel}>
+            {/* <div className={style.containerEmpleosRel}>
               {empleosRelSelected.map((empleo)=> {
                 return <MiniCardEmpleosRel 
                 id = {empleo.id}
@@ -279,7 +290,7 @@ const EmpleoDetail = () => {
                 WorkMethodId = {empleo.WorkMethodId}
                 />
               })}
-            </div>
+            </div> */}
 
             <div className={style.mainContainer3}>
             <Tabs
@@ -292,15 +303,15 @@ const EmpleoDetail = () => {
              <div className={style.containerDetail}>
                 <CardEmpleoDetail 
                 id={empleoSelected.id}
-                idEmpresa={empleoSelected.idEmpresa}
-                logo={empresaSelected.logo}
+                CompanyId={empleoSelected.CompanyId}
+                // logo={empresaSelected.logo}
                 title={empleoSelected.title}
                 description={empleoSelected.description}
                 createdAt={empleoSelected.createdAt}
-                updatedAt={empleoSelected.updatedAt}
-                JourneyId={empleoSelected.JourneyId}
-                SeniorityId={empleoSelected.SeniorityId}
-                WorkMethodId={empleoSelected.WorkMethodId}
+                // updatedAt={empleoSelected.updatedAt}
+                Workday={empleoSelected.Workday.name}
+                // SeniorityId={empleoSelected.SeniorityId}
+                WorkMethod={empleoSelected.WorkMethod.name}
                 />
              </div>
             </Tab>

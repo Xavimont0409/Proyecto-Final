@@ -5,21 +5,21 @@ import style from "./CardEmpleoDetail.module.css";
 
 
 
-const CardEmpleoDetail = ({id, idEmpresa, logo, title, description, createdAt, updatedAt, JourneyId, SeniorityId, WorkMethodId}) => {
+const CardEmpleoDetail = ({id, CompanyId, title, description, createdAt, Workday, WorkMethod}) => {
   
   return (
     <Card style={{ width: '100%' }}>
       <div>
-      <Card.Img className={style.logo} variant="top" src={logo}/>
+      <Card.Img className={style.logo} variant="top" src="https://2.bp.blogspot.com/-8nygkHc09a4/XELAYyOEjZI/AAAAAAAAGLg/kiGoQYw5Xtccv4PPFZA_9SXANdV4CaxFACLcBGAs/s1600/globant_logo.jpg"/>
       </div>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>Jornada: {JourneyId}</ListGroup.Item>
-        <ListGroup.Item>Modalidad: {WorkMethodId}</ListGroup.Item>
-        <ListGroup.Item>Seniority: {SeniorityId}</ListGroup.Item>
+        <ListGroup.Item>Jornada: {Workday}</ListGroup.Item>
+        <ListGroup.Item>Modalidad: {WorkMethod}</ListGroup.Item>
+        {/* <ListGroup.Item>Seniority: {SeniorityId}</ListGroup.Item> */}
       </ListGroup>
       <Card.Body>
       <Button className={style.btn} variant="outline-success">POSTULARME</Button>{' '}
