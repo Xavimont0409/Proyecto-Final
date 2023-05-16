@@ -3,10 +3,9 @@
     flex-direction: column;
     align-items: center;
     width: 60vw;
-    height: fit-content;
+    height: 95vh;
     justify-content: start;
-
-
+    margin-top: 2vh;
 }
 
 
@@ -20,16 +19,25 @@
     padding: 20px;
     overflow-y: scroll;
     height: 80vh;
-    max-height: 800px;
     justify-content: start;
 }
 
 @media (max-width: 768px) {
     .mainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 97vw;
+        height: 79vh;
+        margin-top: 1vh;
+        overflow-x: hidden;
     }
 
     .cardsContainer {
-        max-width: 457px;
-        border-radius: 3px;
+        width: 95vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
     }
 }
