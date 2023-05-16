@@ -33,8 +33,8 @@ const Filter = () => {
                 </div>
 
 
-                <div className={style.filterContainer}>
-                    <p className={style.p}>Fecha de publicación</p>
+                <div className={style.selectSpecial}>
+                    <p className={style.pSpecial}>Fecha de publicación</p>
                     <select name="FilterByFecha"  className={style.select} onChange={(event)=>handlerFilterTime(event)}>
                         <option value="Filter" >Todos</option>
                         <option value="Hoy">Hoy</option>
