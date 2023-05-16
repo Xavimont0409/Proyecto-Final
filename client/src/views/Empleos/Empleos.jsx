@@ -6,10 +6,12 @@ import style from "./Empleos.module.css";
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants'
+import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 
 
 const Empleos = () => {
     const dispatch = useDispatch();
+    const [ fecha, setFecha ] = useLocalStorage('fecha', '')
     const [isLoading, setIsLoading] = useState(true);
     const currentCard = useSelector(state => state.Vacant)
 
@@ -32,7 +34,7 @@ const Empleos = () => {
             <NavBar></NavBar>
             <div className={style.filterAndCardsContainer}>
                 <div className={style.filters}>
-                    <Filter ></Filter>
+                    <Filter setFecha={setFecha}  fecha={fecha}></Filter>
                 </div>
                 <div className={style.cardsDiv}>
 
