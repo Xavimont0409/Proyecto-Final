@@ -28,8 +28,7 @@ const EmpleoDetail = () => {
       },[dispatch, getVacantDetail])
       
       const empleoSelected = useSelector(state => state.VacantDetail[0]);
-     
-      // const empresa = useSelector(state => state.CompanyDetail); 
+  
       console.log(empleoSelected);
       
       const [isLoading, setIsLoading] = useState(true);
@@ -54,10 +53,6 @@ const EmpleoDetail = () => {
           };
           const companyId = empleoSelected.CompanyId
           console.log(companyId);
-          
-      
-          // console.log(empleoSelected);
-          // console.log(empresa);
             
             return(
               <div className={style.mainContainer}>
@@ -74,6 +69,10 @@ const EmpleoDetail = () => {
                 />
               })}
             </div> */}
+
+              <div className={style.containerEmpleosRel}>
+              <MiniCardEmpleosRel idEmpleoSelected={empleoSelected.id} title={empleoSelected.title}/>   
+              </div>
 
             <div className={style.mainContainer3}>
             <Tabs
