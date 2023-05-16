@@ -5,7 +5,6 @@ const applicantRouter = require('./ApplicantRouter');
 const cvRouter = require('./CvRouter');
 const operationRouter = require('./OperationRouter');
 const experienceRouter = require('./ExperienceRouter');
-const stateRouter = require('./stateRouter');
 const productRouter = require('./productRouter');
 const getEmailRouter = require('./getEmailRouter');
 
@@ -18,7 +17,6 @@ router.use("/company", companysRouter);
 router.use("/createCv", cvRouter);
 router.use("/operation", operationRouter);
 router.use("/experience", experienceRouter);
-router.use("/state", stateRouter);
 router.use("/product", productRouter);
 router.use("/email", getEmailRouter);
 
