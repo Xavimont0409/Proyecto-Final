@@ -3,6 +3,7 @@ const { Vacant, Workday, WorkMethod, Seniority } = require("../../db");
 const getVacantId = async (id) => {
   const findVacant = await Vacant.findAll({
     where: { id },
+    attributes:["id","title", "description","createdAt","CompanyId"],
     include: [
       {
         model: Workday,
