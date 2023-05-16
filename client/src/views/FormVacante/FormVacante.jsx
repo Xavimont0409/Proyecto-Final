@@ -11,6 +11,9 @@ import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompa
 
 export default function FormVacante() {
 
+    const today = new Date();
+    const dateOnly = today.toISOString().slice(0, 10);
+
     const dispatch = useDispatch();
     // dispatch(getAllCompanys())
     // const a = useSelector(state=>state.Company)
@@ -21,17 +24,11 @@ export default function FormVacante() {
     const [newVacant, setNewVacant] = useState({
         title: "",
         description: "",
-        CompanyId:'308e1d59-30f6-4379-866c-b71643a2c5f5',
-        WorkdayId:'2',
-        WorkMethodId:'1',
-        SeniorityId:'1',
-        creation_date:'2023-05-14'
-
-
-
-        // workMethod: "1",
-        // workday: "2",
-        // seniority: "2",
+        CompanyId: '308e1d59-30f6-4379-866c-b71643a2c5f5',
+        WorkdayId: "",
+        WorkMethodId: "",
+        SeniorityId: "",
+        creation_date: dateOnly
     });
 
 
@@ -41,7 +38,7 @@ export default function FormVacante() {
         setNewVacant({ ...newVacant, [property]: value });
     }
 
-   
+
     const handleSubmit = (event) => {
         event.preventDefault()
         if (!validateFormInputs(newVacant)) {
@@ -52,9 +49,11 @@ export default function FormVacante() {
             setNewVacant({
                 title: "",
                 description: "",
-                workMethod: "",
-                workday: "",
-                seniority: "",
+                CompanyId: '308e1d59-30f6-4379-866c-b71643a2c5f5',
+                WorkdayId: "",
+                WorkMethodId: "",
+                SeniorityId: "",
+                creation_date: dateOnly
             })
             setValidated(false)
         }
@@ -64,12 +63,12 @@ export default function FormVacante() {
     return (
 
         <div className={style.mainContainer}>
-            
+
             <NavBar></NavBar>
 
-            
+
             <h2 style={{ 'margin': '20px' }}>Crear nueva vacante</h2>
-            <Form  validated={!validated}  className={style.Form} onSubmit={handleSubmit} >
+            <Form validated={!validated} className={style.Form} onSubmit={handleSubmit} >
 
                 <Form.Group as={Col} md='12' className="mb-3"  >
                     <FormLabel>Titulo de la vacante</FormLabel>
@@ -104,14 +103,14 @@ export default function FormVacante() {
 
                     <FormGroup as={Col} md='4'>
                         <FormLabel className="me-2">Modalidad</FormLabel>
-                        <FormSelect name='workMethod'
-                            value={newVacant.workMethod}
+                        <FormSelect name='WorkMethodId'
+                            value={newVacant.WorkMethodId}
                             onChange={handleInputChange}
                             required>
                             <option disabled></option>
-                            <option value='Presencial'>Presencial</option>
-                            <option value='Hibrido' >Hibrido</option>
-                            <option value='Remoto'>Remoto</option>
+                            <option value={1}>Presencial</option>
+                            <option value={2} >Hibrido</option>
+                            <option value={2}>Remoto</option>
                         </FormSelect>
                         <Form.Control.Feedback type="invalid">
                             Selecciona una opcion
@@ -120,14 +119,14 @@ export default function FormVacante() {
 
                     <FormGroup as={Col} md='4'>
                         <FormLabel className="me-2">Jornada</FormLabel>
-                        <FormSelect name='workday'
-                            value={newVacant.workday}
+                        <FormSelect name='WorkdayId'
+                            value={newVacant.WorkdayId}
                             onChange={handleInputChange}
                             required>
                             <option disabled ></option>
-                            <option value="Tiempo completo">Tiempo completo</option>
-                            <option value="Medio tiempo">Medio tiempo</option>
-                            <option value="Otro">Otro</option>
+                            <option value={1}>Tiempo completo</option>
+                            <option value={2}>Medio tiempo</option>
+                            <option value={3}>Otro</option>
                         </FormSelect>
                         <Form.Control.Feedback type="invalid">
                             Selecciona una opcion
@@ -136,16 +135,16 @@ export default function FormVacante() {
 
                     <FormGroup as={Col} md='4'>
                         <FormLabel className="me-2">Experiencia</FormLabel>
-                        <FormSelect name='seniority'
-                            value={newVacant.seniority}
+                        <FormSelect name='SeniorityId'
+                            value={newVacant.SeniorityId}
                             onChange={handleInputChange}
                             required>
                             <option disabled ></option>
-                            <option value="Sin Experiencia">Sin Experiencia</option>
-                            <option value="Trainee">Trainee</option>
-                            <option value="Junior">Junior</option>
-                            <option value="Semi-senior">Semi-senior</option>
-                            <option value="Senior">Senior</option>
+                            <option value={1}>Sin Experiencia</option>
+                            <option value={2}>Trainee</option>
+                            <option value={3}>Junior</option>
+                            <option value={4}>Semi-senior</option>
+                            <option value={5}>Senior</option>
                         </FormSelect>
                         <Form.Control.Feedback type="invalid">
                             Selecciona una opcion
@@ -160,7 +159,7 @@ export default function FormVacante() {
                     type='submit'
                     handlerClick={handleSubmit}>
                 </ButtonGeneral>
-            </div>     
+            </div>
 
         </div>
     )
