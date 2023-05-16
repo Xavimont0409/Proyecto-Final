@@ -1,4 +1,4 @@
-.containerPadre{
+.containerPadre {
     width: 100vw;
     height: fit-content;
     display: flex;
@@ -6,23 +6,24 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 8vh;
+    margin-bottom: 3vh;
 }
 
-.firstTitle{
-    font-size:250%;
+.firstTitle {
+    font-size: 2.3rem;
     font-style: italic;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
 }
 
-.firstContainer{
+.firstContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-right: 1.2vw;
 }
 
-.container{
+.container {
     display: flex;
     width: 11vw;
     height: 22vh;
@@ -31,10 +32,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: 2px 5px 15px black
+    box-shadow: 2px 5px 15px black;
 }
 
-.content{  
+.content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -48,29 +49,110 @@
 }
 
 
-.content:hover{
+.content:hover {
     background-color: #00000093;
     backdrop-filter: blur(4px) saturate(1000%);
     opacity: 1;
     color: white;
 }
 
-.title{
-    font-size: 150%;
+.title {
+    font-size: 1.2rem;
 }
-.text{
+
+.text {
     margin: 0.5vh 0.8vw;
 }
 
-.containerLinks{
+.containerLinks {
     width: 100%;
 }
 
-.Links{
-    font-size:200%;
+.Links {
+    font-size: 200%;
     margin: 0.5vh 0.8vw;
 }
 
-.Links:hover{
+.Links:hover {
     color: white;
+}
+
+@media (max-width: 768px) {
+    .containerPadre {
+        width: 100vw;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 3vh;
+    }
+
+    .firstTitle {
+        font-size: 2.3rem;
+        font-style: italic;
+        margin-bottom: 3vh;
+    }
+
+    .firstContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-right: 3.2vw;
+    }
+
+    .container {
+        display: flex;
+        width: 11vw;
+        height: 22vh;
+        border-radius: 20px;
+        margin: 2vh 0.5vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 2px 5px 15px black;
+    }
+
+    .content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 10;
+        opacity: 0;
+        border-radius: 20px;
+        transition: all ease 0.4s;
+    }
+
+    .content:hover {
+        background-color: #00000093;
+        backdrop-filter: blur(4px) saturate(1000%);
+        opacity: 1;
+        color: white;
+    }
+
+    .title {
+        font-size: 0.7rem;
+    }
+
+    .text {
+        margin: 0.5vh 0.8vw;
+    }
+
+    .containerLinks {
+        width: 100%;
+    }
+
+    .Links {
+        font-size: 200%;
+        margin: 0.5vh 0.8vw;
+    }
+
+    .Links:hover {
+        color: white;
+    }
 }

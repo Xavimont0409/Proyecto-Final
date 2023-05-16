@@ -1,8 +1,10 @@
 import {
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
-  FILTER_PER_TIME
+  FILTER_PER_TIME,
+  GET_EMAIL,
 } from "../actions-types/action-types";
+import axios from "axios";
 
 export const filterPerSeniority = (payload) => {
   return {
@@ -18,9 +20,23 @@ export const filterPerWordkmethod = (payload) => {
   };
 };
 
-export const filterPerTime = (payload)=>{
-  return{
+export const filterPerTime = (payload) => {
+  return {
     type: FILTER_PER_TIME,
-    payload: payload
-  }
-}
+    payload: payload,
+  };
+};
+export const getEmail = async (email) => {
+  return async function (dispatch) {
+    try {
+      const json = await axios(`/email?email=${email}`);
+      const data = json.data;
+      return dispatch({
+        type: GET_EMAIL,
+        payload: data,
+      });
+    } catch (error) {
+      return alert(error.response.data.error);
+    }
+  };
+};
