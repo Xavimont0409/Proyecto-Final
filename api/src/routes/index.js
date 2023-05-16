@@ -5,7 +5,12 @@ const applicantRouter = require('./ApplicantRouter');
 const cvRouter = require('./CvRouter');
 const operationRouter = require('./OperationRouter');
 const experienceRouter = require('./ExperienceRouter');
+<<<<<<<<< Temporary merge branch 1
+const getEmailRouter = require('./getEmailRouter')
+=========
 const stateRouter = require('./stateRouter')
+const productRouter = require('./productRouter')
+>>>>>>>>> Temporary merge branch 2
 
 const router = Router();
 
@@ -15,6 +20,11 @@ router.use("/company", companysRouter);
 router.use("/createCv", cvRouter);
 router.use("/operation", operationRouter);
 router.use("/experience", experienceRouter);
-router.use("/state", stateRouter)
+<<<<<<<<< Temporary merge branch 1
+router.use("/email", getEmailRouter)
+=========
+router.use("/state", stateRouter);
+router.use("/product", productRouter);
+>>>>>>>>> Temporary merge branch 2
 
 module.exports = router;
