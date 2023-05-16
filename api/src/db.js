@@ -24,10 +24,7 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { State, Admin, Applicant, Company, Cv, Document, Workday, Operation, PayMethod, Seniority, Tax_Condition, Vacant, WorkMethod, Experience, Formation } = sequelize.models;
-
-Applicant.hasOne(State);
-State.belongsTo(Applicant);
+const { Admin, Applicant, Company, Cv, Document, Workday, Operation, PayMethod, Seniority, Tax_Condition, Vacant, WorkMethod, Experience, Formation } = sequelize.models;
 
 Applicant.hasOne(Cv);
 Cv.belongsTo(Applicant);
@@ -43,9 +40,6 @@ Experience.belongsTo(Cv);
 
 Company.hasMany(Vacant);
 Vacant.belongsTo(Company);
-
-Company.hasOne(State);
-State.belongsTo(Company);
 
 Workday.hasMany(Vacant); 
 Vacant.belongsTo(Workday);
