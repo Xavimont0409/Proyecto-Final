@@ -19,11 +19,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        ruc: {
-            type: DataTypes.STRING(13),
-            allowNull: false,
-            unique: true,
-        },
         cuit: {
             type: DataTypes.STRING(11),
             allowNull: false,
@@ -37,13 +32,10 @@ module.exports = (sequelize) => {
                 isEmail: true
             }
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                is: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,16}$/
-            }
-        }
+        registed:{
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
     }, {
         timestamps: false
     })

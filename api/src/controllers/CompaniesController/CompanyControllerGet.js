@@ -11,9 +11,6 @@ const getAllCompany = () => {
   return Company.findAll({
     include: [
       {
-        model: State,
-      },
-      {
         model: Vacant,
         attributes: ["title", "description"],
         include: [
@@ -39,9 +36,6 @@ const getCompanyId = (id) => {
   return Company.findAll({
     where: { id },
     include: [
-      {
-        model: State,
-      },
       {
         model: Vacant,
         attributes: ["title", "description"],
