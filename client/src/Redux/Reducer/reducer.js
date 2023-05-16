@@ -12,7 +12,8 @@ import {
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
   FIND_PER_NAME,
-  FILTER_PER_TIME
+  FILTER_PER_TIME,
+  GET_EMAIL
 } from "../Actions/actions-types/action-types";
 
 const initialState = {
@@ -26,6 +27,8 @@ const initialState = {
   AuxVacant: [],
   AuxVacant2: [],
   VacantDetail: [],
+
+  dataEmail: [],
 
   filtrosCombinados: [],
 };
@@ -65,6 +68,11 @@ const Reducer = (state = initialState, action) => {
         ...state,
         VacantDetail: action.payload,
       }; 
+    case GET_EMAIL:
+      return {
+        ...state,
+        dataEmail: action.payload,
+      }  
 
     case FILTER_PER_SENIORITY:
         const seniorityVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros
