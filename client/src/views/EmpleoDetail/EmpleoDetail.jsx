@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from 'react';
 import Loading from "../../components/Loading/Loading";
 import { getVacantDetail } from "../../Redux/Actions/actionsFunction/axtionsVacants";
+import { getAllCompanys } from "../../Redux/Actions/actionsFunction/actionsCompanys";
 
 
 
@@ -23,9 +24,11 @@ const EmpleoDetail = () => {
 
     useEffect(()=>{
         dispatch(getVacantDetail(detailId))
+        dispatch(getAllCompanys())
     },[dispatch])
 
     const empleoSelected = useSelector(state => state.VacantDetail[0]);
+    const empresas = useSelector(state => state.Company);
     console.log(empleoSelected);
     const empleos = [
         {
@@ -173,7 +176,7 @@ const EmpleoDetail = () => {
         },
       ];
 
-    const empresas = [
+    const empresas2 = [
         {
             id: 1,
             logo: "https://2.bp.blogspot.com/-8nygkHc09a4/XELAYyOEjZI/AAAAAAAAGLg/kiGoQYw5Xtccv4PPFZA_9SXANdV4CaxFACLcBGAs/s1600/globant_logo.jpg",
