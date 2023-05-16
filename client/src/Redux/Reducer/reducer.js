@@ -17,7 +17,7 @@ import {
 
 const initialState = {
   Company: [],
-  CompanyDetail: {},
+  CompanyDetail: [],
 
   Users: [],
   UserDetail: {},
@@ -64,14 +64,11 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         VacantDetail: action.payload,
-      };
-    case GET_COMPANY_DETAIL:
-      return{
-        
-      }  
+      }; 
 
     case FILTER_PER_SENIORITY:
-        const seniorityVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
+        const seniorityVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros
+  
         const filterPerSeniority =
           action.payload === "senior"
             ? seniorityVacant.filter((vacant) => vacant.Seniority.name.includes(action.payload))
@@ -89,7 +86,7 @@ const Reducer = (state = initialState, action) => {
       };
 
     case FILTER_PER_WORDKMETHOD:
-      const wordkmethodVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
+      const wordkmethodVacant =  auxFiltros.length === 0 ? state.AuxVacant : auxFiltros
       const filterPerWordkmethod =
         action.payload === "presencial"
           ? wordkmethodVacant.filter((vacant) => vacant.WorkMethod.name.includes(action.payload))
@@ -97,16 +94,37 @@ const Reducer = (state = initialState, action) => {
           ? wordkmethodVacant.filter((vacant) => vacant.WorkMethod.name.includes(action.payload))
           : action.payload === "remoto"
           ? wordkmethodVacant.filter((vacant) => vacant.WorkMethod.name.includes(action.payload))
-          : state.AuxVacant2;   
+          : state.AuxVacant2;  
       return {
         ...state,
         Vacant: filterPerWordkmethod,
+        filtrosCombinados: filterPerWordkmethod
       };
     case FIND_PER_NAME:
       return {
         ...state,
         Vacant: action.payload,
-      }  
+      }
+    case FILTER_PER_TIME:
+      const timeVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
+      let hoy = new Date();
+      let dia = hoy.getDate();
+      let month = hoy.getMonth() + 1
+      let anios = hoy.getFullYear()
+        dia = ('0' + dia).slice(-2)
+        month = ('0' + month).slice(-2)
+      const filterPerTime = 
+        action.payload === 'Hoy'
+        ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) === `${anios}-${month}-${dia}`)
+        : action.payload === 'Esta semana'
+        ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) > `${anios}-${month}-${dia - 8}`)
+        : action.payload === 'Este mes'
+        ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) > `${anios}-${month - 1}-${dia}`)
+        : state.AuxVacant2     
+      return{
+        ...state,
+        Vacant: filterPerTime
+      }    
 
     //! LOS CASOS POST TAMBIEN SE TRAEN AL REDUCER POR BUENAS PRACTICAS
     case POST_COMPANY:
