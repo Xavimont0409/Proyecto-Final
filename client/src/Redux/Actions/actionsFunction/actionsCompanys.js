@@ -44,7 +44,7 @@ export const postCompany = (payload) => {
         type: POST_COMPANY,
         payload: data,
       })
-        ? alert("creado")
+        ? alert("Usuario creado, se envió una notificación al correo ingresado")
         : data;
     } catch (error) {
       return alert(error.response.data.error);
