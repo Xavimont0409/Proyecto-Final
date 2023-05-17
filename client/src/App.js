@@ -53,7 +53,7 @@ function App() {
           <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
         </Route>
         <Route exact path="/" element={<Landing />}></Route>
-        <Route path="/product" element={<DetailProduct/>}></Route>
+        <Route path="/product/:id" element={<DetailProduct/>}></Route>
         <Route path="/empleos" element={<Empleos/>}></Route>
         <Route path="/iniciarSesion" element={<IniciarSesion />}></Route>
         <Route path="/registro" element={<Registro />}></Route>
