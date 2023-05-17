@@ -6,7 +6,6 @@ const cvRouter = require('./CvRouter');
 const operationRouter = require('./OperationRouter');
 const experienceRouter = require('./ExperienceRouter');
 const getEmailRouter = require('./getEmailRouter')
-const stateRouter = require('./stateRouter')
 const productRouter = require('./productRouter')
 
 

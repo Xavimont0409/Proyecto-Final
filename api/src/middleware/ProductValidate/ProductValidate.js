@@ -1,6 +1,6 @@
 const validateRequiredField = require('../../helpers/requiredFieldsHelper');
 
-const validateVacant = async (req, res, next) => {
+const validateProduct = async (req, res, next) => {
     try {
       const { name, details, price } = req.body;
       validateRequiredField(name , 'Name');
@@ -16,6 +16,6 @@ const validateVacant = async (req, res, next) => {
   };
   
   module.exports = {
-    validateVacant,
+    validateProduct,
   };
   
