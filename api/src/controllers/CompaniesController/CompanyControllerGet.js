@@ -4,7 +4,6 @@ const {
   Workday,
   WorkMethod,
   Seniority,
-  State,
 } = require("../../db");
 
 const getAllCompany = () => {
