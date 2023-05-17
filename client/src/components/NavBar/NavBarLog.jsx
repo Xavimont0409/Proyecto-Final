@@ -11,12 +11,12 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { findPerName } from "../../Redux/Actions/actionsFunction/actionsSearchBar";
-import { useState } from "react";
+import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 
 const NavBarCliente = () => {
   const { logout, isAuthenticated } = useAuth0();
   const dispatch = useDispatch()
-  const [ name, setName ] = useState('')
+  const [ name, setName ] = useLocalStorage('name', '')
 
   const handlerSearchName = (event) =>{
     setName(event.target.value)
@@ -40,6 +40,7 @@ const NavBarCliente = () => {
                 placeholder="Buscar empleo..."
                 className="ms-5"
                 aria-label="Search"
+                value={name}
                 onChange={(event)=>handlerSearchName(event)}
               />
               <Button variant="secondary" className="ms-1" onClick={()=>searchName(name)}>

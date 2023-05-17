@@ -7,7 +7,9 @@ import ButtonGeneral from '../../components/Button/ButtonGeneral';
 import { useDispatch, useSelector } from "react-redux";
 import { postVacant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 import validateFormInputs from './validation';
-import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
+import { useEffect } from 'react';
+import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function FormVacante() {
 
@@ -15,16 +17,30 @@ export default function FormVacante() {
     const dateOnly = today.toISOString().slice(0, 10);
 
     const dispatch = useDispatch();
-    // dispatch(getAllCompanys())
-    // const a = useSelector(state=>state.Company)
-    // console.log(a)
+    const currentUser = useSelector(state=>state.dataEmail[0])
+    console.log(currentUser)
+    const { user, isAuthenticated } = useAuth0();
 
     const [validated, setValidated] = useState(false);
+
+    
+
+    
+
+    useEffect(() => {
+        const handleUserAuthentication = () => {
+            if (isAuthenticated && user) {
+                dispatch(getEmail(user.email));
+            }
+        };
+        handleUserAuthentication();
+    }, [dispatch, isAuthenticated, user]);
+
+
 
     const [newVacant, setNewVacant] = useState({
         title: "",
         description: "",
-        CompanyId: '308e1d59-30f6-4379-866c-b71643a2c5f5',
         WorkdayId: "",
         WorkMethodId: "",
         SeniorityId: "",
@@ -45,11 +61,11 @@ export default function FormVacante() {
             alert('Completa todos los campos')
         } else {
             setValidated(true)
-            dispatch(postVacant(newVacant))
+            dispatch(postVacant({...newVacant,  CompanyId: currentUser.id} ))
             setNewVacant({
                 title: "",
                 description: "",
-                CompanyId: '308e1d59-30f6-4379-866c-b71643a2c5f5',
+                CompanyId: currentUser.id,
                 WorkdayId: "",
                 WorkMethodId: "",
                 SeniorityId: "",
@@ -110,7 +126,7 @@ export default function FormVacante() {
                             <option disabled></option>
                             <option value={1}>Presencial</option>
                             <option value={2} >Hibrido</option>
-                            <option value={2}>Remoto</option>
+                            <option value={3}>Remoto</option>
                         </FormSelect>
                         <Form.Control.Feedback type="invalid">
                             Selecciona una opcion

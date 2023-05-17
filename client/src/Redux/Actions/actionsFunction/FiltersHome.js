@@ -26,7 +26,7 @@ export const filterPerTime = (payload) => {
     payload: payload,
   };
 };
-export const getEmail = async (email) => {
+export const getEmail = (email) => {
   return async function (dispatch) {
     try {
       const json = await axios(`/email?email=${email}`);
