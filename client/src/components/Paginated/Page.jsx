@@ -15,7 +15,7 @@ const Page = ({ usersPerPage, users, paginated }) => {
         paginated(page);
     };
     
-    const maxPagesToShow = 100;
+    const maxPagesToShow = 3;
     
     const renderPageNumbers = () => {
         const firstPageToShow = currentPage <= maxPagesToShow ? 1 : currentPage - maxPagesToShow + 1;

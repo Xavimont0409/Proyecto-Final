@@ -125,4 +125,4 @@ const EmpleoDetail = () => {
     );
 };
 
-export default EmpleoDetail;
+export default EmpleoDetail;
