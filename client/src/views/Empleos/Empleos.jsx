@@ -9,27 +9,20 @@ import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacant
 
 
 const Empleos = () => {
-    const currentCard = useSelector(state => state.Vacant)
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
-
+    const currentCard = useSelector(state => state.Vacant)
     useEffect(()=>{
-        if(currentCard.length === 0){
-            dispatch(getAllVacants())  }         
-
-    },[dispatch, currentCard ])
-
-
+        dispatch(getAllVacants())
+    },[dispatch])
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
     }, []);
-
     if (isLoading) {
         return <Loading />;
     }
-
     return (
         <div className={style.mainContainer}>
             <NavBar></NavBar>
@@ -41,13 +34,11 @@ const Empleos = () => {
 
                     <CardsContainerEmpleo 
                         className={style.cards}
-                        currentCard={currentCard} />
+                        vacants={currentCard} />
 
                 </div>
             </div>
         </div>
     )
 };
-
-
 export default Empleos;
