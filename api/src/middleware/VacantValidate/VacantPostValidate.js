@@ -1,4 +1,4 @@
-const validateRequiredField = require('../../helpers/requiredFieldsHelper');
+const { validateRequiredField } = require('../../helpers/requiredFieldsHelper');
 
 
 const validateVacant = async (req, res, next) => {
