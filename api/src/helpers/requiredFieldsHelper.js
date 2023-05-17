@@ -5,6 +5,6 @@ const validateRequiredField = (field, fieldName) => {
   };
   
   module.exports = {
-    validateRequiredField,
+    validateRequiredField
   };
   
