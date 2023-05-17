@@ -94,7 +94,12 @@ const Filter = () => {
           <button
             className={style.button}
             style={{ borderRadius: "5px" }}
-            onClick={() => dispatch(getAllVacants())}
+            onClick={() => {
+              setExpe("0")
+              setMethod("All")
+              setdate("Filter")
+              return dispatch(getAllVacants())
+            }}
           >
             Limpiar filtros
           </button>
