@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { SiGmail, SiTwitter, SiFacebook } from "react-icons/si";
+import { SiGmail, SiTwitter, SiInstagram } from "react-icons/si";
 
 const Footer = () => (
 <footer>
@@ -13,31 +13,55 @@ const Footer = () => (
             </div>
             <div className={styles.container}>
                 <div className={styles.usefulLinks}>
-                    <div className={styles.footerTitle}>Useful Links</div>
+                    <div className={styles.footerTitle}>Enlaces Útiles</div>
                     <ul>
-                        <li>Courses</li>
-                        <li>Sign In</li>
+                        <li>
+                            <a href="/registro">
+                            Sign In
+                            </a>
+                        </li>
                         <li>About Us</li>
                         <li>Become an Affiliate</li>
                         <li>Advertise with Us</li>
-                        <li>Terms and Conditions</li>
+                        <li>
+                            <a href="/TermsAndConditions">
+                                Terminos y condiciones
+                            </a>
+
+                        </li>
                     </ul>
                 </div>
                 <div className={styles.contact}>
                     <div className={styles.footerTitle}>Contactos</div>
                         <ul>
-                            <li><SiFacebook/></li>
-                            <li><SiGmail/></li>
-                            <li><SiTwitter/></li>
+                            <li>
+                                <a href="https://www.instagram.com/jobportalcompany">
+                                <SiInstagram/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="jobportalxcompany@gmail.com">
+                                <SiGmail/>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/jobportalx">
+                                <SiTwitter/>
+                                </a>
+                            </li>
                         </ul>
                     </div>
              
                 <div className={styles.helpSec}>
                     <div className={styles.footerTitle}>Help</div>
                         <ul>
-                            <li>Help Me</li>
-                            <li>Feedback</li>
-                            <li>Report a Issue / Bug</li>
+                        <li>Help</li>
+                        <li>Feedback</li>
+                            <li>
+                                <a href="jobportalxcompany@gmail.com">
+                                Report a Issue / Bug
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
