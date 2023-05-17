@@ -21,7 +21,7 @@
     margin-left: 18%;
     margin-right: 18%;
     width: 60vw;
-    height: 60vh;
+    height: 80vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -39,7 +39,8 @@
     align-items: center;
     background-color: var(--caribbean-current);
     transition: all 0.3s;
-    text-decoration: none;
+    font-size: 1.5em;
+    color: var(--battleship-gray);
 }
 
 .cardContainer1:hover {
@@ -51,8 +52,8 @@
     box-shadow: -20px 22px 5px 0px rgba(0, 0, 0, 0.41);
     -webkit-box-shadow: -20px 22px 5px 0px rgba(0, 0, 0, 0.41);
     -moz-box-shadow: -20px 22px 5px 0px rgba(0, 0, 0, 0.41);
-    color: var(--sub-white);
-    text-decoration: none;
+    color:var(--sub-white);
+    font-size: 2em;
 }
 
 .cardContainer2 {
@@ -67,6 +68,8 @@
     align-items: center;
     background-color: var(--caribbean-current);
     transition: all 0.3s;
+    font-size: 1.5em;
+    color: var(--battleship-gray);
 
 }
 
@@ -79,7 +82,7 @@
     -webkit-box-shadow: 20px 22px 5px 0px rgba(0, 0, 0, 0.41);
     -moz-box-shadow: 20px 22px 5px 0px rgba(0, 0, 0, 0.41);
     color: var(--sub-white);
-    text-decoration: none;
+    font-size: 2em;
 }
 
 .words {
