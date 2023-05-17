@@ -9,19 +9,31 @@ import {
 } from "../../Redux/Actions/actionsFunction/FiltersHome";
 import { useDispatch } from "react-redux";
 import { getAllVacants } from "../../Redux/Actions/actionsFunction/axtionsVacants";
+import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 
-const Filter = ({ setFecha, fecha }) => {
+const Filter = ({ setAlgo }) => {
   const dispatch = useDispatch();
+  const [ expe, setExpe ] = useLocalStorage('expe', '0')
+  const [ date, setdate ] = useLocalStorage('time', '')
+  const [ method, setMethod ] = useLocalStorage('method', '')
+
 
   const handlerFilterSeniority = (event) => {
+    setExpe(event.target.value)
     dispatch(filterPerSeniority(event.target.value));
+    setAlgo()
   };
+
   const handlerFilterWordkMethod = (event) => {
+    setMethod(event.target.value)
     dispatch(filterPerWordkmethod(event.target.value));
+    setAlgo()
   };
+
   const handlerFilterTime = (event) => {
-    setFecha(event.target.value)
+    setdate(event.target.value)
     dispatch(filterPerTime(event.target.value));
+    setAlgo()
   };
 
   return (
@@ -39,12 +51,13 @@ const Filter = ({ setFecha, fecha }) => {
           <select
             name="FilterByFecha"
             className={style.select}
+            value={date}
             onChange={(event) => handlerFilterTime(event)}
           >
-            <option value="Filter">Todos</option>
-            <option value={fecha ? fecha : "Hoy"}>Hoy</option>
-            <option value="Semana">Esta semana</option>
-            <option value="Mes">Este mes</option>
+            <option value={date === "Filter" ? date : "Filter" }>Todos</option>
+            <option value={date === "Hoy" ? date : "Hoy"}>Hoy</option>
+            <option value={date === "Semana" ? date : "Semana"}>Esta semana</option>
+            <option value={date === "Mes" ? date : "Mes"}>Este mes</option>
           </select>
         </div>
 
@@ -53,13 +66,14 @@ const Filter = ({ setFecha, fecha }) => {
           <select
             name="FilerByArea"
             className={style.select}
+            value={expe}
             onChange={(event) => handlerFilterSeniority(event)}
           >
-            <option value="0">Todos</option>
-            <option value="senior">Senior</option>
-            <option value="semiSenior">Semi-Senior</option>
-            <option value="junior">Junior</option>
-            <option value="trainee">Trainee</option>
+            <option value={expe === "0" ? expe : "0"}>Todos</option>
+            <option value={expe ==="senior" ? expe : "senior"}>Senior</option>
+            <option value={expe === "semiSenior" ? expe: "semiSenior"}>Semi-Senior</option>
+            <option value={expe ==="junior" ? expe : "junior"}>Junior</option>
+            <option value={expe ==="trainee" ? expe : "trainee"}>Trainee</option>
           </select>
         </div>
 
@@ -68,12 +82,13 @@ const Filter = ({ setFecha, fecha }) => {
           <select
             name="FilterByModalidad"
             className={style.select}
+            value={method}
             onChange={(event) => handlerFilterWordkMethod(event)}
           >
-            <option value="All">Todos</option>
-            <option value="presencial">Presencial</option>
-            <option value="hibrido">Hibrido</option>
-            <option value="remoto">Remoto</option>
+            <option value={method === "All" ? method : "All"}>Todos</option>
+            <option value={method === "presencial" ? method : "presencial"}>Presencial</option>
+            <option value={method === "hibrido" ? method : "hibrido"}>Hibrido</option>
+            <option value={method === "remoto" ? method : "remoto"}>Remoto</option>
           </select>
         </div>
         <div className={style.emptyFilters}>
