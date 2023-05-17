@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ isAllowed, children, redirectTo="/iniciarSesion"}) => {
-    if( !isAllowed ) {
+const ProtectedRoute = ({ isAllowed, redirectTo="/iniciarSesion"}) => {
+    if( isAllowed ) {
         return <Navigate to={redirectTo}/>
     }
 
-    return children ? children : <Outlet/>
+    return <Outlet/>
 }
 
 export default ProtectedRoute;

@@ -32,7 +32,6 @@ function App() {
       { user ? (<button onClick={logout}>Logout</button>) : (<button onClick={login}>Login</button>)}
       <Routes>
         <Route index element={<Landing />} />
-        <Route path="/" element={<Landing/>} />
         <Route exact path="/" element={<Landing />}></Route>
         <Route path="/empleos" element={<Empleos/>}></Route>
         <Route path="/iniciarSesion" element={<IniciarSesion />}></Route>
@@ -40,6 +39,8 @@ function App() {
         <Route path="/registroini-empresa" element={<FormRegisterEmpresa />}></Route>
         <Route path="/registro-usuario" element={<FormRegistroUsuario />}></Route>
         <Route path="*" element={<Error404 />} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
+        <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
         <Route element={<ProtectedRoute isAllowed={!!user}/>}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path="/empresa" element={<LandingEmpresa />}></Route>
