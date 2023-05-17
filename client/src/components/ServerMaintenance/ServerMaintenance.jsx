@@ -7,7 +7,7 @@ const ServerMaintenance = () => {
   return (
     <div className={styles.container}>
       <div className={styles.leftSection}>
-        <h1>Servidor en Mantenimiento</h1>
+        <h1>Servidor en Desarrollo</h1>
         <div className={styles.socialIcons}>
           <SiGmail />
           <SiTwitter />

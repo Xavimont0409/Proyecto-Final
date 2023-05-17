@@ -28,7 +28,7 @@ const initialState = {
   AuxVacant2: [],
   VacantDetail: [],
 
-  dataEmail: [],
+  dataEmail: {},
 
   filtrosCombinados: [],
 };
@@ -114,7 +114,7 @@ const Reducer = (state = initialState, action) => {
         Vacant: action.payload,
       }
     case FILTER_PER_TIME:
-      const timeVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
+      const timeVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros
       let hoy = new Date();
       let dia = hoy.getDate();
       let month = hoy.getMonth() + 1
@@ -128,7 +128,7 @@ const Reducer = (state = initialState, action) => {
         ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) > `${anios}-${month}-${dia - 8}`)
         : action.payload === 'Este mes'
         ? timeVacant.filter((vacant)=> vacant.createdAt.slice(0,10) > `${anios}-${month - 1}-${dia}`)
-        : state.AuxVacant2     
+        : state.AuxVacant2   
       return{
         ...state,
         Vacant: filterPerTime,

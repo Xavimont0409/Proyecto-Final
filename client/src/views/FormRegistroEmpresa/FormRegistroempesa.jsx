@@ -3,34 +3,45 @@ import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-b
 import NavBar from "../../components/NavBar/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCompanys, postCompany } from '../../Redux/Actions/actionsFunction/actionsCompanys';
+import { postCompany } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 import validateFormInputs from '../FormVacante/validation';
 import Loading from '../../components/Loading/Loading';
 import style from './FormRegistroEmpesa.module.css';
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import countries from "countries-list";
+import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 const FormRegisterEmpresa = () => {
 
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { user } = useAuth0();
 
   const [validated, setValidated] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
 
   const [newEmpresa, setNewEmpresa] = useState({
-    name: "",
     business_name: "",
-    ruc: "",
     cuit: "",
     country: "",
-    email: "",
-    password: ""
+    registed: true,
+    name: '',
+    email: user.email,
   });
+
+
+
+
+  useEffect(() => {
+    const mail = user.email
+    dispatch(getEmail(mail))
+  }, [])
+
 
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
@@ -51,13 +62,12 @@ const FormRegisterEmpresa = () => {
       setValidated(true)
       dispatch(postCompany(newEmpresa))
       setNewEmpresa({
-        name: "",
         business_name: "",
-        ruc:"",
         cuit: "",
         country: "",
-        email: "",
-        password: ""
+        registed: true,
+        name: '',
+        email: user.email,
       })
       setValidated(false)
     }
@@ -66,7 +76,7 @@ const FormRegisterEmpresa = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   if (isLoading) {
@@ -85,12 +95,14 @@ const FormRegisterEmpresa = () => {
 
           <h2 style={{ 'margin': '20px' }}>Registro Empresa</h2>
           <Form validated={!validated} className={style.Form} onSubmit={handleSubmit} >
+
+
             <Row>
-              <Form.Group as={Col} md='6' className="mb-3"  >
+              <FormGroup as={Col} md='6' >
                 <FormLabel>Nombre</FormLabel>
                 <FormControl
                   name='name'
-                  placeholder='Nombre de la empresa'
+                  placeholder='Nombre del representante'
                   value={newEmpresa.name}
                   type="text"
                   onChange={handleInputChange}
@@ -98,13 +110,13 @@ const FormRegisterEmpresa = () => {
                 <Form.Control.Feedback type="invalid">
                   Rellena este campo
                 </Form.Control.Feedback>
-              </Form.Group>
+              </FormGroup>
 
-              <Form.Group as={Col} md='6' className="mb-3"  >
+              <FormGroup as={Col} md='6' >
                 <FormLabel>Nombre comercial</FormLabel>
                 <FormControl
                   name='business_name'
-                  placeholder='Nonmbre Comercial de la empresa'
+                  placeholder='Nonmbre de la empresa'
                   value={newEmpresa.business_name}
                   type="text"
                   onChange={handleInputChange}
@@ -112,23 +124,10 @@ const FormRegisterEmpresa = () => {
                 <Form.Control.Feedback type="invalid">
                   Rellena este campo
                 </Form.Control.Feedback>
-              </Form.Group>
+              </FormGroup>
             </Row>
 
             <Row>
-              <Form.Group as={Col} md='6' className="mb-3"  >
-                <FormLabel>RUC</FormLabel>
-                <FormControl
-                  name='ruc'
-                  placeholder='RUC'
-                  value={newEmpresa.ruc}
-                  type="text"
-                  onChange={handleInputChange}
-                  required />
-                <Form.Control.Feedback type="invalid">
-                  Rellena este campo
-                </Form.Control.Feedback>
-              </Form.Group>
 
               <Form.Group as={Col} md='6' className="mb-3"  >
                 <FormLabel>CUIT</FormLabel>
@@ -143,27 +142,29 @@ const FormRegisterEmpresa = () => {
                   Rellena este campo
                 </Form.Control.Feedback>
               </Form.Group>
+
+
+              <FormGroup as={Col} md="6" >
+                <FormLabel>País</FormLabel>
+                <FormSelect
+                  name='country'
+                  value={newEmpresa.country}
+                  onChange={handleInputChange}
+                  required>
+                  <option disabled></option>
+                  {countriesNames.map((count) => <option id={count.emoji} value={count.name}>{count.name}</option>)}
+                </FormSelect>
+                <Form.Control.Feedback type="invalid">
+                  Seleciona una opcion.
+                </Form.Control.Feedback>
+              </FormGroup>
+
+
             </Row>
 
 
-            <FormGroup as={Col} md="6" >
-            <FormLabel>País</FormLabel>
-            <FormSelect
-              name='country'
-              value={newEmpresa.country}
-              onChange={handleInputChange}
-              required>
-                <option disabled></option>
-               {countriesNames.map((count) => <option id={count.emoji} value={count.name}>{count.name}</option>)}
-            </FormSelect>
-            <Form.Control.Feedback type="invalid">
-              Seleciona una opcion.
-            </Form.Control.Feedback>
-          </FormGroup>
-
-
             <Row>
-              <Form.Group as={Col} md='6' className="mb-3"  >
+              <FormGroup as={Col} md='10'  >
                 <FormLabel>Email</FormLabel>
                 <FormControl
                   name='email'
@@ -175,34 +176,20 @@ const FormRegisterEmpresa = () => {
                 <Form.Control.Feedback type="invalid">
                   Rellena este campo
                 </Form.Control.Feedback>
-              </Form.Group>
+              </FormGroup>
 
 
-              <Form.Group as={Col} md='6' className="mb-3"  >
-                <FormLabel>Password</FormLabel>
-                <FormControl
-                  name='password'
-                  placeholder='Password'
-                  value={newEmpresa.password}
-                  type="text"
-                  onChange={handleInputChange}
-                  required />
-                <Form.Control.Feedback type="invalid">
-                  Rellena este campo
-                </Form.Control.Feedback>
-              </Form.Group>
             </Row>
 
           </Form>
 
-          <Link to="/empresa">
-            <ButtonGeneral
-              textButton='Registrarse'
-              type='submit'
-              //handlerClick={handleSubmit}
-              >
-            </ButtonGeneral>
-          </Link>
+
+          <ButtonGeneral
+            textButton='Registrarse'
+            type='submit'
+            handlerClick={handleSubmit}
+          >
+          </ButtonGeneral>
         </div>
 
 
@@ -212,10 +199,10 @@ const FormRegisterEmpresa = () => {
             type='submit'
             handlerClick={() => navigate('/registro-usuario')}>
           </ButtonGeneral>
-          <h5 style={{marginBottom:'-15px', marginTop: '15px'}}>¿Ya estas registrado?</h5>
+          <h5 style={{ marginBottom: '-15px', marginTop: '15px' }}>¿Ya estas registrado?</h5>
           <ButtonGeneral
             textButton='Inicia sesion'
-            handlerClick={()=>navigate('/iniciarSesion')}>
+            handlerClick={() => navigate('/iniciarSesion')}>
           </ButtonGeneral>
         </div>
 
