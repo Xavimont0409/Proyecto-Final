@@ -11,7 +11,7 @@ const ProtectedRoute = ({ isAllowed, redirectTo="/iniciarSesion"}) => {
 export default ProtectedRoute;
 
 
-
+//
 // const ProtectedRoute = ({ isAllowed, children, redirectTo="/iniciarSesion", currentUser}) => {
 //     if( !isAllowed ) {
 //         return <Navigate to={redirectTo}/>
