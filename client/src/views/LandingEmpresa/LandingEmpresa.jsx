@@ -15,15 +15,18 @@ const LandingEmpresa = () => {
 
             <div className={style.planes}>
                 <CardPlan 
-                tittle='Plan Basico'
-                text ='Publica 1 vacante por semana con duracion de una semana'
-                price = '3'/>
-                <CardPlan tittle='Plan Intermedio'
-                text ='Publica 3 vacante por semana con duración de 2 semanas'
-                price = '7'/>
+                tittle='Plan Básico'
+                text ='Publica vacantes semanales con un límite de tiempo'
+                price = '30'
+                id = '1'/>
+                <CardPlan tittle='Plan Destacado'
+                text ='Publica más vacante por semana con duración mayor'
+                price = '50'
+                id = '2'/>
                 <CardPlan tittle='Plan Premium'
-                text ='Publica vacantes ilimitadas y no vencen'
-                price = '10'/>
+                text ='Publica vacantes ilimitadas y sin fecha límite'
+                price = '90'
+                id = '3'/>
 
             </div>
 
