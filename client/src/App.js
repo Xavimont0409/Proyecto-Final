@@ -1,15 +1,29 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Route} from 'react-router-dom';
-import { Routes } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios'
 import Error404 from './components/Error404/Error404';
+import { useState } from 'react';
+
 
 axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
+
+  const [ user, setUser ] = useState(null) 
+
+  const login = () => {
+    setUser({
+      id: 1,
+      name: "John"
+    })
+  }
+
+  const logout = () => setUser(null)
+
+
   return (
     <div className="App">
       <Routes>
