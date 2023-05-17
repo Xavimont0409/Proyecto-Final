@@ -1,7 +1,11 @@
 import { Button } from 'react-bootstrap';
-import style from './CardPlan.module.css'
+import style from './CardPlan.module.css';
+import { useNavigate } from 'react-router-dom';
 
-const CardPlan = ({ tittle, text, price }) => {
+const CardPlan = ({id, tittle, text, price }) => {
+
+    const navigator = useNavigate();
+
 
     return (
         <div className={style.MainContainer}>
@@ -9,8 +13,14 @@ const CardPlan = ({ tittle, text, price }) => {
             <h2>$ {price}</h2>
             <p>{text}</p>
 
-            <Button style={{ width: '100px' }}>Adquirir</Button>
-
+            {
+                id === '1' 
+                ?<Button onClick={()=>navigator(`/product/${id= 1}`)} style={{width:'200px'}}>Adquirir</Button> 
+                : (id === '2' 
+                ? <Button onClick={()=>navigator(`/product/${id = 2}`)} style={{width:'200px'}}>Adquirir</Button>
+                : <Button onClick={()=>navigator(`/product/${id = 3}`)} style={{width:'200px'}}>Adquirir</Button>)
+                
+            }
         </div>
     )
 }
