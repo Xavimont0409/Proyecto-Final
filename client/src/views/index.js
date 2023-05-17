@@ -13,8 +13,10 @@ import MiPerfil from "./MiPerfil/MiPerfil";
 import Applicant from "./Applicant/Applicant";
 import ProfilesCompany from "./Profiles Company/Profiles-Company";
 import FormRegisterEmpresa from "./FormRegistroEmpresa/FormRegistroempesa";
+import DetailProduct from "./DetailProduct/DetailProduct"
 
 export {
+    DetailProduct,
     EmpleoDetail, 
     Empleos, 
     Landing, 
