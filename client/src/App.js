@@ -1,10 +1,12 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes} from 'react-router-dom';
 import {EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import axios from 'axios'
+import axios from 'axios';
 import Error404 from './components/Error404/Error404';
+import TermsAndConditions from './views/TermsAndConditions/TermsAndConditions';
+import ServerMaintenance from './components/ServerMaintenance/ServerMaintenance';
 import { useState } from 'react';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
@@ -46,6 +48,8 @@ function App() {
         <Route path="/registro" element={<Registro />}></Route>
         <Route path="/registroini-empresa" element={<FormRegisterEmpresa />}></Route>
         <Route path="/registro-usuario" element={<FormRegistroUsuario />}></Route>
+        <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
+        <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </div>

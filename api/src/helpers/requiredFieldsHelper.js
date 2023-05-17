@@ -1,6 +1,6 @@
 const validateRequiredField = (field, fieldName) => {
     if (!field) {
-      throw new Error(`${fieldName} is required`);
+      throw new Error(`${fieldName} es requerido, no puede estar vacio`);
     }
   };
   
