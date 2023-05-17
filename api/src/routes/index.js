@@ -19,7 +19,6 @@ router.use("/createCv", cvRouter);
 router.use("/operation", operationRouter);
 router.use("/experience", experienceRouter);
 router.use("/email", getEmailRouter)
-router.use("/state", stateRouter);
 router.use("/product", productRouter);
 
 module.exports = router;
