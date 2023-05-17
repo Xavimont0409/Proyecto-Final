@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { getAllVacants } from "../../Redux/Actions/actionsFunction/axtionsVacants";
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 
-const Filter = ({ setAlgo }) => {
+const Filter = () => {
   const dispatch = useDispatch();
   const [ expe, setExpe ] = useLocalStorage('expe', '0')
   const [ date, setdate ] = useLocalStorage('time', '')
@@ -21,19 +21,18 @@ const Filter = ({ setAlgo }) => {
   const handlerFilterSeniority = (event) => {
     setExpe(event.target.value)
     dispatch(filterPerSeniority(event.target.value));
-    setAlgo()
+
   };
 
   const handlerFilterWordkMethod = (event) => {
     setMethod(event.target.value)
     dispatch(filterPerWordkmethod(event.target.value));
-    setAlgo()
   };
 
   const handlerFilterTime = (event) => {
     setdate(event.target.value)
     dispatch(filterPerTime(event.target.value));
-    setAlgo()
+
   };
 
   return (
