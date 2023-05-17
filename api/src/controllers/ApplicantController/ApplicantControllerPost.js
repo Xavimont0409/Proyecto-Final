@@ -24,7 +24,7 @@ const postApplicant = async( name, lastName, email, cellphone, registed ) =>{
     <span> En JobPortallX, nos esforzamos por brindarte una experiencia fácil y efectiva en 
     tu búsqueda de empleo. Nuestro equipo está constantemente actualizando la plataforma y
     agregando nuevas características para mejorar tus posibilidades de encontrar el trabajo
-    ideal.
+    ideal.</span>
     <br/>
     <br/>
    <span>¡Te deseamos mucho éxito en tu búsqueda laboral!</span>
