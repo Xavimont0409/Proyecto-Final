@@ -28,7 +28,7 @@ const initialState = {
   AuxVacant2: [],
   VacantDetail: [],
 
-  dataEmail: [],
+  dataEmail: {},
 
   filtrosCombinados: [],
 };

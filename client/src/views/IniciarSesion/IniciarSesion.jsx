@@ -8,6 +8,8 @@ import Loading from '../../components/Loading/Loading';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import style from "./IniciarSesion.module.css"
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 const IniciarSesion = () => {
 
@@ -109,6 +111,8 @@ const IniciarSesion = () => {
         </div>
       </div>
     )
-}
+
+};
+
 
 export default IniciarSesion
