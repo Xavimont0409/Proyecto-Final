@@ -1,7 +1,7 @@
-const { Products } = require('../../db');
+const { Product } = require('../../db');
 
 const productById = async (id) => {
-    return await Products.findByPk(id);
+    return await Product.findByPk(id);
 }
 
 module.exports = { productById };
