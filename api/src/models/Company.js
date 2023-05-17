@@ -36,6 +36,10 @@ module.exports = (sequelize) => {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
+        profile:{
+            type:DataTypes.STRING,
+            defaultValue: "Company"
+        }
     }, {
         timestamps: false
     })

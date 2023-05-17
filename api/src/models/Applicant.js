@@ -31,6 +31,10 @@ module.exports = (sequelize) => {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         },
+        profile:{
+            type: DataTypes.STRING,
+            defaultValue: "Applicant"
+        }
     }, {
         timestamps: false
     })
