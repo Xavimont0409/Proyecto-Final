@@ -3,7 +3,7 @@ import {
 } from "../actions-types/action-types";
 import axios from "axios";
 
-export const getAllProduct = (id) => {
+const getAllProduct = (id) => {
   return async function (dispatch) {
     try {
       const json = await axios(`/product/${id}`);
@@ -18,3 +18,4 @@ export const getAllProduct = (id) => {
   };
 };
 
+export default getAllProduct

@@ -1,16 +1,26 @@
 import style from './DetailProduct.module.css';
 import NavBar from '../../components/NavBar/NavBarLog';
 import Footer from '../../components/Footer/Footer';
-import { useSelector } from 'react-redux';
+import getAllProduct from '../../Redux/Actions/actionsFunction/actionsProduct'
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import {useParams} from 'react-router-dom';
+import Loading from '../../components/Loading/Loading'
 
 
 const DetailProduct = () => {
-
+const id = useParams();
+const dispatch = useDispatch();
   const product = useSelector((state) => state.product)
-
+useEffect(() => {
+dispatch( getAllProduct(id))
+},[])
 return (
+  <div>
+     {
+    product.name ?
     <div>
-        <NavBar className={style.nav}/>
+        <NavBar/>
          <div className={style.container}>
         
         <div className={style.box}>
@@ -24,7 +34,12 @@ return (
            </div>
            <Footer/>
     </div>
-    </div>
+    </div> :
+<Loading/>
+  }
+  </div>
+ 
+    
    
 )
 }
