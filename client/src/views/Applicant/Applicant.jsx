@@ -1,16 +1,20 @@
 import NavBar from '../../components/NavBar/NavBar';
 import React from 'react';
-import styles from "./Applicant.module.css"
+import styles from "./Applicant.module.css";
 import { Carousel, Card, Button } from 'react-bootstrap';
-import img1 from "../../assets/img/empleo1.jpg"
-import img2 from "../../assets/img/empleo2.jpg"
-import img3 from "../../assets/img/empleo3.jpg"
-import Footer from "../../components/Footer/Footer"
+import img1 from "../../assets/img/empleo1.jpg";
+import img2 from "../../assets/img/empleo2.jpg";
+import img3 from "../../assets/img/empleo3.jpg";
+import Footer from "../../components/Footer/Footer";
 
 export default function Applicant() {
   return (
     <>
+    
       <NavBar />
+
+      <div className={styles.container}>
+
       <Carousel>
         {/* Slide 1 */}
         <Carousel.Item>
@@ -50,6 +54,7 @@ export default function Applicant() {
         </Carousel.Item>
       </Carousel>
 
+      
         <Button variant="secondary" className="mt-3">
           Ver más
         </Button>
@@ -113,6 +118,10 @@ export default function Applicant() {
         <Button variant="secondary" className="mt-3">
           Todas las vacantes
         </Button>
+        <br />
+        <br />
+
+      </div>
       </div>
       <Footer/>
     </>

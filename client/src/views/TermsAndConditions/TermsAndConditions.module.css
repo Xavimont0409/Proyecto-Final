@@ -1,0 +1,91 @@
+.container {
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: linear-gradient(-40deg, var(--mustard), var(--avocado), white, var(--caribbean-current));
+    background-size: 400% 400%;
+    animation: container 10s ease infinite;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+ol {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.acceptWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.acceptCheckbox {
+    margin-right: 10px;
+}
+
+.acceptLabel {
+    font-size: 14px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.acceptButton {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.acceptButton:hover {
+    background-color: #004c99;
+}
+
+@keyframes container {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+
+}
