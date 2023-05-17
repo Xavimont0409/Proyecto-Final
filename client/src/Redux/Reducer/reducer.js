@@ -131,7 +131,8 @@ const Reducer = (state = initialState, action) => {
         : state.AuxVacant2     
       return{
         ...state,
-        Vacant: filterPerTime
+        Vacant: filterPerTime,
+        filtrosCombinados: filterPerTime
       }    
 
     //! LOS CASOS POST TAMBIEN SE TRAEN AL REDUCER POR BUENAS PRACTICAS
