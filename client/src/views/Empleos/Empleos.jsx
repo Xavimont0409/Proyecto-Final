@@ -48,7 +48,7 @@ const Empleos = () => {
 
                     <CardsContainerEmpleo 
                         className={style.cards}
-                        vacants={currentCard2.length === 0 ? currentCard : currentCard2} />
+                        currentCard={currentCard2.length === 0 ? currentCard : currentCard2} />
 
                 </div>
             </div>
