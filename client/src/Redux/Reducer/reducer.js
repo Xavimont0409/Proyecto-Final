@@ -1,5 +1,6 @@
 import {
   GET_ALL_COMPANYS,
+  GET_ALL_PRODUCT,
   GET_ALL_USERS,
   GET_ALL_VACANTS,
   GET_COMPANY_DETAIL,
@@ -19,6 +20,8 @@ import {
 const initialState = {
   Company: [],
   CompanyDetail: [],
+
+  Product: [],
 
   Users: [],
   UserDetail: {},
@@ -45,6 +48,11 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         CompanyDetail: action.payload,
+      };
+    case GET_ALL_PRODUCT:
+      return {
+        ...state,
+        Product: action.payload,
       };
     case GET_ALL_USERS:
       return {
