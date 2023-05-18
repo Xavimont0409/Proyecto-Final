@@ -1,4 +1,4 @@
-const { Star, Company } = require("../../db");
+const { Star } = require("../../db");
 
 const postStars = async(stars, CompanyId, text) => {
   const newStar = await Star.create({ stars, CompanyId, text })
