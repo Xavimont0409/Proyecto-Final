@@ -4,6 +4,7 @@ const {
   Workday,
   WorkMethod,
   Seniority,
+  Star
 } = require("../../db");
 
 const getAllCompany = () => {
@@ -27,6 +28,10 @@ const getAllCompany = () => {
           },
         ],
       },
+      {
+        model: Star,
+        attributes: ["stars","text"]
+      }
     ],
   });
 };
@@ -53,6 +58,10 @@ const getCompanyId = (id) => {
           },
         ],
       },
+      {
+        model: Star,
+        attributes: ["stars", "text"]
+      }
     ],
   });
 };
