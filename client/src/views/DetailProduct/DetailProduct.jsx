@@ -6,15 +6,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import {useParams} from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+
 
 
 const DetailProduct = () => {
-const id = useParams(); 
+  initMercadoPago(process.env.REACT_APP_PUBLIC_KEY);
+const { id } = useParams(); 
 const dispatch = useDispatch();
-  const product = useSelector((state) => state.product)
 useEffect(() => {
-dispatch( getAllProduct(id))
-},[])
+  dispatch( getAllProduct(id))
+  },[id, dispatch]);
+
+ const product = useSelector((state) => state.Product);
+
 return (
   <div>
      {
@@ -29,6 +34,8 @@ return (
                <h2 className={style.nameCard}>Name: {product.name} </h2>
                <p className={style.infoCard}>Detalle:  {product.details} </p>
                <p className={style.infoCard}>Price: {product.price} </p>
+
+               <Wallet initialization={{ preferenceId: '<PREFERENCE_ID>' }} />
              </div>
              </div>
            </div>
