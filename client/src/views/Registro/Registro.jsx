@@ -26,6 +26,7 @@ const Registro = () => {
             }
         };
         handleUserAuthentication();
+        console.log(currentUser)
     }, [dispatch, isAuthenticated, user]);
 
 
