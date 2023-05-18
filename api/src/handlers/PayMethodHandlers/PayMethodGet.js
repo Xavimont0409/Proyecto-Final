@@ -1,5 +1,5 @@
 const errorUser = require("../../helpers/errors");
-const {getPayMethods} = require('../../controllers/PaymentMethodsController/PaymentMethodsControllerGet')
+const { getPayMethods } = require('../../controllers/PaymentMethodsController/PaymentMethodsControllerGet')
 
 
 const payMethodHandllerGet = async (req, res) => {

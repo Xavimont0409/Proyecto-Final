@@ -21,7 +21,7 @@ router.use("/operation", operationRouter);
 router.use("/experience", experienceRouter);
 router.use("/email", getEmailRouter)
 router.use("/product", productRouter);
-router.use("/stars", starsRouter)
-router.use("/payMethod", routerPayMethod)
+router.use("/stars", starsRouter);
+router.use("/payMethod", routerPayMethod);
 
 module.exports = router;
