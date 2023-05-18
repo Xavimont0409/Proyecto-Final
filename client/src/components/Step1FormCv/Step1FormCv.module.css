@@ -13,3 +13,18 @@
   font-size: large;
 }
   
+
+.dropzone {
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: aqua;
+}
+
+.dropzone.active {
+  background-color: #f9f9f9;
+}

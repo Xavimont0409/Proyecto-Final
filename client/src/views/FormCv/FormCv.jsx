@@ -1,18 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBarLog"
 import Step1FormCv from "../../components/Step1FormCv/Step1FormCv";
 import Step2FormCv from "../../components/Step2FormCv/Step2FormCv";
 import Step3FormCv from "../../components/Step3FormCv/Step3FormCv";
 import style from "./FormCv.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 
 
 function FormCv() {
+
+
+  const dispatch = useDispatch();
+  const { user, isAuthenticated } = useAuth0();
+  const currentUser = useSelector((state) => state.dataEmail[0])
+
+  useEffect(() => {
+      const handleUserAuthentication = () => {
+          if (isAuthenticated && user) {
+              dispatch(getEmail(user.email));
+          }
+      };
+      handleUserAuthentication();
+  }, [dispatch, isAuthenticated, user]);
+
+  
+  console.log(currentUser)
+
+
+
 
   const [infoPersonal, setInfoPersonal] = useState({
     dni: '',
     telefono: '',
     linkedin: '',
-    foto: '',
+    foto: currentUser?.cellphone || '',
     skills: '',
     descripcion: ''
   });
@@ -68,6 +91,7 @@ function FormCv() {
               infoPersonal={infoPersonal}
               setInfoPersonal={setInfoPersonal}
               handlerChange={handlerChange}
+              currentUser={currentUser}
               nextStep={nextStep} />
           }
 
