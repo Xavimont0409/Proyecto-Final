@@ -29,7 +29,7 @@ const EmpleoDetail = () => {
       
       const empleoSelected = useSelector(state => state.VacantDetail[0]);
   
-      console.log(empleoSelected);
+      console.log(empleoSelected.Workday.name);
       
       const [isLoading, setIsLoading] = useState(true);
       
