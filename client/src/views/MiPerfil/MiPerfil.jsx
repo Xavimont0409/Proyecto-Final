@@ -17,7 +17,6 @@ const MiPerfil = () => {
     const { user, isAuthenticated, isLoading, loginWithRedirect, logout   } = useAuth0();
     
 
-
     useEffect(() => {
         const handleUserAuthentication = () => {
             if (isAuthenticated && user) {
@@ -33,15 +32,10 @@ const MiPerfil = () => {
     if (isAuthenticated) {
         
 
-    if(isLoading) {
-        console.log(currentUser)
-        return <div><Loading/></div>
-
-
-
-    }
-
-
+        if(isLoading) {
+            console.log(currentUser)
+            return <div><Loading/></div>
+        }
 
     // { if(currentUser.business_name){
 
