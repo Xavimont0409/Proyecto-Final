@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, isAllowed }) => {
     const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
     const [redirectTo, setRedirectTo] = useState(null);
 
@@ -32,6 +32,10 @@ const ProtectedRoute = ({ children }) => {
 
     if (redirectTo) {
         return <Navigate to={redirectTo} />;
+    }
+
+    if (!isAllowed) {
+        return <Navigate to={'/'}/>
     }
 
     return children ? children : <Outlet />;
