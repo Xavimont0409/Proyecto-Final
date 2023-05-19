@@ -2,24 +2,33 @@ import styles from './Profiles.module.css';
 import NavBar from '../../components/NavBar/NavBar';
 import Page from '../../components/Paginated/Page';
 import CardProfile from '../../components/CardsProfiles/CardsProfiles';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
+import { getAllUsers } from '../../Redux/Actions/actionsFunction/actionsUsers';
 
 const Profiles = () => {
-    const users = useSelector(state => state.Users);
+    const usersRaw = useSelector(state => state.Users);
+    const users = usersRaw.filter((user) => user.Cv !== null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [usersPerPage, setusersPerPage] = useState(4);
+    const [usersPerPage, setusersPerPage] = useState(6);
     const indexOfLastCharacter = currentPage * usersPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - usersPerPage;
     const [isLoading, setIsLoading] = useState(true);
+    const dispatch = useDispatch();
 
+
+    useEffect(()=> {
+        dispatch(getAllUsers())
+    },[dispatch, getAllUsers]);
+    
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
         }, 2000);
     }, []);
-
+    
+    console.log(users);
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber)
     };
@@ -32,6 +41,8 @@ const Profiles = () => {
             setCurrentPage(newPage);
     }
     }, [currentUsers, users, usersPerPage]);
+
+    console.log(currentUsers);
 
     return (
         <div className={styles.container}>
@@ -52,16 +63,17 @@ const Profiles = () => {
                                         <CardProfile
                                         key={user.id}
                                         id={user.id}
-                                        image={user.image}
+                                        photo={user.Cv.photo}
                                         name={user.name}
-                                        profession={user.profession}
-                                        description={user.description}
-                                        skills={user.skills}
-                                        dni={user.dni}
-                                        phone={user.phone}
+                                        lastName={user.lastName}
+                                        profession={user.Cv.profession}
+                                        personal_description={user.Cv.personal_description}
+                                        skills={user.Cv.skill}
+                                        dni={user.Cv.dni}
+                                        phone={user.cellphone}
                                         email={user.email}
-                                        seniority={user.seniority}
-                                        linkedin={user.linkedin}
+                                        // seniority={user.seniority}
+                                        linkedin={user.Cv.linkedin}
                                         />
                                     </div>
                                 )
