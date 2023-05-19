@@ -1,8 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
-const ProtectedRoute = ({ isAllowed, redirectTo="/iniciarSesion"}) => {
-    if( isAllowed ) {
-        return <Navigate to={redirectTo}/>
+const ProtectedRoute = ({ isAuthenticated}) => {
+
+    const { loginWithRedirect } = useAuth0();
+
+    if( !isAuthenticated ) {
+        return <Navigate to={loginWithRedirect()}/>
     }
 
     return <Outlet/>
