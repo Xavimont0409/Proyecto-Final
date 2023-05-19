@@ -1,31 +1,27 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import Loading from "../Loading/Loading";
 
-const ProtectedRoute = ({ isAuthenticated}) => {
+const ProtectedRoute = ({ children }) => {
+    const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
 
-    const { loginWithRedirect } = useAuth0();
-
-    if( !isAuthenticated ) {
-        return <Navigate to={loginWithRedirect()}/>
+    if (isLoading) {
+        return <Loading />;
     }
 
-    return <Outlet/>
-}
+    if (!isAuthenticated) {
+        localStorage.setItem("redirectTo", window.location.pathname);
+        loginWithRedirect();
+        return null;
+    }
+
+    const storedRedirectTo = localStorage.getItem("redirectTo");
+    if (storedRedirectTo) {
+        localStorage.removeItem("redirectTo");
+        return <Navigate to={storedRedirectTo} />;
+    }
+
+    return children ? children : <Outlet />;
+};
 
 export default ProtectedRoute;
-
-
-//
-// const ProtectedRoute = ({ isAllowed, children, redirectTo="/iniciarSesion", currentUser}) => {
-//     if( !isAllowed ) {
-//         return <Navigate to={redirectTo}/>
-//     }
-
-//     if(currentUser.perfil === 'empresa'){
-//      return children ? children : <Outlet/>
-//     }
-
-//     return children ? children : <Outlet/>
-// }
-
-// <Route element={<ProtectedRoute isAllowed={!!user} currentUser={currentUser}/>}>

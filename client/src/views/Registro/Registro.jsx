@@ -20,10 +20,15 @@ const Registro = () => {
             if (isAuthenticated && user) {
                 dispatch(getEmail(user.email));
             }
+            
+            if (currentUser) {
+                currentUser.business_name ? navigate('/empresa') : navigate('/applicant');
+            }
         };
+
         handleUserAuthentication();
         console.log(currentUser);
-    }, [currentUser, dispatch, isAuthenticated, user]);
+    }, [currentUser, dispatch, isAuthenticated, navigate, user]);
 
     useEffect(() => {
         setTimeout(() => {

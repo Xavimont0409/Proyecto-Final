@@ -6,13 +6,21 @@ import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions} from '.
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect } from 'react';
 
 
 axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
 
-  const { isAuthenticated } = useAuth0()
+  const { isAuthenticated } = useAuth0();
+
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("redirectTo");
+    };
+  }, []);
+
 
   return (
     <div className="App">
