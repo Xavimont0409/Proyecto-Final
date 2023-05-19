@@ -2,6 +2,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import React from 'react';
 import styles from "./Applicant.module.css";
 import { Carousel, Card, Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import img1 from "../../assets/img/empleo1.jpg";
 import img2 from "../../assets/img/empleo2.jpg";
 import img3 from "../../assets/img/empleo3.jpg";
@@ -57,7 +58,9 @@ export default function Applicant() {
 
       
         <Button variant="secondary" className="mt-3">
-          Ver más
+          <Link to="/empleos" style={{ color: "white", textDecoration: "none" }}>
+            Ver más
+          </Link>
         </Button>
 
       <div className={styles.SuggestedJob}>
@@ -121,7 +124,9 @@ export default function Applicant() {
                 id = '4'/>
 
         <Button variant="secondary" className="mt-3">
-          Todas las vacantes
+          <Link to="/empleos" style={{ color: "white", textDecoration: "none" }}>
+            Todas las vacantes
+          </Link>
         </Button>
         <br />
         <br />
