@@ -6,6 +6,7 @@ import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions} from '.
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useSelector } from 'react-redux'
 import { useEffect } from 'react';
 
 
@@ -22,7 +23,7 @@ function App() {
   }, []);
 
 
-  return (
+  return (  
     <div className="App">
       <Routes>
         <Route index element={<Landing />} />
