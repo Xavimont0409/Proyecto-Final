@@ -58,7 +58,7 @@ export const relationVacantApplicant = async(payload) =>{
     const json = await axios.post("/job/relation", payload)
     const data = json.data;
     return dispatch({
-      type: POST_VACANT_APPLICANT,
+      type: POST_RELATION_VACANT_APPLICANT,
       payload: data,
     })
   } catch (error) {
