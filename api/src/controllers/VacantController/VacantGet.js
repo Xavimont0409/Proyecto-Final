@@ -1,10 +1,10 @@
-const { Vacant, Workday, WorkMethod, Seniority } = require("../../db");
+const { Vacant, Workday, WorkMethod, Seniority, Applicant } = require("../../db");
 const { Op } = require('sequelize')
 
 const getAllVacant = () => {
   return Vacant.findAll({
     attributes:["id","title", "description","createdAt","CompanyId"],
-    include: [
+    include: [{model:Applicant},
       {
         model: Workday,
         attributes: ["name"],
@@ -26,7 +26,7 @@ const getVacantByName = async (name) => {
   const findVacant = await Vacant.findAll({
     where: { title: {[Op.iLike]: `%${nameUpper}%` } },
     attributes:["id","title", "description","createdAt","CompanyId"],
-    include: [
+    include: [{model:Applicant},
       {
         model: Workday,
         attributes: ["name"],

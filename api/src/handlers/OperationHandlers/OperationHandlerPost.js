@@ -1,24 +1,28 @@
 const errorUser = require('../../helpers/errors');
-const mercadopago = require ('../../utils/mercadopago')
+const mercadopago = require ('../../utils/mercadopago');
+const { createOperation } = require('../../controllers/OperationController/OperationControllerPost');
 
 const operationHandlerPost = async(req, res) =>{
-    const { id } = req.params;
-    const { idUser, cost, PayMethodId, detail } = req.body;
+   
+    const {cost, detail, CompanyId, PayMethodId, ApplicantId} = req.body;
     try {
-        const response = await createOperation(id, idUser, cost, PayMethodId, detail)
-
-        const preferenceId = mercadopago.preferences.create({
+        
+        const response = await createOperation(cost, detail, CompanyId, PayMethodId, ApplicantId)
+        const preferenceId = await mercadopago.preferences.create({
             items: [
                 {
                     title: response.detail,
-                    unit_price: response.cost,
+                    unit_price: parseInt(response.cost),
                     quantity: 1,
                 }
-            ]
-        }).then((preference) => {
-            return {preferenceId: preference.id}
-        });
-
+            ],
+            "back_urls": {
+                "success": "http://localhost:3000/success",
+                "failure": "http://www.failure.com",
+                "pending": "http://www.pending.com"
+            },
+            "auto_return": "approved",
+        })
         res.status(200).json({response, preferenceId});
     } catch (error) {
         errorUser(error,res);

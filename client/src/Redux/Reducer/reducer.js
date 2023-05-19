@@ -1,5 +1,6 @@
 import {
   GET_ALL_COMPANYS,
+  GET_ALL_PAYMETHOD,
   GET_ALL_PRODUCT,
   GET_ALL_USERS,
   GET_ALL_VACANTS,
@@ -8,13 +9,17 @@ import {
   GET_VACANT_DETAIL,
   POST_COMPANY,
   POST_CV,
+  POST_OPERATION_DETAIL,
   POST_USER,
   POST_VACANT,
+  POST_OPERATION,
+  POST_RELATION_VACANT_APPLICANT,
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
   FIND_PER_NAME,
   FILTER_PER_TIME,
-  GET_EMAIL
+  GET_EMAIL,
+  CLEAN_DETAIL
 } from "../Actions/actions-types/action-types";
 
 const initialState = {
@@ -22,6 +27,9 @@ const initialState = {
   CompanyDetail: [],
 
   Product: {},
+
+  Information: {},
+  PreferenceId:"",
 
   Users: [],
   UserDetail: {},
@@ -33,12 +41,19 @@ const initialState = {
 
   dataEmail: {},
 
+  PayMethods: [],
+
   filtrosCombinados: [],
 };
 
 const Reducer = (state = initialState, action) => {
   let auxFiltros = state.filtrosCombinados
   switch (action.type) {
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        Product: {}
+      }
     case GET_ALL_COMPANYS:
       return {
         ...state,
@@ -49,6 +64,11 @@ const Reducer = (state = initialState, action) => {
         ...state,
         CompanyDetail: action.payload,
       };
+      case GET_ALL_PAYMETHOD:
+        return {
+          ...state,
+          PayMethods: action.payload,
+        };
     case GET_ALL_PRODUCT:
       return {
         ...state,
@@ -148,6 +168,10 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case POST_OPERATION_DETAIL:
+      return {
+        ...state, Information: action.payload,
+      }
     case POST_USER:
       return {
         ...state,
@@ -160,7 +184,15 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
       };
-
+    case POST_OPERATION:
+      return {
+        ...state,
+        PreferenceId: action.payload
+      };
+    case POST_RELATION_VACANT_APPLICANT:
+      return{
+        ...state,
+      }  
     default:
       return {
         ...state,

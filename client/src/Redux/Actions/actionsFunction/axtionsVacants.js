@@ -2,6 +2,7 @@ import {
   GET_ALL_VACANTS,
   GET_VACANT_DETAIL,
   POST_VACANT,
+  POST_RELATION_VACANT_APPLICANT
 } from "../actions-types/action-types";
 import axios from "axios";
 
@@ -51,3 +52,19 @@ export const postVacant = (payload) => {
     }
   };
 };
+
+export const relationVacantApplicant = async(payload) =>{
+  return async function(dispatch){
+
+    try {
+      const json = await axios.post("/job/relation", payload)
+      const data = json.data;
+      return dispatch({
+        type: POST_RELATION_VACANT_APPLICANT,
+        payload: data,
+      })
+    } catch (error) {
+      return alert(error.response.data.error);
+    }
+  }
+}

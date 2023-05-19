@@ -35,7 +35,7 @@ const empleos = useSelector(state => state.Vacant);
     
          <div>
                   {empleosRelSelected.map((empleo)=> {
-                    return  <Card className="text-center">
+                    return  <Card className="text-center" key={empleo.id}>
                     <Card.Header>Vacante sugerida</Card.Header>
                     <Card.Body>
                       <Card.Title>{empleo.title}</Card.Title>
