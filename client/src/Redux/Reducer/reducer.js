@@ -10,6 +10,7 @@ import {
   POST_CV,
   POST_USER,
   POST_VACANT,
+  POST_VACANT_APPLICANT,
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
   FIND_PER_NAME,
@@ -160,6 +161,10 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case POST_VACANT_APPLICANT:
+      return{
+        ...state,
+      }  
 
     default:
       return {
