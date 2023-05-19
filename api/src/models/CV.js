@@ -57,7 +57,7 @@ module.exports = (sequelize) => {
           },
           finish_date: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
           }
     });
 };
