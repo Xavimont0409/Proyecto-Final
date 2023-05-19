@@ -5,6 +5,6 @@ const { operationHandlerPost } = require('../handlers/OperationHandlers/Operatio
 const operationRouter = Router();
 
 operationRouter.get('/', operationHandlerGet);
-operationRouter.post('/:id', operationHandlerPost);
+operationRouter.post('/', operationHandlerPost);
 
 module.exports= operationRouter;

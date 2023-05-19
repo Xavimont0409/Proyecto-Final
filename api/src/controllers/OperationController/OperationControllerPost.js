@@ -1,8 +1,8 @@
-const { Operation } = require('../../db')
+const { Operation, PayMethod } = require('../../db')
 
 
-const createOperation = async (id, idUser, cost, PayMethodId, detail) => {
-    const newOperation = await Operation.create(id, idUser, cost, PayMethodId, detail);
+const createOperation = async (cost, detail, CompanyId, PayMethodId, ApplicantId) => {
+    const newOperation = await Operation.create({cost, detail, CompanyId, PayMethodId, ApplicantId});
     return newOperation;
 }
 
