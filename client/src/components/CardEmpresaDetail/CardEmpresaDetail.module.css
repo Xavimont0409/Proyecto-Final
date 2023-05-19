@@ -21,3 +21,18 @@
     color: var(--oxford-blue);
     margin-right: 3%;
 }
+
+.commentButton {
+    background-color: var(--caribbean-current);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.commentButton:hover {
+    background-color: var(--battleship-gray);
+}
