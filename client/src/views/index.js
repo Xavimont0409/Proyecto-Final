@@ -13,7 +13,9 @@ import MiPerfil from "./MiPerfil/MiPerfil";
 import Applicant from "./Applicant/Applicant";
 import ProfilesCompany from "./Profiles Company/Profiles-Company";
 import FormRegisterEmpresa from "./FormRegistroEmpresa/FormRegistroempesa";
-import DetailProduct from "./DetailProduct/DetailProduct"
+import DetailProduct from "./DetailProduct/DetailProduct";
+import Operation from "./Operation/Operation";
+import Success from "./Success/Success";
 
 export {
     DetailProduct,
@@ -31,5 +33,7 @@ export {
     MiPerfil,
     Applicant,
     ProfilesCompany,
-    FormRegisterEmpresa
+    FormRegisterEmpresa,
+    Operation,
+    Success
 }

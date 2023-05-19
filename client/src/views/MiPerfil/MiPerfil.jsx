@@ -32,15 +32,10 @@ const MiPerfil = () => {
     if (isAuthenticated) {
         
 
-    if(isLoading) {
-        console.log(currentUser)
-        return <div><Loading/></div>
-
-
-
-    }
-
-
+        if(isLoading) {
+            console.log(currentUser)
+            return <div><Loading/></div>
+        }
 
     // { if(currentUser.business_name){
 
