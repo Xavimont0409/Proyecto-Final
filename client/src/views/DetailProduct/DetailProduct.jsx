@@ -5,16 +5,21 @@ import getAllProduct from '../../Redux/Actions/actionsFunction/actionsProduct'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import {useParams} from 'react-router-dom';
-import Loading from '../../components/Loading/Loading'
+import Loading from '../../components/Loading/Loading';
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+
 
 
 const DetailProduct = () => {
-const id = useParams();
+  initMercadoPago(process.env.REACT_APP_PUBLIC_KEY);
+const { id } = useParams(); 
 const dispatch = useDispatch();
-  const product = useSelector((state) => state.product)
 useEffect(() => {
-dispatch( getAllProduct(id))
-},[])
+  dispatch( getAllProduct(id))
+  },[id, dispatch]);
+
+ const product = useSelector((state) => state.Product);
+
 return (
   <div>
      {
@@ -26,9 +31,11 @@ return (
         <div className={style.box}>
               <div className={style.containerDetail}>
              <div className={style.divContenedorInfo}>
-               <h2 className={style.nameCard}>Name: {product.name}</h2>
-               <p className={style.infoCard}>Detalle: {product.details}</p>
-               <p className={style.infoCard}>Price: {product.price}</p>
+               <h2 className={style.nameCard}>Name: {product.name} </h2>
+               <p className={style.infoCard}>Detalle:  {product.details} </p>
+               <p className={style.infoCard}>Price: {product.price} </p>
+
+               <Wallet initialization={{ preferenceId: '<PREFERENCE_ID>' }} />
              </div>
              </div>
            </div>
@@ -36,12 +43,35 @@ return (
     </div>
     </div> :
 <Loading/>
-  }
+  } 
   </div>
  
     
    
 )
 }
+
+
+
+/* {
+    product.name ?
+    <div>
+        <NavBar/>
+         <div className={style.container}>
+        
+        <div className={style.box}>
+              <div className={style.containerDetail}>
+             <div className={style.divContenedorInfo}>
+               <h2 className={style.nameCard}>Name: {product.name} </h2>
+               <p className={style.infoCard}>Detalle:  {product.details} </p>
+               <p className={style.infoCard}>Price: {product.price} </p>
+             </div>
+             </div>
+           </div>
+           <Footer/>
+    </div>
+    </div> :
+<Loading/>
+  } */
 
 export default DetailProduct;

@@ -15,10 +15,10 @@ const CardPlan = ({id, tittle, text, price }) => {
 
             {
                 id === '1' 
-                ?<Button onClick={()=>navigator(`/product/${id= 1}`)} style={{width:'200px'}}>Adquirir</Button> 
+                ?<Button onClick={()=>navigator(`/product/1`)} style={{width:'200px'}}>Más Info</Button> 
                 : (id === '2' 
-                ? <Button onClick={()=>navigator(`/product/${id = 2}`)} style={{width:'200px'}}>Adquirir</Button>
-                : <Button onClick={()=>navigator(`/product/${id = 3}`)} style={{width:'200px'}}>Adquirir</Button>)
+                ? <Button onClick={()=>navigator(`/product/2`)} style={{width:'200px'}}>Más Info</Button>
+                : <Button onClick={()=>navigator(`/product/3`)} style={{width:'200px'}}>Más Info</Button>)
                 
             }
         </div>

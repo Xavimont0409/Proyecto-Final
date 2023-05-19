@@ -9,27 +9,17 @@ import TermsAndConditions from './views/TermsAndConditions/TermsAndConditions';
 import ServerMaintenance from './components/ServerMaintenance/ServerMaintenance';
 import { useState } from 'react';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
 
-  const [user, setUser] = useState(null);
-
-  const login = () => {
-    setUser({
-      id: 1,
-      name: "John"
-    })
-  }
-
-  const logout = () => setUser(null)
-
+  const { isAuthenticated } = useAuth0()
 
   return (
     <div className="App">
-      { user ? (<button onClick={logout}>Logout</button>) : (<button onClick={login}>Login</button>)}
       <Routes>
         <Route index element={<Landing />} />
         <Route exact path="/" element={<Landing />}></Route>
@@ -41,7 +31,8 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route element={<ProtectedRoute isAllowed={!!user}/>}>
+        <Route path="/product/:id" element={<DetailProduct/>}></Route>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path="/empresa" element={<LandingEmpresa />}></Route>
           <Route path="/registro-cv" element={<FormCv />}></Route>
@@ -52,16 +43,6 @@ function App() {
           <Route path='/profiles-company' element={<ProfilesCompany/>} />
           <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
         </Route>
-        <Route exact path="/" element={<Landing />}></Route>
-        <Route path="/product/:id" element={<DetailProduct/>}></Route>
-        <Route path="/empleos" element={<Empleos/>}></Route>
-        <Route path="/iniciarSesion" element={<IniciarSesion />}></Route>
-        <Route path="/registro" element={<Registro />}></Route>
-        <Route path="/registroini-empresa" element={<FormRegisterEmpresa />}></Route>
-        <Route path="/registro-usuario" element={<FormRegistroUsuario />}></Route>
-        <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
-        <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route path="*" element={<Error404 />} />
       </Routes>
     </div>
   );

@@ -21,7 +21,7 @@ const initialState = {
   Company: [],
   CompanyDetail: [],
 
-  Product: [],
+  Product: {},
 
   Users: [],
   UserDetail: {},
