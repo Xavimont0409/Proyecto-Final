@@ -28,6 +28,7 @@ module.exports = (sequelize) => {
         },
         end_date: {
             type: DataTypes.STRING,
+            allowNull: true
 
         },
         still_working: {

@@ -203,11 +203,12 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
           <FormLabel className="custom-label">Skills</FormLabel>
           <Form.Control
             name="skill"
-            placeholder="Escribe los skills que consideres"
+            placeholder="Escribe tus skills (max. 60 caracteres)"
             value={cv.skill}
             onChange={(event) => handlerChange(event, cv, setCv)}
             as="textarea"
             rows={3}
+            maxLength={60}
             required />
           <Form.Control.Feedback type="invalid">
             Rellena este campo
@@ -218,10 +219,11 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
           <FormLabel>Descripción</FormLabel>
           <Form.Control
             name="personal_description"
-            placeholder="Escribe una breve descripcion de tu perfil profesional"
+            placeholder="Escribe una breve descripcion de tu perfil profesional (max. 200 caracteres)"
             value={cv.personal_description}
             onChange={(event) => handlerChange(event, cv, setCv)}
             as="textarea" rows={5}
+            maxLength={200}
             required />
           <Form.Control.Feedback type="invalid">
             Rellena este campo
