@@ -6,7 +6,7 @@ import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 import { Form, FormLabel, FormSelect, FormGroup, Row, Col, FormCheck, } from "react-bootstrap";
 import countries from "countries-list";
 import ButtonGeneral from "../../components/Button/ButtonGeneral";
-import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
+import { getUserDetail, postExpe } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import validation from "./validation";
 import style from "./FormregistroExperiencia.module.css"
 
@@ -66,7 +66,7 @@ const FormRegistroExperincia = () => {
             alert('Completa todos los campos')
         } else {
             setValidated(true);
-            dispatch()
+            dispatch(postExpe(experiencia))
         }
     };
 
