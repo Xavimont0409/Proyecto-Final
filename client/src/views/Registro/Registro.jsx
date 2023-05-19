@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"
-import ButtonGeneral from "../../components/Button/ButtonGeneral";
-import NavBarLog from "../../components/NavBar/NavBarLog";
-import style from "./Registro.module.css";
-import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
+import ButtonGeneral from "../../components/Button/ButtonGeneral";
+import NavBarLog from "../../components/NavBar/NavBarLog";
 import Loading from "../../components/Loading/Loading";
+import style from "./Registro.module.css";
+import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 
 const Registro = () => {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const currentUser = useSelector(state => state.dataEmail[0])
-
-    const [isLoading, setIsLoading] = useState(true)
-
+    const currentUser = useSelector(state => state.dataEmail[0]);
+    const [isLoading, setIsLoading] = useState(true);
     const { user, isAuthenticated } = useAuth0();
 
     useEffect(() => {
@@ -26,9 +22,8 @@ const Registro = () => {
             }
         };
         handleUserAuthentication();
-        console.log(currentUser)
-    }, [dispatch, isAuthenticated, user]);
-
+        console.log(currentUser);
+    }, [currentUser, dispatch, isAuthenticated, user]);
 
     useEffect(() => {
         setTimeout(() => {
@@ -37,13 +32,12 @@ const Registro = () => {
     }, []);
 
     if (isLoading) {
-        console.log(currentUser)
+        console.log(currentUser);
         return <Loading />;
-    };
+    }
 
     if (currentUser) {
-
-        currentUser.business_name ? navigate('/empresa') : navigate('/applicant')
+        currentUser.business_name ? navigate('/empresa') : navigate('/applicant');
     } else {
         return (
             <>
@@ -70,9 +64,8 @@ const Registro = () => {
                     </div>
                 </div>
             </>
-        )
-
+        );
     }
-}
+};
 
 export default Registro;

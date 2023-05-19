@@ -2,13 +2,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes} from 'react-router-dom';
 import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario} from './views';
+import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions} from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
-import Error404 from './components/Error404/Error404';
-import TermsAndConditions from './views/TermsAndConditions/TermsAndConditions';
-import ServerMaintenance from './components/ServerMaintenance/ServerMaintenance';
-import { useState } from 'react';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector } from 'react-redux'
 
