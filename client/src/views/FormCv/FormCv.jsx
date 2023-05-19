@@ -11,55 +11,74 @@ import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 
 function FormCv() {
 
+  const { user, isAuthenticated } = useAuth0();
 
   const dispatch = useDispatch();
-  const { user, isAuthenticated } = useAuth0();
-  const currentUser = useSelector((state) => state.dataEmail[0])
 
   useEffect(() => {
-      const handleUserAuthentication = () => {
-          if (isAuthenticated && user) {
-              dispatch(getEmail(user.email));
-          }
-      };
-      handleUserAuthentication();
-  }, [dispatch, isAuthenticated, user]);
+    if (user && user.email) {
+      dispatch(getEmail(user.email));
+    }
+  }, [dispatch, user]);
 
-  
-  console.log(currentUser)
+  const currentUser = useSelector((state) => state.dataEmail[0])
 
-
-
-
-  const [infoPersonal, setInfoPersonal] = useState({
+  const [cv, setCv]= useState({
     dni: '',
-    telefono: '',
+    phone: '',
+    address:'',
+    photo: '',
     linkedin: '',
-    foto: currentUser?.cellphone || '',
-    skills: '',
-    descripcion: ''
-  });
-  const [formacion, setFormacion] = useState({
-    titulo: '',
-    pais: '',
-    tipo_estudio: '',
-    area_estudio: '',
-    institucion: '',
-    estado: '',
-    fecha_inicio: '',
-    fecha_fin: ''
+    skill: '',
+    personal_description: '',
+    profession: '',
+    country: '',
+    educational_institution: '',
+    state: '',
+    initial_date: '',
+    finish_date: '',
+    ApplicantId: ''
+  })
 
-  });
+
+
+  useEffect(() => {
+    if (currentUser) {
+      setCv(prevCv => ({
+        ...prevCv,
+        phone: currentUser.cellphone,
+        ApplicantId: currentUser.id
+      }));
+    }
+  }, [currentUser]);
+
+
+
   const [experiencia, setExperiencia] = useState({
-    empresa: '',
-    puesto: '',
-    nivel_experiencia: '',
-    ubicacion: '',
-    fecha_inicio: '',
-    fecha_fin: '',
-    actualmente: false
-
+    company: '',
+    charge: '',
+    experience_level: '',
+    location: '',
+    start_date: '',
+    end_date: '',
+    still_working: false,
+    // CvId:currentUser.Cv?.id
   });
+
+
+
+  // useEffect(() => {
+  //   const handleUserAuthentication = async () => {
+  //         if (isAuthenticated && user) {
+  //            await dispatch(getEmail(user.email));
+  //         }
+  //     };
+  //     handleUserAuthentication();
+  // }, [currentUser, dispatch, isAuthenticated, user]);
+
+
+
+
   const [step, setStep] = useState(1);
 
   const nextStep = () => {
@@ -88,17 +107,17 @@ function FormCv() {
         <div style={{ flex: 1 }}>
           {step === 1 &&
             <Step1FormCv
-              infoPersonal={infoPersonal}
-              setInfoPersonal={setInfoPersonal}
-              handlerChange={handlerChange}
-              currentUser={currentUser}
-              nextStep={nextStep} />
+            cv={cv}
+            setCv={setCv}
+            handlerChange={handlerChange}
+            currentUser={currentUser}
+            nextStep={nextStep} />
           }
 
           {step === 2 &&
             <Step2FormCv
-              formacion={formacion}
-              setFormacion={setFormacion}
+              cv={cv}
+              setCv={setCv}
               handlerChange={handlerChange}
               previousStep={previousStep}
               nextStep={nextStep} />
@@ -106,10 +125,8 @@ function FormCv() {
 
           {step === 3 &&
             <Step3FormCv
-              infoPersonal={infoPersonal}
-              setInfoPersonal={setInfoPersonal}
-              formacion={formacion}
-              setFormacion={setFormacion}
+              cv={cv}
+              setCv={setCv}
               experiencia={experiencia}
               setExperiencia={setExperiencia}
               handlerChange={handlerChange}

@@ -57,6 +57,9 @@ const NavBarCliente = () => {
                 <NavDropdown.Item href="/registro-cv">
                   Curriculum vitae
                 </NavDropdown.Item>
+                <NavDropdown.Item href="/registro-experiencia">
+                  Agregar experiencia
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   onClick={() => logout({ returnTo: window.location.origin })}

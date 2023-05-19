@@ -26,8 +26,9 @@ const Registro = () => {
             }
         };
         handleUserAuthentication();
+        console.log(user);
         console.log(currentUser)
-    }, [dispatch, isAuthenticated, user]);
+    }, [currentUser, dispatch, isAuthenticated, user]);
 
 
     useEffect(() => {

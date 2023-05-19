@@ -1,9 +1,8 @@
-import { Form, Row, Col, FormGroup, FormLabel, FormControl, FormFile } from "react-bootstrap";
+import { Form, Row, Col, FormGroup, FormLabel, FormControl} from "react-bootstrap";
 import style from "./Step1FormCv.module.css"
 import ButtonGeneral from "../Button/ButtonGeneral";
-import validateFormInputs from "../../views/FormVacante/validation";
+import validation from "./validation";
 import Loading from "../Loading/Loading";
-import { ImageUploader } from 'cloudinary-react';
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import { Cloudinary } from "cloudinary-core";
@@ -11,31 +10,26 @@ import { Cloudinary } from "cloudinary-core";
 const cloudinary = new Cloudinary({ cloud_name: "portaljobx" });
 
 
-
-function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, currentUser }) {
+function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 
 
   const [validated, setValidated] = useState(false);
-  const [selectedImage, setSelectedImage] = useState('');
+  const [image, setImage] = useState(null);
 
-  
-  
+
   const handleNext = (event) => {
     event.preventDefault();
-    if(!validateFormInputs(infoPersonal)){
+    console.log(cv)
+    if (!validation(cv)) {
       alert('Completa todos los campos')
-    }else{
+    } else {
+      if (cv.photo === '') alert('Debes elegir una foto')
+      console.log(cv)
       setValidated(true)
       nextStep()
     }
   };
 
-
-
-
-
-
-  const [image, setImage] = useState(null);
 
   const handleDrop = async (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -48,7 +42,8 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, c
     reader.readAsDataURL(file);
   };
 
-  const handleUpload = async () => {
+  const handleUpload = async (event) => {
+    event.preventDefault()
     try {
       const response = await fetch(image);
       const data = await response.blob();
@@ -67,22 +62,19 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, c
 
       const uploadData = await uploadResponse.json();
       console.log(uploadData);
-
-      // Realiza las acciones necesarias con la respuesta de Cloudinary aquí
+      setCv({...cv, photo:uploadData.secure_url})
+      alert('Imagen cargada correctamente')
+      setImage(null)
 
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleRemove = () => {
+  const handleRemove = (event) => {
+    event.preventDefault()
     setImage(null);
   };
-
-
-
-
-
 
 
 
@@ -109,8 +101,8 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, c
             <Form.Control
               name="dni"
               placeholder="dni"
-              value={infoPersonal.dni}
-              onChange={(event) => handlerChange(event, infoPersonal, setInfoPersonal)}
+              value={cv.dni}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               type="number"
               required />
             <Form.Control.Feedback type="invalid">
@@ -121,10 +113,10 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, c
           <FormGroup as={Col} md="6" >
             <FormLabel>Número de celular</FormLabel>
             <Form.Control
-              name="telefono"
+              name="phone"
               placeholder="Número de celular"
-              value={currentUser.cellphone}
-              onChange={(event) => handlerChange(event, infoPersonal, setInfoPersonal)}
+              value={cv.phone}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               type="number"
               required />
             <Form.Control.Feedback type="invalid">
@@ -136,61 +128,84 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, c
 
 
 
+
+
         <Row className="mb-3" >
+
+          <FormGroup as={Col} md="6" >
+            <FormLabel>Dirección</FormLabel>
+            <FormControl
+              name="address"
+              placeholder="Dirección"
+              value={cv.address}
+              onChange={(event) => handlerChange(event, cv, setCv)}
+              type="text"
+              required />
+            <Form.Control.Feedback type="invalid">
+              Rellena este campo
+            </Form.Control.Feedback>
+          </FormGroup>
+
 
           <FormGroup as={Col} md="6" >
             <FormLabel>LinkedIn o sitio web</FormLabel>
             <FormControl
               name="linkedin"
               placeholder="LinkedIn o sitio web"
-              value={infoPersonal.linkedin}
-              onChange={(event) => handlerChange(event, infoPersonal, setInfoPersonal)}
+              value={cv.linkedin}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               type="text"
               required />
-
             <Form.Control.Feedback type="invalid">
               Rellena este campo
             </Form.Control.Feedback>
           </FormGroup>
 
-        
+        </Row>
 
 
 
 
 
+        <Row>
+  <FormGroup md="6"className="mb-3" >
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <FormLabel style={{ marginRight: '10px' }}>Foto</FormLabel>
 
-          <FormGroup as={Col} md="6" >
-            <FormLabel>Foto</FormLabel>
+      <div className={!image ? style.dropzone : 'none'}>
+        <Dropzone onDrop={handleDrop}>
+          {({ getRootProps, getInputProps }) => (
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
 
-            <Dropzone onDrop={handleDrop}>
-              {({ getRootProps, getInputProps }) => (
-                <div {...getRootProps()}>
-                  <input {...getInputProps()} />
+              {!image ? <p>Selecciona o arrastra una imagen</p> : <></>}
+            </div>
+          )}
+        </Dropzone>
+      </div>
 
-                  < p>
-                    Seleccionar imagen
-                  </p>
-
-                </div>
-              )}
-            </Dropzone>
       {image && (
         <div>
-          <img src={image} alt="Imagen cargada" />
-          <button style={{'marginRight':'10px'}} onClick={handleRemove}>Eliminar</button>
-          <button onClick={handleUpload}>Confirmar</button>
+          <img className={style.image} src={image} alt="Imagen cargada" />
+          <button style={{ margin: '10px' }} onClick={(event)=>handleRemove(event)}>
+            Eliminar
+          </button>
+          <button onClick={(event)=>handleUpload(event)}>Confirmar</button>
         </div>
       )}
-         </FormGroup>
-        </Row>
+    </div>
+  </FormGroup>
+</Row>
+
+
+
         <FormGroup as={Col} md="12" >
           <FormLabel className="custom-label">Skills</FormLabel>
           <Form.Control
-            name="skills"
+            name="skill"
             placeholder="Escribe los skills que consideres"
-            value={infoPersonal.skills}
-            onChange={(event) => handlerChange(event, infoPersonal, setInfoPersonal)}
+            value={cv.skill}
+            onChange={(event) => handlerChange(event, cv, setCv)}
             as="textarea"
             rows={3}
             required />
@@ -202,10 +217,10 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, c
         <FormGroup as={Col} md="12" >
           <FormLabel>Descripción</FormLabel>
           <Form.Control
-            name="descripcion"
+            name="personal_description"
             placeholder="Escribe una breve descripcion de tu perfil profesional"
-            value={infoPersonal.descripcion}
-            onChange={(event) => handlerChange(event, infoPersonal, setInfoPersonal)}
+            value={cv.personal_description}
+            onChange={(event) => handlerChange(event, cv, setCv)}
             as="textarea" rows={5}
             required />
           <Form.Control.Feedback type="invalid">
@@ -217,7 +232,7 @@ function Step1FormCv({ infoPersonal, setInfoPersonal, handlerChange, nextStep, c
       <FormGroup as={Col} md="6" className="mb-3 ">
         <ButtonGeneral
           textButton="Siguiente"
-          handlerClick={handleNext}
+          handlerClick={(event)=>handleNext(event)}
         />
       </FormGroup>
 
