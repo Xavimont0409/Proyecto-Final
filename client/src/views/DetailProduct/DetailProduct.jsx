@@ -24,7 +24,7 @@ const navigate = useNavigate();
  const currentUser = useSelector((state) => state.dataEmail[0])
  const product = useSelector((state) => state.Product);
  const payMethods = useSelector((state) => state.PayMethods);
-
+ 
 
 useEffect(() => {
  
@@ -47,18 +47,24 @@ useEffect(() => {
   CompanyId: currentUser?.id,
   PayMethodId: 0,
   details: product?.details,
+  name: currentUser.name,
+  email: currentUser.email,
+  PayMethod: "",
  })
 
 const handleChangeSelect = (event) => {
   const value = event.target.value;
-  setForm({ cost: product?.price,
+  setForm({ 
+    cost: product?.price,
     detail: product?.name,
     CompanyId: currentUser?.id,
     PayMethodId: value,
     details: product?.details,
+    name: currentUser.name,
+    email: currentUser.email,
+    PayMethod: payMethods.name,
     })
 }
-console.log(product)
 
 const handleSubmit = () => {
   if(form.detail){
