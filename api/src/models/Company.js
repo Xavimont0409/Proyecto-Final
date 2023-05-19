@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
         },
         profile:{
             type:DataTypes.STRING,
-            defaultValue: ["Company"]
+            defaultValue: "Company"
         }
     }, {
         timestamps: false
