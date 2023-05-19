@@ -54,14 +54,17 @@ export const postVacant = (payload) => {
 };
 
 export const relationVacantApplicant = async(payload) =>{
-  try {
-    const json = await axios.post("/job/relation", payload)
-    const data = json.data;
-    return dispatch({
-      type: POST_RELATION_VACANT_APPLICANT,
-      payload: data,
-    })
-  } catch (error) {
-    return alert(error.response.data.error);
+  return async function(dispatch){
+
+    try {
+      const json = await axios.post("/job/relation", payload)
+      const data = json.data;
+      return dispatch({
+        type: POST_RELATION_VACANT_APPLICANT,
+        payload: data,
+      })
+    } catch (error) {
+      return alert(error.response.data.error);
+    }
   }
 }
