@@ -2,34 +2,28 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes} from 'react-router-dom';
 import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success} from './views';
+import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions} from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
-import Error404 from './components/Error404/Error404';
-import TermsAndConditions from './views/TermsAndConditions/TermsAndConditions';
-import ServerMaintenance from './components/ServerMaintenance/ServerMaintenance';
-import { useState } from 'react';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect } from 'react';
 
 
 axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const { isAuthenticated } = useAuth0();
 
-  const login = () => {
-    setUser({
-      id: 1,
-      name: "John"
-    })
-  }
-
-  const logout = () => setUser(null)
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("redirectTo");
+    };
+  }, []);
 
 
   return (
     <div className="App">
-      { user ? (<button onClick={logout}>Logout</button>) : (<button onClick={login}>Login</button>)}
       <Routes>
         <Route index element={<Landing />} />
         <Route exact path="/" element={<Landing />}></Route>
@@ -41,7 +35,8 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route element={<ProtectedRoute isAllowed={!!user}/>}>
+        <Route path="/product/:id" element={<DetailProduct/>}></Route>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path="/empresa" element={<LandingEmpresa />}></Route>
           <Route path="/registro-cv" element={<FormCv />}></Route>
@@ -52,6 +47,7 @@ function App() {
           <Route path='/profiles-company' element={<ProfilesCompany/>} />
           <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
         </Route>
+
         <Route exact path="/" element={<Landing />}></Route>
         <Route path="/product/:id" element={<DetailProduct/>}></Route>
         <Route path="/success" element={<Success/>}></Route>
@@ -64,6 +60,7 @@ function App() {
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
         <Route path="*" element={<Error404 />} />
+
       </Routes>
     </div>
   );

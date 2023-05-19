@@ -13,6 +13,7 @@ import {
   POST_USER,
   POST_VACANT,
   POST_OPERATION,
+  POST_RELATION_VACANT_APPLICANT,
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
   FIND_PER_NAME,
@@ -188,6 +189,10 @@ const Reducer = (state = initialState, action) => {
         ...state,
         PreferenceId: action.payload
       };
+    case POST_RELATION_VACANT_APPLICANT:
+      return{
+        ...state,
+      }  
     default:
       return {
         ...state,
