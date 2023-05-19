@@ -1,7 +1,7 @@
 const errorUser = require('../../helpers/errors');
 const mercadopago = require ('../../utils/mercadopago');
 const { createOperation } = require('../../controllers/OperationController/OperationControllerPost');
-const middlewareEmail = require('../../middleware/MiddlewareEmail/MiddlewareEmail')
+const {middlewareEmail} = require('../../middleware/MiddlewareEmail/MiddlewareEmail')
 
 const operationHandlerPost = async(req, res) =>{
    
@@ -25,13 +25,13 @@ const operationHandlerPost = async(req, res) =>{
             },
             "auto_return": "approved",
         })
-        if(res.status(200)){
+        
             res.status(200).json({response, preferenceId});
             return middlewareEmail(email, name, detail, details, cost, PayMethodId, PayMethod)
-        }
+        
         
     } catch (error) {
-        errorUser(error,res);
+        errorUser(error, res);
     }
 }
 

@@ -1,13 +1,13 @@
 const {transporter} = require('../../config/mailer');
 
-const middlewareEmail = async (req, res, next) => {
-    const { email, name, detail, details, cost, PayMethodId, PayMethod} = req.body;
+const middlewareEmail = async (email, name, detail, details, cost, PayMethodId, PayMethod) => {
+    //const { email, name, detail, details, cost, PayMethodId, PayMethod} = req.body;
     try {
 
         await transporter.sendMail({
-            from: '"¡Bienvenido/a a JobPortallX! USUARIO REGISTRADO 👻" <jobportalxcompany@gmail.com>', // sender address
+            from: '"¡JobPortallX! GRACIAS POR ACTUALIZAR TU PLAN 👻" <jobportalxcompany@gmail.com>', // sender address
             to: email, // list of receivers
-            subject: "¡Bienvenido/a a JobPortallX! USUARIO REGISTRADO 👻", // Subject line
+            subject: "¡JobPortallX! GRACIAS POR ACTUALIZAR TU PLAN 👻", // Subject line
             // text: "Hello world?", // plain text body
             html: `
             <h1>Estimado usuario ${name},</h1>
@@ -42,8 +42,6 @@ const middlewareEmail = async (req, res, next) => {
            <span> El equipo de JobPortallX </span>
             `
           });
-
-          next();
         
     } catch (error) {
         res.status(404).send(error.message)

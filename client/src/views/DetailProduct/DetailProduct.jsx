@@ -47,8 +47,8 @@ useEffect(() => {
   CompanyId: currentUser?.id,
   PayMethodId: 0,
   details: product?.details,
-  name: currentUser.name,
-  email: currentUser.email,
+  name: currentUser?.name,
+  email: currentUser?.email,
   PayMethod: "",
  })
 
@@ -60,9 +60,9 @@ const handleChangeSelect = (event) => {
     CompanyId: currentUser?.id,
     PayMethodId: value,
     details: product?.details,
-    name: currentUser.name,
-    email: currentUser.email,
-    PayMethod: payMethods.name,
+    name: currentUser?.name,
+    email: currentUser?.email,
+    PayMethod: payMethods?.name,
     })
 }
 
