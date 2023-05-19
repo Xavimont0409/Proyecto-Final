@@ -1,44 +1,100 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import NavBar from "../../components/NavBar/NavBarLog"
+import { useDispatch, useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 import { Form, FormLabel, FormSelect, FormGroup, Row, Col, FormCheck, } from "react-bootstrap";
-import style from "./Step3FormCv.module.css"
 import countries from "countries-list";
-import ButtonGeneral from "../Button/ButtonGeneral";
-import validateFormInputs from "../../views/FormVacante/validation";
+import ButtonGeneral from "../../components/Button/ButtonGeneral";
+import { getUserDetail, postExpe } from "../../Redux/Actions/actionsFunction/actionsUsers";
+import validation from "./validation";
+import style from "./FormregistroExperiencia.module.css"
 
-function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, experiencia, setExperiencia, handlerChange, previousStep }) {
 
-    const fecharequired = experiencia.actualmente;
-    const [validated, setValidated] = useState(false);
+const FormRegistroExperincia = () => {
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if(!validateFormInputs(experiencia)){
-            alert('Completa todos los campos')
-          }else{
-            setValidated(true);
-          
-        }
-    };
 
     const countriesNames = Object.values(countries.countries).map(
         (country) => country
     );
 
+    const { user, isAuthenticated } = useAuth0();
+    const dispatch = useDispatch();
+    const currentUser = useSelector((state) => state.dataEmail[0])
+    const [validated, setValidated] = useState(false);
+
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            if (user && user.email) {
+                dispatch(getEmail(user.email));
+            }
+        }
+    }, [dispatch, isAuthenticated, user]);
+
+
+    const [experiencia, setExperiencia] = useState({
+        company: '',
+        charge: '',
+        experience_level: '',
+        location: '',
+        start_date: '',
+        end_date: '',
+        still_working: false,
+        CvId:'',
+    });
+
+    const fecharequired = experiencia.still_working
+
+    
+    useEffect(() => {
+        if (currentUser) {
+            dispatch(getUserDetail(currentUser.id))
+            setExperiencia(prevExp => ({
+                ...prevExp,
+                CvId: currentUser.Cv?.id,
+            }));
+        }
+    }, [currentUser, dispatch]);
+
+    console.log(experiencia)
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (!validation(experiencia)) {
+            alert('Completa todos los campos')
+        } else {
+            setValidated(true);
+            dispatch(postExpe(experiencia))
+        }
+    };
+
+   
+
+
+    const handlerChange = (event) => {
+        const property = event.target.name;
+        const value = event.target.value;
+        setExperiencia({ ...experiencia, [property]: value });
+    }
+
 
     return (
 
         <div className={style.mainContainer}>
-            <h2 style={{ 'margin': '30px' }}>Experiencia Profesional</h2>
+             <NavBar></NavBar>
+            <h2 style={{ 'margin': '30px' }}>Añadir Experiencia Profesional al CV</h2>
             <Form className={style.Form} validated={!validated}>
 
-                <Row className="mb-3">
+                <Row className="mb-6">
                     <FormGroup as={Col} md='6' className="mb-3">
                         <FormLabel>Empresa</FormLabel>
                         <Form.Control
-                            name='empresa'
-                            value={experiencia.empresa}
+                            name='company'
+                            value={experiencia.company}
                             type="text"
-                            onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
+                            onChange={handlerChange}
                             required />
                         <Form.Control.Feedback type="invalid">
                             Rellena este campo.
@@ -46,13 +102,13 @@ function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, ex
                     </FormGroup>
 
                     <FormGroup as={Col} md='6' className="mb-3">
-                        <FormLabel>Puesto</FormLabel>
+                        <FormLabel>Cargo</FormLabel>
                         <Form.Control
-                            name='puesto'
-                            placeholder="Nombre del cargo"
-                            value={experiencia.puesto}
+                            name='charge'
+                            placeholder="Cargo desempeñado"
+                            value={experiencia.charge}
                             type="text"
-                            onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
+                            onChange={handlerChange}
                             required />
                         <Form.Control.Feedback type="invalid">
                             Rellena este campo.
@@ -66,9 +122,9 @@ function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, ex
                 <Row className="mb-3">
                     <FormGroup as={Col} md="6" className="mb-3">
                         <FormLabel className="me-2">Experiencia</FormLabel>
-                        <FormSelect name='nivel_experiencia'
-                            value={experiencia.nivel_experiencia}
-                            onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
+                        <FormSelect name='experience_level'
+                            value={experiencia.experience_level}
+                            onChange={handlerChange}
                             required>
                             <option disabled ></option>
                             <option value="Sin Experiencia">Sin Experiencia</option>
@@ -87,14 +143,13 @@ function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, ex
                     <FormGroup as={Col} md='6' className="mb-3">
                         <FormLabel>Ubicación</FormLabel>
                         <FormSelect
-                            name='ubicacion'
-                            value={experiencia.ubicacion}
-                            onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
+                            name='location'
+                            value={experiencia.location}
+                            onChange={handlerChange}
                             required>
                             <option disabled></option>
                             {countriesNames.map((count) => <option id={count.emoji} value={count.name}>{count.name}</option>)}
                         </FormSelect>
-
                         <Form.Control.Feedback type="invalid">
                             Seleciona una opcion.
                         </Form.Control.Feedback>
@@ -106,10 +161,10 @@ function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, ex
 
                     <FormGroup as={Col} md="6" className="mb-3 ">
                         <FormLabel>Fecha de inicio</FormLabel>
-                        <Form.Control name='fecha_inicio'
-                            value={experiencia.fecha_inicio}
+                        <Form.Control name='start_date'
+                            value={experiencia.start_date}
                             type="date"
-                            onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
+                            onChange={handlerChange}
                             required />
                         <Form.Control.Feedback type="invalid">
                             Rellena este campo.
@@ -118,11 +173,11 @@ function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, ex
 
                     <FormGroup as={Col} md="6" className="mb-3 ">
                         <FormLabel>Fecha de Finalización</FormLabel>
-                        <Form.Control name='fecha_fin'
-                            value={experiencia.fecha_fin}
+                        <Form.Control name='end_date'
+                            value={experiencia.end_date}
                             type="date"
-                            onChange={(event) => handlerChange(event, experiencia, setExperiencia)}
-                            required={!fecharequired}  />
+                            onChange={handlerChange}
+                            required={!fecharequired} />
                         <Form.Control.Feedback type="invalid">
                             Rellena este campo.
                         </Form.Control.Feedback>
@@ -133,25 +188,23 @@ function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, ex
                 <FormGroup>
                     <FormLabel>Trabajo actualmente en esta empresa</FormLabel>
                     <FormCheck name='actualmente'
-                        onChange={(event) => setExperiencia({ ...experiencia, actualmente: event.target.checked })}
+                        onChange={(event) => setExperiencia({ ...experiencia, still_working: event.target.checked })}
                     />
                 </FormGroup>
             </Form>
 
 
-            <FormGroup as={Col} md="6" className="mb-3 ">
+            <FormGroup as={Col} md="3" className="mb-3 ">
+
                 <ButtonGeneral
-                    textButton="Anterior"
-                    handlerClick={previousStep}
-                />
-                <ButtonGeneral
-                    textButton="Cargar CV"
+                    textButton="Agregar Experiencia"
                     handlerClick={handleSubmit}
                 />
             </FormGroup>
+  
+          </div>
+      );
+  }
 
-        </div>
-    );
-}
 
-export default Step3FormCv
+export default FormRegistroExperincia;

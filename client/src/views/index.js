@@ -16,6 +16,8 @@ import FormRegisterEmpresa from "./FormRegistroEmpresa/FormRegistroempesa";
 import DetailProduct from "./DetailProduct/DetailProduct";
 import Operation from "./Operation/Operation";
 import Success from "./Success/Success";
+import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperiencia";
+
 
 export {
     DetailProduct,
@@ -35,5 +37,6 @@ export {
     ProfilesCompany,
     FormRegisterEmpresa,
     Operation,
-    Success
+    Success,
+    FormRegistroExperincia
 }

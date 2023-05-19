@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes} from 'react-router-dom';
-import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success} from './views';
+import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia} from './views';
 import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions} from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
@@ -51,6 +51,7 @@ function App() {
           <Route path='/profiles' element={<Profiles/>} />
           <Route path='/profiles-company' element={<ProfilesCompany/>} />
           <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
+
           <Route path="/registro-cv" element={<FormCv />}></Route>
           <Route path="/registro-vacante" element={<FormVacante />}></Route>
           <Route path='/applicant' element={
@@ -64,6 +65,7 @@ function App() {
             </ProtectedRoute>
           }></Route>
           <Route path="/registro-empresa" element={<FormEmpresa />}></Route>
+          <Route path="/registro-experiencia" element={<FormRegistroExperincia/>}></Route>
         </Route>
       </Routes>
     </div>

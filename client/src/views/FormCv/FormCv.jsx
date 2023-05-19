@@ -13,6 +13,8 @@ function FormCv() {
 
   const { user, isAuthenticated } = useAuth0();
 
+  const [step, setStep] = useState(1);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -53,33 +55,6 @@ function FormCv() {
   }, [currentUser]);
 
 
-
-  const [experiencia, setExperiencia] = useState({
-    company: '',
-    charge: '',
-    experience_level: '',
-    location: '',
-    start_date: '',
-    end_date: '',
-    still_working: false,
-    // CvId:currentUser.Cv?.id
-  });
-
-
-
-  // useEffect(() => {
-  //   const handleUserAuthentication = async () => {
-  //         if (isAuthenticated && user) {
-  //            await dispatch(getEmail(user.email));
-  //         }
-  //     };
-  //     handleUserAuthentication();
-  // }, [currentUser, dispatch, isAuthenticated, user]);
-
-
-
-
-  const [step, setStep] = useState(1);
 
   const nextStep = () => {
     setStep(step + 1);
@@ -123,7 +98,7 @@ function FormCv() {
               nextStep={nextStep} />
           }
 
-          {step === 3 &&
+          {/* {step === 3 &&
             <Step3FormCv
               cv={cv}
               setCv={setCv}
@@ -132,11 +107,11 @@ function FormCv() {
               handlerChange={handlerChange}
               previousStep={previousStep}
             />
-          }
+          } */}
         </div>
 
         <div style={{ flex: 0.2, marginRight: '100px', marginLeft: '-300px', marginTop: '-300px' }}>
-          <h4>Paso {step} de 3</h4>
+          <h4>Paso {step} de 2</h4>
         </div>
       </div>
 

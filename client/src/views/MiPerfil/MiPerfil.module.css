@@ -1,0 +1,26 @@
+.image{
+    width: 30vw;
+    height: 50vh;
+    border-radius: 10px;
+}
+
+.container{
+    padding: 2%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.container2{
+    padding: 2%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
