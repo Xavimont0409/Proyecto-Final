@@ -15,16 +15,26 @@
   
 
 .dropzone {
-  width: 300px;
-  height: 200px;
-  border: 2px dashed #ccc;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  background-color: aqua;
+  cursor:pointer;
+  background-color: var(--sub-white);
+  border: solid black 2px;
+  width: 30vw;
+  height: 10vh;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
 }
 
 .dropzone.active {
-  background-color: #f9f9f9;
+  background-color: aqua;
+  border: solid black 2px;
+}
+
+.image{
+  width: 15vw;
+  height: 20vh;
+  border-radius: 10px;
 }
