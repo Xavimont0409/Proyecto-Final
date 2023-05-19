@@ -3,29 +3,49 @@ import { Form, Row, Col, FormGroup, FormLabel, FormSelect } from "react-bootstra
 import style from "./Step2FormCv.module.css"
 import countries from "countries-list";
 import ButtonGeneral from "../Button/ButtonGeneral";
-import validateFormInputs from "../../views/FormVacante/validation";
+import validation from "./validation";
+import { useDispatch } from "react-redux";
+import { postCv } from "../../Redux/Actions/actionsFunction/actionsUsers";
 
 
-function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nextStep }) {
+function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
   
-  const enCurso = formacion.estado === 'cursando' ? true : false
+  const dispatch = useDispatch();
+ 
+  const enCurso = cv.state === 'cursando' ? true : false
+ 
   const [validated, setValidated] = useState();
-
 
   const handleNext = (event) => {
     event.preventDefault();
-    if(!validateFormInputs(formacion)){
+    if (!validation(cv)) {
+      console.log(cv)
       alert('Completa todos los campos')
-    }else{
+    } else {
       setValidated(true)
-      nextStep()
+      console.log(cv)
+      dispatch(postCv(cv))
+      setCv({
+        dni: '',
+        phone: '',
+        address: '',
+        photo: '',
+        linkedin: '',
+        skill: '',
+        personal_description: '',
+        profession: '',
+        country: '',
+        educational_institution: '',
+        state: '',
+        initial_date: '',
+        finish_date: '',
+        ApplicantId: ''
+      })
     }
   };
 
 
-  const countriesNames = Object.values(countries.countries).map(
-    (country) => country
-);
+  const countriesNames = Object.values(countries.countries).map((country) => country);
   
   
   return (
@@ -37,12 +57,12 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
         <Row className="mb-3">
 
           <FormGroup as={Col} md="6">
-            <FormLabel>Título / Carrera</FormLabel>
+            <FormLabel>Título / Profesión</FormLabel>
             <Form.Control
-              name='titulo'
-              placeholder="titulo"
-              value={formacion.titulo}
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              name='profession'
+              placeholder="Profesion"
+              value={cv.profession}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               type="text"
               required/>
               <Form.Control.Feedback type="invalid">
@@ -52,11 +72,11 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
        
        
           <FormGroup as={Col} md="6" >
-            <FormLabel>País</FormLabel>
+            <FormLabel>País donde estudiaste</FormLabel>
             <FormSelect
-              name='pais'
-              value={formacion.pais}
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              name='country'
+              value={cv.country}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               required>
                 <option disabled></option>
                {countriesNames.map((count) => <option id={count.emoji} value={count.name}>{count.name}</option>)}
@@ -69,13 +89,13 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
       </Row>
 
 
-      <Row className="mb-3 ">
+      {/* <Row className="mb-3 ">
        
           <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel >Tipo de estudio</FormLabel>
             <FormSelect name='tipo_estudio'
-              value={formacion.tipo_estudio}
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              value={cv.tipo_estudio}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               required>
               <option disabled ></option>
               <option value="Tecnico">Tecnico</option>
@@ -98,8 +118,8 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
             <Form.Control
               name='area_estudio'
               placeholder="area de estudio"
-              value={formacion.area_estudio}
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              value={cv.area_estudio}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               type="text"
               required />
             <Form.Control.Feedback type="invalid">
@@ -107,7 +127,7 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
             </Form.Control.Feedback>
           </FormGroup>
        
-      </Row>
+      </Row> */}
 
 
       <Row className="mb-3 ">
@@ -115,11 +135,11 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
           <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel>Institución</FormLabel>
             <Form.Control
-              name='institucion'
+              name='educational_institution'
               placeholder="Nombre de la institucion"
-              value={formacion.institucion}
+              value={cv.educational_institution}
               type="text"
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               required />
             <Form.Control.Feedback type="invalid">
               Rellena este campo.
@@ -132,9 +152,9 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
           <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel >Estado</FormLabel>
             <FormSelect
-              name='estado'
-              value={formacion.estado}
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              name='state'
+              value={cv.state}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               required>
               <option disabled ></option>
               <option value="cursando">En curso</option>
@@ -153,10 +173,10 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
           <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel>Fecha de inicio</FormLabel>
             <Form.Control
-              name='fecha_inicio'
-              value={formacion.fecha_inicio}
+              name='initial_date'
+              value={cv.initial_date}
               type="date"
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
+              onChange={(event) => handlerChange(event, cv, setCv)}
               required />
             <Form.Control.Feedback type="invalid">
               Rellena este campo.
@@ -169,20 +189,15 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
           <FormGroup as={Col} md="6" className="mb-3 ">
             <FormLabel>Fecha de Finalización</FormLabel>
             <Form.Control
-              name='fecha_fin'
-              value={formacion.fecha_fin}
+              name='finish_date'
+              value={cv.finish_date}
               type="date"
-              onChange={(event) => handlerChange(event, formacion, setFormacion)}
-              required = {!enCurso} /><Form.Control.Feedback type="invalid">
+              onChange={(event) => handlerChange(event, cv, setCv)}
+              required ={!enCurso}/><Form.Control.Feedback type="invalid">
               Rellena este campo.
             </Form.Control.Feedback>
           </FormGroup>
-
-
-          
-
-      </Row>
-
+        </Row>
       </Form>
 
 
@@ -192,14 +207,10 @@ function Step2FormCv({ formacion, setFormacion, handlerChange, previousStep, nex
           handlerClick={previousStep}
         />
         <ButtonGeneral
-          textButton="Siguiente"
+          textButton="Cargar CV"
           handlerClick={handleNext}
         />
       </FormGroup>
-     
-
-      
-      
 
     </div>
   );
