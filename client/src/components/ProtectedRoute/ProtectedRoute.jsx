@@ -34,9 +34,9 @@ const ProtectedRoute = ({ children, isAllowed }) => {
         return <Navigate to={redirectTo} />;
     }
 
-    if (!isAllowed) {
+    /* if (!isAllowed) {
         return <Navigate to={'/'}/>
-    }
+    } */
 
     return children ? children : <Outlet />;
 };
