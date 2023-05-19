@@ -3,6 +3,7 @@ import {
   GET_USERS_DETAIL,
   POST_USER,
   POST_CV,
+  POST_EXPE
 } from "../actions-types/action-types";
 import axios from "axios";
 
@@ -69,3 +70,20 @@ export const postCv = (payload) => {
     }
   };
 };
+
+export const postExpe = (payload) =>{
+  return async function (dispatch) {
+  try {
+    const json = await axios.post("/experience", payload);
+    const data = json.data
+    return dispatch({
+      type: POST_EXPE,
+      payload: data
+    }) 
+      ? alert("creado")
+      : data
+  } catch (error) {
+    return alert(error.response.data.error);
+  }
+  }
+}

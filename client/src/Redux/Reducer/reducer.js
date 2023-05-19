@@ -14,6 +14,7 @@ import {
   POST_VACANT,
   POST_OPERATION,
   POST_RELATION_VACANT_APPLICANT,
+  POST_EXPE,
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
   FIND_PER_NAME,
@@ -192,7 +193,11 @@ const Reducer = (state = initialState, action) => {
     case POST_RELATION_VACANT_APPLICANT:
       return{
         ...state,
-      }  
+      }
+    case POST_EXPE:
+      return {
+        ...state,
+      }    
     default:
       return {
         ...state,

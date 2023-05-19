@@ -37,7 +37,7 @@ function App() {
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
         <Route path="/product/:id" element={<DetailProduct/>}></Route>
-        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} currentUser={currentUser}/>}>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path="/empresa" element={<LandingEmpresa />}></Route>
           <Route path="/registro-cv" element={<FormCv />}></Route>
