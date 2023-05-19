@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes} from 'react-router-dom';
-import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario} from './views';
+import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success} from './views';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import Error404 from './components/Error404/Error404';
@@ -54,6 +54,8 @@ function App() {
         </Route>
         <Route exact path="/" element={<Landing />}></Route>
         <Route path="/product/:id" element={<DetailProduct/>}></Route>
+        <Route path="/success" element={<Success/>}></Route>
+        <Route path="/operation" element={<Operation/>}></Route>
         <Route path="/empleos" element={<Empleos/>}></Route>
         <Route path="/iniciarSesion" element={<IniciarSesion />}></Route>
         <Route path="/registro" element={<Registro />}></Route>
