@@ -1,13 +1,13 @@
-const { Applicant, Cv, State } = require("../../db");
+const { Applicant, Cv, Vacant } = require("../../db");
 
 const allApplicant = async () => {
   return await Applicant.findAll({ include: [
-    { model: Cv },
+    { model: Cv },{model:Vacant}
   ] });
 };
 const allApplicantId = async (id) => {
   return await Applicant.findAll({
-    include: [{ model: Cv }],
+    include: [{ model: Cv },{model:Vacant}],
     where: { id: id },
   });
 };
