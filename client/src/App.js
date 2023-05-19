@@ -10,6 +10,7 @@ import ServerMaintenance from './components/ServerMaintenance/ServerMaintenance'
 import { useState } from 'react';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useSelector } from 'react-redux'
 
 
 axios.defaults.baseURL = 'http://localhost:3001'
@@ -17,8 +18,9 @@ axios.defaults.baseURL = 'http://localhost:3001'
 function App() {
 
   const { isAuthenticated } = useAuth0()
+  const currentUser = useSelector(state => state.dataEmail);
 
-  return (
+  return (  
     <div className="App">
       <Routes>
         <Route index element={<Landing />} />
@@ -32,7 +34,7 @@ function App() {
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
         <Route path="/product/:id" element={<DetailProduct/>}></Route>
-        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} currentUser={currentUser}/>}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path="/empresa" element={<LandingEmpresa />}></Route>
           <Route path="/registro-cv" element={<FormCv />}></Route>
