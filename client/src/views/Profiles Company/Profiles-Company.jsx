@@ -33,7 +33,7 @@ const ProfilesCompany = () => {
             const newPage = Math.ceil(company.length / companiesPerPage);
             setCurrentPage(newPage);
     }
-    }, [currentCompanies, ]);
+    }, [companiesPerPage, company.length, currentCompanies]);
 
     return (
         <div className={styles.container}>

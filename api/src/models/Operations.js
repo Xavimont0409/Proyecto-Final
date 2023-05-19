@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
             primaryKey: true,
         },
         cost: {
-            type: DataTypes.DECIMAL(10,2),
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         detail: {

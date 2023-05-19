@@ -33,14 +33,6 @@ const EmpleoDetail = () => {
       
       const [isLoading, setIsLoading] = useState(true);
       
-      
-      // const wordKeysRaw = empleoSelected.title.split(' ');
-      // const wordKeys = wordKeysRaw.filter((wrd) => wrd.length > 3);
-      // const empleosRelSelected = empleos.filter((emple) => {
-        //     if(emple.id !== empleoSelected.id ){
-          //     return wordKeys.some((word) => emple.title.includes(word) ) 
-          //     }
-          // });
           
           useEffect(() => {
             setTimeout(() => {
@@ -125,4 +117,4 @@ const EmpleoDetail = () => {
     );
 };
 
-export default EmpleoDetail;
+export default EmpleoDetail;
