@@ -51,6 +51,8 @@ function App() {
           <Route path='/profiles' element={<Profiles/>} />
           <Route path='/profiles-company' element={<ProfilesCompany/>} />
           <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
+          <Route path="/operation" element={<Operation/>}></Route>
+          <Route path="/success" element={<Success/>}></Route>
 
           <Route path="/registro-cv" element={<FormCv />}></Route>
           <Route path="/registro-vacante" element={<FormVacante />}></Route>
