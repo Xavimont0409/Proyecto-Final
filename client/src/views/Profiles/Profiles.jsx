@@ -31,7 +31,7 @@ const Profiles = () => {
             const newPage = Math.ceil(users.length / usersPerPage);
             setCurrentPage(newPage);
     }
-    }, [currentUsers, users]);
+    }, [currentUsers, users, usersPerPage]);
 
     return (
         <div className={styles.container}>

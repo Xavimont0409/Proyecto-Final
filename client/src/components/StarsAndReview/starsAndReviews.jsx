@@ -1,23 +1,13 @@
 import { FaStar, FaUser } from "react-icons/fa";
 import styles from './starsAndReviews.module.css';
 
-const colors = {
+
+
+const StarReview = ({ starsData, showComments }) => {
+  const colors = {
   orange: "#FFBA5A",
   grey: "#a9a9a9"
 };
-
-const StarReview = () => {
-  const starsData = [
-    {
-      stars: "3",
-      text: "tiene que mejorar su vacante de empleo"
-    },
-    {
-      stars: "4",
-      text: "tiene que mejorar su vacante de empleo2"
-    }
-  ];
-
   return (
     <div className={styles.container}>
       {starsData.map((star, index) => (
@@ -35,7 +25,7 @@ const StarReview = () => {
                 />
               ))}
             </div>
-            <p className={styles.comment}>{star.text}</p>
+            {showComments && <p className={styles.comment}>{star.text}</p>}
           </div>
         </div>
       ))}

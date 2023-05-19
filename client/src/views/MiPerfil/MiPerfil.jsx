@@ -17,7 +17,6 @@ const MiPerfil = () => {
     const { user, isAuthenticated, isLoading, loginWithRedirect, logout   } = useAuth0();
     
 
-
     useEffect(() => {
         const handleUserAuthentication = () => {
             if (isAuthenticated && user) {
