@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes} from 'react-router-dom';
 import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, IniciarSesion, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia} from './views';
-import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions} from './components';
+import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer} from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -30,32 +30,35 @@ function App() {
     };
   }, [currentUser]);
 
-  console.log(currentUserStore.profile);
+  console.log(currentUser?.profile);
+
+const accountType = currentUser?.profile === 'Company' ? 'company' : (currentUser ? 'applicant' : '');
+
 
   return (  
     <div className="App">
       <Routes>
         <Route index element={<Landing />} />
-        <Route exact path="/" element={<Landing />}></Route>
-        <Route path="/empleos" element={<Empleos/>}></Route>
-        <Route path="/iniciarSesion" element={<IniciarSesion />}></Route>
-        <Route path="/registro" element={<Registro />}></Route>
-        <Route path="/registroini-empresa" element={<FormRegisterEmpresa />}></Route>
-        <Route path="/registro-usuario" element={<FormRegistroUsuario />}></Route>
+        <Route exact path="/" element={<Landing />} />
+        <Route path="/empleos" element={<Empleos/>} />
+        <Route path="/iniciarSesion" element={<IniciarSesion />} />
+        <Route path="/registro" element={<Registro />}/>
+        <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
+        <Route path="/registro-usuario" element={<FormRegistroUsuario />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route path="/product/:id" element={<DetailProduct/>}></Route>
+        <Route path="/product/:id" element={<DetailProduct/>} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path='/profiles' element={<Profiles/>} />
           <Route path='/profiles-company' element={<ProfilesCompany/>} />
-          <Route path="/MiPerfil" element={<MiPerfil/>}></Route>
-          <Route path="/operation" element={<Operation/>}></Route>
-          <Route path="/success" element={<Success/>}></Route>
+          <Route path="/MiPerfil" element={<MiPerfil/>} />
+          <Route path="/operation" element={<Operation/>} />
+          <Route path="/success" element={<Success/>} />
 
-          <Route path="/registro-cv" element={<FormCv />}></Route>
-          <Route path="/registro-vacante" element={<FormVacante />}></Route>
+          <Route path="/registro-cv" element={<FormCv />} />
+          <Route path="/registro-vacante" element={<FormVacante />} />
           <Route path='/applicant' element={
             <ProtectedRoute >
               <Applicant />
@@ -65,11 +68,12 @@ function App() {
             <ProtectedRoute isAuthenticated={isAuthenticated} isAllowed={!!currentUserStore && currentUserStore.profile === "Company"}>
               <LandingEmpresa />
             </ProtectedRoute>
-          }></Route>
-          <Route path="/registro-empresa" element={<FormEmpresa />}></Route>
-          <Route path="/registro-experiencia" element={<FormRegistroExperincia/>}></Route>
+          } />
+          <Route path="/registro-empresa" element={<FormEmpresa />} />
+          <Route path="/registro-experiencia" element={<FormRegistroExperincia/>} />
         </Route>
       </Routes>
+      <Footer accountType={accountType} />
     </div>
   );
 }
