@@ -1,3 +1,4 @@
+import AboutUs from "./AboutUs/AboutUs";
 import EmpleoDetail from "./EmpleoDetail/EmpleoDetail";
 import Empleos from "./Empleos/Empleos";
 import Landing from "./Landing/Landing";
@@ -20,6 +21,7 @@ import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperi
 
 
 export {
+    AboutUs,
     DetailProduct,
     EmpleoDetail, 
     Empleos, 
