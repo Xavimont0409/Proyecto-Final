@@ -9,6 +9,7 @@ const getEmailRouter = require('./getEmailRouter');
 const productRouter = require('./productRouter');
 const starsRouter = require('./StarsRouter');
 const routerPayMethod = require('./payMethodRouter');
+const formationRouter = require('./FormationRouter')
 
 
 const router = Router();
@@ -23,5 +24,6 @@ router.use("/email", getEmailRouter)
 router.use("/product", productRouter);
 router.use("/stars", starsRouter);
 router.use("/payMethod", routerPayMethod);
+router.use("/formation", formationRouter)
 
 module.exports = router;
