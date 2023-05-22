@@ -1,70 +1,70 @@
-import React from 'react';
-import styles from './Footer.module.css';
-import { SiGmail, SiTwitter, SiInstagram } from 'react-icons/si';
-import {FooterApplicant, FooterCompany, FooterDefault} from '../index'
+import React from "react";
+import styles from "./Footer.module.css";
+import { SiGmail, SiTwitter, SiInstagram } from "react-icons/si";
 
-
-const Footer = ({ accountType }) => {
-  let footerComponent;
-
-  if (accountType === 'applicant') {
-    footerComponent = <FooterApplicant />;
-  } else if (accountType === 'company') {
-    footerComponent = <FooterCompany />;
-  } else {
-    footerComponent = <FooterDefault />;
-  }
-
-  return (
-    <footer>
-      <div className={styles.fItemCon}>
-        <div className={styles.appInfo}>
+const Footer = () => (
+  <footer>
+    <div className={styles.fItemCon}>
+      <div className={styles.appInfo}>
           <span className={styles.appName}>
-            <span className={styles.appInitial}>J</span>obPortalX
+              <span className={styles.appInitial}>J</span>obPortalX
           </span>
+      </div>
+      <div className={styles.container}>
+        <div className={styles.usefulLinks}>
+          <div className={styles.footerTitle}>Enlaces Útiles</div>
+          <ul>
+              <li>
+                  <a href="/registro">
+                  Sign In
+                  </a>
+              </li>
+              <li>About Us</li>
+              <li>Become an Affiliate</li>
+              <li>Advertise with Us</li>
+              <li>
+                  <a href="/TermsAndConditions">
+                      Terminos y condiciones
+                  </a>
+              </li>
+          </ul>
         </div>
-        <div className={styles.container}>
-          {footerComponent}
-          <div className={styles.contact}>
-            <div className={styles.footerTitle}>Contactos</div>
+        <div className={styles.contact}>
+          <div className={styles.footerTitle}>Contactos</div>
             <ul>
               <li>
                 <a href="https://www.instagram.com/jobportalcompany">
-                  <SiInstagram />
+                <SiInstagram/>
                 </a>
               </li>
               <li>
                 <a href="jobportalxcompany@gmail.com">
-                  <SiGmail />
+                <SiGmail/>
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com/jobportalx">
-                  <SiTwitter />
+                <SiTwitter/>
                 </a>
               </li>
             </ul>
           </div>
-          <div className={styles.helpSec}>
-            <div className={styles.footerTitle}>Ayuda</div>
+        <div className={styles.helpSec}>
+          <div className={styles.footerTitle}>Help</div>
             <ul>
+            <li>Help</li>
+            <li>Feedback</li>
               <li>
-              <a href="jobportalxcompany@gmail.com">Ayuda</a>  
-              </li>
-              <li>
-                <a href="jobportalxcompany@gmail.com">Reporta un problema</a>
+                <a href="jobportalxcompany@gmail.com">
+                Report a Issue / Bug
+                </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className={styles.subFooter}>
-        <div className={styles.subFooterContainer}>
-          <span>© {new Date().getFullYear()} JobPortalX. All rights reserved.</span>
-        </div>
-      </div>
-    </footer>
-  );
-};
+    <div className={styles.crCon}>Copyright &copy; 2023</div>
+  </footer>
+);
 
 export default Footer;
