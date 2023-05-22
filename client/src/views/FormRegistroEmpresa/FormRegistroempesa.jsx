@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import countries from "countries-list";
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 import { useAuth0 } from '@auth0/auth0-react';
+import Swal from 'sweetalert2';
 
 
 const FormRegisterEmpresa = () => {
@@ -57,7 +58,11 @@ const FormRegisterEmpresa = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     if (!validateFormInputs(newEmpresa)) {
-      alert('Completa todos los campos')
+      Swal.fire({
+        title:'Faltan Datos',
+        text:'Completa todos los campos',
+        icon:'warning'
+      })
     } else {
       setValidated(true)
       dispatch(postCompany(newEmpresa))
@@ -70,6 +75,11 @@ const FormRegisterEmpresa = () => {
         email: user.email,
       })
       setValidated(false)
+      return Swal.fire({
+        title: "Registro exitoso",
+        html: '<a href="/empresa">Ok</a>',
+        icon: 'success'
+      })
     }
   };
 

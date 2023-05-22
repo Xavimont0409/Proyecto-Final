@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { postUser } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 import { useAuth0 } from '@auth0/auth0-react';
+import Swal from 'sweetalert2';
 
 
 const FormRegistroUsuario = () => {
@@ -55,7 +56,11 @@ const FormRegistroUsuario = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     if (!validateFormInputs(newUser)) {
-      alert('Completa todos los campos')
+      Swal.fire({
+        title:'Faltan Datos',
+        text:'Completa todos los campos',
+        icon:'warning'
+      })
     } else {
       setValidated(true)
       dispatch(postUser(newUser))
@@ -66,7 +71,12 @@ const FormRegistroUsuario = () => {
         password: "",
         cellphone: "",
       })
-      setValidated(false)
+      setValidated(false);
+      return Swal.fire({
+        title: "Registro exitoso",
+        html: '<a href="/applicant">Ok</a>',
+        icon: 'success'
+      })
     }
   };
 
