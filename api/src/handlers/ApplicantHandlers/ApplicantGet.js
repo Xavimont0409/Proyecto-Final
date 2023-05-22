@@ -15,10 +15,7 @@ const applicantHandlerGet = async (req, res) => {
             finalResult = filterData(name, finalResult); //aca se filtran los datos(si es que hay un valor de filtrado)
         }
         //si no habia un valor por el cual filtrar los resultados simplemente se ordenan los datos recibidos y se envian como respuestaFinal
-        if(_sort && _order){
-            sortNorder(_sort, _order, finalResult); //aca se ordenan en relacion a que dato quieren ser ordenados
-        }
-        //si no hay solicitud de orden por query, entonces simplemente se avanza al final y se devuelve los datos tal cual llegaron
+        sortNorder(_sort, _order, finalResult); //aca se ordenan en relacion a que dato quieren ser ordenados
         setXTotalCount(res, finalResult.length); //aca se asigna un header X-Total-Count requerido por las tablas de react-admin
         res.status(200).json(finalResult);
     } catch (error) {

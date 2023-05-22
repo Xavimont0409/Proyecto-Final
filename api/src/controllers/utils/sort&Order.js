@@ -24,7 +24,7 @@ const sortNorder = (sort, order, array) => {
         return sortedArray;
     }
 
-    return 0;
+    return array;
 }
 
 module.exports = sortNorder;
