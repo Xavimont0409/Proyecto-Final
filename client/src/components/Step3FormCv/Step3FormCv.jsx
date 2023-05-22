@@ -154,4 +154,4 @@ function Step3FormCv({ infoPersonal, setInfoPersonal, formacion,setFormacion, ex
     );
 }
 
-export default Step3FormCv
+export default Step3FormCv;
