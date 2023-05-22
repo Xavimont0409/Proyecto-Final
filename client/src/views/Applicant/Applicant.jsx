@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import img1 from "../../assets/img/empleo1.jpg";
 import img2 from "../../assets/img/empleo2.jpg";
 import img3 from "../../assets/img/empleo3.jpg";
-import Footer from "../../components/Footer/Footer";
 import CardPlan from "../../components/CardPlan/CardPlan";
 
 export default function Applicant() {
@@ -134,7 +133,6 @@ export default function Applicant() {
 
       </div>
       </div>
-      <Footer/>
     </>
   );
 }

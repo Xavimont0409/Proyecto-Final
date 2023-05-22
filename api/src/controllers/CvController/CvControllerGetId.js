@@ -1,16 +1,21 @@
-const { Cv, Experience } = require('../../db');
+const { Cv, Experience, Formation } = require("../../db");
 
-const getIdCv = async (id) =>{
-    const findCv = await Cv.findAll({
-        where: { id } ,
-        include: {
-            model : Experience
-        }
-    })
+const getIdCv = async (id) => {
+  const findCv = await Cv.findAll({
+    where: { id },
+    include: [
+      {
+        model: Experience,
+      },
+      {
+        model: Formation
+      }
+    ],
+  });
 
-    return findCv;
-}
+  return findCv;
+};
 
 module.exports = {
-    getIdCv
-}
+  getIdCv,
+};
