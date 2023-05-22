@@ -3,7 +3,6 @@ import Empleos from "./Empleos/Empleos";
 import Landing from "./Landing/Landing";
 import LandingEmpresa from "./LandingEmpresa/LandingEmpresa";
 import Registro from "./Registro/Registro";
-import IniciarSesion from "./IniciarSesion/IniciarSesion";
 import FormRegistroUsuario from "./FormRegistroUsuario/FormRegistroUsuario";
 import FormCv from "./FormCv/FormCv";
 import FormVacante from "./FormVacante/FormVacante";
@@ -26,7 +25,6 @@ export {
     Landing, 
     LandingEmpresa, 
     Registro, 
-    IniciarSesion, 
     FormRegistroUsuario, 
     FormCv, 
     FormVacante, 

@@ -1,5 +1,6 @@
 import { FIND_PER_NAME } from "../actions-types/action-types";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export const findPerName = (name) => {
   return async function(dispatch){
@@ -11,7 +12,11 @@ export const findPerName = (name) => {
         payload : data
       })
     } catch (error) {
-      return alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   }
 };
