@@ -1,0 +1,93 @@
+.container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.box{
+    position: relative;
+    width: 20vw;
+    height: 40vh;
+    background: #bcc1d6;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 5vh auto;
+}
+
+.box::before{
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 20vw;
+    height: 80vh;
+    transform-origin: bottom right;
+    background: linear-gradient(0deg, transparent, #6574af, #6574af);
+    animation: animate 6s linear infinite;
+}
+
+.box::after{
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 20vw;
+    height: 80vh;
+    transform-origin: bottom right;
+    background: linear-gradient(0deg, transparent, #6574af, #6574af);
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+ 
+@keyframes animate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+} 
+
+.containerDetail{
+    position: absolute;
+    inset: 8px;
+    z-index: 2;
+    background: #bcc1d6;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+   
+}
+.divContenedorInfo{
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoCard, .nameCard{
+    color: white;
+}
+.infoCard{
+    font-family: "letters";
+    font-size: 20px;
+} 
+
+.nameCard{
+    font-family: "Project";
+    letter-spacing: 3px;
+    color: white;
+}
+
+.containerButton{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}

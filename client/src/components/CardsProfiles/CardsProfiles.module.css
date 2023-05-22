@@ -1,0 +1,80 @@
+
+.mainContainer{
+    height: 110vh;
+    width: 30vw;
+    border-radius: 0 15%;
+    border: 5px solid var(--battleship-gray);
+    padding: 2%;
+    margin-top: 3vh;
+}
+
+.infoContainer{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: auto;
+    border-top: 3px solid var(--battleship-gray);
+    border-bottom: 3px solid var(--battleship-gray);
+    border-radius: 0%;
+}
+
+.infoContainer2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5%;
+    height: auto;
+    border-top: 3px solid var(--battleship-gray);
+    border-bottom: 3px solid var(--battleship-gray);
+    border-radius: 0%;
+}
+
+.img{
+    width: 130px;
+    height: 130px;
+    border: 4px solid var(--oxford-blue);
+    border-radius: 100%;
+}
+
+.title{
+    margin-top: 2%;
+    color: var(--oxford-blue);
+}
+
+.title2{
+    font-size: 100%;
+    margin-top: 1%;
+    color: var(--oxford-blue);
+}
+
+.item{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 66%;
+    height: auto;
+    color: var(--oxford-blue);
+}
+
+.text{
+    margin-top: 2%;
+}
+
+.skills{
+    margin-left: 1%;
+}
+
+.lupa{
+    margin-top: 10%;
+    font-size: 200%;
+}
+
+.linkedin{
+    margin-right: 25%;
+    margin-top: 7%;
+    font-size: 200%;
+}
+
+.linkedin :hover{
+    color: var(--oxford-blue);
+}
+

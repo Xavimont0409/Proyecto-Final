@@ -41,3 +41,11 @@ function gaspar(){
         country: "Argentina"
     }
 }
+
+const Andres = () => {
+    return {
+        name: "Andres",
+        edad: 28,
+        nacionalidad: "Colombiana"
+    }
+};

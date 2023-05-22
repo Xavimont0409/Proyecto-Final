@@ -1,0 +1,59 @@
+:root{
+    --oxford-blue: #0a2647ff;
+    --jet: #333333ff;
+    --caribbean-current: #006b6bff;
+    --burgundy: #800020ff;
+    --battleship-gray: #7e8b8bff;
+    --avocado: #6b8e23ff;
+    --mustard: #ffdb58ff; 
+
+  }
+
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.mainContainer2{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.containerEmpleosRel{
+    margin-left: 1%;
+    width: 28%;
+    border: 3px solid var( --caribbean-current);
+    border-radius: 3%;
+    display: flex;
+    flex-direction: column;   
+    overflow-y: scroll;
+    max-height: 100vh;
+    color: var(--caribbean-current);
+    
+}
+
+.mainContainer3{
+    border: 3px solid var( --oxford-blue);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: fit-content;
+    color: var(--oxford-blue);
+    margin-left: 10%;
+}
+
+.containerButtons{
+    
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.containerDetail{
+    height: 100%;
+}

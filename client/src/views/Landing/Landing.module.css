@@ -1,0 +1,128 @@
+.landingDiv {
+    min-height: 100vh;
+    overflow: hidden;
+    /*  background-color: #ccc; */
+}
+
+.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.videoDiv {
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+.searchDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    height: 40vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.616);
+    border-radius: 10px;
+    z-index: 2;
+    backdrop-filter: blur(4px) saturate(1000%)
+}
+
+.input {
+    width: 20vw;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.paragraph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 400%;
+    color: white;
+}
+
+.text {
+    margin-top: 3vh auto;
+    width: 30vw;
+    font-size: 120%;
+    color: white;
+}
+
+.buttonDiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vh;
+}
+
+@media (max-width: 780px) {
+    .landingDiv {
+        min-height: 100vh;
+    }
+
+    .container {
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 90vh;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .videoDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imgDiv {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        margin-left: 5px;
+        border-radius: 3px;
+    }
+
+    .img {
+        width: 300px;
+        height: 700px;
+        border-radius: 3px;
+    }
+
+    .searchDiv {
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+        height: fit-content;
+        margin-top: 0;
+    }
+
+    .paragraph {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+        height: fit-content;
+    }
+
+    .buttonDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 7px;
+    }
+
+    .input {
+        width: 35vw;
+        margin-bottom: 3px;
+        border-radius: 3px;
+        background-color: white;
+    }
+}

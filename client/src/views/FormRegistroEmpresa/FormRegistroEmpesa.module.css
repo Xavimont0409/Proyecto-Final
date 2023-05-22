@@ -1,0 +1,55 @@
+.mainContainer {
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-items: center;
+    align-items: center;
+    background: linear-gradient(-40deg, var(--mustard), var(--avocado), white, var(--caribbean-current));
+    background-size: 400% 400%;
+    animation: container 10s ease infinite;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+
+.container2{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+ .Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--battleship-gray);
+    width:100%;
+    border-radius: 10px;
+    padding: 2%;
+    font-size: large;
+    margin: 1%;
+  }
+
+
+  .container3{
+    display: flex;
+        flex-direction: column;
+        gap: 30px;
+  }
+
+  @keyframes container {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}

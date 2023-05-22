@@ -1,0 +1,43 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 63vw;
+    height: 84vh;
+    justify-content: start;
+    margin-top: 2vh;
+}
+
+
+.cardsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    padding: 20px;
+    overflow-y: scroll;
+    height: 89vh;
+    justify-content: start;
+}
+
+@media (max-width: 768px) {
+    .mainContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 97vw;
+        height: 79vh;
+        margin-top: 1vh;
+        overflow-x: hidden;
+    }
+
+    .cardsContainer {
+        width: 95vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+    }
+}

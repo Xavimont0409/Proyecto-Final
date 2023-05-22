@@ -1,0 +1,36 @@
+.mainContainer {
+    justify-items: center;
+    align-items: center;
+    background: linear-gradient(-40deg, var(--mustard), var(--avocado), white, var(--caribbean-current));
+    background-size: 400% 400%;
+    animation: container 10s ease infinite;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    position: absolute;
+}
+
+
+ .Form {
+    margin: auto;
+    background-color: var(--battleship-gray);
+    width: 50%;
+    border-radius: 10px;
+    padding: 1%;
+    font-size: large;
+    fill-opacity: 0.8;
+  }
+
+
+  @keyframes container {
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
