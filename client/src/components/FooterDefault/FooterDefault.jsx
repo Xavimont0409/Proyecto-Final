@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../Footer/Footer.module.css';
 
-const FooterDefault = () => {
+const FooterDef = () => {
   return (
     <div className={styles.usefulLinks}>
       <div className={styles.footerTitle}>Enlaces Útiles</div>
@@ -20,4 +20,5 @@ const FooterDefault = () => {
   );
 };
 
-export default FooterDefault;
+
+export default FooterDef;

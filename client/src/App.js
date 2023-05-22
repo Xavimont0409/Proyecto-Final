@@ -33,8 +33,6 @@ function App() {
 
   console.log(currentUser?.profile);
 
-const accountType = currentUser?.profile === 'Company' ? 'company' : (currentUser ? 'applicant' : '');
-
 
   return (  
     <div className="App">
@@ -74,7 +72,7 @@ const accountType = currentUser?.profile === 'Company' ? 'company' : (currentUse
           <Route path="/registro-experiencia" element={<FormRegistroExperincia/>} />
         </Route>
       </Routes>
-      <Footer accountType={accountType} />
+      <Footer/>
     </div>
   );
 }
