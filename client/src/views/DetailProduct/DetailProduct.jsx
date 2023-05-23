@@ -18,15 +18,13 @@ import Swal from 'sweetalert2';
 
 
 const DetailProduct = ({currentUserStore}) => {
- 
 const { id } = useParams(); 
 const dispatch = useDispatch();
 const { user, isAuthenticated } = useAuth0();
 const navigate = useNavigate();
- const currentUser = useSelector((state) => state.dataEmail[0])
+/*  const currentUser = useSelector((state) => state.dataEmail[0]) */
  const product = useSelector((state) => state.Product);
  const payMethods = useSelector((state) => state.PayMethods);
- console.log(product)
 
 useEffect(() => {
  
@@ -47,11 +45,11 @@ useEffect(() => {
   cost: product?.price,
   detail: product?.name,
   details: product?.details,
-  CompanyId: currentUser?.id || null,
+  CompanyId: currentUserStore?.id || null,
   PayMethodId: 0,
-  name: currentUser?.name,
-  email: currentUser?.email,
-  PayMethod: payMethods?.name,
+  name: currentUserStore?.name,
+  email: currentUserStore?.email,
+  PayMethod: currentUserStore?.name,
  })
 
 const handleChangeSelect = (event) => {
@@ -60,19 +58,24 @@ const handleChangeSelect = (event) => {
     cost: product?.price,
     detail: product?.name,
     details: product?.details,
-    CompanyId: currentUser?.id || null,
+    CompanyId: currentUserStore?.id || null,
     PayMethodId: value,
-  
-    name: currentUser?.name,
-    email: currentUser?.email,
+    name: currentUserStore?.name,
+    email: currentUserStore?.email,
     PayMethod: payMethods?.name,
     })
 }
 
-const handleSubmit = () => {
-  if(form.detail){
+const handleSubmit = async () => {
+  if(currentUserStore.name){
     dispatch(postDataInStore(form));
-    return dispatch(postOperation(form));
+    dispatch(postOperation(form));
+    await Swal.fire({
+      title: 'Éxito',
+      text: 'Operación creada correctamente',
+      icon: 'success',
+  })
+    return navigate('/operation')
   }else{
     return Swal.fire({
       title: 'Opss..',

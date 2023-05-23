@@ -8,11 +8,10 @@ const postOperation = ({cost, detail, details, CompanyId, PayMethodId, Applicant
 
     return async function(dispatch) {
         try {
-            const response = (await axios.post('/operation', { cost, detail, details, CompanyId, PayMethodId, ApplicantId, name, email, PayMethod })).data;
-            console.log(response)
+            const response = (await axios.post('/operation', { cost, detail, details, CompanyId, PayMethodId, ApplicantId, name, email, PayMethod })).data;           
             return dispatch({type: POST_OPERATION, payload: response.preferenceId.body.id});
         } catch (error) {
-            Swal.fire({
+           return Swal.fire({
                 title: 'Ops...',
                 text: `${error.response.data.error}`,
                 icon: 'error',
