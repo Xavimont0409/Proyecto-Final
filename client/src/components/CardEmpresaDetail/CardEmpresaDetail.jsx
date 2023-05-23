@@ -20,7 +20,7 @@ const CardEmpresaDetail = ({ companyId }) => {
     dispatch(getCompanyDetail(companyId));
   }, [dispatch, companyId]);
 
-  const company = useSelector(state => state.CompanyDetail[0]);
+  const company = useSelector(state => state.CompanyDetail);
 
   return (
     <Card style={{ width: '100%' }}>
