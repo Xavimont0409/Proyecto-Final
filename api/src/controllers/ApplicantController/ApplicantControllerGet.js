@@ -8,7 +8,6 @@ const allApplicant = async () => {
 const allApplicantId = async (id) => {
   return await Applicant.findByPk(id,{
     include: [{ model: Cv },{model:Vacant}],
-    where: { id: id },
   });
 };
 
