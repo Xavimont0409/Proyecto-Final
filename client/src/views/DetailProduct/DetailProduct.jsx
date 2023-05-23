@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
 
 
 const DetailProduct = ({currentUserStore, setCurrentUserStore}) => {
+
 const { id } = useParams(); 
 const dispatch = useDispatch();
 const { user, isAuthenticated } = useAuth0();
