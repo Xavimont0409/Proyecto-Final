@@ -27,7 +27,6 @@ const Registro = () => {
         };
 
         handleUserAuthentication();
-        console.log(currentUser);
     }, [currentUser, dispatch, isAuthenticated, navigate, user]);
 
     useEffect(() => {
@@ -37,7 +36,6 @@ const Registro = () => {
     }, []);
 
     if (isLoading) {
-        console.log(currentUser);
         return <Loading />;
     }
 

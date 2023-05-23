@@ -3,13 +3,13 @@ const mercadopago = require ('../../utils/mercadopago');
 const { createOperation } = require('../../controllers/OperationController/OperationControllerPost');
 const {middlewareEmail} = require('../../middleware/MiddlewareEmail/MiddlewareEmail')
 
-const operationHandlerPost = async(req, res) =>{
+const operationHandlerPost = async (req, res) =>{
    
-
     const {cost, detail, details, CompanyId, PayMethodId, ApplicantId, name, email, PayMethod} = req.body;
     try {
         
-        const response = await createOperation(cost, detail, CompanyId, PayMethodId, ApplicantId)
+        const response = await createOperation(cost, detail, CompanyId, PayMethodId, ApplicantId);
+        console.log(response)
         const preferenceId = await mercadopago.preferences.create({
             items: [
                 {
@@ -26,8 +26,9 @@ const operationHandlerPost = async(req, res) =>{
             "auto_return": "approved",
         })
         
-            res.status(200).json({response, preferenceId});
-            return middlewareEmail(email, name, detail, details, cost, PayMethodId, PayMethod)
+        middlewareEmail(email, name, detail, details, cost, PayMethodId, PayMethod)
+            
+            return res.status(200).json({response, preferenceId});
         
         
     } catch (error) {
