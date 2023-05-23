@@ -1,5 +1,6 @@
 import { GET_ALL_PRODUCT } from "../actions-types/action-types";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 const getAllProduct = (id) => {
   return async function (dispatch) {
@@ -10,7 +11,11 @@ const getAllProduct = (id) => {
         payload: response,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };

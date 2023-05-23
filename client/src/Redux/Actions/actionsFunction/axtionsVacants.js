@@ -5,6 +5,7 @@ import {
   POST_RELATION_VACANT_APPLICANT
 } from "../actions-types/action-types";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export const getAllVacants = () => {
   return async function (dispatch) {
@@ -16,7 +17,11 @@ export const getAllVacants = () => {
         payload: data,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -31,7 +36,11 @@ export const getVacantDetail = (id) => {
         payload: data,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -48,7 +57,11 @@ export const postVacant = (payload) => {
         ? alert("creado")
         : data;
     } catch (error) {
-      return alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -64,7 +77,11 @@ export const relationVacantApplicant = async(payload) =>{
         payload: data,
       })
     } catch (error) {
-      return alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   }
 }

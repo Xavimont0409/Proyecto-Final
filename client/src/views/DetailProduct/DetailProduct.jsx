@@ -13,6 +13,8 @@ import { useParams, useNavigate} from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import { useAuth0 } from "@auth0/auth0-react";
 import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
+import Swal from 'sweetalert2';
+
 
 
 const DetailProduct = () => {
@@ -67,12 +69,16 @@ const handleChangeSelect = (event) => {
 }
 
 const handleSubmit = () => {
-  if(form.detail){
-    dispatch(postDataInStore(form));
-  dispatch(postOperation(form));
-  return navigate('/operation');
+  if(!form.detail){
+   return Swal.fire({
+      title: 'Opss..',
+      text: `Ocurrió un error`,
+      icon: 'error'
+    });
   }else{
-    return alert("Todo roto bro");
+    dispatch(postDataInStore(form));
+    dispatch(postOperation(form));
+    return /* navigate('/operation'); */
   }
    
 }
