@@ -44,7 +44,6 @@ const EmpleoDetail = ({ setCurrentUserStore }) => {
             return <Loading/>;
           };
           const companyId = empleoSelected.CompanyId
-          console.log(companyId);
             
             return(
               <div className={style.mainContainer}>
