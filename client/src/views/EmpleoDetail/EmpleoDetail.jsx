@@ -14,7 +14,7 @@ import { getAllCompanys, getCompanyDetail } from "../../Redux/Actions/actionsFun
 
 
 
-const EmpleoDetail = () => {
+const EmpleoDetail = ({ setCurrentUserStore }) => {
 
     
 
@@ -27,7 +27,7 @@ const EmpleoDetail = () => {
         
       },[dispatch, detailId])
       
-      const empleoSelected = useSelector(state => state.VacantDetail[0]);
+      const empleoSelected = useSelector(state => state.VacantDetail);
   
     
       
@@ -44,11 +44,10 @@ const EmpleoDetail = () => {
             return <Loading/>;
           };
           const companyId = empleoSelected.CompanyId
-          
             
             return(
               <div className={style.mainContainer}>
-        <NavBar/>
+        <NavBar setCurrentUserStore={setCurrentUserStore} />
         <div className={style.mainContainer2}>
             
             {/* <div className={style.containerEmpleosRel}>

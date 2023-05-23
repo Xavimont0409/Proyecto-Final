@@ -37,8 +37,7 @@ const getAllCompany = () => {
 };
 
 const getCompanyId = (id) => {
-  return Company.findAll({
-    where: { id },
+  return Company.findByPk(id,{
     include: [
       {
         model: Vacant,

@@ -5,7 +5,7 @@ import NavBar from '../../components/NavBar/NavBarUnlog';
 import Footer from '../../components/Footer/Footer';
 
 
-function TermsAndConditions() {
+function TermsAndConditions({ setCurrentUserStore }) {
   const [accepted, setAccepted] = useState(false);
 
   const handleAcceptance = () => {
@@ -22,7 +22,7 @@ function TermsAndConditions() {
 
   return (
     <>
-    <NavBar/>
+    <NavBar setCurrentUserStore={setCurrentUserStore}/>
       <div className={styles.container}>
         <h1>Términos y Condiciones de uso de JobPortalX</h1>
         <hr />
