@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import img1 from "../../assets/img/empleo1.jpg";
 import img2 from "../../assets/img/empleo2.jpg";
 import img3 from "../../assets/img/empleo3.jpg";
-import Footer from "../../components/Footer/Footer";
 import CardPlan from "../../components/CardPlan/CardPlan";
 
 export default function Applicant() {
@@ -116,13 +115,14 @@ export default function Applicant() {
 
           {/* Add more job cards here */}
         </div>
-
-        <CardPlan 
-                tittle='Plan Super Destacado'
-                text ='Aumenta la visibilidad de tu perfil profesional y recibe aviso de nuevas propuestas '
-                price = '5'
-                id = '4'/>
-
+        <div className={styles.containerCardPlan}>
+          <CardPlan 
+                        tittle='Plan Super Destacado'
+                        text ='Aumenta la visibilidad de tu perfil profesional y recibe aviso de nuevas propuestas '
+                        price = '5'
+                        id = '4'/ >
+        </div>
+       
         <Button variant="secondary" className="mt-3">
           <Link to="/empleos" style={{ color: "white", textDecoration: "none" }}>
             Todas las vacantes
@@ -133,7 +133,6 @@ export default function Applicant() {
 
       </div>
       </div>
-      <Footer/>
     </>
   );
 }

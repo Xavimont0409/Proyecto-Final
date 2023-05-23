@@ -36,7 +36,7 @@ Cv.hasMany(Experience);
 Experience.belongsTo(Cv);
 
 Cv.hasMany(Formation);
-Experience.belongsTo(Cv);
+Formation.belongsTo(Cv);
 
 Company.hasMany(Vacant);
 Vacant.belongsTo(Company);

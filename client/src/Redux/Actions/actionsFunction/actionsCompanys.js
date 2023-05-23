@@ -4,6 +4,7 @@ import {
   POST_COMPANY,
 } from "../actions-types/action-types";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export const getAllCompanys = () => {
   return async function (dispatch) {
@@ -15,7 +16,11 @@ export const getAllCompanys = () => {
         payload: data,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -30,7 +35,11 @@ export const getCompanyDetail = (id) => {
         payload: data,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -47,7 +56,11 @@ export const postCompany = (payload) => {
         ? alert("Usuario creado, se envió una notificación al correo ingresado")
         : data;
     } catch (error) {
-      return alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
