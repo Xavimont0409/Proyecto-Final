@@ -6,7 +6,6 @@ const getAllPayMethods = () => {
     return async function(dispatch) {
         try {
             const response = (await axios.get("/payMethod")).data;
-            console.log(response)
             return dispatch({
                 type: GET_ALL_PAYMETHOD,
                 payload: response,

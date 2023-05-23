@@ -8,7 +8,7 @@ import CardsEquipo from '../../components/CardEquipo/CardEquipo';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const Landing = () => {
+const Landing = ({ setCurrentUserStore }) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -24,7 +24,7 @@ const Landing = () => {
 
     return (
         <div className={style.landingDiv}>
-            <NavBar/>
+            <NavBar setCurrentUserStore={setCurrentUserStore} />
             <div className={style.container}>
                 <div className={style.videoDiv}>
                     <video loop autoPlay muted>

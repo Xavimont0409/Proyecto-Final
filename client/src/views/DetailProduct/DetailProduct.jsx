@@ -17,16 +17,15 @@ import Swal from 'sweetalert2';
 
 
 
-const DetailProduct = () => {
- 
+const DetailProduct = ({currentUserStore, setCurrentUserStore}) => {
+
 const { id } = useParams(); 
 const dispatch = useDispatch();
 const { user, isAuthenticated } = useAuth0();
 const navigate = useNavigate();
- const currentUser = useSelector((state) => state.dataEmail[0])
+/*  const currentUser = useSelector((state) => state.dataEmail[0]) */
  const product = useSelector((state) => state.Product);
  const payMethods = useSelector((state) => state.PayMethods);
- 
 
 useEffect(() => {
  
@@ -46,12 +45,12 @@ useEffect(() => {
  const [form, setForm] = useState({
   cost: product?.price,
   detail: product?.name,
-  CompanyId: currentUser?.id,
-  PayMethodId: 0,
   details: product?.details,
-  name: currentUser?.name,
-  email: currentUser?.email,
-  PayMethod: "",
+  CompanyId: currentUserStore?.id || null,
+  PayMethodId: 0,
+  name: currentUserStore?.name,
+  email: currentUserStore?.email,
+  PayMethod: currentUserStore?.name,
  })
 
 const handleChangeSelect = (event) => {
@@ -59,26 +58,31 @@ const handleChangeSelect = (event) => {
   setForm({ 
     cost: product?.price,
     detail: product?.name,
-    CompanyId: currentUser?.id,
-    PayMethodId: value,
     details: product?.details,
-    name: currentUser?.name,
-    email: currentUser?.email,
+    CompanyId: currentUserStore?.id || null,
+    PayMethodId: value,
+    name: currentUserStore?.name,
+    email: currentUserStore?.email,
     PayMethod: payMethods?.name,
     })
 }
 
-const handleSubmit = () => {
-  if(!form.detail){
-   return Swal.fire({
+const handleSubmit = async () => {
+  if(currentUserStore.name){
+    dispatch(postDataInStore(form));
+    dispatch(postOperation(form));
+    await Swal.fire({
+      title: 'Éxito',
+      text: 'Operación creada correctamente',
+      icon: 'success',
+  })
+    return navigate('/operation')
+  }else{
+    return Swal.fire({
       title: 'Opss..',
       text: `Ocurrió un error`,
       icon: 'error'
     });
-  }else{
-    dispatch(postDataInStore(form));
-    dispatch(postOperation(form));
-    return /* navigate('/operation'); */
   }
    
 }
@@ -88,7 +92,7 @@ return (
      {
     product.name ?
     <div>
-        <NavBar/>
+        <NavBar setCurrentUserStore={setCurrentUserStore}/>
          <div className={style.container}>
         
         <div className={style.box} key={product.name}>

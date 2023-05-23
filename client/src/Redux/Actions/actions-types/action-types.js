@@ -32,3 +32,5 @@ export const FILTER_PER_TIME = "FILTER_PER_TIME"
 
 
 export const FIND_PER_NAME="FIND_PER_NAME"
+
+export const LOGIN = "LOGIN"

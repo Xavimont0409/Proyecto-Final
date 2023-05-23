@@ -3,6 +3,7 @@ const { postVacant, postVacantRelation } = require('../../controllers/VacantCont
 
 const vacantHandlerPost = async(req, res) =>{
     const { title, description, CompanyId,WorkdayId, WorkMethodId, SeniorityId, creation_date } = req.body;
+    title.toUppercase();
     try {
         res.status(200).json(await postVacant(title, description, CompanyId, WorkdayId, WorkMethodId, SeniorityId, creation_date ));
     } catch (error) {
@@ -10,7 +11,7 @@ const vacantHandlerPost = async(req, res) =>{
     }
 }
 const vacantHandlerPostRelation = async(req, res) =>{
-    const { VacantId, ApplicantId} = req.body
+    const { VacantId, ApplicantId} = req.body;
     try {
         res.status(200).json(await postVacantRelation(VacantId, ApplicantId));
     } catch (error) {

@@ -20,6 +20,10 @@ module.exports = (sequelize) => {
         }, 
         creation_date: {
             type: DataTypes.DATEONLY,
-        }     
+        },
+        status: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
+        }
     })
 }
