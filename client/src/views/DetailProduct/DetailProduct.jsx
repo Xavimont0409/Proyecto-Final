@@ -26,7 +26,7 @@ const navigate = useNavigate();
  const currentUser = useSelector((state) => state.dataEmail[0])
  const product = useSelector((state) => state.Product);
  const payMethods = useSelector((state) => state.PayMethods);
- 
+ console.log(product)
 
 useEffect(() => {
  
@@ -46,12 +46,12 @@ useEffect(() => {
  const [form, setForm] = useState({
   cost: product?.price,
   detail: product?.name,
-  CompanyId: currentUser?.id,
-  PayMethodId: 0,
   details: product?.details,
+  CompanyId: currentUser?.id || null,
+  PayMethodId: 0,
   name: currentUser?.name,
   email: currentUser?.email,
-  PayMethod: "",
+  PayMethod: payMethods?.name,
  })
 
 const handleChangeSelect = (event) => {
@@ -59,9 +59,10 @@ const handleChangeSelect = (event) => {
   setForm({ 
     cost: product?.price,
     detail: product?.name,
-    CompanyId: currentUser?.id,
-    PayMethodId: value,
     details: product?.details,
+    CompanyId: currentUser?.id || null,
+    PayMethodId: value,
+  
     name: currentUser?.name,
     email: currentUser?.email,
     PayMethod: payMethods?.name,
@@ -69,16 +70,15 @@ const handleChangeSelect = (event) => {
 }
 
 const handleSubmit = () => {
-  if(!form.detail){
-   return Swal.fire({
+  if(form.detail){
+    dispatch(postDataInStore(form));
+    return dispatch(postOperation(form));
+  }else{
+    return Swal.fire({
       title: 'Opss..',
       text: `Ocurrió un error`,
       icon: 'error'
     });
-  }else{
-    dispatch(postDataInStore(form));
-    dispatch(postOperation(form));
-    return /* navigate('/operation'); */
   }
    
 }

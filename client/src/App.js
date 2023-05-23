@@ -31,9 +31,6 @@ function App() {
     };
   }, [currentUser]);
 
-  console.log(currentUser?.profile);
-
-
   return (  
     <div className="App">
       <Routes>
