@@ -14,7 +14,7 @@ import { getAllCompanys, getCompanyDetail } from "../../Redux/Actions/actionsFun
 
 
 
-const EmpleoDetail = () => {
+const EmpleoDetail = ({setCurrentUserStore}) => {
 
     
 
@@ -48,7 +48,7 @@ const EmpleoDetail = () => {
             
             return(
               <div className={style.mainContainer}>
-        <NavBar/>
+        <NavBar setCurrentUserStore={setCurrentUserStore} />
         <div className={style.mainContainer2}>
             
             {/* <div className={style.containerEmpleosRel}>

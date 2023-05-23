@@ -9,7 +9,7 @@ import style from "./MiPerfil.module.css"
 import { useNavigate } from "react-router-dom";
 import NavBarLog from "../../components/NavBar/NavBarLog"
 
-const MiPerfil = () => {
+const MiPerfil = ({ setCurrentUserStore }) => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const MiPerfil = () => {
       return (
         // isAuthenticated && (
         <div className={style.container}>
-          <NavBarLog></NavBarLog>
+          <NavBarLog setCurrentUserStore={setCurrentUserStore} ></NavBarLog>
 
           <h1>Mi Perfil</h1>
 

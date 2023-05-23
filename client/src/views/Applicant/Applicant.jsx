@@ -8,11 +8,11 @@ import img2 from "../../assets/img/empleo2.jpg";
 import img3 from "../../assets/img/empleo3.jpg";
 import CardPlan from "../../components/CardPlan/CardPlan";
 
-export default function Applicant() {
+export default function Applicant({ setCurrentUserStore }) {
   return (
     <>
     
-      <NavBar />
+      <NavBar setCurrentUserStore={setCurrentUserStore} />
 
       <div className={styles.container}>
 
