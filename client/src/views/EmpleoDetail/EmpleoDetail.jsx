@@ -14,7 +14,7 @@ import { getAllCompanys, getCompanyDetail } from "../../Redux/Actions/actionsFun
 
 
 
-const EmpleoDetail = ({setCurrentUserStore}) => {
+const EmpleoDetail = ({ setCurrentUserStore }) => {
 
     
 
@@ -44,7 +44,6 @@ const EmpleoDetail = ({setCurrentUserStore}) => {
             return <Loading/>;
           };
           const companyId = empleoSelected.CompanyId
-          
             
             return(
               <div className={style.mainContainer}>
