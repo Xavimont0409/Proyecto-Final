@@ -27,7 +27,7 @@ const EmpleoDetail = ({ setCurrentUserStore }) => {
         
       },[dispatch, detailId])
       
-      const empleoSelected = useSelector(state => state.VacantDetail);
+      const empleoSelected = useSelector(state => state.VacantDetail[0]);
   
     
       
@@ -44,6 +44,7 @@ const EmpleoDetail = ({ setCurrentUserStore }) => {
             return <Loading/>;
           };
           const companyId = empleoSelected.CompanyId
+          
             
             return(
               <div className={style.mainContainer}>
