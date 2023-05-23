@@ -3,42 +3,48 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 
-const ProtectedRoute = ({ children, isAllowed }) => {
-    const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
-    const [redirectTo, setRedirectTo] = useState(null);
+const ProtectedRoute = ({ isAuthenticated, userType }) => {
+    const { /*isAuthenticated,*/ isLoading, /*loginWithRedirect*/} = useAuth0();
+    //const [redirectTo, setRedirectTo] = useState(null);
 
-    useEffect(() => {
-        if (!isAuthenticated && !isLoading) {
-        const storedRedirectTo = localStorage.getItem('redirectTo');
-        if (storedRedirectTo) {
-            setRedirectTo(storedRedirectTo);
-            localStorage.removeItem('redirectTo');
-        }
-        }
-    }, [isAuthenticated, isLoading]);
+    //useEffect(() => {
+    //    if (!isAuthenticated && !isLoading) {
+    //    const storedRedirectTo = localStorage.getItem('redirectTo');
+    //    if (storedRedirectTo) {
+    //        setRedirectTo(storedRedirectTo);
+    //        localStorage.removeItem('redirectTo');
+    //    }
+    //    }
+    //}, [isAuthenticated, isLoading]);
 
-    const handleLogin = () => {
-        localStorage.setItem('redirectTo', window.location.pathname);
-        loginWithRedirect();
-    };
+    //const handleLogin = () => {
+    //    localStorage.setItem('redirectTo', window.location.pathname);
+    //    loginWithRedirect();
+    //};
+
 
     if (isLoading) {
         return <Loading />;
-    }
+    } 
 
-    if (!isAuthenticated) {
-        return handleLogin();
-    }
+    else if (!isAuthenticated && userType === "Applicant") {
+        return <Navigate to="/applicant"/>;
+    } 
 
-    if (redirectTo) {
-        return <Navigate to={redirectTo} />;
+    else if (!isAuthenticated && userType === "Company") {
+        return <Navigate to="/empresa"/>;
     }
+    
+    else {
+        return /*children ? children : */ <Outlet />;
+    }
+    //if (redirectTo) {
+    //    return ;
+    //}
 
     /* if (!isAllowed) {
         return <Navigate to={'/'}/>
     } */
-
-    return children ? children : <Outlet />;
 };
 
 export default ProtectedRoute;

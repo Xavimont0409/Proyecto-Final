@@ -13,9 +13,7 @@ export default function Applicant() {
     <>
     
       <NavBar />
-
       <div className={styles.container}>
-
       <Carousel>
         {/* Slide 1 */}
         <Carousel.Item>
@@ -54,14 +52,11 @@ export default function Applicant() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-
-      
         <Button variant="secondary" className="mt-3">
           <Link to="/empleos" style={{ color: "white", textDecoration: "none" }}>
             Ver más
           </Link>
         </Button>
-
       <div className={styles.SuggestedJob}>
         <h4>Sugerencias de vacantes</h4>
         <div className={styles.Vacancies}>
@@ -72,7 +67,6 @@ export default function Applicant() {
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
-
           <Card className={styles.job}>
             <Card.Body>
               <Card.Title>Gerente de proyectos</Card.Title>
@@ -80,7 +74,6 @@ export default function Applicant() {
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
-
           <Card className={styles.job}>
             <Card.Body>
               <Card.Title>Técnico de instalaciones solares</Card.Title>
@@ -88,7 +81,6 @@ export default function Applicant() {
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
-
             <Card className={styles.job}>
           <Card.Body>
               <Card.Title>Analista de impacto ambiental</Card.Title>
@@ -96,7 +88,6 @@ export default function Applicant() {
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
-
         <Card className={styles.job}>
             <Card.Body>
               <Card.Title>Consultor estratégico</Card.Title>
@@ -104,7 +95,6 @@ export default function Applicant() {
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
-
         <Card className={styles.job}>
             <Card.Body>
               <Card.Title>Analista de datos</Card.Title>
@@ -112,7 +102,6 @@ export default function Applicant() {
               <Button variant="primary">Conoce mas</Button>
             </Card.Body>
           </Card>
-
           {/* Add more job cards here */}
         </div>
         <div className={styles.containerCardPlan}>
@@ -120,9 +109,8 @@ export default function Applicant() {
                         tittle='Plan Super Destacado'
                         text ='Aumenta la visibilidad de tu perfil profesional y recibe aviso de nuevas propuestas '
                         price = '5'
-                        id = '4'/ >
+                        id = '4' />
         </div>
-       
         <Button variant="secondary" className="mt-3">
           <Link to="/empleos" style={{ color: "white", textDecoration: "none" }}>
             Todas las vacantes

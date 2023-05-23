@@ -6,32 +6,49 @@ import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer}
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage/useLocalStorage';
+import { getEmail } from './Redux/Actions/actionsFunction/FiltersHome';
+//import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 
 
 
 axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
+  //const dispatch = useDispatch();
   const currentUser = useSelector(state => state.dataEmail[0]);
-  const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
-  const { isAuthenticated } = useAuth0();
-
+  //const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
+  const { /*user,*/ isAuthenticated } = useAuth0();
+  
   useEffect(() => {
-    if (currentUser) {
-      setCurrentUserStore(currentUser);
-    } else {
-      setCurrentUserStore('');
-    }
-    
-    return () => {
-      localStorage.removeItem("redirectTo");
-    };
-  }, [currentUser]);
+  //if (isAuthenticated && user){
+  //  dispatch(getEmail(user.email));
+  //}
+  //  if (currentUser) {
+  //    setCurrentUserStore(currentUser);
+  //  } else {
+  //    setCurrentUserStore('');
+  //  }
+  //  
+  //  return () => {
+  //    localStorage.removeItem("redirectTo");
+  //  };
+  }, [/*currentUser*/]);
 
-  console.log(currentUser?.profile);
+  const userHardcode = {
+    Cv:null,
+    cellphone:"3884879282",
+    email:"juancruzgenovese22@gmail.com",
+    id:"f331efac-487c-4e0e-a9a8-dbe94e4176bc",
+    lastName:"Genovese",
+    name:"Juan Cruz",
+    profile:"Applicant", //Applicant
+    registed: true
+  }
+
+  console.log(userHardcode.profile);
+  console.log(currentUser);
 
 
   return (  
@@ -47,27 +64,22 @@ function App() {
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
         <Route path="/product/:id" element={<DetailProduct/>} />
-        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>/*Todos */}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path='/profiles' element={<Profiles/>} />
-          <Route path='/profiles-company' element={<ProfilesCompany/>} />
           <Route path="/MiPerfil" element={<MiPerfil/>} />
           <Route path="/operation" element={<Operation/>} />
           <Route path="/success" element={<Success/>} />
-
-          <Route path="/registro-cv" element={<FormCv />} />
+        </Route>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated && userHardcode.profile === "Company"} userType={userHardcode.profile}/>/*Empresas*/}>
+          <Route path="/empresa" element={<LandingEmpresa />}/>
           <Route path="/registro-vacante" element={<FormVacante />} />
-          <Route path='/applicant' element={
-            <ProtectedRoute >
-              <Applicant />
-            </ProtectedRoute>
-          } />
-          <Route path="/empresa" element={
-            <ProtectedRoute isAuthenticated={isAuthenticated} isAllowed={!!currentUserStore && currentUserStore.profile === "Company"}>
-              <LandingEmpresa />
-            </ProtectedRoute>
-          } />
           <Route path="/registro-empresa" element={<FormEmpresa />} />
+        </Route>
+        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated && userHardcode.profile === "Applicant"} userType={userHardcode.profile}/>/*Empleados*/}>
+          <Route path='/applicant' element={<Applicant/>}/>
+          <Route path='/profiles-company' element={<ProfilesCompany/>} />
+          <Route path="/registro-cv" element={<FormCv />} />
           <Route path="/registro-experiencia" element={<FormRegistroExperincia/>} />
         </Route>
       </Routes>
