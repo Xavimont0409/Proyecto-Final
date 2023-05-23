@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllUsers } from '../../Redux/Actions/actionsFunction/actionsUsers';
 
-const Profiles = () => {
+const Profiles = ({ setCurrentUserStore }) => {
     const usersRaw = useSelector(state => state.Users);
     const users = usersRaw.filter((user) => user.Cv !== null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -46,7 +46,7 @@ const Profiles = () => {
 
     return (
         <div className={styles.container}>
-            <NavBar />
+            <NavBar setCurrentUserStore={setCurrentUserStore}/>
             <Page
                 usersPerPage={usersPerPage}
                 users={users}

@@ -10,7 +10,7 @@ import cities from "cities.json"
 
 
 
-function FormEmpresa() {
+function FormEmpresa({ setCurrentUserStore }) {
 
     
     const [validated, setValidated] = useState(false);
@@ -73,7 +73,7 @@ const handleSubmit = (event) => {
 
   return (
       <div className={style.maincontainer1}>
-        <NavBar></NavBar>
+        <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
         <h1 className={style.title}>REGISTRA TU EMPRESA!</h1>
     <div className={style.maincontainer2}>
     <span className={style.textcontainer}>

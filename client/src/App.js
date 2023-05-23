@@ -39,36 +39,36 @@ function App() {
       <Routes>
         <Route index element={<Landing setCurrentUserStore= {setCurrentUserStore}/>} />
         <Route exact path="/" element={<Landing />} />
-        <Route path="/empleos" element={<Empleos/>} />
+        <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/registro" element={<Registro />}/>
         <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
         <Route path="/registro-usuario" element={<FormRegistroUsuario />} />
         <Route path="*" element={<Error404 />} />
-        <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore}/>} />
+        <Route path="/product/:id" element={<DetailProduct setCurrentUserStore={setCurrentUserStore}/>} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
-          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
-          <Route path='/profiles' element={<Profiles/>} />
-          <Route path='/profiles-company' element={<ProfilesCompany/>} />
-          <Route path="/MiPerfil" element={<MiPerfil/>} />
-          <Route path="/operation" element={<Operation />} />
+          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path='/profiles' element={<Profiles setCurrentUserStore={setCurrentUserStore}/>} />
+          <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore}/>} />
+          <Route path="/MiPerfil" element={<MiPerfil setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/operation" element={<Operation setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/success" element={<Success/>} />
 
-          <Route path="/registro-cv" element={<FormCv />} />
-          <Route path="/registro-vacante" element={<FormVacante />} />
+          <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/registro-vacante" element={<FormVacante setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/applicant' element={
             <ProtectedRoute >
-              <Applicant />
+              <Applicant setCurrentUserStore={setCurrentUserStore} />
             </ProtectedRoute>
           } />
           <Route path="/empresa" element={
             <ProtectedRoute isAuthenticated={isAuthenticated} isAllowed={!!currentUserStore && currentUserStore.profile === "Company"}>
-              <LandingEmpresa />
+              <LandingEmpresa setCurrentUserStore={setCurrentUserStore} />
             </ProtectedRoute>
           } />
-          <Route path="/registro-empresa" element={<FormEmpresa />} />
-          <Route path="/registro-experiencia" element={<FormRegistroExperincia/>} />
+          <Route path="/registro-empresa" element={<FormEmpresa setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/registro-experiencia" element={<FormRegistroExperincia setCurrentUserStore={setCurrentUserStore} />} />
         </Route>
       </Routes>
       <Footer/>

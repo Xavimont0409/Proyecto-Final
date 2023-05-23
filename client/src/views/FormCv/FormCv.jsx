@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 
 
-function FormCv() {
+function FormCv({setCurrentUserStore}) {
 
   const { user, isAuthenticated } = useAuth0();
 
@@ -76,7 +76,7 @@ function FormCv() {
 
     <div className={style.container}>
 
-      <NavBar></NavBar>
+      <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
 
       <div className={style.container2} style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: 1 }}>

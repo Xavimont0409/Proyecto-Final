@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 import { useAuth0 } from '@auth0/auth0-react';
 
-export default function FormVacante() {
+export default function FormVacante({setCurrentUserStore}) {
 
     const today = new Date();
     const dateOnly = today.toISOString().slice(0, 10);
@@ -80,7 +80,7 @@ export default function FormVacante() {
 
         <div className={style.mainContainer}>
 
-            <NavBar></NavBar>
+            <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
 
 
             <h2 style={{ 'margin': '20px' }}>Crear nueva vacante</h2>

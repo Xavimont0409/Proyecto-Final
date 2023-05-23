@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 
 
 
-const DetailProduct = ({currentUserStore}) => {
+const DetailProduct = ({setCurrentUserStore}) => {
  
 const { id } = useParams(); 
 const dispatch = useDispatch();
@@ -88,7 +88,7 @@ return (
      {
     product.name ?
     <div>
-        <NavBar/>
+        <NavBar setCurrentUserStore={setCurrentUserStore}/>
          <div className={style.container}>
         
         <div className={style.box} key={product.name}>
