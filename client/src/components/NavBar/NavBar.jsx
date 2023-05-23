@@ -3,14 +3,14 @@ import NavbarUnlog from "./NavBarUnlog";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-const NavBar = () => {
+const NavBar = ({ setCurrentUserStore }) => {
     
     const { isAuthenticated } = useAuth0();
 
     return (
         <div>
             {
-                (isAuthenticated) ? (<NavBarLog/>) : (<NavbarUnlog/>)
+                (isAuthenticated) ? (<NavBarLog setCurrentUserStore={ setCurrentUserStore } />) : (<NavbarUnlog/>)
             }
         </div>
     )
