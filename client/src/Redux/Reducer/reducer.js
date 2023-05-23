@@ -20,7 +20,8 @@ import {
   FIND_PER_NAME,
   FILTER_PER_TIME,
   GET_EMAIL,
-  CLEAN_DETAIL
+  CLEAN_DETAIL,
+  LOGIN
 } from "../Actions/actions-types/action-types";
 
 const initialState = {
@@ -45,6 +46,8 @@ const initialState = {
   PayMethods: [],
 
   filtrosCombinados: [],
+
+  login : false
 };
 
 const Reducer = (state = initialState, action) => {
@@ -162,7 +165,14 @@ const Reducer = (state = initialState, action) => {
         ...state,
         Vacant: filterPerTime,
         filtrosCombinados: filterPerTime
-      }    
+      }
+    case LOGIN : 
+    console.log(action.payload);
+    const confirmacion = action.payload === true ? true : false
+          return {
+        ...state,
+        login: confirmacion
+      }      
 
     //! LOS CASOS POST TAMBIEN SE TRAEN AL REDUCER POR BUENAS PRACTICAS
     case POST_COMPANY:

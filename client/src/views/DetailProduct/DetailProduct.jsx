@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 
 
 
-const DetailProduct = () => {
+const DetailProduct = ({currentUserStore}) => {
  
 const { id } = useParams(); 
 const dispatch = useDispatch();

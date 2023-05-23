@@ -6,9 +6,11 @@ import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer}
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
+import { FaBullseye } from 'react-icons/fa';
+import { login } from './Redux/Actions/actionsFunction/actionsLogin'
 
 
 
@@ -16,25 +18,26 @@ axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
+  const confirmacion = useSelector(state => state.login)
+  const dispatch = useDispatch()
   const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
-  const { isAuthenticated } = useAuth0();
+  const { logout, isAuthenticated } = useAuth0();
 
   useEffect(() => {
     if (currentUser) {
       setCurrentUserStore(currentUser);
-    } else {
-      setCurrentUserStore('');
+      if(currentUserStore)dispatch(login(true))
     }
-    
     return () => {
       localStorage.removeItem("redirectTo");
+
     };
-  }, [currentUser]);
+  }, [currentUser, currentUserStore]);
 
   return (  
     <div className="App">
       <Routes>
-        <Route index element={<Landing />} />
+        <Route index element={<Landing setCurrentUserStore= {setCurrentUserStore}/>} />
         <Route exact path="/" element={<Landing />} />
         <Route path="/empleos" element={<Empleos/>} />
         <Route path="/registro" element={<Registro />}/>
@@ -43,13 +46,13 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route path="/product/:id" element={<DetailProduct/>} />
+        <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore}/>} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail />} />
           <Route path='/profiles' element={<Profiles/>} />
           <Route path='/profiles-company' element={<ProfilesCompany/>} />
           <Route path="/MiPerfil" element={<MiPerfil/>} />
-          <Route path="/operation" element={<Operation/>} />
+          <Route path="/operation" element={<Operation />} />
           <Route path="/success" element={<Success/>} />
 
           <Route path="/registro-cv" element={<FormCv />} />
