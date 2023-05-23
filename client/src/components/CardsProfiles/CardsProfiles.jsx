@@ -36,7 +36,9 @@ const CardProfile = ({id, photo, name, lastName, profession, personal_descriptio
           <Link to={linkedin}>
           <BsLinkedin className={style.linkedin}/>
           </Link>
-          <Link to="#"><FcSearch className={style.lupa}/> </Link>
+          <Link to={`/detailProfile/${id}`}>
+            <FcSearch className={style.lupa} /> 
+            </Link>
           </Card.Body>
       </div>
     )
