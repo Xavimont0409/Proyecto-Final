@@ -1,8 +1,7 @@
 const { Vacant, Workday, WorkMethod, Seniority, Applicant } = require("../../db");
 
 const getVacantId = async (id) => {
-  const findVacant = await Vacant.findAll({
-    where: { id },
+  const findVacant = await Vacant.findByPk(id,{
     attributes:["id","title", "description","createdAt","CompanyId"],
     include: [{model: Applicant},
       {
