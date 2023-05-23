@@ -1,9 +1,6 @@
 const {transporter} = require('../../config/mailer');
 
 const middlewareEmail = async (email, name, detail, details, cost, PayMethodId, PayMethod) => {
-    //const { email, name, detail, details, cost, PayMethodId, PayMethod} = req.body;
-    try {
-
         await transporter.sendMail({
             from: '"¡JobPortallX! GRACIAS POR ACTUALIZAR TU PLAN 👻" <jobportalxcompany@gmail.com>', // sender address
             to: email, // list of receivers
@@ -42,10 +39,7 @@ const middlewareEmail = async (email, name, detail, details, cost, PayMethodId, 
            <span> El equipo de JobPortallX </span>
             `
           });
-        
-    } catch (error) {
-        res.status(404).send(error.message)
-    }
+          return
 }
 
 module.exports = { middlewareEmail }

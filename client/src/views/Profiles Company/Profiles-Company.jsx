@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
-const ProfilesCompany = () => {
+const ProfilesCompany = ({setCurrentUserStore}) => {
     const company = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
     const [companiesPerPage, setcompaniesPerPage] = useState(4);
@@ -37,7 +37,7 @@ const ProfilesCompany = () => {
 
     return (
         <div className={styles.container}>
-            <NavBar />
+            <NavBar setCurrentUserStore={setCurrentUserStore}/>
             <Page
                 companiesPerPage={companiesPerPage}
                 companies={company}

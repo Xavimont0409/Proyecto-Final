@@ -13,18 +13,19 @@ import { useParams, useNavigate} from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
 import { useAuth0 } from "@auth0/auth0-react";
 import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
+import Swal from 'sweetalert2';
 
 
-const DetailProduct = () => {
- 
+
+const DetailProduct = ({currentUserStore, setCurrentUserStore}) => {
+
 const { id } = useParams(); 
 const dispatch = useDispatch();
 const { user, isAuthenticated } = useAuth0();
 const navigate = useNavigate();
- const currentUser = useSelector((state) => state.dataEmail[0])
+/*  const currentUser = useSelector((state) => state.dataEmail[0]) */
  const product = useSelector((state) => state.Product);
  const payMethods = useSelector((state) => state.PayMethods);
- 
 
 useEffect(() => {
  
@@ -44,12 +45,12 @@ useEffect(() => {
  const [form, setForm] = useState({
   cost: product?.price,
   detail: product?.name,
-  CompanyId: currentUser?.id,
-  PayMethodId: 0,
   details: product?.details,
-  name: currentUser?.name,
-  email: currentUser?.email,
-  PayMethod: "",
+  CompanyId: currentUserStore?.id || null,
+  PayMethodId: 0,
+  name: currentUserStore?.name,
+  email: currentUserStore?.email,
+  PayMethod: currentUserStore?.name,
  })
 
 const handleChangeSelect = (event) => {
@@ -57,22 +58,31 @@ const handleChangeSelect = (event) => {
   setForm({ 
     cost: product?.price,
     detail: product?.name,
-    CompanyId: currentUser?.id,
-    PayMethodId: value,
     details: product?.details,
-    name: currentUser?.name,
-    email: currentUser?.email,
+    CompanyId: currentUserStore?.id || null,
+    PayMethodId: value,
+    name: currentUserStore?.name,
+    email: currentUserStore?.email,
     PayMethod: payMethods?.name,
     })
 }
 
-const handleSubmit = () => {
-  if(form.detail){
+const handleSubmit = async () => {
+  if(currentUserStore.name){
     dispatch(postDataInStore(form));
-  dispatch(postOperation(form));
-  return navigate('/operation');
+    dispatch(postOperation(form));
+    await Swal.fire({
+      title: 'Éxito',
+      text: 'Operación creada correctamente',
+      icon: 'success',
+  })
+    return navigate('/operation')
   }else{
-    return alert("Todo roto bro");
+    return Swal.fire({
+      title: 'Opss..',
+      text: `Ocurrió un error`,
+      icon: 'error'
+    });
   }
    
 }
@@ -82,7 +92,7 @@ return (
      {
     product.name ?
     <div>
-        <NavBar/>
+        <NavBar setCurrentUserStore={setCurrentUserStore}/>
          <div className={style.container}>
         
         <div className={style.box} key={product.name}>

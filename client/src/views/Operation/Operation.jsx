@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Loading from '../../components/Loading/Loading';
 import {Footer, NavBar} from '../../components/';
 
-const Operation = () => {
+const Operation = ({ setCurrentUserStore }) => {
     const info = useSelector((state) => state.Information);
     const preferenceId = useSelector((state) => state.PreferenceId);
 
@@ -15,7 +15,7 @@ const Operation = () => {
 
     return (
         <>
-        <NavBar />
+        <NavBar setCurrentUserStore={setCurrentUserStore}/>
         <div className={style.container}>
             {info ? (
                 <div className={style.innerContainer}>

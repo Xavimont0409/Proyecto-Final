@@ -6,6 +6,7 @@ import {
   POST_EXPE
 } from "../actions-types/action-types";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export const getAllUsers = () => {
   return async function (dispatch) {
@@ -17,7 +18,11 @@ export const getAllUsers = () => {
         payload: data,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -32,7 +37,11 @@ export const getUserDetail = (id) => {
         payload: data,
       });
     } catch (error) {
-      alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -49,7 +58,11 @@ export const postUser = (payload) => {
         ? alert("Usuario creado, se envió una notificación al correo ingresado")
         : data;
     } catch (error) {
-      return alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -66,7 +79,11 @@ export const postCv = (payload) => {
         ? alert("creado")
         : data;
     } catch (error) {
-      return alert(error.response.data.error);
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
     }
   };
 };
@@ -83,7 +100,11 @@ export const postExpe = (payload) =>{
       ? alert("creado")
       : data
   } catch (error) {
-    return alert(error.response.data.error);
+    return Swal.fire({
+      title: "Error",
+      text: `${error.response.data.error}`,
+      icon: 'error'
+    })
   }
   }
 }

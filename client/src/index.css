@@ -8,6 +8,7 @@
   --sub-white: rgb(255, 248, 248);
   --avocado: #6b8e23ff;
   --mustard: #ffdb58ff; 
+  ---black: hsla(0, 0%, 0%, 0.4);
 }
 
 a{

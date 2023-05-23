@@ -12,8 +12,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { findPerName } from "../../Redux/Actions/actionsFunction/actionsSearchBar";
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
+import { login } from '../../Redux/Actions/actionsFunction/actionsLogin'
 
-const NavBarCliente = () => {
+const NavBarCliente = ({ setCurrentUserStore }) => {
   const { logout, isAuthenticated } = useAuth0();
   const dispatch = useDispatch()
   const [ name, setName ] = useLocalStorage('name', '')
@@ -23,6 +24,11 @@ const NavBarCliente = () => {
   }
   const searchName = (name) =>{
     dispatch(findPerName(name))
+  }
+  const handlerLogin = () =>{
+    dispatch(login(false))
+    setCurrentUserStore("")
+    logout({ returnTo: window.location.origin })
   }
 
   return (
@@ -62,7 +68,7 @@ const NavBarCliente = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
-                  onClick={() => logout({ returnTo: window.location.origin })}
+                  onClick={handlerLogin}
                 >
                   cerrar sesion
                 </NavDropdown.Item>

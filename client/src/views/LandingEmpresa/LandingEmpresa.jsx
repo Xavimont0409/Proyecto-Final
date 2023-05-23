@@ -1,15 +1,15 @@
 import style from "./LandignEmpresa.module.css";
 import UncontrolledExample from "../../components/Carousel/Carousel";
-import NavBar from '../../components/NavBar/NavBarLog';
+import NavBar from '../../components/NavBar/NavBar';
 import CardPlan from "../../components/CardPlan/CardPlan";
 import CarouselPerfiles from "../../components/CarouselPerfiles/CarouselPerfiles";
 
-const LandingEmpresa = () => {
+const LandingEmpresa = ({ setCurrentUserStore }) => {
     return (
         <div className={style.container}>
           
            <div className={style.containerComponents}> 
-                <NavBar></NavBar>
+                <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
                 <UncontrolledExample/>
             </div>
 

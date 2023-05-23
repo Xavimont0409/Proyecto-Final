@@ -8,10 +8,11 @@ import countries from "countries-list";
 import ButtonGeneral from "../../components/Button/ButtonGeneral";
 import { getUserDetail, postExpe } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import validation from "./validation";
-import style from "./FormregistroExperiencia.module.css"
+import style from "./FormregistroExperiencia.module.css";
+import Swal from 'sweetalert2';
 
 
-const FormRegistroExperincia = () => {
+const FormRegistroExperincia = ({ setCurrentUserStore }) => {
 
 
     const countriesNames = Object.values(countries.countries).map(
@@ -63,15 +64,20 @@ const FormRegistroExperincia = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!validation(experiencia)) {
-            alert('Completa todos los campos')
+            Swal.fire({
+                title:'Faltan Datos',
+                text:'Completa todos los campos',
+                icon:'warning'
+              })
         } else {
             setValidated(true);
-            dispatch(postExpe(experiencia))
+            dispatch(postExpe(experiencia));
+            return Swal.fire({
+                title: "Registro exitoso",
+                icon: 'success'
+              })
         }
     };
-
-   
-
 
     const handlerChange = (event) => {
         const property = event.target.name;
@@ -83,7 +89,7 @@ const FormRegistroExperincia = () => {
     return (
 
         <div className={style.mainContainer}>
-             <NavBar></NavBar>
+             <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
             <h2 style={{ 'margin': '30px' }}>Añadir Experiencia Profesional al CV</h2>
             <Form className={style.Form} validated={!validated}>
 
