@@ -9,20 +9,20 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector,useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
-import { FaBullseye } from 'react-icons/fa';
+//import { FaBullseye } from 'react-icons/fa';
 import { login } from './Redux/Actions/actionsFunction/actionsLogin'
 
 
 
-axios.defaults.baseURL = 'http://localhost:3001'
-//axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+//axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
-  const confirmacion = useSelector(state => state.login)
+  //const confirmacion = useSelector(state => state.login)
   const dispatch = useDispatch()
   const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
-  const { logout, isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     if (currentUser) {
@@ -33,7 +33,7 @@ function App() {
       localStorage.removeItem("redirectTo");
 
     };
-  }, [currentUser, currentUserStore]);
+  }, [currentUser, currentUserStore, dispatch, setCurrentUserStore]);
 
   return (  
     <div className="App">
