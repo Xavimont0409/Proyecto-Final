@@ -3,8 +3,8 @@ import ImgError404 from '../../assets/img/Error 404.png'
 import styles from "./Error404.module.css";
 
 const Error404 = () => {
-  const handleGoHome = () => {
-    window.location.href = '/';
+  const handleGoBack = () => {
+    window.history.back();
   };
 
   return (
@@ -16,7 +16,7 @@ const Error404 = () => {
       <h3>Intente más tarde.</h3>
       </div>
         </div>
-      <button onClick={handleGoHome} className={styles.errorButton}>Volver</button>
+      <button onClick={handleGoBack} className={styles.errorButton}>Volver</button>
     </div>
   );
 };

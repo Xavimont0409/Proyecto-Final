@@ -11,11 +11,11 @@ const ProtectedRoute = ({ isAuthenticated, userType }) => {
         return <Loading />;
     } 
 
-    else if (!isAuthenticated && userType === "Applicant") {
+    else if (!isAuthenticated && (userType === "Applicant" || userType === "Admin")) {
         return <Navigate to="/applicant"/>;
     } 
 
-    else if (!isAuthenticated && userType === "Company") {
+    else if (!isAuthenticated && (userType === "Company" || userType === "Admin")) {
         return <Navigate to="/empresa"/>;
     }
     

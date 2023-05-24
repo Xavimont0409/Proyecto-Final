@@ -47,7 +47,6 @@ const Operation = ({ setCurrentUserStore }) => {
                 <Loading />
             )}
         </div>
-        <Footer/>
         </>
     );
 };
