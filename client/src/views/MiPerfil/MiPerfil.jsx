@@ -15,7 +15,9 @@ const MiPerfil = ({ setCurrentUserStore }) => {
   const dispatch = useDispatch();
 
   const currentUser = useSelector(state => state.dataEmail[0]);
-  const userDetail = useSelector(state => state.UserDetail[0])
+  const userDetail = useSelector(state => state.UserDetail[0]);
+  console.log(userDetail)
+  console.log(currentUser.id)
 
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
@@ -38,7 +40,7 @@ const MiPerfil = ({ setCurrentUserStore }) => {
     if (currentUser) {
       dispatch(getUserDetail(currentUser.id))
     }
-  }, [currentUser, dispatch]);
+  }, [dispatch, currentUser]);
 
 
 
