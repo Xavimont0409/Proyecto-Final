@@ -10,6 +10,7 @@ const applicantHandlerPut = async (req, res) => {
         const response = await applicantUpdate(id, body);
         res.status(200).json(response);
     } catch (error) {
+        console.log(error.message);
         errorUser(error, res);
     }
 };
