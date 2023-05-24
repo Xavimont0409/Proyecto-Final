@@ -27,7 +27,7 @@ const EmpleoDetail = ({ setCurrentUserStore }) => {
         
       },[dispatch, detailId])
       
-      const empleoSelected = useSelector(state => state.VacantDetail[0]);
+      const empleoSelected = useSelector(state => state.VacantDetail);
   
     
       
