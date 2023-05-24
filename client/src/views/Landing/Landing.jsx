@@ -44,7 +44,7 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
                     </div>
                     <div className={style.buttonDiv}>
                         {profile === "Admin" ? (
-                            <Link to="https://jobportalx-adminpanel.vercel.app" target='_blank'>
+                            <Link to={process.env.ADMIN_PANEL} target='_blank'>
                                 <Button variant="outline-secondary" className="ms-auto">Dashboard Admin</Button>
                             </Link>
                         ): (<></>)}
