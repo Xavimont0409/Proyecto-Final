@@ -14,6 +14,7 @@ import {
   POST_VACANT,
   POST_OPERATION,
   POST_RELATION_VACANT_APPLICANT,
+  POST_STARS,
   POST_EXPE,
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
@@ -32,6 +33,8 @@ const initialState = {
 
   Information: {},
   PreferenceId:"",
+
+  stars: "",
 
   Users: [],
   UserDetail: {},
@@ -204,6 +207,11 @@ const Reducer = (state = initialState, action) => {
       return{
         ...state,
       }
+    case POST_STARS:
+      return {
+        ...state,
+        stars: action.payload,
+      };
     case POST_EXPE:
       return {
         ...state,
