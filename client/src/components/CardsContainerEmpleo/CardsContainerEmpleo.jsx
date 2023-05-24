@@ -6,7 +6,7 @@ import Page from "../Paginated/Page";
 
 const CardsContainerEmpleo = ({ vacants }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [vacantsPerPage, setVacantsPerPagePerPage] = useState(6);
+    const [vacantsPerPage, setVacantsPerPagePerPage] = useState(5);
     const indexOfLastCharacter = currentPage * vacantsPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - vacantsPerPage;
 
