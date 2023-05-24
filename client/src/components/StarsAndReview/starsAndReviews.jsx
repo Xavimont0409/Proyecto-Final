@@ -4,7 +4,7 @@ import styles from "./starsAndReviews.module.css";
 import { useDispatch } from "react-redux";
 import { postStars } from "../../Redux/Actions/actionsFunction/actionsStars";
 import Swal from "sweetalert2";
-
+import { getCompanyDetail } from '../../Redux/Actions/actionsFunction/actionsCompanys'
 
 const StarReview = ({ starsData, showComments, companyId }) => {
 	const colors = {
@@ -36,6 +36,7 @@ const StarReview = ({ starsData, showComments, companyId }) => {
 				const data = await dispatch(postStars(payload));
 				setComment("");
 				setRating(0);
+				dispatch(getCompanyDetail(companyId))
 				console.log(data);
 			} catch (error) {
 				Swal.fire({
