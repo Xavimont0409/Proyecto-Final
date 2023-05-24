@@ -16,6 +16,7 @@ export const getAllVacants = () => {
         type: GET_ALL_VACANTS,
         payload: data,
       });
+
     } catch (error) {
       return Swal.fire({
         title: "Error",
@@ -66,16 +67,24 @@ export const postVacant = (payload) => {
   };
 };
 
-export const relationVacantApplicant = async(payload) =>{
+export const relationVacantApplicant = (payload) =>{
   return async function(dispatch){
 
     try {
       const json = await axios.post("/job/relation", payload)
       const data = json.data;
-      return dispatch({
+    dispatch({
         type: POST_RELATION_VACANT_APPLICANT,
         payload: data,
+      });
+
+      return Swal.fire({
+        title: "Postulación exitosa",
+        text: '¡Felicitaciones!, Has aplicado a la vacante, revisa tu email te hemos enviado una notificación',
+        icon: 'success'
       })
+
+
     } catch (error) {
       return Swal.fire({
         title: "Error",
