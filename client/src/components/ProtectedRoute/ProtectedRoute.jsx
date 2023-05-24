@@ -4,23 +4,7 @@ import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 
 const ProtectedRoute = ({ isAuthenticated, userType }) => {
-    const { /*isAuthenticated,*/ isLoading, /*loginWithRedirect*/} = useAuth0();
-    //const [redirectTo, setRedirectTo] = useState(null);
-
-    //useEffect(() => {
-    //    if (!isAuthenticated && !isLoading) {
-    //    const storedRedirectTo = localStorage.getItem('redirectTo');
-    //    if (storedRedirectTo) {
-    //        setRedirectTo(storedRedirectTo);
-    //        localStorage.removeItem('redirectTo');
-    //    }
-    //    }
-    //}, [isAuthenticated, isLoading]);
-
-    //const handleLogin = () => {
-    //    localStorage.setItem('redirectTo', window.location.pathname);
-    //    loginWithRedirect();
-    //};
+    const {isLoading} = useAuth0();
 
 
     if (isLoading) {
@@ -36,15 +20,8 @@ const ProtectedRoute = ({ isAuthenticated, userType }) => {
     }
     
     else {
-        return /*children ? children : */ <Outlet />;
+        return <Outlet />;
     }
-    //if (redirectTo) {
-    //    return ;
-    //}
-
-    /* if (!isAllowed) {
-        return <Navigate to={'/'}/>
-    } */
 };
 
 export default ProtectedRoute;

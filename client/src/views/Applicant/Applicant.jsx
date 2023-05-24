@@ -12,7 +12,7 @@ export default function Applicant({ setCurrentUserStore }) {
   return (
     <>
     
-      <NavBar />
+      <NavBar setCurrentUserStore={setCurrentUserStore}/>
 
       <div className={styles.container}>
       <Carousel>
