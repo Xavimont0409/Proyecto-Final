@@ -21,6 +21,8 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
     // if (isLoading) {
     //     return <Loading />;
     // };
+    const adminPanel = process.env.REACT_APP_ADMIN_PANEL;
+    console.log(adminPanel);
 
     return (
         <div className={style.landingDiv}>
@@ -44,7 +46,7 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
                     </div>
                     <div className={style.buttonDiv}>
                         {profile === "Admin" ? (
-                            <Link to={process.env.ADMIN_PANEL} target='_blank'>
+                            <Link to={ adminPanel } target='_blank'>
                                 <Button variant="outline-secondary" className="ms-auto">Dashboard Admin</Button>
                             </Link>
                         ): (<></>)}
