@@ -10,7 +10,7 @@ import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers'
 
 const CardEmpleoDetail = ({id, CompanyId, title, description, createdAt, Workday, WorkMethod}) => {
   const dispatch = useDispatch();
-  const currentUserId = useSelector(state => state.dataEmail[0].id);
+  const currentUserId = JSON.parse(localStorage.getItem("currentUser")).id;
   const userVacants = useSelector(state => state.UserDetail.Vacants);
   const vacantPostuled = userVacants?.find((vacant) => vacant.id === id);
 
