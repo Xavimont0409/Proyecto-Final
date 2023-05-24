@@ -1,0 +1,134 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C1C1C;
+}
+
+.containerComponents {
+    width: 100vw;
+}
+
+.containerPrincipal {
+    border: 3px solid #fff;
+    margin-top: 20vh;
+    width: 50vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.saludo,
+.bienvenida,
+.pregunta {
+    color: #e1ecfc;
+    margin: 2vh auto;
+}
+
+.titulo {
+    font-size: 40px;
+}
+
+.info {
+    font-size: 22px;
+}
+
+.containerButtons {
+  width: 40vw;
+  height: fit-content;
+  flex-wrap: wrap;
+  margin-bottom: 3vh;
+}
+
+.Button {
+  border: 1px solid #e1ecfc;
+  border-radius: 10px;
+  width: 7vw;
+  height: 12vh;
+  background-color: #1C1C1C;
+  color: #e1ecfc;
+  margin: 1vh 3vw;
+  font-size: 16px;
+  background: linear-gradient(20deg, #1a4e8a, #331460, #1c1c1c);
+  transition: all ease 0.3s;
+}
+
+.Button:hover {
+  background: linear-gradient(20deg, #e1ecfc, #1a4e8a);
+  width: 8vw;
+  height: 13vh;
+  color: black;
+  font-weight: bold;
+}
+
+.contenedor{
+    background-color: #1C1C1C;
+    color: antiquewhite;
+}
+
+.prueba{
+        display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin-right: 10vh;
+}
+
+.leftSection {
+    flex: 1;
+    text-align: center;
+}
+
+.middleSection {
+    flex: 1;
+    text-align: center;
+}
+
+.rightSection {
+    flex: 1;
+    text-align: center;
+}
+
+.planes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 5vh;
+    color: var(--jet);
+}
+
+.SuggestedJob {
+    margin: 30px
+}
+
+.Vacancies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.job {
+    margin: 8px;
+    width: 18rem;
+}
+
+@keyframes container {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+
+}
+
