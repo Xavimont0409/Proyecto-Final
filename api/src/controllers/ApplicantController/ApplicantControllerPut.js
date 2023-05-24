@@ -26,6 +26,7 @@ const applicantUpdate = async (id, body) => {
 
       // Eliminar las relaciones de las vacantes que deben eliminarse
       await applicant.removeVacants(vacantsToDelete);
+      
     }
   });
 
