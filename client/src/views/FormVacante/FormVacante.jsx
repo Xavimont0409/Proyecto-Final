@@ -156,11 +156,11 @@ export default function FormVacante({setCurrentUserStore}) {
                             onChange={handleInputChange}
                             required>
                             <option disabled ></option>
-                            <option value={1}>Sin Experiencia</option>
-                            <option value={2}>Trainee</option>
+                            <option value={0}>Sin Experiencia</option>
+                            <option value={4}>Trainee</option>
                             <option value={3}>Junior</option>
-                            <option value={4}>Semi-senior</option>
-                            <option value={5}>Senior</option>
+                            <option value={2}>Semi-senior</option>
+                            <option value={1}>Senior</option>
                         </FormSelect>
                         <Form.Control.Feedback type="invalid">
                             Selecciona una opcion
