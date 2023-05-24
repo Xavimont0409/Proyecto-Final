@@ -46,9 +46,9 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route path="/product/:id" element={<DetailProduct setCurrentUserStore={setCurrentUserStore}/>} />
+        <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore}/>} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
-          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/profiles' element={<Profiles setCurrentUserStore={setCurrentUserStore}/>} />
           <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore}/>} />
           <Route path="/MiPerfil" element={<MiPerfil setCurrentUserStore={setCurrentUserStore} />} />
