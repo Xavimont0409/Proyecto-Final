@@ -14,7 +14,6 @@ const Registro = () => {
     const currentUser = useSelector(state => state.dataEmail[0]);
     const [isLoading, setIsLoading] = useState(true);
     const { user, isAuthenticated } = useAuth0();
-
     useEffect(() => {
         const handleUserAuthentication = () => {
             if (isAuthenticated && user) {
@@ -28,7 +27,8 @@ const Registro = () => {
 
         handleUserAuthentication();
     }, [currentUser, dispatch, isAuthenticated, navigate, user]);
-
+    
+    console.log(currentUser);
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
