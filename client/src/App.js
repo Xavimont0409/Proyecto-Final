@@ -11,12 +11,13 @@ import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 //import { FaBullseye } from 'react-icons/fa';
 import { login } from './Redux/Actions/actionsFunction/actionsLogin'
+import NewRegistroCompany from './views/NewRegistro/newRegistro';
 
 
 
 
-axios.defaults.baseURL = 'http://localhost:3001'
-//axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+//axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
         <Route exact path="/" element={<Landing setCurrentUserStore= {setCurrentUserStore}/>} />
         <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/registro" element={<Registro />}/>
+        <Route path='/newRegistroCompany' element={<NewRegistroCompany />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />

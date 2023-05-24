@@ -1,0 +1,57 @@
+import { gapi } from "gapi-script";
+import GoogleLogin from "react-google-login";
+import { useEffect, useState } from "react";
+import FormRegisterEmpresa from "../FormRegistroEmpresa/FormRegistroempesa";
+
+const NewRegistroCompany = () => {
+  const clientID =
+    "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
+  const [Company, setCompany] = useState({
+    imagen: "",
+    email: "",
+    nombre: "",
+    apellido: "",
+  });
+  console.log(Company);
+
+  useEffect(() => {
+    const start = () => {
+      gapi.auth2.init({
+        clientId: clientID,
+      });
+    };
+    gapi.load("client:auth2", start);
+  }, []);
+
+  const onSuccess = (response) => {
+    const newUserCompany = response.profileObj;
+    setCompany({
+      imagen: newUserCompany.imageUrl,
+      email: newUserCompany.email,
+      nombre: newUserCompany.givenName,
+      apellido: newUserCompany.familyName,
+    });
+  };
+  const onFailure = () => {
+    console.log("Something went wrong");
+  };
+
+  return (
+    <div>
+      <h1>Registro Company</h1>
+      <div>
+        <GoogleLogin
+          clientId={clientID}
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={"single_host_policy"}
+        />
+      </div>
+      {
+        Company.nombre.length > 1 ? <FormRegisterEmpresa Company={Company} /> : <div></div>
+      }
+    </div>
+  );
+};
+
+export default NewRegistroCompany;
