@@ -9,20 +9,23 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector,useDispatch } from 'react-redux'
 import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
-import { FaBullseye } from 'react-icons/fa';
+//import { FaBullseye } from 'react-icons/fa';
 import { login } from './Redux/Actions/actionsFunction/actionsLogin'
 
 
 
-axios.defaults.baseURL = 'http://localhost:3001'
+
+//axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+
 
 function App() {
   //const dispatch = useDispatch();
   const currentUser = useSelector(state => state.dataEmail[0]);
-  const confirmacion = useSelector(state => state.login)
+  //const confirmacion = useSelector(state => state.login)
   const dispatch = useDispatch()
   const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
-  const { logout, isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
 
 
@@ -35,7 +38,7 @@ function App() {
     return () => {
       localStorage.removeItem("redirectTo");
     };
-  }, [currentUser, currentUserStore]);
+  }, [currentUser, currentUserStore, dispatch, setCurrentUserStore]);
 
 
 
@@ -54,9 +57,10 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/ServerDevelop" element={<ServerMaintenance/>} />
-        <Route path="/product/:id" element={<DetailProduct setCurrentUserStore={setCurrentUserStore}/>} />
+        <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore}/>} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>/*Todos*/}>
-          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
+
           <Route path='/profiles' element={<Profiles setCurrentUserStore={setCurrentUserStore}/>} />
           <Route path="/MiPerfil" element={<MiPerfil setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/operation" element={<Operation setCurrentUserStore={setCurrentUserStore} />} />
