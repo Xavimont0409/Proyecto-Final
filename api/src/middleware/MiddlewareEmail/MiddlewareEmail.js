@@ -39,7 +39,7 @@ const middlewareEmail = async (email, name, detail, details, cost, PayMethodId, 
            <span> El equipo de JobPortallX </span>
             `
           });
-
+          return
 }
 
 module.exports = { middlewareEmail }

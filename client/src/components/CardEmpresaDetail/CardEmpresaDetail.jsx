@@ -41,7 +41,7 @@ const CardEmpresaDetail = ({ companyId }) => {
           </button>
           {showStarsAndUser && (
             <div>
-              {company && <StarReview starsData={company?.Stars} showComments={showComments} />}
+              {company && <StarReview starsData={company?.Stars} showComments={showComments} companyId={companyId}/>}
             </div>
           )}
         </ListGroup.Item>

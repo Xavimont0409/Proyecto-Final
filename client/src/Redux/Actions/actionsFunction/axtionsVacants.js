@@ -55,7 +55,12 @@ export const postVacant = (payload) => {
         type: POST_VACANT,
         payload: data,
       })
-        ? alert("creado")
+        ? 
+        Swal.fire({
+        title: "Exito",
+        text: 'Creacion con exito',
+        icon: 'success'
+      })
         : data;
     } catch (error) {
       return Swal.fire({

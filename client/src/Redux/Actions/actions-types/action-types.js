@@ -19,6 +19,7 @@ export const POST_VACANT = "POST_VACANT"
 export const POST_CV = "POST_CV"
 export const POST_EXPE = "POST_EXPE"
 export const POST_FORMAITON = "POST_FORMAITON"
+export const POST_STARS = "POST_STARS"
 
 export const POST_OPERATION = "POST_OPERATION"
 

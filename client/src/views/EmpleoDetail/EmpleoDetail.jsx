@@ -10,11 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from 'react';
 import Loading from "../../components/Loading/Loading";
 import { getVacantDetail } from "../../Redux/Actions/actionsFunction/axtionsVacants";
-import { getAllCompanys, getCompanyDetail } from "../../Redux/Actions/actionsFunction/actionsCompanys";
+//import { getAllCompanys, getCompanyDetail } from "../../Redux/Actions/actionsFunction/actionsCompanys";
 
 
 
-const EmpleoDetail = ({setCurrentUserStore}) => {
+const EmpleoDetail = ({ setCurrentUserStore }) => {
 
     
 

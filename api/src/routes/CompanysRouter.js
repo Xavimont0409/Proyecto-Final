@@ -10,6 +10,7 @@ companysRouter.get("/", companysHandlerGet);
 companysRouter.get("/:id", companysHandlerGetId);
 companysRouter.post("/", companysHandlerPost);
 companysRouter.put("/:id", companyPutHandler);
+companysRouter.put('/updateCompany', companyPutHandler);
 companysRouter.delete("/:id", companyHandlerDelete);
 
 module.exports = companysRouter;

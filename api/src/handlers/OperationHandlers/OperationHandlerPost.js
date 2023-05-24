@@ -9,7 +9,6 @@ const operationHandlerPost = async (req, res) =>{
     try {
         
         const response = await createOperation(cost, detail, CompanyId, PayMethodId, ApplicantId);
-        console.log(response)
         const preferenceId = await mercadopago.preferences.create({
             items: [
                 {
@@ -26,10 +25,10 @@ const operationHandlerPost = async (req, res) =>{
             "auto_return": "approved",
         })
         
-        middlewareEmail(email, name, detail, details, cost, PayMethodId, PayMethod)
+        res.status(200).json({response, preferenceId});
             
-            return res.status(200).json({response, preferenceId});
-        
+    
+     middlewareEmail(email, name, detail, details, cost, PayMethodId, PayMethod)
         
     } catch (error) {
         errorUser(error, res);
