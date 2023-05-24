@@ -15,9 +15,10 @@ const MiPerfil = ({ setCurrentUserStore }) => {
   const dispatch = useDispatch();
 
   const currentUser = useSelector(state => state.dataEmail[0]);
-  const userDetail = useSelector(state => state.UserDetail[0]);
+  const userDetail = useSelector(state => state.UserDetail);
   console.log(userDetail)
   console.log(currentUser.id)
+  console.log(userDetail);
 
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
@@ -25,7 +26,13 @@ const MiPerfil = ({ setCurrentUserStore }) => {
     photo: '',
     name: '',
     email: '',
+    celular: '',
     profile: '',
+    profesion:'',
+    descripcion:'',
+    apellido: '',
+
+
   });
 
 
@@ -51,7 +58,11 @@ const MiPerfil = ({ setCurrentUserStore }) => {
         photo: userDetail.Cv?.photo,
         name: userDetail.name,
         email: userDetail.email,
-        profile: userDetail.profile
+        celular: userDetail.phone,
+        profile: userDetail.profile,
+        profesion: userDetail.Cv?.profession,
+        descripcion: userDetail.Cv?.personal_description,
+        apellido: userDetail.lastName
       }));
     }
     // else{
@@ -63,26 +74,31 @@ const MiPerfil = ({ setCurrentUserStore }) => {
 
 
   if (isAuthenticated) {
-    if (!userDetail) {
-      return <div><Loading/></div>
+    if (!userDetail || !currentUser) {
+      return <div><Loading /></div>
     } else {
-
-
       return (
         // isAuthenticated && (
         <div className={style.container}>
+          <div>
           <NavBarLog setCurrentUserStore={setCurrentUserStore} ></NavBarLog>
+          </div>
 
           <h1>Mi Perfil</h1>
 
           <div className={style.container2}>
 
-            <img className={style.image} src={perfil.photo} alt="Profile" />
+            <div>
+              <h1>{perfil.name} {perfil.apellido}</h1>
+              <img className={style.image} src={perfil.photo} alt="Profile" />
+              <p>{perfil.email}</p>
+            </div>
 
             <div>
-              <h2>Nombre: {perfil.name}</h2>
-              <p>Email: {perfil.email}</p>
-              <p>Perfil: {perfil.profile}</p>
+              <p>{perfil.profesion}</p>
+              <p></p>
+              <p>{perfil.descripcion}</p>
+
               <button onClick={() => logout()}>Logout</button>
             </div>
           </div>
