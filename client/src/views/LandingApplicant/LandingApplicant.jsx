@@ -5,7 +5,6 @@ import styles from "./LandingApplicant.module.css";
 import { Link } from "react-router-dom";
 import CardPlan from "../../components/CardPlan/CardPlan";
 import { useAuth0 } from "@auth0/auth0-react";
-import img from "../../assets/img/empleo1.jpg";
 import { FaWpforms } from "react-icons/fa";
 
 export default function LandingApplicant({ setCurrentUserStore }) {
@@ -115,30 +114,6 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 				</div>
 			</div>
 			<div className={styles.contenedor}>
-				<div className={styles.prueba}>
-					<div className={styles.leftSection}>
-						<h1>Este es el Home de Applicant</h1>
-					</div>
-
-					<div className={styles.rightSection}>
-						<img src={img} alt='Servidor en Mantenimiento' />
-					</div>
-				</div>
-
-				<div className={styles.prueba}>
-					<div className={styles.leftSection}>
-						<img src={img} alt='Servidor en Mantenimiento' />
-					</div>
-
-					<div className={styles.middleSection}>
-						<h1>Joel</h1>
-					</div>
-
-					<div className={styles.rightSection}>
-						<img src={img} alt='Servidor en Mantenimiento' />
-					</div>
-				</div>
-
 				<div className={styles.prueba}>
 					<div className={styles.leftSection}>
 						<div className={styles.planes}>
