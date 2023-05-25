@@ -69,14 +69,13 @@ function App() {
         <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />/*Todos*/}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
-
+          <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/profiles' element={<Profiles setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/MiPerfil" element={<MiPerfil setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/operation" element={<Operation setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/success" element={<Success />} />
         </Route>
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated && (userLocalStorage.profile === "Company" || userLocalStorage.profile === "Admin")} userType={userLocalStorage.profile} />/*Empresa*/}>
-          <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-vacante" element={<FormVacante setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/empresa" element={<LandingEmpresa setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-empresa" element={<FormEmpresa setCurrentUserStore={setCurrentUserStore} />} />
@@ -84,6 +83,7 @@ function App() {
           <Route path="/vacantes" element={<Vacantes />} />
         </Route>
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated && (userLocalStorage.profile === "Applicant" || userLocalStorage.profile === "Admin")} userType={userLocalStorage.profile} />/*Empleado*/}>
+          
           <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/applicant' element={<LandingApplicant setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-experiencia" element={<FormRegistroExperincia setCurrentUserStore={setCurrentUserStore} />} />
