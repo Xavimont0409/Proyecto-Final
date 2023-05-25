@@ -1,10 +1,8 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-<<<<<<<<< Temporary merge branch 1
 import { Route, Routes } from 'react-router-dom';
 import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer } from './components';
-=========
 import { Route, Routes} from 'react-router-dom';
 import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, Vacantes} from './views';
 import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer} from './components';
@@ -16,7 +14,6 @@ import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 //import { FaBullseye } from 'react-icons/fa';
 import { login } from './Redux/Actions/actionsFunction/actionsLogin'
-impo
 
 axios.defaults.baseURL = 'http://localhost:3001'
 // axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
