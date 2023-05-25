@@ -30,7 +30,7 @@ const getAllCompany = () => {
       },
       {
         model: Star,
-        attributes: ["stars","text"]
+        attributes: ["id","stars","text"]
       }
     ],
   });
