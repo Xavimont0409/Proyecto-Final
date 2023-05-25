@@ -41,7 +41,7 @@ const getCompanyId = (id) => {
     include: [
       {
         model: Vacant,
-        attributes: ["title", "description"],
+        attributes: ["id","title", "description","createdAt"],
         include: [
           {
             model: Workday,
