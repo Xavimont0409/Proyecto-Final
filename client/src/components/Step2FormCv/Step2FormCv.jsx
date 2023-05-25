@@ -6,7 +6,7 @@ import ButtonGeneral from "../Button/ButtonGeneral";
 import validation from "./validation";
 import { useDispatch } from "react-redux";
 import { postCv } from "../../Redux/Actions/actionsFunction/actionsUsers";
-
+import Swal from "sweetalert2";
 
 function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
   
@@ -20,7 +20,11 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
     event.preventDefault();
     if (!validation(cv)) {
       console.log(cv)
-      alert('Completa todos los campos')
+      Swal.fire({
+			title: "Faltan Datos",
+			text: "Completa todos los campos",
+			icon: "warning",
+		});
     } else {
       setValidated(true)
       console.log(cv)
