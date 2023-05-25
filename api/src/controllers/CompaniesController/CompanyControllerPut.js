@@ -7,19 +7,12 @@ const {
   Star
 } = require("../../db");
 
-const updateCompany = async (id, name, business_name, ruc, cuit, country, email, password, registed) => {
-  const body = {};
-  if (name) body.name = name;
-  if (business_name) body.business_name = business_name;
-  if (ruc) body.ruc = ruc;
-  if (cuit) body.cuit = cuit;
-  if (country) body.country = country;
-  if (email) body.email = email;
-  if (password) body.password = password;
-  if (registed) body.registed = registed;
+const updateCompany = async (body) => {
 
   let response = {};
-  await Company.update(body, {
+
+  const { Stars, id, ...companyData } = body;
+  await Company.update(companyData, {
     include: [
       {
         model: Vacant,
@@ -39,15 +32,29 @@ const updateCompany = async (id, name, business_name, ruc, cuit, country, email,
           },
         ],
       },
-      {
-        model: Star,
-        attributes: ["stars", "text"]
-      }
+      { model: Star }
     ],
     where: { id: id }
-  }).then(num => {
-    if (num == 1) response = body;
+  }).then(async (num) => {
+    if (num == 1) {
+      response = { id, ...companyData };
+
+      const company = await Company.findByPk(id);
+
+      const companyStars = await company.getStars();
+
+      const starsToDelete = (companyStars.filter(
+        companyStar => !Stars.includes(companyStar.id)
+      ));
+
+      for (const star of starsToDelete) {
+        await Star.destroy({ where: { id: star.id } });
+      }
+
+      await company.removeStars(starsToDelete);
+    }
   });
+
   return response;
 };
 

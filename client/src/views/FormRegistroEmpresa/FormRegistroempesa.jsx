@@ -37,7 +37,6 @@ const FormRegisterEmpresa = () => {
 
 
 
-
   useEffect(() => {
     const mail = user.email
     dispatch(getEmail(mail))

@@ -2,10 +2,42 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import style from "./CardEmpleoDetail.module.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { relationVacantApplicant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
+import { useEffect, useState } from 'react';
+import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers';
 
 
 
 const CardEmpleoDetail = ({id, CompanyId, title, description, createdAt, Workday, WorkMethod}) => {
+  const dispatch = useDispatch();
+  const currentUserId = JSON.parse(localStorage.getItem("currentUser")).id;
+  const userVacants = useSelector(state => state.UserDetail.Vacants);
+  const vacantPostuled = userVacants?.find((vacant) => vacant.id === id);
+  const [validate, setValidate] = useState(false);
+
+  const relationIds = {
+    VacantId: id,
+    ApplicantId: currentUserId,
+  };
+
+
+  useEffect(() => {
+    dispatch(getUserDetail(currentUserId));
+  }, [dispatch, getUserDetail]);
+
+  useEffect(() => {
+    if(vacantPostuled) setValidate(true);
+  }, [vacantPostuled, validate]); 
+
+const handlerClick = () => {
+  dispatch(relationVacantApplicant(relationIds));
+  setValidate(true);
+};
+
+console.log(userVacants);
+console.log(vacantPostuled);
+
 
   return (
     <Card style={{ width: '100%' }}>
@@ -19,10 +51,10 @@ const CardEmpleoDetail = ({id, CompanyId, title, description, createdAt, Workday
       <ListGroup className="list-group-flush">
       <ListGroup.Item>Jornada: {Workday}</ListGroup.Item>
       <ListGroup.Item>Modalidad: {WorkMethod}</ListGroup.Item>
-        {/* <ListGroup.Item>Seniority: {SeniorityId}</ListGroup.Item> */}
       </ListGroup>
+      
       <Card.Body>
-      <Button className={style.btn} variant="outline-success">POSTULARME</Button>{' '}
+      <Button onClick={handlerClick} className={style.btn} variant="outline-success" disabled={validate}>{validate ? "YA POSTULADO" : "POSTULARME"}</Button>
       </Card.Body>
     </Card>
   );

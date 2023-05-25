@@ -1,50 +1,66 @@
 .container{
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    background: linear-gradient(-40deg, var(--mustard), var( --avocado), white, var(--caribbean-current));
-    background-size: 400% 400%;
-    animation: container 10s ease infinite;
+    align-items: center;
+    background-color: #1C1C1C;
    
 }
 
 .containerComponents{
+    width: 100vw;
+}
+
+.containerPrincipal{
+    border: 3px solid #fff;
+    margin-top: 20vh;
+    width: 50vw;
     height: fit-content;
-    margin-bottom: 5vh;
-}
-
-.planes {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-bottom: 5vh;
-    color: var(--jet);
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
 }
 
-.containerPerfiles{
- margin: 2vh 1vw 5vh 2vw;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
-
+.saludo, .bienvenida, .pregunta{
+    color: #e1ecfc;
+    margin: 2vh auto;
 }
 
-.subtitle{
-    color: var(--jet);
-    margin-bottom: 5vh;
+.titulo{
+    font-size: 40px;
 }
 
-@keyframes container {
-    0%{
-        background-position: 0 50%;
-    }
-    50%{
-        background-position: 100% 50%
-    }
-    100%{
-        background-position: 0 50%;
-    }
-    
+.info{
+    font-size: 22px;
+}
+
+.containerButtons{
+    width: 40vw;
+    height: fit-content;
+    flex-wrap: wrap;
+    margin-bottom: 3vh;
+}
+
+.Button{
+    border: 1px solid #e1ecfc;
+    border-radius: 10px;
+    width: 7vw;
+    height: 12vh;
+    background-color: #1C1C1C;
+    color: #e1ecfc;
+    margin: 1vh 3vw;
+    font-size: 16px;
+    background: linear-gradient(20deg, #1a4e8a, #331460, #1c1c1c);
+    transition: all ease 0.3s;
+}
+
+.Button:hover{
+    background: linear-gradient(20deg, #e1ecfc ,#1a4e8a);
+    width: 8vw;
+    height: 13vh;
+    color: black;
+    font-weight: bold;
 }
 

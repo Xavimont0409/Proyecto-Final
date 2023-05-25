@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1C1C1C;
+}
+
+.ticket {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 400px;
+    padding: 10px;
+    background-color: #1C1C1C;
+    color: #e1ecfc;
+    border: 1px solid #e1ecfc;
+    font-size: 16px;
+    background: linear-gradient(20deg, #1a4e8a, #331460, #1c1c1c);
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+
+.icon{
+    font-size: 4rem;
+    padding: 10px;
+    margin-bottom: 10%;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.homeButton {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #1C1C1C;
+    color: #e1ecfc;
+    border: 1px solid #e1ecfc;
+    border-radius: 10px;
+    font-size: 16px;
+    background: linear-gradient(20deg, #1a4e8a, #331460, #1c1c1c);
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+
+.homeButton:hover {
+    background: linear-gradient(20deg, #e1ecfc, #1a4e8a);
+    color: black;
+    font-weight: bold;
+}
