@@ -8,15 +8,15 @@ import {
   Col,
   Row,
 } from "react-bootstrap";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { findPerName } from "../../Redux/Actions/actionsFunction/actionsSearchBar";
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 import { login } from '../../Redux/Actions/actionsFunction/actionsLogin'
 
 const NavBarCliente = ({ setCurrentUserStore }) => {
-  const { logout, isAuthenticated } = useAuth0();
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [ name, setName ] = useLocalStorage('name', '')
 
   const handlerSearchName = (event) =>{
@@ -28,7 +28,7 @@ const NavBarCliente = ({ setCurrentUserStore }) => {
   const handlerLogin = () =>{
     dispatch(login(false))
     setCurrentUserStore("")
-    logout({ returnTo: window.location.origin })
+    navigate("/")
   }
 
   return (

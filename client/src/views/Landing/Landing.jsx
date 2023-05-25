@@ -11,7 +11,8 @@ import { useState, useEffect } from 'react';
 const Landing = ({ currentUserStore, setCurrentUserStore }) => {
 
     // const [isLoading, setIsLoading] = useState(true);
-    const profile = currentUserStore.profile;
+    //const profile = currentUserStore.profile 
+   
     // useEffect(() => {
     //     setTimeout(() => {
     //         setIsLoading(false);
@@ -43,11 +44,11 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
                         </Link>
                     </div>
                     <div className={style.buttonDiv}>
-                        {profile === "Admin" ? (
+                        {/* {profile === "Admin" ? (
                             <Link to={process.env.ADMIN_PANEL} target='_blank'>
                                 <Button variant="outline-secondary" className="ms-auto">Dashboard Admin</Button>
                             </Link>
-                        ): (<></>)}
+                        ): (<></>)} */}
                     </div>
                 </div>
             </div>

@@ -10,9 +10,11 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import countries from "countries-list";
 import Swal from 'sweetalert2';
+import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
+import { login } from '../../Redux/Actions/actionsFunction/actionsLogin';
 
 
-const FormRegisterEmpresa = ({ Company }) => {
+const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +39,20 @@ const FormRegisterEmpresa = ({ Company }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    if(
+      newEmpresa.business_name &&
+      newEmpresa.cuit &&
+      newEmpresa.country &&
+      newEmpresa.name &&
+      newEmpresa.email
+    ){
+      dispatch(postCompany(newEmpresa))
+      setTimeout(() => {
+        dispatch(getEmail(newEmpresa.email));
+      }, 1500)
+      setValidateState(true)
+      navigate("/empresa")
+    }
   };
 
   useEffect(() => {
@@ -113,12 +129,11 @@ const FormRegisterEmpresa = ({ Company }) => {
               </FormGroup>
             </Row>
           </Form>
-          <ButtonGeneral
-            textButton='Registrarse'
+          <button
             type='submit'
-            onClick={handleSubmit}
-          >
-          </ButtonGeneral>
+            onClick={(event)=>handleSubmit(event)}
+          > registrate
+          </button>
         </div>
       </div>
     </div>

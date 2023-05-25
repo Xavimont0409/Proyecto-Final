@@ -3,25 +3,23 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 
-const ProtectedRoute = ({ isAuthenticated, userType }) => {
-    const {isLoading} = useAuth0();
+const ProtectedRoute = ( { validateState }) => {
+    const userType = JSON.parse(localStorage.getItem("currentUser"))
 
+console.log(userType);
+console.log(validateState);
+/*     if (validateState) {
+        return <Loading to="/"/>;
+    }  */
 
-    if (isLoading) {
-        return <Loading />;
-    } 
-
-    else if (!isAuthenticated && (userType === "Applicant" || userType === "Admin")) {
+    if (validateState === true && (userType[0] === "Applicant" || userType[0] === "Admin")) {
         return <Navigate to="/applicant"/>;
     } 
 
-    else if (!isAuthenticated && (userType === "Company" || userType === "Admin")) {
+    if (validateState === true && (userType[0] === "Company" || userType[0] === "Admin")) {
         return <Navigate to="/empresa"/>;
     }
-    
-    else {
-        return <Outlet />;
-    }
+    return <Navigate to="/"  />
 };
 
 export default ProtectedRoute;
