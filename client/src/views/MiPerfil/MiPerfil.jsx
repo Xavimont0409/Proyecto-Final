@@ -8,17 +8,29 @@ import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers"
 import style from "./MiPerfil.module.css"
 import { useNavigate } from "react-router-dom";
 import NavBarLog from "../../components/NavBar/NavBarLog"
+import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
+import { PDFViewer, PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer"
+import DocuPDF from "./DocuPDF"
+import { getAllCv } from "../../Redux/Actions/actionsFunction/actionsCv";
+// import email from "../../assets/img/email.svg"
 
 const MiPerfil = ({ setCurrentUserStore }) => {
 
+
+  const [showPDF, setShowPDF] = useState(false);
+
+const Cvs = useSelector(state => state.Cv);
+
+
+  const handleClick = () => {
+    setShowPDF(true);
+  };
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const currentUser = useSelector(state => state.dataEmail[0]);
-  const userDetail = useSelector(state => state.UserDetail);
-  console.log(userDetail)
-  console.log(currentUser.id)
-  console.log(userDetail);
+  // const currentUser = useSelector(state => state.dataEmail[0]);
+  const userDetail = JSON.parse(localStorage.getItem("currentUser"))
+  console.log(Cvs)
 
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
@@ -28,26 +40,27 @@ const MiPerfil = ({ setCurrentUserStore }) => {
     email: '',
     celular: '',
     profile: '',
-    profesion:'',
-    descripcion:'',
+    profesion: '',
+    descripcion: '',
     apellido: '',
+    pais: '',
+    linkedin: '',
+    skills: '',
 
 
   });
 
 
   useEffect(() => {
-    if (user && user.email) {
-      dispatch(getEmail(user.email));
-    }
-  }, [dispatch, user]);
+   dispatch(getAllCv())
+  }, [dispatch]);
 
 
-  useEffect(() => {
-    if (currentUser) {
-      dispatch(getUserDetail(currentUser.id))
-    }
-  }, [dispatch, currentUser]);
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     dispatch(getUserDetail(currentUser.id))
+  //   }
+  // }, [dispatch, currentUser]);
 
 
 
@@ -58,11 +71,14 @@ const MiPerfil = ({ setCurrentUserStore }) => {
         photo: userDetail.Cv?.photo,
         name: userDetail.name,
         email: userDetail.email,
-        celular: userDetail.phone,
+        celular: userDetail.cellphone,
         profile: userDetail.profile,
         profesion: userDetail.Cv?.profession,
         descripcion: userDetail.Cv?.personal_description,
-        apellido: userDetail.lastName
+        apellido: userDetail.lastName,
+        pais: userDetail.Cv?.country,
+        linkedin: userDetail.Cv?.linkedin,
+        skills: userDetail.Cv?.skill,
       }));
     }
     // else{
@@ -74,35 +90,114 @@ const MiPerfil = ({ setCurrentUserStore }) => {
 
 
   if (isAuthenticated) {
-    if (!userDetail || !currentUser) {
+    if ( !userDetail) {
       return <div><Loading /></div>
     } else {
       return (
         // isAuthenticated && (
-        <div className={style.container}>
-          <div>
+        <>
           <NavBarLog setCurrentUserStore={setCurrentUserStore} ></NavBarLog>
-          </div>
+          <div className={style.container}>
 
-          <h1>Mi Perfil</h1>
 
-          <div className={style.container2}>
 
-            <div>
-              <h1>{perfil.name} {perfil.apellido}</h1>
-              <img className={style.image} src={perfil.photo} alt="Profile" />
-              <p>{perfil.email}</p>
+
+            <h1>Mi Perfil</h1>
+
+            <div className={style.container2}>
+
+              <div className={style.container1}>
+
+
+                <div>
+                  <img className={style.image} src={perfil.photo} alt="Profile" />
+                </div>
+
+
+
+                <div>
+                  <h1>{perfil.name} {perfil.apellido}</h1>
+
+                  <div className={style.container4}>
+
+                    <div className={style.container3}>
+                      <BsFillEnvelopeAtFill></BsFillEnvelopeAtFill>
+                      {/* <img src={email} alt="correo" /> */}
+                      <p>{perfil.email}</p>
+                    </div>
+
+                    <div className={style.container3}>
+                      <BsFillTelephoneFill></BsFillTelephoneFill>
+                      <p>{perfil.celular}</p>
+                    </div>
+
+                  </div>
+
+
+                  <div className={style.container4}>
+
+                    <div className={style.container3}>
+                      <BsLinkedin></BsLinkedin>
+                      <p>{perfil.linkedin}</p>
+                    </div>
+
+                    <div className={style.container3}>
+                      <BsGlobeAmericas></BsGlobeAmericas>
+                      <p>{perfil.pais}</p>
+                    </div>
+
+                  </div>
+
+
+                </div>
+
+              </div>
+
+              <div>
+                <h3>{perfil.profesion}</h3>
+                <p>{perfil.descripcion}</p>
+              </div>
+
+              <div>
+                <h3>Mis experiencias profesionales</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias soluta omnis, quidem neque laboriosam delectus eos rerum! Aperiam, sint itaque necessitatibus ipsum perspiciatis similique recusandae doloribus fugit. Quidem, amet vero?</p>
+              </div>
+
+              <div>
+                <h3>Mis estudios</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias soluta omnis, quidem neque laboriosam delectus eos rerum! Aperiam, sint itaque necessitatibus ipsum perspiciatis similique recusandae doloribus fugit. Quidem, amet vero?</p>
+              </div>
+
+              <div>
+                <h3>Skills</h3>
+                <p>{perfil.skills}</p>
+              </div>
+
+              <div className={style.container3}>
+
+                <button
+                  style={{ backgroundColor: 'gray' }}
+                  onClick={handleClick}>Ver CV en PDF</button>
+
+                {showPDF && (
+                  <PDFViewer width="1000" height="600">
+                    <DocuPDF perfil={perfil}>
+
+                    </DocuPDF>
+                  </PDFViewer>
+                )}
+
+
+                <PDFDownloadLink document={<DocuPDF perfil={perfil}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
+                  <button style={{ 'backgroundColor': 'gray' }}>Descargar CV en PDF</button>
+                </PDFDownloadLink>
+              </div>
+
+
+
             </div>
-
-            <div>
-              <p>{perfil.profesion}</p>
-              <p></p>
-              <p>{perfil.descripcion}</p>
-
-              <button onClick={() => logout()}>Logout</button>
-            </div>
           </div>
-        </div>
+        </>
       )
     }
   }
