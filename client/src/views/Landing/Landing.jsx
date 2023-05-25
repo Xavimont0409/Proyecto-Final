@@ -8,19 +8,20 @@ import CardsEquipo from '../../components/CardEquipo/CardEquipo';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const Landing = ({ setCurrentUserStore }) => {
+const Landing = ({ currentUserStore, setCurrentUserStore }) => {
 
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
+    const profile = currentUserStore.profile;
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setIsLoading(false);
+    //     }, 2000);
+    // }, []);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-    }, []);
-
-    if (isLoading) {
-        return <Loading />;
-    };
+    // if (isLoading) {
+    //     return <Loading />;
+    // };
+    const adminPanel = process.env.REACT_APP_ADMIN_PANEL;
 
     return (
         <div className={style.landingDiv}>
@@ -28,11 +29,11 @@ const Landing = ({ setCurrentUserStore }) => {
             <div className={style.container}>
                 <div className={style.videoDiv}>
                     <video loop autoPlay muted>
-                    <source src={video} type="video/mp4" />
+                        <source src={video} type="video/mp4" />
                     </video>
                 </div>
                 <div className={style.searchDiv}>
-                <div className={style.paragraph}>
+                    <div className={style.paragraph}>
                         <h1 className={style.title}>JobPortalX</h1>
                         <p className={style.text}>Somos el nuevo portal de trabajo, con mas dinamismo del mercado, donde encontrarás las mejores oportunidades laborales</p>
                     </div>
@@ -42,12 +43,18 @@ const Landing = ({ setCurrentUserStore }) => {
                             <Button variant="outline-secondary" className="ms-auto">Busca Tu Trabajo</Button>
                         </Link>
                     </div>
-                    
+                    <div className={style.buttonDiv}>
+                        {profile === "Admin" ? (
+                            <Link to={ adminPanel } target='_blank'>
+                                <Button variant="outline-secondary" className="ms-auto">Dashboard Admin</Button>
+                            </Link>
+                        ): (<></>)}
+                    </div>
                 </div>
             </div>
 
-                <MisionVisión />
-                <CardsEquipo />
+            <MisionVisión />
+            <CardsEquipo />
 
         </div>
     )
