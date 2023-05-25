@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes} from 'react-router-dom';
-import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia} from './views';
+import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, Vacantes} from './views';
 import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer} from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
@@ -72,6 +72,7 @@ function App() {
           <Route path="/empresa" element={<LandingEmpresa setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-empresa" element={<FormEmpresa setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
+          <Route path="/vacantes" element={<Vacantes />} />
         </Route>
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated && userLocalStorage.profile === "Applicant"} userType={userLocalStorage.profile}/>/*Empleado*/}>
           <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
