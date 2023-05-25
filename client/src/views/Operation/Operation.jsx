@@ -3,7 +3,7 @@ import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { useSelector } from 'react-redux';
 // import { useEffect, useState } from 'react';
 import Loading from '../../components/Loading/Loading';
-import {Footer, NavBar} from '../../components/';
+import {NavBar} from '../../components/';
 
 const Operation = ({ setCurrentUserStore }) => {
     const info = useSelector((state) => state.Information);
