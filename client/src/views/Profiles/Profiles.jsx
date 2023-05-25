@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllUsers } from '../../Redux/Actions/actionsFunction/actionsUsers';
+import { getAllCv } from '../../Redux/Actions/actionsFunction/actionsCv';
 
 const Profiles = ({ setCurrentUserStore }) => {
     const usersRaw = useSelector(state => state.Users);
@@ -16,11 +17,13 @@ const Profiles = ({ setCurrentUserStore }) => {
     const indexOfFirstCharacter = indexOfLastCharacter - usersPerPage;
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
-
-
+    const Cvs = useSelector(state => state.Cv);
+   
+  
     useEffect(()=> {
         dispatch(getAllUsers())
-    },[dispatch, getAllUsers]);
+        dispatch(getAllCv())
+    },[dispatch, getAllUsers, getAllCv]);
     
     useEffect(() => {
         setTimeout(() => {
@@ -28,7 +31,7 @@ const Profiles = ({ setCurrentUserStore }) => {
         }, 2000);
     }, []);
     
-    console.log(users);
+
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber)
     };
@@ -42,7 +45,7 @@ const Profiles = ({ setCurrentUserStore }) => {
     }
     }, [currentUsers, users, usersPerPage]);
 
-    console.log(currentUsers);
+
 
     return (
         <div className={styles.container}>
@@ -63,6 +66,7 @@ const Profiles = ({ setCurrentUserStore }) => {
                                         <CardProfile
                                         key={user.id}
                                         id={user.id}
+                                        cv={Cvs.find((cv)=> cv.id === user.Cv.id)}
                                         photo={user.Cv.photo}
                                         name={user.name}
                                         lastName={user.lastName}
@@ -72,7 +76,6 @@ const Profiles = ({ setCurrentUserStore }) => {
                                         dni={user.Cv.dni}
                                         phone={user.cellphone}
                                         email={user.email}
-                                        // seniority={user.seniority}
                                         linkedin={user.Cv.linkedin}
                                         />
                                     </div>
