@@ -10,7 +10,7 @@ import FormVacante from "./FormVacante/FormVacante";
 import FormEmpresa from "./FormEmpresa/FormEmpresa";
 import Profiles from "./Profiles/Profiles";
 import MiPerfil from "./MiPerfil/MiPerfil";
-import Applicant from "./Applicant/Applicant";
+import LandingApplicant from "./LandingApplicant/LandingApplicant";
 import ProfilesCompany from "./Profiles Company/Profiles-Company";
 import FormRegisterEmpresa from "./FormRegistroEmpresa/FormRegistroempesa";
 import DetailProduct from "./DetailProduct/DetailProduct";
@@ -34,7 +34,7 @@ export {
     FormEmpresa, 
     Profiles,
     MiPerfil,
-    Applicant,
+    LandingApplicant,
     ProfilesCompany,
     FormRegisterEmpresa,
     Operation,
