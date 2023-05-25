@@ -6,6 +6,7 @@ import CarouselPerfiles from "../../components/CarouselPerfiles/CarouselPerfiles
 import { useState, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
+import { FaWpforms } from "react-icons/fa";
 
 const LandingEmpresa = ({ setCurrentUserStore }) => {
   const [greeting, setGreeting] = useState("");
@@ -38,9 +39,9 @@ const LandingEmpresa = ({ setCurrentUserStore }) => {
         </div>
         <div className={style.containerButtons}>
       <Link to="/registro-vacante">
-        <button className={style.Button}>Crear vacante</button>
+        <button className={style.Button}><FaWpforms /> Crear vacante</button>
       </Link>
-      <Link to="/misVacantes">
+      <Link to="/vacantes">
         <button className={style.Button}>Mis vacantes</button>
       </Link>
       <Link to="/registro-cv">

@@ -22,6 +22,7 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
     // if (isLoading) {
     //     return <Loading />;
     // };
+    const adminPanel = process.env.REACT_APP_ADMIN_PANEL;
 
     return (
         <div className={style.landingDiv}>

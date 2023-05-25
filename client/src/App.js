@@ -1,8 +1,11 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia } from './views';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer } from './components';
+import { Route, Routes} from 'react-router-dom';
+import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, Vacantes} from './views';
+import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer} from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
@@ -12,11 +15,8 @@ import NewRegistroCompany from './views/NewRegistro/newRegistro';
 import Loading from './components/Loading/Loading';
 import { getEmail } from './Redux/Actions/actionsFunction/FiltersHome';
 
-
-
-
-//axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+axios.defaults.baseURL = 'http://localhost:3001'
+// axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 
 function App() {
@@ -78,10 +78,11 @@ function App() {
           <Route path="/empresa" element={<LandingEmpresa setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-empresa" element={<FormEmpresa setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
+          <Route path="/vacantes" element={<Vacantes />} />
         </Route>
         <Route element={<ProtectedRoute isAuthenticated={validateState} />/*Empleado*/}>
           <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path='/applicant' element={<Applicant setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path='/applicant' element={<LandingApplicant setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-experiencia" element={<FormRegistroExperincia setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-usuario" element={<FormRegistroUsuario />} />
         </Route>

@@ -10,13 +10,14 @@ import FormVacante from "./FormVacante/FormVacante";
 import FormEmpresa from "./FormEmpresa/FormEmpresa";
 import Profiles from "./Profiles/Profiles";
 import MiPerfil from "./MiPerfil/MiPerfil";
-import Applicant from "./Applicant/Applicant";
+import LandingApplicant from "./LandingApplicant/LandingApplicant";
 import ProfilesCompany from "./Profiles Company/Profiles-Company";
 import FormRegisterEmpresa from "./FormRegistroEmpresa/FormRegistroempesa";
 import DetailProduct from "./DetailProduct/DetailProduct";
 import Operation from "./Operation/Operation";
 import Success from "./Success/Success";
 import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperiencia";
+import Vacantes from "./Vacantes/Vacantes"
 
 
 export {
@@ -33,10 +34,11 @@ export {
     FormEmpresa, 
     Profiles,
     MiPerfil,
-    Applicant,
+    LandingApplicant,
     ProfilesCompany,
     FormRegisterEmpresa,
     Operation,
     Success,
-    FormRegistroExperincia
+    FormRegistroExperincia,
+    Vacantes
 }
