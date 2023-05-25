@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 
 
 const NavBar = ({ setCurrentUserStore }) => {
-    const validacion = useSelector(state => state.login)
-    
+    const validacion = JSON.parse(localStorage.getItem("state"))
+    console.log(validacion);
    // const { isAuthenticated } = useAuth0();
 
     return (

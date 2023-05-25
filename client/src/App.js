@@ -5,13 +5,12 @@ import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, 
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer } from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
-import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
-import { login } from './Redux/Actions/actionsFunction/actionsLogin'
 import NewRegistroCompany from './views/NewRegistro/newRegistro';
 import Loading from './components/Loading/Loading';
+import { getEmail } from './Redux/Actions/actionsFunction/FiltersHome';
 
 
 
@@ -22,18 +21,17 @@ axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/
 
 function App() {
   const dispatch = useDispatch()
-  const currentUser = useSelector(state => state.dataEmail);
+  const currentUser = useSelector(state => state.dataEmail[0]);
   const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
   const [ validateState, setValidateState ] = useLocalStorage('state', '')
   const [isLoading, setIsLoading] = useState(true);
-  
+  const userType = JSON.parse(localStorage.getItem("currentUser"))
   console.log(currentUser);
 
-
   useEffect(() => {
-    if (validateState === true) {
-      setCurrentUserStore(currentUser);
-      setValidateState(true)
+    if (validateState === true ) {
+      dispatch(getEmail(userType.email))
+      setValidateState(true);
     }
     else {
       setCurrentUserStore("");

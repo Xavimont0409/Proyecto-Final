@@ -47,9 +47,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
       newEmpresa.email
     ){
       dispatch(postCompany(newEmpresa))
-      setTimeout(() => {
-        dispatch(getEmail(newEmpresa.email));
-      }, 1500)
+      setCurrentUserStore(newEmpresa)
       setValidateState(true)
       navigate("/empresa")
     }

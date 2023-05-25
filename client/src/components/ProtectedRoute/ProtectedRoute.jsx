@@ -7,8 +7,8 @@ const ProtectedRoute = ( { validateState }) => {
     const userType = JSON.parse(localStorage.getItem("currentUser"))
 
 console.log(userType);
-console.log(validateState);
-/*     if (validateState) {
+
+    /*     if (validateState) {
         return <Loading to="/"/>;
     }  */
 
