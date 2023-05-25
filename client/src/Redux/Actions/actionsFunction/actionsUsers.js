@@ -55,7 +55,11 @@ export const postUser = (payload) => {
         type: POST_USER,
         payload: data,
       })
-        ? alert("Usuario creado, se envió una notificación al correo ingresado")
+        ? 
+        Swal.fire({
+        title: "Exito",
+        text: 'Usuario creado, se envió una notificación al correo ingresado',
+        icon: 'success'})
         : data;
     } catch (error) {
       return Swal.fire({
@@ -76,7 +80,11 @@ export const postCv = (payload) => {
         type: POST_CV,
         payload: data,
       })
-        ? alert("creado")
+        ? 
+        Swal.fire({
+        title: "Exito",
+        text: 'Creacion con exito',
+        icon: 'success'})
         : data;
     } catch (error) {
       return Swal.fire({
@@ -97,7 +105,11 @@ export const postExpe = (payload) =>{
       type: POST_EXPE,
       payload: data
     }) 
-      ? alert("creado")
+      ? 
+      Swal.fire({
+        title: "Exito",
+        text: 'Creacion con exito',
+        icon: 'success'})
       : data
   } catch (error) {
     return Swal.fire({

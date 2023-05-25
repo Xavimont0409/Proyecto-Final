@@ -8,7 +8,11 @@ export const findPerName = (name) => {
       const json = await axios(`http://localhost:3001/job?name=${name}`)
       const data = json.data
       data.length === 0 
-      ? alert('No existe Vacante con ese nombre') 
+      ?  
+      Swal.fire({
+        title: "Ops...",
+        text: 'No existe Vacante con ese nombre',
+        icon: 'error'})
       : dispatch({
         type: FIND_PER_NAME,
         payload : data
