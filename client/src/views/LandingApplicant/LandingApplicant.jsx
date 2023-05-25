@@ -1,9 +1,8 @@
-import NavBar from "../../components/NavBar/NavBar";
 import React from "react";
-import { useEffect, useState } from "react";
 import styles from "./LandingApplicant.module.css";
+import {NavBar, CardPlan} from '../../components';
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CardPlan from "../../components/CardPlan/CardPlan";
 import { useAuth0 } from "@auth0/auth0-react";
 import { FaWpforms } from "react-icons/fa";
 

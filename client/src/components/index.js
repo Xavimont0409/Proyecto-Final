@@ -1,4 +1,5 @@
 import CardsEquipo from "./CardEquipo/CardEquipo";
+import CardPlan from "./CardPlan/CardPlan";
 import Error404 from "./Error404/Error404";
 import Footer from "./Footer/Footer";
 //import FooterApplicant from "./FooterApplicant/FooterApplicant";
@@ -13,6 +14,7 @@ import TermsAndConditions from "../views/TermsAndConditions/TermsAndConditions";
 
 export {
 CardsEquipo,
+CardPlan,
 Error404,
 Footer,
 //FooterApplicant,
