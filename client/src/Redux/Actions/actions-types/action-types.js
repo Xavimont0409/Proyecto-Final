@@ -11,6 +11,7 @@ export const GET_VACANT_DETAIL="GET_VACANT_DETAIL"
 export const GET_USERS_DETAIL = "GET_USERS_DETAIL"
 
 export const GET_ALL_CV = "GET_ALL_CV"
+export const GET_CV_BY_ID = "GET_CV_BY_ID"
 
 
 export const GET_EMAIL = "GET_EMAIL"
