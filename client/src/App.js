@@ -1,7 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
-
 import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes} from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading } from './components';
 import axios from 'axios';
@@ -11,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 //import { FaBullseye } from 'react-icons/fa';
 import { login } from './Redux/Actions/actionsFunction/actionsLogin'
-import Loading from './components/Loading/Loading';
 
 
 
@@ -83,6 +81,7 @@ function App() {
           <Route path="/empresa" element={<LandingEmpresa setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-empresa" element={<FormEmpresa setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
+          <Route path="/vacantes" element={<Vacantes />} />
         </Route>
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated && (userLocalStorage.profile === "Applicant" || userLocalStorage.profile === "Admin")} userType={userLocalStorage.profile} />/*Empleado*/}>
           <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
