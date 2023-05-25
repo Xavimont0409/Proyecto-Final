@@ -22,7 +22,8 @@ import {
   FILTER_PER_TIME,
   GET_EMAIL,
   CLEAN_DETAIL,
-  LOGIN
+  LOGIN,
+  GET_ALL_CV
 } from "../Actions/actions-types/action-types";
 
 const initialState = {
@@ -43,6 +44,7 @@ const initialState = {
   AuxVacant: [],
   AuxVacant2: [],
   VacantDetail: {},
+  Cv: [],
 
   dataEmail: {},
 
@@ -103,6 +105,13 @@ const Reducer = (state = initialState, action) => {
         ...state,
         VacantDetail: action.payload,
       }; 
+
+    case GET_ALL_CV:
+      return {
+        ...state,
+        Cv: action.payload,
+      };  
+
     case GET_EMAIL:
       return {
         ...state,

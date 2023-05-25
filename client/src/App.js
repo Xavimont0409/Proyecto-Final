@@ -16,8 +16,8 @@ import Loading from './components/Loading/Loading';
 
 
 
-// axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+axios.defaults.baseURL = 'http://localhost:3001'
+// axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 
 function App() {
