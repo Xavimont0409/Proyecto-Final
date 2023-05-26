@@ -10,9 +10,12 @@ import validateFormInputs from './validation';
 import { useEffect } from 'react';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function FormVacante({setCurrentUserStore}) {
 
+    const navigate = useNavigate();
     const today = new Date();
     const dateOnly = today.toISOString().slice(0, 10);
 
@@ -58,8 +61,11 @@ export default function FormVacante({setCurrentUserStore}) {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (!validateFormInputs(newVacant)) {
-            
-            alert('Completa todos los campos')
+            Swal.fire({
+                title:'Faltan Datos',
+                text:'Completa todos los campos',
+                icon:'warning'
+              })
         } else {
             setValidated(true)
             dispatch(postVacant({...newVacant,  CompanyId: currentUser.id} ))
@@ -72,7 +78,8 @@ export default function FormVacante({setCurrentUserStore}) {
                 SeniorityId: "",
                 creation_date: dateOnly
             })
-            setValidated(false)
+            setValidated(false);
+            navigate('/empresa')
         }
     };
 
