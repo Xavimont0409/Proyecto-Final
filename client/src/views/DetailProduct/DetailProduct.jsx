@@ -1,6 +1,6 @@
 import style from './DetailProduct.module.css';
 import styles from '../../components/Button/ButtonGeneral.module.css';
-import NavBar from '../../components/NavBar/NavBarLog';
+import NavBar from '../../components/NavBarLog/NavBarLog';
 import Footer from '../../components/Footer/Footer';
 import getAllProduct from '../../Redux/Actions/actionsFunction/actionsProduct';
 import getAllPayMethods from '../../Redux/Actions/actionsFunction/actionsPayMethods';
