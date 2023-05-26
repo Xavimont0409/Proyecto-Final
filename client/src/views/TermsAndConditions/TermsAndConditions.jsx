@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TermsAndConditions.module.css'
 import { useState } from 'react';
-import NavBar from '../../components/NavBar/NavBarUnlog';
+import NavBar from '../../components/NavBarUnlog/NavBarUnlog';
 import Footer from '../../components/Footer/Footer';
 
 
