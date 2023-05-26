@@ -19,19 +19,20 @@ const FormRegistroEstudio = ({ setCurrentUserStore }) => {
         (country) => country
     );
 
-    const { user, isAuthenticated } = useAuth0();
+    const validate = JSON.parse(localStorage.getItem("state"))
+    const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.dataEmail[0])
     const [validated, setValidated] = useState(false);
 
 
     useEffect(() => {
-        if (isAuthenticated) {
-            if (user && user.email) {
-                dispatch(getEmail(user.email));
+        if (validate) {
+            if (userType2 && userType2.email) {
+                dispatch(getEmail(userType2.email));
             }
         }
-    }, [dispatch, isAuthenticated, user]);
+    }, [dispatch, validate, userType2]);
 
 
     const [estudio, setEstudio] = useState({

@@ -8,7 +8,7 @@ import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers'
 import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 
 const MyApplications = () => {
-    const userType = JSON.parse(localStorage.getItem("currentUser"));
+    const userType = JSON.parse(localStorage.getItem("currentUser2"));
     const userDetail = useSelector(state=> state.UserDetail);
     const empresas = useSelector(state => state.Company)
     const vacantes = useSelector(state => state.Vacant)

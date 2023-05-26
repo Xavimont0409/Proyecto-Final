@@ -17,9 +17,10 @@ export default function FormVacante({setCurrentUserStore}) {
     const dateOnly = today.toISOString().slice(0, 10);
 
     const dispatch = useDispatch();
+    const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+    const validate = JSON.parse(localStorage.getItem("state"))
     const currentUser = useSelector(state=>state.dataEmail[0])
     console.log(currentUser)
-    const { user, isAuthenticated } = useAuth0();
 
     const [validated, setValidated] = useState(false);
 
@@ -29,12 +30,12 @@ export default function FormVacante({setCurrentUserStore}) {
 
     useEffect(() => {
         const handleUserAuthentication = () => {
-            if (isAuthenticated && user) {
-                dispatch(getEmail(user.email));
+            if (validate && userType2) {
+                dispatch(getEmail(userType2.email));
             }
         };
         handleUserAuthentication();
-    }, [dispatch, isAuthenticated, user]);
+    }, [dispatch, validate, userType2]);
 
 
 

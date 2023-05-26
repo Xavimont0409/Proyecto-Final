@@ -6,11 +6,10 @@ import Table from 'react-bootstrap/Table';
 import NavBar from '../../components/NavBar/NavBar'
 
 const Vacantes = () => {
-    const userType = JSON.parse(localStorage.getItem("currentUser"));
+    const userType = JSON.parse(localStorage.getItem("currentUser2"));
     const companyDetail = (useSelector(state=> state.CompanyDetail));
     const dispatch = useDispatch();
 
-    console.log(companyDetail.Vacants);
 
     useEffect(()=>{
         dispatch(getCompanyDetail(userType.id))

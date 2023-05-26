@@ -3,19 +3,20 @@ import styles from "./LandingApplicant.module.css";
 import {NavBar, CardPlan} from '../../components';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import { FaWpforms } from "react-icons/fa";
 
 export default function LandingApplicant({ setCurrentUserStore }) {
 	const [greeting, setGreeting] = useState("");
-	const { isAuthenticated, user } = useAuth0();
+	const validate = JSON.parse(localStorage.getItem("state"))
+	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+
 
 	useEffect(() => {
-		if (isAuthenticated && user) {
-			const name = user.name;
+		if (validate && userType2) {
+			const name = userType2.name;
 			setGreeting(`Hola, ${name}!`);
 		}
-	}, [isAuthenticated, user]);
+	}, [validate, userType2]);
 	return (
 		<>
 			<div className={styles.container}>

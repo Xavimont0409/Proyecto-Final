@@ -86,7 +86,7 @@ function App() {
           <Route path="/perfil-company" element={<PerfilCompany setCurrentUserStore={setCurrentUserStore} />} />
         </Route>
 
-        <Route element={<ProtectedRoute validate={validate && (userType2?.profile === 'Applicant' || userType2?.profile === 'Admin' )} />/*Empleado*/}>
+        <Route element={<ProtectedRoute isAutenticate={validate && (userType2?.profile === 'Applicant' || userType2?.profile === 'Admin' )} />/*Empleado*/}>
           <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/applicant' element={<LandingApplicant setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-experiencia" element={<FormRegistroExperincia setCurrentUserStore={setCurrentUserStore} />} />

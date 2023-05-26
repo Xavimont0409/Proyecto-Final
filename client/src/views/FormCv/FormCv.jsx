@@ -10,18 +10,17 @@ import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 
 
 function FormCv({setCurrentUserStore}) {
-
-  const { user, isAuthenticated } = useAuth0();
+  const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
 
   const [step, setStep] = useState(1);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (user && user.email) {
-      dispatch(getEmail(user.email));
+    if (userType2 && userType2.email) {
+      dispatch(getEmail(userType2.email));
     }
-  }, [dispatch, user]);
+  }, [dispatch, userType2]);
 
   const currentUser = useSelector((state) => state.dataEmail[0])
 

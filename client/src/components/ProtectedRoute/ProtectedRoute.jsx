@@ -11,11 +11,11 @@ if(!validate2){
     return <Loading />
 }
 
-else if (!isAutenticate && (userType.profile === "Applicant" || userType.profile === "Admin")) {
+else if (!isAutenticate && (userType?.profile === "Applicant" || userType?.profile === "Admin")) {
     return <Navigate to="/applicant"/>;
 } 
 
-else if (!isAutenticate && (userType.profile === "Company" || userType.profile === "Admin")) {
+else if (!isAutenticate && (userType?.profile === "Company" || userType?.profile === "Admin")) {
     return <Navigate to="/empresa"/>;
 }
 

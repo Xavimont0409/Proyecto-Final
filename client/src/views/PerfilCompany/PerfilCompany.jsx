@@ -20,7 +20,7 @@ import NavBar from "../../components/NavBar/NavBar";
 
 
 export default function PerfilCompany({ setCurrentUserStore }) {
-	const userType = JSON.parse(localStorage.getItem("currentUser"));
+	const userType = JSON.parse(localStorage.getItem("currentUser2"));
 	const companyData = useSelector((state) => state.CompanyDetail);
 	const dispatch = useDispatch();
 

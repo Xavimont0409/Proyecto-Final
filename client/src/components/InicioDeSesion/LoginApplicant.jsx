@@ -52,7 +52,7 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
 
   return (
     <div>
-      <h1>Login Empresa</h1>
+      <h1>Login Applicant</h1>
       <div>
       <input
           type="text"
