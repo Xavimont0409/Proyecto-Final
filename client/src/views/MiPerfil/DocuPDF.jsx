@@ -34,6 +34,9 @@ const DocuPDF = ({ perfil, CvDetail }) => {
             width: 100,
             height: 100,
             marginRight: 20,
+            borderRadius:100,
+            borderWidth:1,
+            borderColor: 'blue',
         },
         container4: {
             display: 'flex',
@@ -58,29 +61,30 @@ const DocuPDF = ({ perfil, CvDetail }) => {
         },
         containerListStudy: {
             marginBottom: 10,
+            padding:1,
         },
         container: {
             marginBottom: 10,
         },
         charge: {
-            fontSize: 13,
+            fontSize: 12,
             fontWeight: 'bold',
         },
         company: {
-            fontSize: 12,
+            fontSize: 11,
         },
         dates: {
-            fontSize: 12,
+            fontSize: 11,
         },
     });
 
 
     const ListItem = ({ charge, company, startDate, endDate }) => (
-        <Text style={styles.container}>
+        <View >
           <Text style={styles.charge}>{charge}</Text>
           <Text style={styles.company}>{company}</Text>
           <Text style={styles.dates}>{formatDate(startDate)} - {endDate === 'Actualmente' ? endDate : formatDate(endDate)}</Text>
-        </Text>
+        </View>
       );
 
 
@@ -149,7 +153,7 @@ const DocuPDF = ({ perfil, CvDetail }) => {
                 </View>
                 <View style={styles.container5}>
                     <Text style={{ textAlign: 'left' }}>Mis experiencias profesionales</Text>
-                    <View style={styles.containerList}>
+                    <View >
                         {CvDetail.Experiences?.map(exp => (
                             <ListItem charge={exp.charge} company={exp.company} startDate={exp.start_date} endDate={exp.still_working ? 'Actualmente' : exp.end_date} />
                         ))}
