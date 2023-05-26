@@ -37,21 +37,12 @@ const updateCompany = async (body) => {
     where: { id: id }
   }).then(async (num) => {
     if (num == 1) {
-      response = { id, ...companyData };
+      response = body;
+      const StarsId = Stars.map(Star => Star.id);
 
       const company = await Company.findByPk(id);
 
-      const companyStars = await company.getStars();
-
-      const starsToDelete = (companyStars.filter(
-        companyStar => !Stars.includes(companyStar.id)
-      ));
-
-      for (const star of starsToDelete) {
-        await Star.destroy({ where: { id: star.id } });
-      }
-
-      await company.removeStars(starsToDelete);
+      await company.setStars(StarsId);
     }
   });
 
