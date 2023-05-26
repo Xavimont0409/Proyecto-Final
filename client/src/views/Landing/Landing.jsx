@@ -8,7 +8,7 @@ import CardsEquipo from '../../components/CardEquipo/CardEquipo';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-const Landing = ({ currentUserStore, setCurrentUserStore }) => {
+const Landing = ({ setValidateState, currentUserStore, setCurrentUserStore2 }) => {
 
     // const [isLoading, setIsLoading] = useState(true);
     //const profile = currentUserStore.profile 
@@ -26,7 +26,7 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
 
     return (
         <div className={style.landingDiv}>
-            <NavBar setCurrentUserStore={setCurrentUserStore} />
+            <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />
             <div className={style.container}>
                 <div className={style.videoDiv}>
                     <video loop autoPlay muted>

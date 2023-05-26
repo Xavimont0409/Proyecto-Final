@@ -3,7 +3,7 @@ import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import FormRegisterEmpresa from "../FormRegistroEmpresa/FormRegistroempesa";
 
-const NewRegistroCompany = ({ setValidateState, setCurrentUserStore }) => {
+const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrentUserStore }) => {
   const clientID =
     "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
   const [Company, setCompany] = useState({
@@ -47,7 +47,7 @@ const NewRegistroCompany = ({ setValidateState, setCurrentUserStore }) => {
         />
       </div>
       {
-        Company.nombre.length > 1 ? <FormRegisterEmpresa Company={Company} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} /> : <div></div>
+        Company.nombre.length > 1 ? <FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} Company={Company} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} /> : <div></div>
       }
     </div>
   );

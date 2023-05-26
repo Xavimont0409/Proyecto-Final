@@ -14,7 +14,7 @@ import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
 import { login } from '../../Redux/Actions/actionsFunction/actionsLogin';
 
 
-const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState }) => {
+const FormRegisterEmpresa = ({setCurrentUserStore2, Company, setCurrentUserStore, setValidateState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -47,11 +47,15 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
       newEmpresa.email
     ){
       dispatch(postCompany(newEmpresa))
+      setTimeout(()=>{
+        dispatch(getEmail(newEmpresa.email))
+      },1500)
       setCurrentUserStore(newEmpresa)
       setValidateState(true)
       navigate("/empresa")
     }
   };
+
 
   useEffect(() => {
     setTimeout(() => {

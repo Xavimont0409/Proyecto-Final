@@ -14,7 +14,7 @@ import { findPerName } from "../../Redux/Actions/actionsFunction/actionsSearchBa
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 import { login } from '../../Redux/Actions/actionsFunction/actionsLogin'
 
-const NavBarCliente = ({ setCurrentUserStore }) => {
+const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [ name, setName ] = useLocalStorage('name', '')
@@ -26,8 +26,8 @@ const NavBarCliente = ({ setCurrentUserStore }) => {
     dispatch(findPerName(name))
   }
   const handlerLogin = () =>{
-    dispatch(login(false))
-    setCurrentUserStore("")
+    setValidateState(false)
+    setCurrentUserStore2("")
     navigate("/")
   }
 

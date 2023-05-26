@@ -1,11 +1,8 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia } from './views';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, Vacantes } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer } from './components';
-import { Route, Routes} from 'react-router-dom';
-import {DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, Applicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, Vacantes} from './views';
-import {Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer} from './components';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
@@ -14,27 +11,31 @@ import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 import NewRegistroCompany from './views/NewRegistro/newRegistro';
 import Loading from './components/Loading/Loading';
 import { getEmail } from './Redux/Actions/actionsFunction/FiltersHome';
+import { FaBullseye } from 'react-icons/fa';
 
-axios.defaults.baseURL = 'http://localhost:3001'
-// axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+//axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 
 function App() {
   const dispatch = useDispatch()
   const currentUser = useSelector(state => state.dataEmail[0]);
   const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
+  const [currentUserStore2, setCurrentUserStore2] = useLocalStorage('currentUser2', '');
   const [ validateState, setValidateState ] = useLocalStorage('state', '')
   const [isLoading, setIsLoading] = useState(true);
   const userType = JSON.parse(localStorage.getItem("currentUser"))
-  console.log(currentUser);
+  const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
 
   useEffect(() => {
-    if (validateState === true ) {
-      dispatch(getEmail(userType.email))
-      setValidateState(true);
+    if (validateState === true && Object.keys(userType).length > 1) {
+      setCurrentUserStore2(currentUser)
+      return setCurrentUserStore('')
     }
-    else {
+    if(validateState === true && Object.keys(userType2).length > 1) setValidateState(true)
+    if(validateState === false) {
       setCurrentUserStore("");
+      setCurrentUserStore2("")
       setValidateState(false)
     }
   }, [currentUser]);
@@ -53,11 +54,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Landing setCurrentUserStore= {setCurrentUserStore}/>} />
+        <Route exact path="/" element={<Landing setValidateState={setValidateState} setCurrentUserStore2= {setCurrentUserStore2}/>} />
         <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/registro" element={<Registro />}/>
-        <Route path='/newRegistroCompany' element={<NewRegistroCompany setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
-        <Route exact path="/" element={<Landing currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
+        <Route path='/newRegistroCompany' element={<NewRegistroCompany setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
+        <Route exact path="/" element={<Landing setValidateState={setValidateState} currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore} />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
