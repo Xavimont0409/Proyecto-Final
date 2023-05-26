@@ -11,9 +11,11 @@ import validation from "./validation";
 import Swal from 'sweetalert2';
 import style from './FormregistroEstudio.module.css'
 import { createFormation } from "../../Redux/Actions/actionsFunction/actionsFormation";
+import { useNavigate } from "react-router-dom";
 
 const FormRegistroEstudio = ({ setCurrentUserStore }) => {
 
+  const navigate = useNavigate()
 
     const countriesNames = Object.values(countries.countries).map(
         (country) => country
@@ -72,10 +74,11 @@ const FormRegistroEstudio = ({ setCurrentUserStore }) => {
         } else {
             setValidated(true);
             dispatch(createFormation(estudio));
-            return Swal.fire({
+            Swal.fire({
                 title: "Registro exitoso",
                 icon: 'success'
               })
+            return navigate('/applicant')
         }
     };
 
