@@ -47,9 +47,11 @@ const NavBarCliente = ({ setCurrentUserStore }) => {
       <div className={style.container}>
         <h2 className={style.title}>
           {
-            userLocalStorage.profile === "Applicant" || "Admin" 
-            ? <a href="/applicant">JobPortalX</a> 
-            : <a href="/empresa">JobPortalX</a>
+            userLocalStorage.profile === "Admin"
+            ? <a href="/">JobPortalX</a>
+            : userLocalStorage.profile === "Applicant" 
+              ? <a href="/Applicant">JobPortalX</a>
+              : <a href="/empresa">JobPortalX</a>
           }
           </h2>
         <form className={style.SearchBarContainer}>

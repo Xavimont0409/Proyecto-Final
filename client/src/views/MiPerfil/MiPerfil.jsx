@@ -12,7 +12,7 @@ import DocuPDF from "./DocuPDF"
 import { getCvById } from "../../Redux/Actions/actionsFunction/actionsCv";
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
-import html2pdf from 'html2pdf.js';
+//import html2pdf from 'html2pdf.js';
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
 // import email from "../../assets/img/email.svg"
 
@@ -92,7 +92,7 @@ const MiPerfil = ({ setCurrentUserStore }) => {
 
       const element = document.getElementById('pdf-content');
       
-      html2pdf().from(element).save('documento.pdf');
+      //html2pdf().from(element).save('documento.pdf');
     }else {
       return (<Loading></Loading>)
     }
