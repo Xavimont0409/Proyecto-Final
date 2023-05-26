@@ -2,45 +2,56 @@ import styles from './Profiles-Company.module.css';
 import NavBar from '../../components/NavBar/NavBarUnlog';
 import Page from '../../components/Paginated/Page';
 import CardProfileCompany from '../../components/CardsProfilesCompany/CardsProfilesCompany';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
-const ProfilesCompany = ({setCurrentUserStore}) => {
-    const company = useSelector(state => state.Company);
+
+const ProfilesCompany = ({ setCurrentUserStore }) => {
+    const companies = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
-    const [companiesPerPage, setcompaniesPerPage] = useState(4);
+    const [companiesPerPage, setCompaniesPerPage] = useState(6);
     const indexOfLastCharacter = currentPage * companiesPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - companiesPerPage;
     const [isLoading, setIsLoading] = useState(true);
-
+    const dispatch = useDispatch();
+    
+   
+  
+    useEffect(()=> {
+        dispatch(getAllCompanys())
+  
+    },[dispatch, getAllCompanys]);
+    
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-            getAllCompanys();
         }, 2000);
     }, []);
+    
 
     const paginated = (pageNumber) => {
         setCurrentPage(pageNumber)
     };
 
-    const currentCompanies = company.slice(indexOfFirstCharacter, indexOfLastCharacter);
+    const currentCompanies = companies.slice(indexOfFirstCharacter, indexOfLastCharacter);
 
     useEffect(() => {
-        if (currentCompanies.length === 0 && company.length > 0) {
-            const newPage = Math.ceil(company.length / companiesPerPage);
+        if (currentCompanies.length === 0 && companies.length > 0) {
+            const newPage = Math.ceil(companies.length / companiesPerPage);
             setCurrentPage(newPage);
     }
-    }, [companiesPerPage, company.length, currentCompanies]);
+    }, [currentCompanies, companies, companiesPerPage]);
+
+
 
     return (
         <div className={styles.container}>
             <NavBar setCurrentUserStore={setCurrentUserStore}/>
             <Page
-                companiesPerPage={companiesPerPage}
-                companies={company}
+                usersPerPage={companiesPerPage}
+                users={companies}
                 paginated={paginated}
             />
             {  isLoading ? (
@@ -48,15 +59,21 @@ const ProfilesCompany = ({setCurrentUserStore}) => {
             ) : (
                     <div className={styles.cardsContainer}>
                         {
-                            currentCompanies?.map(company => {
-                                return (
-                                    <div key={company.id} className={styles.cardDiv}>
+                            currentCompanies?.map(compan => {
+                                return ( 
+                                    <div key={compan.id} className={styles.cardDiv}>
                                         <CardProfileCompany
-                                        key={company.id}
-                                        id={company.id}
-                                        business_name={company.business_name}
-                                        email={company.email}
-                                        country={company.country}
+                                        key={compan.id}
+                                        id={compan.id}
+                                        // logo={compan.logo}
+                                        business_name={compan.business_name}
+                                        // description={compan.description}
+                                        // work_sector={compan.work_sector}
+                                        name={compan.name}
+                                        country={compan.country}
+                                        cuit={compan.cuit}
+                                        email={compan.email}
+                                        // web={compan.web}
                                         />
                                     </div>
                                 )
