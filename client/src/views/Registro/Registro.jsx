@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ButtonGeneral from "../../components/Button/ButtonGeneral";
-import NavBarLog from "../../components/NavBar/NavBarLog";
+import NavBarLog from "../../components/NavBarLog/NavBarLog";
 import Loading from "../../components/Loading/Loading";
 import style from "./Registro.module.css";
 

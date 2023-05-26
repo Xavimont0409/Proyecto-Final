@@ -1,6 +1,6 @@
 import style from './DetailProduct.module.css';
 import styles from '../../components/Button/ButtonGeneral.module.css';
-import NavBar from '../../components/NavBar/NavBarLog';
+import NavBar from '../../components/NavBarLog/NavBarLog';
 import Footer from '../../components/Footer/Footer';
 import getAllProduct from '../../Redux/Actions/actionsFunction/actionsProduct';
 import getAllPayMethods from '../../Redux/Actions/actionsFunction/actionsPayMethods';
@@ -26,7 +26,6 @@ const navigate = useNavigate();
 /*  const currentUser = useSelector((state) => state.dataEmail[0]) */
  const product = useSelector((state) => state.Product);
  const payMethods = useSelector((state) => state.PayMethods);
-
 useEffect(() => {
  
       const handleUserAuthentication = () => {
@@ -50,7 +49,7 @@ useEffect(() => {
   PayMethodId: 0,
   name: currentUserStore?.name,
   email: currentUserStore?.email,
-  PayMethod: currentUserStore?.name,
+  PayMethod: "",
  })
 
 const handleChangeSelect = (event) => {
@@ -63,7 +62,7 @@ const handleChangeSelect = (event) => {
     PayMethodId: value,
     name: currentUserStore?.name,
     email: currentUserStore?.email,
-    PayMethod: payMethods?.name,
+    PayMethod: (payMethods.find(payMethod => payMethod.id === parseInt(value))).name
     })
 }
 
@@ -71,6 +70,7 @@ const handleSubmit = async () => {
   if(currentUserStore.name){
     dispatch(postDataInStore(form));
     dispatch(postOperation(form));
+    console.log(form)
     await Swal.fire({
       title: 'Éxito',
       text: 'Operación creada correctamente',
@@ -103,6 +103,7 @@ return (
                <p className={style.infoCard}>Price: {product.price} </p>
                <label htmlFor="PayMethod"></label>
                 <select name="PayMethod" onChange={(event) => handleChangeSelect(event)}>
+                
                { payMethods ?
                     (payMethods.map((payMethod) => {
                       return (

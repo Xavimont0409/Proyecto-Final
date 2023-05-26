@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../../components/NavBar/NavBarLog"
+import NavBar from "../../components/NavBarLog/NavBarLog"
 import Step1FormCv from "../../components/Step1FormCv/Step1FormCv";
 import Step2FormCv from "../../components/Step2FormCv/Step2FormCv";
 import Step3FormCv from "../../components/Step3FormCv/Step3FormCv";

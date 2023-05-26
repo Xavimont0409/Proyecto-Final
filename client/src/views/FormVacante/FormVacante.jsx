@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import style from "./FormVacante.module.css"
 import { useState } from "react";
 import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
-import NavBar from "../../components/NavBar/NavBarLog"
+import NavBar from "../../components/NavBarLog/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
 import { useDispatch, useSelector } from "react-redux";
 import { postVacant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
