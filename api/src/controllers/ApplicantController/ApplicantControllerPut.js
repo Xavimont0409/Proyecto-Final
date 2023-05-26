@@ -11,21 +11,14 @@ const applicantUpdate = async (id, body) => {
     where: { id: id },
   }).then(async num => {
     if (num == 1) {
-      response = applicantData;
-      
+      response = body;
+      const VacantsId = Vacants.map(Vacant => Vacant.id);
+
       // Buscar al aplicante por el ID
       const applicant = await Applicant.findByPk(id);
 
-      // Obtener todas las vacantes asociadas al aplicante
-      const applicantVacants = await applicant.getVacants();
-
-      // Identificar las vacantes que deben eliminarse
-      const vacantsToDelete = applicantVacants.filter(
-        applicantVacant => !Vacants.includes(applicantVacant.id)
-      );
-
-      // Eliminar las relaciones de las vacantes que deben eliminarse
-      await applicant.removeVacants(vacantsToDelete);
+      // Setear las nuevas relaciones con setVacants
+      await applicant.setVacants(VacantsId);
       
     }
   });
