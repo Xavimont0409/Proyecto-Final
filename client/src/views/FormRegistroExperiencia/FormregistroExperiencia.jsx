@@ -10,10 +10,12 @@ import { getUserDetail, postExpe } from "../../Redux/Actions/actionsFunction/act
 import validation from "./validation";
 import style from "./FormregistroExperiencia.module.css";
 import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 
 const FormRegistroExperincia = ({ setCurrentUserStore }) => {
 
+    const navigate = useNavigate()
 
     const countriesNames = Object.values(countries.countries).map(
         (country) => country
@@ -76,6 +78,7 @@ const FormRegistroExperincia = ({ setCurrentUserStore }) => {
                 title: "Registro exitoso",
                 icon: 'success'
               })
+              navigate('/applicant')
         }
     };
 
