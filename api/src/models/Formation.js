@@ -31,6 +31,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+
         start_date: {
             type: DataTypes.STRING,
             
@@ -38,7 +39,7 @@ module.exports = (sequelize) => {
         end_date: {
             type: DataTypes.STRING,
 
-        },
+        }, */
     },
     { 
         timestamps: false

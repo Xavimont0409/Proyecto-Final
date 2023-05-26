@@ -7,7 +7,6 @@ const operationHandlerPost = async (req, res) =>{
    
     const {cost, detail, details, CompanyId, PayMethodId, ApplicantId, name, email, PayMethod} = req.body;
     try {
-        
         const response = await createOperation(cost, detail, CompanyId, PayMethodId, ApplicantId);
         const preferenceId = await mercadopago.preferences.create({
             items: [
