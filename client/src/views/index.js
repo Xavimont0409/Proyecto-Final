@@ -20,6 +20,7 @@ import Success from "./Success/Success";
 import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperiencia";
 import Vacantes from "./Vacantes/Vacantes"
 import FormRegistroEstudio from "./FormRegistroEstudio/FormregistroEstudio";
+import MyApplications from "./MyApplications/MyApplications";
 
 export {
     //AboutUs,
@@ -44,4 +45,5 @@ export {
     FormRegistroExperincia,
     Vacantes,
     FormRegistroEstudio,
+    MyApplications
 }

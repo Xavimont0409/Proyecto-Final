@@ -10,6 +10,7 @@ import { getUserDetail, postExpe } from "../../Redux/Actions/actionsFunction/act
 import validation from "./validation";
 import Swal from 'sweetalert2';
 import style from './FormregistroEstudio.module.css'
+import { createFormation } from "../../Redux/Actions/actionsFunction/actionsFormation";
 
 const FormRegistroEstudio = ({ setCurrentUserStore }) => {
 
@@ -70,7 +71,7 @@ const FormRegistroEstudio = ({ setCurrentUserStore }) => {
               })
         } else {
             setValidated(true);
-            dispatch(postExpe(estudio));
+            dispatch(createFormation(estudio));
             return Swal.fire({
                 title: "Registro exitoso",
                 icon: 'success'
@@ -94,7 +95,7 @@ const FormRegistroEstudio = ({ setCurrentUserStore }) => {
             <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
           <h2 style={{ 'margin': '30px' }}>Agrega estudios a tu CV</h2>
         
-          <Form className={style.Form} validated={!validated}>
+          <Form className={style.Form} validated={!validated} onSubmit={handleSubmit}>
             <Row className="mb-3">
     
               <FormGroup as={Col} md="6">
@@ -139,12 +140,13 @@ const FormRegistroEstudio = ({ setCurrentUserStore }) => {
                   onChange={(event) => handlerChange(event)}
                   required>
                   <option disabled ></option>
+                  <option value="Complementario">Complementario</option>
+                  <option value="Diplomado">Diplomado</option>
                   <option value="Tecnico">Tecnico</option>
                   <option value="Tecnologico">Tecnologico</option>
                   <option value="Profesional">Profesional</option>
                   <option value="Master">Master</option>
                   <option value="Doctorado">Doctorado</option>
-                  <option value="Otro">Otro</option>
     
                 </FormSelect>
                 <Form.Control.Feedback type="invalid">
@@ -246,6 +248,7 @@ const FormRegistroEstudio = ({ setCurrentUserStore }) => {
 
             <ButtonGeneral
               textButton="Añadir Estudio"
+              handlerClick={handleSubmit}
             />
           </FormGroup>
     
