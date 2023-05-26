@@ -14,22 +14,28 @@ import {
 	BsFillPinMapFill,
 } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import { getCompanyDetail } from "../../Redux/Actions/actionsFunction/actionsCompanys";
+import NavBar from "../../components/NavBar/NavBar";
+
+
 
 export default function PerfilCompany({ setCurrentUserStore }) {
+	const userType = JSON.parse(localStorage.getItem("currentUser"));
+	const companyData = useSelector((state) => state.CompanyDetail);
 	const dispatch = useDispatch();
-	const { CompanyId } = useParams();
+
 
 	useEffect(() => {
-		dispatch(getCompanyDetail(CompanyId));
-	}, [dispatch, CompanyId]);
+		dispatch(getCompanyDetail(userType.id));
+	}, [dispatch, userType]);
 
-	const companyData = useSelector((state) => state.CompanyDetail);
 
 	return (
 		<div className={style.container}>
-			<h1>Perfil de la Empresa</h1>
+			<div className={style.containerNav}>
+				<NavBar />
+			</div>
+			<h1 className={style.title}>Perfil de la Empresa</h1>
 
 			<div className={style.container2}>
 				<div className={style.container1}>

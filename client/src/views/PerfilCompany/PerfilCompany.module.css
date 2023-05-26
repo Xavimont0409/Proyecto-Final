@@ -5,13 +5,19 @@
 }
 
 .container {
-    padding: 2%;
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+}
+
+.containerNav{
+    width: 100vw;
+    margin-bottom: 2vw;
+}
+
+.title{
+    margin-bottom: 4vh;
 }
 
 .container1 {
@@ -19,7 +25,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20%;
 }
 
 .container2 {
@@ -31,8 +36,8 @@
     align-items: center;
     gap: 30px;
     border: solid black 1px;
-    width: 80%;
-    height: 100%;
+    width:80vw;
+    height: 40vh;
 }
 
 .container3 {
