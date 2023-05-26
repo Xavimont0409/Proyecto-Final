@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import ButtonGeneral from "../../components/Button/ButtonGeneral";
-import NavBarLog from "../../components/NavBar/NavBarLog";
+import NavBarLog from "../../components/NavBarLog/NavBarLog";
 import Loading from "../../components/Loading/Loading";
 import style from "./Registro.module.css";
 import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";

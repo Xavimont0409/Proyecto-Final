@@ -7,7 +7,7 @@ import { useState } from "react";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import style from "./MiPerfil.module.css"
 import { useNavigate } from "react-router-dom";
-import NavBarLog from "../../components/NavBar/NavBarLog"
+import NavBarLog from "../../components/NavBarLog/NavBarLog"
 
 const MiPerfil = ({ setCurrentUserStore }) => {
 
@@ -17,7 +17,7 @@ const MiPerfil = ({ setCurrentUserStore }) => {
   const currentUser = useSelector(state => state.dataEmail[0]);
   const userDetail = useSelector(state => state.UserDetail);
   console.log(userDetail)
-  console.log(currentUser.id)
+  //console.log(currentUser.id)
   console.log(userDetail);
 
   const { user, isAuthenticated, isLoading, logout } = useAuth0();

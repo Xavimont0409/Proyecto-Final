@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes } from 'react-router-dom';
 import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer } from './components';
@@ -54,7 +55,7 @@ function App() {
   };
 
 
-  const userLocalStorage = JSON.parse(localStorage.getItem("currentUser"))
+  const userLocalStorage = JSON.parse(localStorage.getItem("currentUser")) /*{ profile : "Company"}*/
 
 
 
@@ -75,7 +76,7 @@ function App() {
           <Route path="/MiPerfil" element={<MiPerfil setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/operation" element={<Operation setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/success" element={<Success />} />
-        </Route>
+        </Route>                        
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated && (userLocalStorage.profile === "Company" || userLocalStorage.profile === "Admin")} userType={userLocalStorage.profile} />/*Empresa*/}>
           <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-vacante" element={<FormVacante setCurrentUserStore={setCurrentUserStore} />} />

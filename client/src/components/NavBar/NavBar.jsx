@@ -1,5 +1,5 @@
-import NavBarLog from "./NavBarLog";
-import NavbarUnlog from "./NavBarUnlog";
+import NavBarLog from "../NavBarLog/NavBarLog";
+import NavbarUnlog from "../NavBarUnlog/NavBarUnlog";
 import { useAuth0 } from "@auth0/auth0-react";
 
 

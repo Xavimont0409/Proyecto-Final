@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
-import NavBar from "../../components/NavBar/NavBarLog"
+import NavBar from "../../components/NavBarLog/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
 import { useDispatch, useSelector } from "react-redux";
 import { postCompany } from '../../Redux/Actions/actionsFunction/actionsCompanys';
