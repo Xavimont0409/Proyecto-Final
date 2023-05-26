@@ -25,7 +25,10 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
 
     return (
         <div className={style.landingDiv}>
-            <NavBar setCurrentUserStore={setCurrentUserStore} />
+            <div className={style.containerComponents}>
+                <NavBar setCurrentUserStore={setCurrentUserStore} />
+            </div>
+            
             <div className={style.container}>
                 <div className={style.videoDiv}>
                     <video loop autoPlay muted>

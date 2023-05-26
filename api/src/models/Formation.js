@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
         end_date: {
             type: DataTypes.STRING,
 
-        }
+        },
     },
     { 
         timestamps: false
