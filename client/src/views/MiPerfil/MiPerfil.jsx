@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import style from "./MiPerfil.module.css"
 import { useNavigate } from "react-router-dom";
-import NavBarLog from "../../components/NavBar/NavBarLog"
+import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
 import { PDFViewer, PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer"
 import DocuPDF from "./DocuPDF"
@@ -87,7 +87,7 @@ console.log(CvDetail)
       return (
         // isAuthenticated && (
         <>
-          <NavBarLog setCurrentUserStore={setCurrentUserStore} ></NavBarLog>
+          <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
           <div className={style.container}>
 
 
@@ -161,7 +161,7 @@ console.log(CvDetail)
                    endDate={exp.still_working?'Actualmente':exp.end_date}>
                 </ListItem>               
                 )})
-}
+  }
                 </div>
               </div>
 

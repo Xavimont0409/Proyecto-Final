@@ -192,3 +192,12 @@
         font-size: large;
     }
 }
+
+@media screen and (max-width: 470px) {
+    .title {
+        font-size: large;
+    }
+    .Input {
+        width: 100px;
+    }
+}

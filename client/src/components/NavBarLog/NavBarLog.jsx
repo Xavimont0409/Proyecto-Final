@@ -40,22 +40,43 @@ const NavBarCliente = ({ setCurrentUserStore }) => {
     logout({ returnTo: window.location.origin })
   }
 
-  const admin = false;
+  const userLocalStorage = JSON.parse(localStorage.getItem("currentUser"));
 
   return (
     <div className={style.fixed}>
       <div className={style.container}>
-        <h2 className={style.title}><a href="/applicant">JobPortalX</a></h2>{/* /empresa */}
+        <h2 className={style.title}>
+          {
+            userLocalStorage.profile === "Applicant" || "Admin" 
+            ? <a href="/applicant">JobPortalX</a> 
+            : <a href="/empresa">JobPortalX</a>
+          }
+          </h2>
         <form className={style.SearchBarContainer}>
-          <input type="text" placeholder="Empleos..." className={style.Input} onChange={(event)=>handlerSearchName(event)}/>
-          <button className={style.Botton} onClick={() => searchName(name)}><i class="bi bi-search"></i></button>
+          <input 
+            type="text" 
+            placeholder="Empleos..." 
+            className={style.Input} 
+            onChange={(event)=>handlerSearchName(event)}
+          />
+          <button className={style.Botton} onClick={() => searchName(name)}>
+              <i class="bi bi-search"></i>
+          </button>
         </form>
-        <button className={style.abrirNav} onClick={abrirNav}><i class="bi bi-arrow-bar-right"></i></button>
+        <button className={style.abrirNav} onClick={abrirNav}>
+          <i class="bi bi-arrow-bar-right"></i>
+        </button>
         <nav className={`${style.nav} ${isNavVisible ? style.navVisible : ""}`} >
-          <button className={style.cerrarNav} onClick={cerrarNav}><i class="bi bi-arrow-bar-left"></i></button>
+          <button className={style.cerrarNav} onClick={cerrarNav}>
+            <i class="bi bi-arrow-bar-left"></i>
+          </button>
           <ul className={style.navList}>
             <li><a href="#" onClick={handlerLogin}>cerrar sesion</a></li>
-            { admin ? <li><a href="#">Dashboard</a></li> : null}
+            { 
+              userLocalStorage.profile === "Admin" 
+              ? <li><a href="https://jobportalx-adminpanel.vercel.app" target="_blank">Dashboard</a></li> 
+              : null
+            }
           </ul>
         </nav>
       </div>

@@ -32,8 +32,8 @@ module.exports = (sequelize) => {
             allowNull: false
         },
         start_date: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
+            type: DataTypes.STRING,
+            allowNull: true,
         },
         end_date: {
             type: DataTypes.DATEONLY,
