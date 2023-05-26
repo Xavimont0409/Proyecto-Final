@@ -51,7 +51,7 @@ const ProfilesCompany = ({ setCurrentUserStore }) => {
             <NavBar setCurrentUserStore={setCurrentUserStore}/>
             <Page
                 usersPerPage={companiesPerPage}
-                users={companies}
+                users={company}
                 paginated={paginated}
             />
             {  isLoading ? (
