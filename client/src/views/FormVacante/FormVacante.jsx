@@ -58,6 +58,7 @@ export default function FormVacante({setCurrentUserStore}) {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (!validateFormInputs(newVacant)) {
+            
             alert('Completa todos los campos')
         } else {
             setValidated(true)

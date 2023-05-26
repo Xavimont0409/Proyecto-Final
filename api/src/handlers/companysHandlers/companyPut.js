@@ -1,12 +1,12 @@
 const errorUser = require("../../helpers/errors");
 const { updateCompany } = require('../../controllers/CompaniesController/CompanyControllerPut')
 
-const companyPutHandler = async(req, res) => {
-  const { id, name, business_name, ruc, cuit, country, email, password, registed } = req.body;
+const companyPutHandler = async (req, res) => {
+  const body = req.body;
   try {
-    res.status(200).json(await updateCompany(id, name, business_name, ruc, cuit, country, email, password, registed))
+    res.status(200).json(await updateCompany(body));
   } catch (error) {
-    errorUser(error, res)
+    errorUser(error, res);
   }
 };
 

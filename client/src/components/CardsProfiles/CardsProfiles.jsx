@@ -6,8 +6,12 @@ import { Link } from "react-router-dom";
 import { FcSearch } from "react-icons/fc";
 
 
-const CardProfile = ({id, photo, name, lastName, profession, personal_description, skills, dni, phone, email, linkedin}) => {
-    return (
+const CardProfile =  ({id, cv, photo, name, lastName, profession, personal_description, skills, dni, phone, email, linkedin}) => {
+
+  const experience = cv.Experiences[0];
+
+
+  return (
         <div className={style.mainContainer} >
         <div className={style.containerImgEmpresa}>
         <img className={style.img} variant="top" src={photo}/>
@@ -24,12 +28,19 @@ const CardProfile = ({id, photo, name, lastName, profession, personal_descriptio
           <ListGroup.Item className={style.item}>Email: {email}</ListGroup.Item>
         </ListGroup>
         <Card.Body >
-          <Card.Title className={style.title2}>Experiencia</Card.Title>
-          
-          <ListGroup className={style.infoContainer2}>
-          <ListGroup.Item className={style.item}>Cargo: Cocinero</ListGroup.Item>
-          <ListGroup.Item className={style.item}>Seniority: junior</ListGroup.Item>
-        </ListGroup>
+         <Card.Title className={style.title2}>Experiencia</Card.Title>
+
+        {!experience ? (<ListGroup className={style.infoContainer2}>
+          <ListGroup.Item className={style.item}>No hay experiencias registradas</ListGroup.Item>
+          </ListGroup>)  
+        : 
+        (<ListGroup className={style.infoContainer2}>
+          <ListGroup.Item className={style.item}>Cargo: {experience.charge}</ListGroup.Item>
+          <ListGroup.Item className={style.item}>Seniority: {experience.experience_level}</ListGroup.Item>
+          </ListGroup>)   
+      }
+        
+
         </Card.Body>
 
         <Card.Body>
@@ -37,7 +48,7 @@ const CardProfile = ({id, photo, name, lastName, profession, personal_descriptio
           <BsLinkedin className={style.linkedin}/>
           </Link>
           <Link to={`/detailProfile/${id}`}>
-            <FcSearch className={style.lupa} /> 
+            <FcSearch className={style.lupa} />
             </Link>
           </Card.Body>
       </div>

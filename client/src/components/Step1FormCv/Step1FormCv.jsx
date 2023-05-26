@@ -6,6 +6,7 @@ import Loading from "../Loading/Loading";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import { Cloudinary } from "cloudinary-core";
+import Swal from "sweetalert2";
 
 const cloudinary = new Cloudinary({ cloud_name: "portaljobx" });
 
@@ -21,9 +22,19 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
     event.preventDefault();
     console.log(cv)
     if (!validation(cv)) {
-      alert('Completa todos los campos')
+      Swal.fire({
+			title: "Faltan Datos",
+			text: "Completa todos los campos",
+			icon: "warning",
+		});
     } else {
-      if (cv.photo === '') alert('Debes elegir una foto')
+      if (cv.photo === '') 
+      alert('')
+      Swal.fire({
+			title: "Faltan Datos",
+			text: "Debes elegir una foto",
+			icon: "warning",
+		});
       console.log(cv)
       setValidated(true)
       nextStep()

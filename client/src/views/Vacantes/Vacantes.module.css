@@ -1,0 +1,29 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+background: #1c1c1c;
+display:flex;
+justify-content:center;
+align-items: center;
+flex-direction: column;
+position: relative;
+}
+
+.containerNav{
+    width: 100vw;
+    position: absolute;
+    top: 0;
+}
+
+.title{
+    margin: 5vh auto;
+    color: #e1ecfc;
+}
+
+.table{
+    
+    border: 3px solid #e1ecfc;
+    color: #e1ecfc;
+    width: 90vw;
+    height:fit-content
+}

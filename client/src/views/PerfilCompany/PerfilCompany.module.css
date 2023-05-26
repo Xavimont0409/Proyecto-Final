@@ -1,30 +1,33 @@
-.image{
+.image {
     width: 10vw;
     height: 20vh;
     border-radius: 50%;
 }
 
-.container{
-    padding: 2%;
-    margin: auto;
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
 }
 
-.container1{
+.containerNav{
+    width: 100vw;
+    margin-bottom: 2vw;
+}
+
+.title{
+    margin-bottom: 4vh;
+}
+
+.container1 {
     margin-right: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content; */
-    gap: 20%;
 }
 
-
-.container2{
+.container2 {
     padding: 2%;
     margin: auto;
     display: flex;
@@ -33,11 +36,11 @@
     align-items: center;
     gap: 30px;
     border: solid black 1px;
-    width: 80%;
-    height: 100%;
+    width:80vw;
+    height: 40vh;
 }
 
-.container3{
+.container3 {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -52,17 +55,15 @@
     gap: 30px;
 }
 
-
-.container5{
+.container5 {
     width: 100%;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content: center;
 }
 
-.containerList{
+.containerList {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Divide en dos columnas de igual ancho */
-    grid-gap: 20px; /* Espacio entre los elementos */
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
 }

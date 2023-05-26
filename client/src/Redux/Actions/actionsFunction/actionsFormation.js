@@ -1,5 +1,6 @@
 import { POST_FORMAITON } from "../actions-types/action-types";
 import axios from "axios";
+import Swal from 'sweetalert2';
 
 export const createFormation = (payload) => {
   return async function(dispatch){
@@ -11,7 +12,11 @@ export const createFormation = (payload) => {
         payload: data
       })
     } catch (error) {
-      alert(error.response.data.error);
+      Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+        })
     }
   }
 };

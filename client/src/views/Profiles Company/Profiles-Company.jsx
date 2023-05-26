@@ -39,8 +39,8 @@ const ProfilesCompany = ({setCurrentUserStore}) => {
         <div className={styles.container}>
             <NavBar setCurrentUserStore={setCurrentUserStore}/>
             <Page
-                companiesPerPage={companiesPerPage}
-                companies={company}
+                usersPerPage={companiesPerPage}
+                users={company}
                 paginated={paginated}
             />
             {  isLoading ? (
