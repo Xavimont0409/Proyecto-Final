@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 //import { FaBullseye } from 'react-icons/fa';
 import { login } from './Redux/Actions/actionsFunction/actionsLogin'
+import Ratings from './views/Ratings/Ratings';
 
 
 
@@ -63,6 +64,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landing currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore} />} />
+        <Route path='/ratings' element={<Ratings/> } />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore} />} />
