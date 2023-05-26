@@ -7,10 +7,10 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
-import NewRegistroCompany from './views/NewRegistro/newRegistro';
-import Loading from './components/Loading/Loading';
-import { getEmail } from './Redux/Actions/actionsFunction/FiltersHome';
-import { FaBullseye } from 'react-icons/fa';
+import NewRegistroCompany from './views/NewRegistro/newRegistroCompany';
+import NewRegistroApplicant from './views/NewRegistro/newResgistroApplicant';
+import LoginCompany from './components/InicioDeSesion/LoginCompany'
+import LoginApplicant from './components/InicioDeSesion/LoginApplicant'
 
 //axios.defaults.baseURL = 'http://localhost:3001'
 axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
@@ -25,6 +25,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const userType = JSON.parse(localStorage.getItem("currentUser"))
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+  const validate = JSON.parse(localStorage.getItem("state"))
 
   useEffect(() => {
     if (validateState === true && Object.keys(userType).length > 1) {
@@ -39,7 +40,6 @@ function App() {
     }
   }, [currentUser]);
 
-  
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -49,6 +49,7 @@ function App() {
   if (isLoading) {
     return <Loading />;
   };
+  
 
   return (
     <div className="App">
@@ -56,15 +57,16 @@ function App() {
         <Route exact path="/" element={<Landing setValidateState={setValidateState} setCurrentUserStore2= {setCurrentUserStore2}/>} />
         <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore}/>} />
         <Route path="/registro" element={<Registro />}/>
+        <Route path='/newRegistroApplicant' element={<NewRegistroApplicant setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path='/newRegistroCompany' element={<NewRegistroCompany setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
-        <Route exact path="/" element={<Landing setValidateState={setValidateState} currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
-        <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore} />} />
-        <Route path="/registro" element={<Registro />} />
+        <Route path='/loginCompany' element={<LoginCompany />} />
+        <Route path='/loginApplicant' element={<LoginApplicant />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore} />} />
         <Route path="/ServerDevelop" element={<ServerMaintenance />} />
         <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
-        <Route element={<ProtectedRoute validateState={validateState} />/*Todos*/}>
+        
+        <Route element={<ProtectedRoute isAutenticate={validate} />/*Todos*/}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/profiles' element={<Profiles setCurrentUserStore={setCurrentUserStore} />} />
@@ -72,7 +74,9 @@ function App() {
           <Route path="/operation" element={<Operation setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/success" element={<Success />} />
         </Route>
-        <Route element={<ProtectedRoute validateState={validateState}  />/*Empresa*/}>
+                
+        {/* (userLocalStorage.profile === "Company" || userLocalStorage.profile === "Admin") */}
+        <Route element={<ProtectedRoute isAutenticate={validate && (userType2?.profile === 'Company' || userType2?.profile === 'Admin' )} />/*Empresa*/}>
           <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-vacante" element={<FormVacante setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/empresa" element={<LandingEmpresa setCurrentUserStore={setCurrentUserStore} />} />
@@ -80,7 +84,8 @@ function App() {
           <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
           <Route path="/vacantes" element={<Vacantes />} />
         </Route>
-        <Route element={<ProtectedRoute isAuthenticated={validateState} />/*Empleado*/}>
+
+        <Route element={<ProtectedRoute validate={validate && (userType2?.profile === 'Applicant' || userType2?.profile === 'Admin' )} />/*Empleado*/}>
           <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/applicant' element={<LandingApplicant setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-experiencia" element={<FormRegistroExperincia setCurrentUserStore={setCurrentUserStore} />} />

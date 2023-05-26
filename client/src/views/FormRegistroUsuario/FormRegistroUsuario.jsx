@@ -3,80 +3,52 @@ import { FormLabel, FormControl, Row, Col } from 'react-bootstrap';
 import NavBar from "../../components/NavBar/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
 import { useDispatch, useSelector } from "react-redux";
-import validateFormInputs from '../FormVacante/validation';
 import Loading from '../../components/Loading/Loading';
 import style from './FormRegistroUsuario.module.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postUser } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
-import { useAuth0 } from '@auth0/auth0-react';
-import Swal from 'sweetalert2';
 
 
-const FormRegistroUsuario = () => {
 
+const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
-  const currentUser = useSelector(state => state.dataEmail[0])
-
-  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
-
-  const [validated, setValidated] = useState(false);
-
+  const currentUser = useSelector(state => state.dataEmail[0]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const [newUser, setNewUser] = useState({
-    name: "",
+  const [newUserApplicant, setNewUserApplicant] = useState({
+    name: Applicant.nombre,
     lastName: "",
-    email: user.email,
+    email: Applicant.email,
     cellphone: "",
     registed: true,
   })
 
-
-  useEffect(() => {
-    const mail = user.email
-    console.log(user)
-    console.log(currentUser)
-    dispatch(getEmail(mail))
-  }, [])
-
-
-
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    setNewUser({ ...newUser, [property]: value });
+    setNewUserApplicant({ ...newUserApplicant, [property]: value });
   }
 
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if (!validateFormInputs(newUser)) {
-      Swal.fire({
-        title:'Faltan Datos',
-        text:'Completa todos los campos',
-        icon:'warning'
-      })
-    } else {
-      setValidated(true)
-      dispatch(postUser(newUser))
-      setNewUser({
-        name: "",
-        lastName: "",
-        email: "",
-        password: "",
-        cellphone: "",
-      })
-      setValidated(false);
-      return Swal.fire({
-        title: "Registro exitoso",
-        html: '<a href="/applicant">Ok</a>',
-        icon: 'success'
-      })
+    if(
+      newUserApplicant.lastName &&
+      newUserApplicant.cellphone &&
+      newUserApplicant.name &&
+      newUserApplicant.email
+    ){
+      dispatch(postUser(newUserApplicant))
+      setTimeout(()=>{
+        dispatch(getEmail(newUserApplicant.email))
+      },1000)
+      setCurrentUserStore(newUserApplicant)
+      setValidateState(true)
+      setTimeout(()=>{
+      navigate("/applicant")
+    },1500)
     }
   };
 
@@ -93,21 +65,17 @@ const FormRegistroUsuario = () => {
   return (
 
     <div className={style.mainContainer}>
-
-      <NavBar></NavBar>
-
       <div className={style.container2}>
-
         <div>
           <h2 style={{ 'margin': '20px' }}>Completa tu Registro como Postulante</h2>
-          <Form validated={!validated} className={style.Form}   onSubmit={handleSubmit} >
+          <Form >
             <Row>
               <Form.Group as={Col} md='6' className="mb-3"  >
                 <FormLabel>Nombre</FormLabel>
                 <FormControl
                   name='name'
                   placeholder='Nombre'
-                  value={newUser.name}
+                  value={newUserApplicant.name}
                   type="text"
                   onChange={handleInputChange}
                   required />
@@ -122,7 +90,7 @@ const FormRegistroUsuario = () => {
                 <FormControl
                   name='lastName'
                   placeholder='Apellido'
-                  value={newUser.lastName}
+                  value={newUserApplicant.lastName}
                   type="text"
                   onChange={handleInputChange}
                   required />
@@ -139,7 +107,7 @@ const FormRegistroUsuario = () => {
                 <FormControl
                   name='email'
                   placeholder='Email'
-                  value={newUser.email}
+                  value={newUserApplicant.email}
                   type="text"
                   onChange={handleInputChange}
                   required />
@@ -155,7 +123,7 @@ const FormRegistroUsuario = () => {
                 <FormControl
                   name='cellphone'
                   placeholder='Numero de celular'
-                  value={newUser.cellphone}
+                  value={newUserApplicant.cellphone}
                   type="number"
                   onChange={handleInputChange}
                   required />
@@ -164,21 +132,13 @@ const FormRegistroUsuario = () => {
                 </Form.Control.Feedback>
               </Form.Group>
             </Row>
-
-            
-
           </Form>
-
-            <ButtonGeneral
-              textButton='Registrarse'
-              handlerClick={handleSubmit}
-              type='submit'
-            >
-            </ButtonGeneral>
+          <button
+            type='submit'
+            onClick={(event)=>handleSubmit(event)}
+          > registrate
+          </button>
         </div>
-
-       
-
       </div>
     </div>
   )

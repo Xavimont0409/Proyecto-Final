@@ -3,15 +3,19 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../Loading/Loading";
 import { useEffect, useState } from "react";
 
-const ProtectedRoute = () => {
+const ProtectedRoute = ({isAutenticate}) => {
     const userType = JSON.parse(localStorage.getItem("currentUser2"))
-    const validate = JSON.parse(localStorage.getItem("state"))
+    const validate2 = JSON.parse(localStorage.getItem("state"))
 
-if (validate && (userType === "Applicant" || userType === "Admin")) {
+if(!validate2){
+    return <Loading />
+}
+
+else if (!isAutenticate && (userType.profile === "Applicant" || userType.profile === "Admin")) {
     return <Navigate to="/applicant"/>;
 } 
 
-if (validate && (userType === "Company" || userType === "Admin")) {
+else if (!isAutenticate && (userType.profile === "Company" || userType.profile === "Admin")) {
     return <Navigate to="/empresa"/>;
 }
 
