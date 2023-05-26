@@ -70,7 +70,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
         text: "Imagen cargada correctamente",
         icon: "success",
       });
-      setImage(null)
+      // setImage(null)
 
     } catch (error) {
       Swal.fire({
@@ -241,12 +241,16 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
         </FormGroup>
       </Form>
 
+
+<div style={{margin: '5px', padding:'1'}}>
+
       <FormGroup as={Col} md="6" className="mb-3 ">
         <ButtonGeneral
           textButton="Siguiente"
           handlerClick={(event)=>handleNext(event)}
-        />
+          />
       </FormGroup>
+          </div>
 
     </div>
   )};

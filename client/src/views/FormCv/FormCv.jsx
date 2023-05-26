@@ -78,8 +78,17 @@ function FormCv({setCurrentUserStore}) {
 
       <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
 
+      <div className={style.circleContainer}>
+        <div className={`${style.circle} ${step === 1 ? style.highlighted : ''}`} />
+        <div className={`${style.circle} ${step === 2 ? style.highlighted : ''}`} />
+      </div>
+
       <div className={style.container2} style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: 1 }}>
+
+
+
+
           {step === 1 &&
             <Step1FormCv
             cv={cv}
@@ -110,9 +119,7 @@ function FormCv({setCurrentUserStore}) {
           } */}
         </div>
 
-        <div style={{ flex: 0.2, marginRight: '100px', marginLeft: '-300px', marginTop: '-300px' }}>
-          <h4>Paso {step} de 2</h4>
-        </div>
+          
       </div>
 
     </div>
