@@ -12,69 +12,57 @@ import Loading from "../../components/Loading/Loading";
 import { getVacantDetail } from "../../Redux/Actions/actionsFunction/axtionsVacants";
 //import { getAllCompanys, getCompanyDetail } from "../../Redux/Actions/actionsFunction/actionsCompanys";
 
-
-
 const EmpleoDetail = ({ setCurrentUserStore }) => {
 
-    
-
-    const {detailId} = useParams();
-
-    const dispatch = useDispatch();
-
-    useEffect(()=>{
-        dispatch(getVacantDetail(detailId));
-        
-      },[dispatch, detailId])
-      
-      const empleoSelected = useSelector(state => state.VacantDetail);
+  const {detailId} = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const empleoSelected = useSelector(state => state.VacantDetail);
   
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getVacantDetail(detailId));
+        
+  }, [dispatch, detailId]);
+      
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
     
-      
-      const [isLoading, setIsLoading] = useState(true);
-      
-          
-          useEffect(() => {
-            setTimeout(() => {
-              setIsLoading(false);
-            }, 2000);
-          }, []);
-          
-          if (isLoading) {
-            return <Loading/>;
-          };
-          const companyId = empleoSelected.CompanyId
-          
-            
-            return(
-              <div className={style.mainContainer}>
-        <NavBar setCurrentUserStore={setCurrentUserStore} />
+  if (isLoading) {
+    return <Loading/>;
+  };
+  
+  const companyId = empleoSelected.CompanyId;
+
+  return(
+        <div className={style.mainContainer}>
+          <NavBar setCurrentUserStore={setCurrentUserStore} />
         <div className={style.mainContainer2}>
-            
-            {/* <div className={style.containerEmpleosRel}>
-              {empleosRelSelected.map((empleo)=> {
-                return <MiniCardEmpleosRel 
-                id = {empleo.id}
-                title = {empleo.title}
-                SeniorityId = {empleo.SeniorityId}
-                WorkMethodId = {empleo.WorkMethodId}
-                />
-              })}
-            </div> */}
-
-              <div className={style.containerEmpleosRel}>
-              <MiniCardEmpleosRel idEmpleoSelected={empleoSelected.id} title={empleoSelected.title}/>   
-              </div>
-
-            <div className={style.mainContainer3}>
-            <Tabs
-            defaultActiveKey="DETALLE DEL EMPLEO"
-            id="justify-tab-example"
-            className="mb-3"
-            justify
-            >
-             <Tab eventKey="DETALLE DEL EMPLEO" title="DETALLE DEL EMPLEO">
-             <div className={style.containerDetail}>
+          {/* <div className={style.containerEmpleosRel}>
+            {empleosRelSelected.map((empleo)=> {
+              return <MiniCardEmpleosRel 
+              id = {empleo.id}
+              title = {empleo.title}
+              SeniorityId = {empleo.SeniorityId}
+              WorkMethodId = {empleo.WorkMethodId}
+              />
+            })}
+          </div> */}
+          <div className={style.containerEmpleosRel}>
+            <MiniCardEmpleosRel idEmpleoSelected={empleoSelected.id} title={empleoSelected.title}/>   
+          </div>
+          <div className={style.mainContainer3}>
+          <Tabs
+          defaultActiveKey="DETALLE DEL EMPLEO"
+          id="justify-tab-example"
+          className="mb-3"
+          justify
+          >
+            <Tab eventKey="DETALLE DEL EMPLEO" title="DETALLE DEL EMPLEO">
+              <div className={style.containerDetail}>
                 <CardEmpleoDetail 
                 id={empleoSelected.id}
                 CompanyId={empleoSelected.CompanyId}
@@ -87,10 +75,10 @@ const EmpleoDetail = ({ setCurrentUserStore }) => {
                 // SeniorityId={empleoSelected.SeniorityId}
                 WorkMethod={empleoSelected.WorkMethod.name}
                 />
-             </div>
+              </div>
             </Tab>
             <Tab eventKey="DETALLE DE LA EMPRESA" title="DETALLE DE LA EMPRESA">
-             <div className={style.containerDetail}>
+              <div className={style.containerDetail}>
                 <CardEmpresaDetail companyId={companyId}
                 // id={empresaSelected.id}
                 // logo={empresaSelected.logo}
@@ -106,14 +94,12 @@ const EmpleoDetail = ({ setCurrentUserStore }) => {
                 // worksector={empresaSelected.worksector}
                 // about={empresaSelected.about}
                 />
-             </div>
+              </div>
             </Tab>
-            </Tabs>
-            </div>
+          </Tabs>
+          </div>
         </div>
-
     </div>
-
     );
 };
 
