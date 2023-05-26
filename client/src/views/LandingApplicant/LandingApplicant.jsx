@@ -38,7 +38,7 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 						</div>
 					</div>
 					<div className={styles.containerButtons}>
-						<Link to='/'>
+						<Link to='/postulaciones'>
 							<button
 								className={styles.Button}
 								title='Mis postulaciones'
