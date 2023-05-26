@@ -43,7 +43,7 @@ const NavBarCliente = ({ setCurrentUserStore }) => {
   const userLocalStorage = JSON.parse(localStorage.getItem("currentUser"));
 
   return (
-    <div className={style.fixed}>
+    <div className={`${style.fixed} ${isNavVisible ? style.fixedOpen : ""}`}>
       <div className={style.container}>
         <h2 className={style.title}>
           {
