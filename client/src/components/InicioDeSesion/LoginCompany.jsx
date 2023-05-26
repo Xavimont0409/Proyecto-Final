@@ -1,10 +1,14 @@
 import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
+import { getCompany } from '../../Redux/Actions/actionsFunction/actionLogin2'
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const LoginCompany = () => {
-  const clientID =
-    "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
+const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
+  const clientID = "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [company, setCompany] = useState({
     email: "",
     password: "",
@@ -22,14 +26,28 @@ const LoginCompany = () => {
       ...company,
       [event.target.name]: event.target.value,
     });
+
   };
   const onSuccess = (response) => {
     const {email, googleId } = response.profileObj;
-
+    dispatch(getCompany({email, googleId}))
+    setCurrentUserStore({email, googleId})
+    setValidateState(true)
+    setTimeout(()=>{
+      navigate("/empresa")
+    },1500)
   };
   const onFailure = () => {
     console.log("Something went wrong");
   };
+  const handlerSumit = () =>{
+    dispatch(getCompany(company))
+    setCurrentUserStore(company)
+    setValidateState(true)
+    setTimeout(()=>{
+      navigate("/empresa")
+    },1500)
+  }
 
   return (
     <div>
@@ -49,7 +67,7 @@ const LoginCompany = () => {
           value={company.password}
           onChange={handlerChange}
         />
-        <button>Iniciar sesion</button>
+        <button onClick={handlerSumit}>Iniciar sesion</button>
         <div>
           <GoogleLogin
             clientId={clientID}

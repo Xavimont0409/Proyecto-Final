@@ -23,6 +23,8 @@ import {
   GET_EMAIL,
   CLEAN_DETAIL,
   LOGIN,
+  LOGIN_COMPANY,
+  LOGIN_APPLICANT,
   GET_ALL_CV,
   GET_CV_BY_ID
 } from "../Actions/actions-types/action-types";
@@ -48,7 +50,7 @@ const initialState = {
   Cv: [],
   CvDetail:{},
 
-  dataEmail: {},
+  dataEmail: [],
 
   PayMethods: [],
 
@@ -187,7 +189,6 @@ const Reducer = (state = initialState, action) => {
         filtrosCombinados: filterPerTime
       }
     case LOGIN : 
-    console.log(action.payload);
     const confirmacion = action.payload === true ? true : false
           return {
         ...state,
@@ -195,6 +196,16 @@ const Reducer = (state = initialState, action) => {
       }      
 
     //! LOS CASOS POST TAMBIEN SE TRAEN AL REDUCER POR BUENAS PRACTICAS
+    case LOGIN_COMPANY:
+      return{
+        ...state,
+        dataEmail: action.payload
+      }
+    case LOGIN_APPLICANT:
+      return{
+        ...state,
+        dataEmail: action.payload
+      }  
     case POST_COMPANY:
       return {
         ...state,

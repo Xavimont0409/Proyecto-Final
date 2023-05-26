@@ -12,7 +12,7 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Form className="ms-auto">
-              <Button onClick={()=> navigate()} >Iniciar sesion</Button>
+              <Button onClick={()=> navigate("/loginApplicant")} >Iniciar sesion</Button>
               <div className="vr" />
               <Button onClick={()=> navigate('/registro')} >Registrate</Button>
             </Form>
