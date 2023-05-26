@@ -2,16 +2,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../../components/Loading/Loading"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 import { useState } from "react";
-import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import style from "./MiPerfil.module.css"
 import { useNavigate } from "react-router-dom";
 import NavBarLog from "../../components/NavBar/NavBarLog"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
 import { PDFViewer, PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer"
 import DocuPDF from "./DocuPDF"
-import { getAllCv } from "../../Redux/Actions/actionsFunction/actionsCv";
+import {getCvById } from "../../Redux/Actions/actionsFunction/actionsCv";
+import ListItem from "../../components/ListItemExperience/ListItemExperience";
 // import email from "../../assets/img/email.svg"
 
 const MiPerfil = ({ setCurrentUserStore }) => {
@@ -19,18 +18,17 @@ const MiPerfil = ({ setCurrentUserStore }) => {
 
   const [showPDF, setShowPDF] = useState(false);
 
-const Cvs = useSelector(state => state.Cv);
-
 
   const handleClick = () => {
-    setShowPDF(true);
+    if(!showPDF) setShowPDF(true);
+    if(showPDF) setShowPDF(false)
   };
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  // const currentUser = useSelector(state => state.dataEmail[0]);
   const userDetail = JSON.parse(localStorage.getItem("currentUser"))
-  console.log(Cvs)
+  
+  const CvDetail = useSelector(state => state.CvDetail);
 
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
@@ -52,17 +50,11 @@ const Cvs = useSelector(state => state.Cv);
 
 
   useEffect(() => {
-   dispatch(getAllCv())
-  }, [dispatch]);
+   dispatch(getCvById(userDetail.Cv.id))
+  }, []);
 
 
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     dispatch(getUserDetail(currentUser.id))
-  //   }
-  // }, [dispatch, currentUser]);
-
-
+console.log(CvDetail)
 
   useEffect(() => {
     if (userDetail) {
@@ -81,11 +73,10 @@ const Cvs = useSelector(state => state.Cv);
         skills: userDetail.Cv?.skill,
       }));
     }
-    // else{
-    //     alert('Aun no has creado tu CV')
-    //     navigate('/registro-cv')
-    // }
-  }, [userDetail]);
+    else{
+      return <div><Loading /></div>
+    }
+  }, []);
 
 
 
@@ -153,23 +144,47 @@ const Cvs = useSelector(state => state.Cv);
 
               </div>
 
-              <div>
-                <h3>{perfil.profesion}</h3>
-                <p>{perfil.descripcion}</p>
+              <div className={style.container5}>
+              <h4 style={{'text-align': 'left'}}>{perfil.profesion}</h4>
+                <p style={{'text-align': 'justify'}}>{perfil.descripcion}</p>
               </div>
 
-              <div>
-                <h3>Mis experiencias profesionales</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias soluta omnis, quidem neque laboriosam delectus eos rerum! Aperiam, sint itaque necessitatibus ipsum perspiciatis similique recusandae doloribus fugit. Quidem, amet vero?</p>
+              <div className={style.container5}>
+                <h4 style={{'text-align': 'left'}}>Mis experiencias profesionales</h4>
+               <div className={style.containerList}>
+
+               {CvDetail.Experiences?.map(exp=>{
+                 return(
+                   <ListItem charge={exp.charge}
+                   company={exp.company}
+                   startDate={exp.start_date}
+                   endDate={exp.still_working?'Actualmente':exp.end_date}>
+                </ListItem>               
+                )})
+}
+                </div>
               </div>
 
-              <div>
-                <h3>Mis estudios</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias soluta omnis, quidem neque laboriosam delectus eos rerum! Aperiam, sint itaque necessitatibus ipsum perspiciatis similique recusandae doloribus fugit. Quidem, amet vero?</p>
+              <div className={style.container5}>
+              <h4 style={{'text-align': 'left'}}>Mis estudios</h4>
+
+              <div className={style.containerList}>
+
+               {CvDetail.Experiences?.map(exp=>{
+                 return(
+                   <ListItem charge={exp.charge}
+                   company={exp.company}
+                   startDate={exp.start_date}
+                   endDate={exp.still_working?'Actualmente':exp.end_date}>
+                </ListItem>               
+                )})
+}
+                </div>
+                
               </div>
 
-              <div>
-                <h3>Skills</h3>
+              <div className={style.container5}>
+              <h4 style={{'text-align': 'left'}}>Skills</h4>
                 <p>{perfil.skills}</p>
               </div>
 
@@ -177,7 +192,7 @@ const Cvs = useSelector(state => state.Cv);
 
                 <button
                   style={{ backgroundColor: 'gray' }}
-                  onClick={handleClick}>Ver CV en PDF</button>
+                  onClick={handleClick}>{showPDF? 'Ocultar PDF': 'Ver CV en PDF'}</button>
 
                 {showPDF && (
                   <PDFViewer width="1000" height="600">

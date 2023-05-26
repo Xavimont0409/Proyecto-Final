@@ -1,11 +1,9 @@
-import NavBar from "../../components/NavBar/NavBar";
 import React from "react";
-import { useEffect, useState } from "react";
 import styles from "./LandingApplicant.module.css";
+import {NavBar, CardPlan} from '../../components';
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CardPlan from "../../components/CardPlan/CardPlan";
 import { useAuth0 } from "@auth0/auth0-react";
-import img from "../../assets/img/empleo1.jpg";
 import { FaWpforms } from "react-icons/fa";
 
 export default function LandingApplicant({ setCurrentUserStore }) {
@@ -40,7 +38,7 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 						</div>
 					</div>
 					<div className={styles.containerButtons}>
-						<Link to='/profiles'>
+						<Link to='/'>
 							<button
 								className={styles.Button}
 								title='Mis postulaciones'
@@ -58,7 +56,9 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 								<span className={styles.ButtonIcon}>
 									<FaWpforms />
 								</span>
-								<span className={styles.ButtonText}>Cv</span>
+								<span className={styles.ButtonText}>
+									Crear Cv
+								</span>
 							</button>
 						</Link>
 						<Link to='/registro-experiencia'>
@@ -67,7 +67,7 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Experience
+									Registra Experiencia
 								</span>
 							</button>
 						</Link>
@@ -101,13 +101,13 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 								</span>
 							</button>
 						</Link>
-						<Link to='/MiEducacion'>
+						<Link to='/registro-estudio'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Mi educacion
+									Registra Educacion
 								</span>
 							</button>
 						</Link>
@@ -115,30 +115,6 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 				</div>
 			</div>
 			<div className={styles.contenedor}>
-				<div className={styles.prueba}>
-					<div className={styles.leftSection}>
-						<h1>Este es el Home de Applicant</h1>
-					</div>
-
-					<div className={styles.rightSection}>
-						<img src={img} alt='Servidor en Mantenimiento' />
-					</div>
-				</div>
-
-				<div className={styles.prueba}>
-					<div className={styles.leftSection}>
-						<img src={img} alt='Servidor en Mantenimiento' />
-					</div>
-
-					<div className={styles.middleSection}>
-						<h1>Joel</h1>
-					</div>
-
-					<div className={styles.rightSection}>
-						<img src={img} alt='Servidor en Mantenimiento' />
-					</div>
-				</div>
-
 				<div className={styles.prueba}>
 					<div className={styles.leftSection}>
 						<div className={styles.planes}>

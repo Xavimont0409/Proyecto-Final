@@ -1,9 +1,8 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, Vacantes } from './views';
-import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer } from './components';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes} from './views';
+import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading } from './components';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react';
@@ -67,7 +66,7 @@ function App() {
         <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
         <Route element={<ProtectedRoute validateState={validateState} />/*Todos*/}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
-
+          <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/profiles' element={<Profiles setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/MiPerfil" element={<MiPerfil setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/operation" element={<Operation setCurrentUserStore={setCurrentUserStore} />} />
@@ -85,6 +84,7 @@ function App() {
           <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
           <Route path='/applicant' element={<LandingApplicant setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-experiencia" element={<FormRegistroExperincia setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/registro-estudio" element={<FormRegistroEstudio setCurrentUserStore={setCurrentUserStore} />} />
           <Route path="/registro-usuario" element={<FormRegistroUsuario />} />
         </Route>
       </Routes>

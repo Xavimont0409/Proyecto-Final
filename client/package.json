@@ -19,6 +19,7 @@
     "cloudinary": "^1.37.0",
     "cloudinary-react": "^1.8.1",
     "countries-list": "^2.6.1",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.22.0",
     "gapi-script": "^1.2.0",
