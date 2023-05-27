@@ -5,10 +5,8 @@ import validation from "./validation";
 import Loading from "../Loading/Loading";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
-import { Cloudinary } from "cloudinary-core";
 import Swal from "sweetalert2";
 
-const cloudinary = new Cloudinary({ cloud_name: "portaljobx" });
 
 
 function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {

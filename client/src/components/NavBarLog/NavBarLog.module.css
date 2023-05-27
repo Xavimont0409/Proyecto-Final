@@ -27,13 +27,15 @@
     
 }
 
-.title a {
+.title h3 {
     text-decoration: none;
     color: #1c1c1c; 
+    cursor: pointer;
 }
     
-.title a:hover {
+.title h3:hover {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .title:hover {

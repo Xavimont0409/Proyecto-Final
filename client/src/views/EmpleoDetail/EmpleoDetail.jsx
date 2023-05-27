@@ -43,7 +43,7 @@ const EmpleoDetail = ({ setValidateState, setCurrentUserStore2 }) => {
 
   return(
         <div className={style.mainContainer}>
-          <NavBar setCurrentUserStore={setCurrentUserStore} />
+          <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />
         <div className={style.mainContainer2}>
           {/* <div className={style.containerEmpleosRel}>
             {empleosRelSelected.map((empleo)=> {

@@ -14,7 +14,7 @@ const CardProfile =  ({id, cv, photo, name, lastName, profession, personal_descr
   return (
           <div className={style.mainContainer} >
             <div className={style.containerImgEmpresa}>
-              <img className={style.img} variant="top" src={photo}/>
+              <img className={style.img} variant="top" src={photo} alt="/"/>
             </div>
             <Card.Body >
               <Card.Title className={style.title}>{name} {lastName}</Card.Title>

@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications} from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading } from './components';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 import NewRegistroCompany from './views/NewRegistro/newRegistroCompany';
@@ -20,10 +20,9 @@ axios.defaults.baseURL = 'http://localhost:3001'
 
 
 function App() {
-  const dispatch = useDispatch()
   const currentUser = useSelector(state => state.dataEmail[0]);
   const [currentUserStore, setCurrentUserStore] = useLocalStorage('currentUser', '');
-  const [currentUserStore2, setCurrentUserStore2] = useLocalStorage('currentUser2', '');
+  const [ currentUserStore2 , setCurrentUserStore2] = useLocalStorage('currentUser2', '');
   const [ validateState, setValidateState ] = useLocalStorage('state', '')
   const [isLoading, setIsLoading] = useState(true);
   const userType = JSON.parse(localStorage.getItem("currentUser"))
@@ -41,7 +40,7 @@ function App() {
       setCurrentUserStore2("")
       setValidateState(false)
     }
-  }, [currentUser]);
+  }, [currentUser, setCurrentUserStore, userType, setCurrentUserStore2, setValidateState, userType2, validateState ]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -60,7 +59,7 @@ function App() {
         <Route exact path="/" element={<Landing setValidateState={setValidateState} setCurrentUserStore2= {setCurrentUserStore2}/>} />
         <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore} />} />
 
-        <Route path="/registro" element={<Registro />}/>
+        <Route path="/registro" element={<Registro currentUserStore2={currentUserStore2} currentUserStore={currentUserStore} />}/>
         <Route path='/newRegistroApplicant' element={<NewRegistroApplicant setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path='/newRegistroCompany' element={<NewRegistroCompany setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path='/loginCompany' element={<LoginCompany setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />

@@ -2,17 +2,16 @@ import style from './RatingList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getCompanyDetail } from '../../Redux/Actions/actionsFunction/actionsCompanys';
-import Table from 'react-bootstrap/Table';
 
 const RatingListDiv = () => {
-    const userType = JSON.parse(localStorage.getItem("currentUser"));
+    const userType = JSON.parse(localStorage.getItem("currentUser2"));
     const companyDetails = useSelector(state => state.CompanyDetail).Stars;
     const dispatch = useDispatch();
     console.log(companyDetails);
 
     useEffect(() => {
         dispatch(getCompanyDetail(userType.id));
-    }, []);
+    }, [dispatch, userType.id ]);
 
     const starsArray = []; 
 

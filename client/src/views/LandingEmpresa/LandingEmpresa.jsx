@@ -1,9 +1,7 @@
 import style from "./LandignEmpresa.module.css";
 import NavBar from "../../components/NavBar/NavBar";
 import CardPlan from "../../components/CardPlan/CardPlan";
-import CarouselPerfiles from "../../components/CarouselPerfiles/CarouselPerfiles";
 import { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { FaWpforms } from "react-icons/fa";
 const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {

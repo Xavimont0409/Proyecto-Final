@@ -1,8 +1,6 @@
 import Form from 'react-bootstrap/Form';
 import { FormLabel, FormControl, Row, Col } from 'react-bootstrap';
-import NavBar from "../../components/NavBarLog/NavBarLog"
-import ButtonGeneral from '../../components/Button/ButtonGeneral';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Loading from '../../components/Loading/Loading';
 import style from './FormRegistroUsuario.module.css';
 import { useState, useEffect } from 'react';
@@ -15,7 +13,6 @@ import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currentUser = useSelector(state => state.dataEmail[0]);
   const [isLoading, setIsLoading] = useState(true);
   const [newUserApplicant, setNewUserApplicant] = useState({
     name: Applicant.nombre,
