@@ -49,8 +49,8 @@ const LandingEmpresa = ({ setCurrentUserStore }) => {
 						<Link to='/perfil-company'>
 							<button className={style.Button}>Mi perfil</button>
 						</Link>
-						<Link to='/ranking'>
-							<button className={style.Button}>Ranking</button>
+						<Link to='/ratings'>
+							<button className={style.Button}>Ratings</button>
 						</Link>
 						<Link to='/profiles'>
 							<button className={style.Button}>
