@@ -28,14 +28,6 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 			icon: "warning",
 		});
     } else {
-      if (cv.photo === '') 
-      alert('')
-      Swal.fire({
-			title: "Faltan Datos",
-			text: "Debes elegir una foto",
-			icon: "warning",
-		});
-      console.log(cv)
       setValidated(true)
       nextStep()
     }
@@ -72,13 +64,20 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
       );
 
       const uploadData = await uploadResponse.json();
-      console.log(uploadData);
       setCv({...cv, photo:uploadData.secure_url})
-      alert('Imagen cargada correctamente')
-      setImage(null)
+      Swal.fire({
+        title: "Éxito",
+        text: "Imagen cargada correctamente",
+        icon: "success",
+      });
+      // setImage(null)
 
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        title: "Error",
+        text: `${error}`,
+        icon: "error",
+      });
     }
   };
 
@@ -242,12 +241,16 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
         </FormGroup>
       </Form>
 
+
+<div style={{margin: '5px', padding:'1'}}>
+
       <FormGroup as={Col} md="6" className="mb-3 ">
         <ButtonGeneral
           textButton="Siguiente"
           handlerClick={(event)=>handleNext(event)}
-        />
+          />
       </FormGroup>
+          </div>
 
     </div>
   )};

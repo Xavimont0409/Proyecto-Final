@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FaWpforms } from "react-icons/fa";
 
 export default function LandingApplicant({ setValidateState, setCurrentUserStore2 }) {
+
 	const [greeting, setGreeting] = useState("");
 	const validate = JSON.parse(localStorage.getItem("state"))
 	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
@@ -16,6 +17,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 			const name = userType2.name;
 			setGreeting(`Hola, ${name}!`);
 		}
+
 	}, [validate, userType2]);
 	return (
 		<>
@@ -23,6 +25,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 				<div className={styles.containerComponents}>
 					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
+
 
 				<div className={styles.containerPrincipal}>
 					<div className={styles.saludo}>
@@ -117,7 +120,12 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 			</div>
 			<div className={styles.contenedor}>
 				<div className={styles.prueba}>
-					<div className={styles.leftSection}>
+					<div className={styles.titlePlan}>
+						<h1 className={styles.title}>Actualiza tú plan!</h1>
+					</div>
+					<div className={styles.rightSection}>
+							<h1>Plan Super Destacado</h1>
+						</div>
 						<div className={styles.planes}>
 							<CardPlan
 								tittle='Plan Super Destacado'
@@ -126,15 +134,8 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 								id='4'
 							/>
 						</div>
-					</div>
-
-					<div className={styles.rightSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
 				</div>
 			</div>
-			<br />
-			<br />
 		</>
 	);
 }

@@ -13,6 +13,7 @@ import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 
 export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
 
+    const navigate = useNavigate();
     const today = new Date();
     const dateOnly = today.toISOString().slice(0, 10);
 
@@ -59,8 +60,11 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (!validateFormInputs(newVacant)) {
-            
-            alert('Completa todos los campos')
+            Swal.fire({
+                title:'Faltan Datos',
+                text:'Completa todos los campos',
+                icon:'warning'
+              })
         } else {
             setValidated(true)
             dispatch(postVacant({...newVacant,  CompanyId: currentUser.id} ))
@@ -73,7 +77,8 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
                 SeniorityId: "",
                 creation_date: dateOnly
             })
-            setValidated(false)
+            setValidated(false);
+            navigate('/empresa')
         }
     };
 

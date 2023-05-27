@@ -28,7 +28,7 @@ const Empleos = ({ setCurrentUserStore2, setValidateState }) => {
             <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
             <div className={style.filterAndCardsContainer}>
                 <div className={style.filters}>
-                    <Filter ></Filter>
+                    <Filter/>
                 </div>
                 <div className={style.cardsDiv}>
 

@@ -32,14 +32,19 @@ const CardsContainerEmpleo = ({ vacants }) => {
                 paginated={paginated}
             />
             <div className={style.cardsContainer}>
-                 {currentVacants?.map(vacancy => {
-                    return <Card
-                        key={vacancy.id}
-                        id={vacancy.id}
-                        // logo={vacancy.logo}
-                        title={vacancy.title}
-                        description={vacancy.description} />
-                })}
+                {
+                    currentVacants?.map(vacancy => {
+                        return (
+                            <Card
+                                key={vacancy.id}
+                                id={vacancy.id}
+                                // logo={vacancy.logo}
+                                title={vacancy.title}
+                                description={vacancy.description}
+                            />
+                        )
+                    })
+                }
             </div>
         </div>
     )

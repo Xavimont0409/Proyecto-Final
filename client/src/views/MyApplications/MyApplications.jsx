@@ -31,7 +31,6 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
     <Table className={style.table}>
       <thead className={style.tHead}>
         <tr>
-          <th>Id</th>
           <th>Empresa</th>
           <th>Título</th>
           <th>Descripción</th>
@@ -44,17 +43,16 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
       <tbody className={style.tBody}>
         {
            userDetail.Vacants?.map((elem) => 
-          
-                <tr key={elem.id}>
-                    <td>{elem.id}</td>
-                   <td>{empresas.filter(emp => emp.id === elem.CompanyId)[0]?.business_name}</td>
-                    <td>{elem.title}</td>
-                    <td>{elem.description}</td>
-                    <td>{elem.ApplicantVacant?.createdAt.slice(0,10)}</td>
-                    <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Seniority?.name}</td>
-                    <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.WorkMethod?.name}</td>
-                    <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Workday?.name}</td>
-                </tr>
+
+             <tr key={elem.id}>
+               <td>{empresas.filter(emp => emp.id === elem.CompanyId)[0]?.business_name}</td>
+               <td>{elem.title}</td>
+               <td>{elem.description}</td>
+               <td>{elem.ApplicantVacant?.createdAt.slice(0, 10)}</td>
+               <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Seniority?.name}</td>
+               <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.WorkMethod?.name}</td>
+               <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Workday?.name}</td>
+             </tr>
            ) 
         }
         

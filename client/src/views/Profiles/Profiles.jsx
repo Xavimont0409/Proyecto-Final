@@ -18,8 +18,7 @@ const Profiles = ({ setValidateState, setCurrentUserStore2 }) => {
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
     const Cvs = useSelector(state => state.Cv);
-   
-  
+
     useEffect(()=> {
         dispatch(getAllUsers())
         dispatch(getAllCv())

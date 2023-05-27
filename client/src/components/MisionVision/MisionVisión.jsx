@@ -11,7 +11,7 @@ const MisionVisión = () => {
                 </div>
             </div>
             <div className={style.box}>
-               <div className={style.containerInfo}>
+                <div className={style.containerInfo}>
                     <h2 className={style.title}>Nuestra Visión</h2>
                     <p className={style.text}>JobPortalX podrá posicionarse como un gigante de empleabilidad para empoderar a empresas y postulantes para que puedan crear los mejores vinculos laborales, constribuyendo a mejorar el mercado laboral</p>
                 </div> 

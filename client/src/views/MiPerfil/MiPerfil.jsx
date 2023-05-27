@@ -1,28 +1,25 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../../components/Loading/Loading"
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef  } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import style from "./MiPerfil.module.css"
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
-import { PDFViewer, PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer"
+import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
 import DocuPDF from "./DocuPDF"
 import { getCvById } from "../../Redux/Actions/actionsFunction/actionsCv";
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
-//import html2pdf from 'html2pdf.js';
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
-// import email from "../../assets/img/email.svg"
+
 
 const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
   const [showPDF, setShowPDF] = useState(false);
-
   const handleClick = () => {
-    if (!showPDF) setShowPDF(true);
-    if (showPDF) setShowPDF(false)
+    setShowPDF(!showPDF);
   };
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -82,7 +79,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   }, []);
 
 
-
   const contentRef = useRef(null);
 
   const generatePDF = () => {
@@ -100,6 +96,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
 
   if (validacion) {
+
     if (!userDetail || !CvDetail) {
       return <div><Loading /></div>
     } else {
@@ -236,7 +233,8 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                   <button style={{ 'backgroundColor': 'gray' }}>Descargar CV en PDF</button>
                 </PDFDownloadLink>
 
-                <button onClick={generatePDF}>PDF fkjsdhfjk</button>
+
+
               </div>
             </div>
           </div>

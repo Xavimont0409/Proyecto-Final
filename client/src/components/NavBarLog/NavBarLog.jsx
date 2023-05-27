@@ -38,7 +38,7 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
   const userLocalStorage = JSON.parse(localStorage.getItem("currentUser2"));
 
   return (
-    <div className={style.fixed}>
+    <div className={`${style.fixed} ${isNavVisible ? style.fixedOpen : ""}`}>
       <div className={style.container}>
         <h2 className={style.title}>
           {userLocalStorage?.profile === "Admin" ? (

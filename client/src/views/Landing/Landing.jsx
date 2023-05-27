@@ -15,6 +15,7 @@ const Landing = ({
   const user = JSON.parse(localStorage.getItem("currentUser2"))
   const adminPanel = process.env.REACT_APP_ADMIN_PANEL;
 
+
   return (
     <div className={style.landingDiv}>
       <NavBar
@@ -44,11 +45,11 @@ const Landing = ({
             </Link>
           </div>
           <div className={style.buttonDiv}>
-            {/* {user.profile === "Admin" ? (
+             {user?.profile === "Admin" ? (
                             <Link to={process.env.ADMIN_PANEL} target='_blank'>
                                 <Button variant="outline-secondary" className="ms-auto">Dashboard Admin</Button>
                             </Link>
-                        ): (<></>)} */}
+                        ): (<></>)} 
           </div>
         </div>
       </div>

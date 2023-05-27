@@ -12,6 +12,8 @@ import NewRegistroCompany from './views/NewRegistro/newRegistroCompany';
 import NewRegistroApplicant from './views/NewRegistro/newResgistroApplicant';
 import LoginCompany from './components/InicioDeSesion/LoginCompany'
 import LoginApplicant from './components/InicioDeSesion/LoginApplicant'
+import Ratings from './views/Ratings/Ratings';
+
 
 axios.defaults.baseURL = 'http://localhost:3001'
 //axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
@@ -57,11 +59,14 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landing setValidateState={setValidateState} setCurrentUserStore2= {setCurrentUserStore2}/>} />
         <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore} />} />
+
         <Route path="/registro" element={<Registro />}/>
         <Route path='/newRegistroApplicant' element={<NewRegistroApplicant setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path='/newRegistroCompany' element={<NewRegistroCompany setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path='/loginCompany' element={<LoginCompany setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
         <Route path='/loginApplicant' element={<LoginApplicant setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
+        <Route path='/ratings' element={<Ratings/> } />
+        <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore} />} />
         <Route path="/ServerDevelop" element={<ServerMaintenance />} />
