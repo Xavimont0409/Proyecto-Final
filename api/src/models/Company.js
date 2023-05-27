@@ -51,6 +51,9 @@ module.exports = (sequelize) => {
         },
         job_area:{
             type: DataTypes.STRING
+        },
+        password:{
+            type: DataTypes.STRING,
         }
     }, {
         timestamps: false

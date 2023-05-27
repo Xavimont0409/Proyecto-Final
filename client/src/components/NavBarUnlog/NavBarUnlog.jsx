@@ -1,26 +1,18 @@
 import { Button } from "react-bootstrap"
-import { useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import style from "./NavBarUnlog.module.css"
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar () {
-    const { loginWithRedirect } = useAuth0();
+    const navigate = useNavigate()
     
-    const handlerLogin = () => {
-        loginWithRedirect()
-    }
 
     return (
         <div className={style.fixed}>
             <div className={style.container}>
                 <h2 className={style.title}><a href="/">JobPortalX</a></h2>
                 <div className={style.buttonsContainer}>
-                    <Button onClick={handlerLogin} variant="outline-secondary" className="ms-auto">Iniciar sesion</Button>
-                    <Button onClick={() => loginWithRedirect({
-                        authorizationParams: {
-                            screen_hint: "signup",
-                        }
-                    })} variant="secondary" className="ms-auto">Registrarme</Button>
+                    <Button  onClick={() => navigate('/loginApplicant')} variant="outline-secondary" className="ms-auto">Iniciar sesion</Button>
+                    <Button onClick={() => navigate('/registro') } variant="secondary" className="ms-auto">Registrarme</Button>
                 </div>
             </div>
         </div>

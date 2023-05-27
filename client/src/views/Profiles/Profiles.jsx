@@ -8,7 +8,7 @@ import Loading from '../../components/Loading/Loading';
 import { getAllUsers } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getAllCv } from '../../Redux/Actions/actionsFunction/actionsCv';
 
-const Profiles = ({ setCurrentUserStore }) => {
+const Profiles = ({ setValidateState, setCurrentUserStore2 }) => {
     const usersRaw = useSelector(state => state.Users);
     const users = usersRaw.filter((user) => user.Cv !== null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +48,7 @@ const Profiles = ({ setCurrentUserStore }) => {
 
     return (
         <div className={styles.container}>
-            <NavBar setCurrentUserStore={setCurrentUserStore}/>
+            <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>
             <Page
                 usersPerPage={usersPerPage}
                 users={users}

@@ -6,21 +6,24 @@ import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { FaWpforms } from "react-icons/fa";
-const LandingEmpresa = ({ setCurrentUserStore }) => {
+const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 	const [greeting, setGreeting] = useState("");
-	const { isAuthenticated, user } = useAuth0();
+	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+	const validate = JSON.parse(localStorage.getItem("state"))
+
 	useEffect(() => {
-		if (isAuthenticated && user) {
-			const name = user.name;
+		if (validate && userType2) {
+			const name = userType2.name;
 			setGreeting(`Hola, ${name}!`);
 		}
-	}, [isAuthenticated, user]);
+	}, [validate, userType2]);
 	return (
 		<>
 			<div className={style.container}>
+				<div className={style.containerComponents}>
+					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
+				</div>
 
-				<NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
-				
 				<div className={style.containerPrincipal}>
 					<div className={style.saludo}>
 						<h1 className={style.titulo}>{greeting}</h1>

@@ -9,19 +9,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 
 
-function FormCv({setCurrentUserStore}) {
-
-  const { user, isAuthenticated } = useAuth0();
+function FormCv({ setValidateState ,setCurrentUserStore2}) {
+  const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
 
   const [step, setStep] = useState(1);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (user && user.email) {
-      dispatch(getEmail(user.email));
+    if (userType2 && userType2.email) {
+      dispatch(getEmail(userType2.email));
     }
-  }, [dispatch, user]);
+  }, [dispatch, userType2]);
 
   const currentUser = useSelector((state) => state.dataEmail[0])
 
@@ -76,7 +75,7 @@ function FormCv({setCurrentUserStore}) {
 
     <div className={style.container}>
 
-      <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
+      <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
 
       <div className={style.circleContainer}>
         <div className={`${style.circle} ${step === 1 ? style.highlighted : ''}`} />

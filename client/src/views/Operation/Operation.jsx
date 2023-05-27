@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Loading from '../../components/Loading/Loading';
 import {NavBar} from '../../components/';
 
-const Operation = ({ setCurrentUserStore }) => {
+const Operation = ({ setValidateState, setCurrentUserStore2 }) => {
     const info = useSelector((state) => state.Information);
     const preferenceId = useSelector((state) => state.PreferenceId);
 
@@ -15,7 +15,7 @@ const Operation = ({ setCurrentUserStore }) => {
 
     return (
         <>
-        <NavBar setCurrentUserStore={setCurrentUserStore}/>
+        <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>
         <div className={style.container}>
             {info ? (
                 <div className={style.innerContainer}>

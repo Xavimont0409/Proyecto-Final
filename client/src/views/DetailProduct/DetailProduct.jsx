@@ -17,20 +17,21 @@ import Swal from 'sweetalert2';
 
 
 
-const DetailProduct = ({currentUserStore, setCurrentUserStore}) => {
+const DetailProduct = ({setValidateState, setCurrentUserStore2}) => {
 
 const { id } = useParams(); 
 const dispatch = useDispatch();
-const { user, isAuthenticated } = useAuth0();
+const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+const validate = JSON.parse(localStorage.getItem("state"))
 const navigate = useNavigate();
-/*  const currentUser = useSelector((state) => state.dataEmail[0]) */
  const product = useSelector((state) => state.Product);
  const payMethods = useSelector((state) => state.PayMethods);
+ console.log(userType2);
 useEffect(() => {
  
       const handleUserAuthentication = () => {
-          if (isAuthenticated && user) {
-              dispatch(getEmail(user.email));
+          if (validate && userType2) {
+              dispatch(getEmail(userType2.email));
           }
       };
       handleUserAuthentication();
@@ -39,16 +40,16 @@ useEffect(() => {
       return () =>{
         dispatch(cleanDetail())
       }
-    }, [dispatch, isAuthenticated, user, id]);
+    }, [dispatch, validate, userType2, id]);
 
  const [form, setForm] = useState({
   cost: product?.price,
   detail: product?.name,
   details: product?.details,
-  CompanyId: currentUserStore?.id || null,
+  CompanyId: userType2?.id || null,
   PayMethodId: 0,
-  name: currentUserStore?.name,
-  email: currentUserStore?.email,
+  name: userType2?.name,
+  email: userType2?.email,
   PayMethod: "",
  })
 
@@ -58,16 +59,16 @@ const handleChangeSelect = (event) => {
     cost: product?.price,
     detail: product?.name,
     details: product?.details,
-    CompanyId: currentUserStore?.id || null,
+    CompanyId: userType2?.id || null,
     PayMethodId: value,
-    name: currentUserStore?.name,
-    email: currentUserStore?.email,
+    name: userType2?.name,
+    email: userType2?.email,
     PayMethod: (payMethods.find(payMethod => payMethod.id === parseInt(value))).name
     })
 }
 
 const handleSubmit = async () => {
-  if(currentUserStore.name){
+  if(userType2.name){
     dispatch(postDataInStore(form));
     dispatch(postOperation(form));
     console.log(form)
@@ -92,7 +93,7 @@ return (
      {
     product.name ?
     <div>
-        <NavBar setCurrentUserStore={setCurrentUserStore}/>
+        <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>
          <div className={style.container}>
         
         <div className={style.box} key={product.name}>

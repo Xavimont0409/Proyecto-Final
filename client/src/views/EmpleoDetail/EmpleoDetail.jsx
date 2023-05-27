@@ -12,7 +12,9 @@ import Loading from "../../components/Loading/Loading";
 import { getVacantDetail } from "../../Redux/Actions/actionsFunction/axtionsVacants";
 //import { getAllCompanys, getCompanyDetail } from "../../Redux/Actions/actionsFunction/actionsCompanys";
 
-const EmpleoDetail = ({ setCurrentUserStore }) => {
+
+const EmpleoDetail = ({ setValidateState, setCurrentUserStore2 }) => {
+
 
   const {detailId} = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -31,11 +33,13 @@ const EmpleoDetail = ({ setCurrentUserStore }) => {
     }, 2000);
   }, []);
     
+
   if (isLoading) {
     return <Loading/>;
   };
   
   const companyId = empleoSelected.CompanyId;
+
 
   return(
         <div className={style.mainContainer}>
