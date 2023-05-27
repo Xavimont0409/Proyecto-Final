@@ -7,6 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { FaWpforms } from "react-icons/fa";
 
 export default function LandingApplicant({ setCurrentUserStore }) {
+	
 	const [greeting, setGreeting] = useState("");
 	const { isAuthenticated, user } = useAuth0();
 
@@ -16,12 +17,12 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 			setGreeting(`Hola, ${name}!`);
 		}
 	}, [isAuthenticated, user]);
+
 	return (
 		<>
 			<div className={styles.container}>
-				<div className={styles.containerComponents}>
-					<NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
-				</div>
+
+				<NavBar setCurrentUserStore={setCurrentUserStore}/>
 
 				<div className={styles.containerPrincipal}>
 					<div className={styles.saludo}>
@@ -116,7 +117,12 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 			</div>
 			<div className={styles.contenedor}>
 				<div className={styles.prueba}>
-					<div className={styles.leftSection}>
+					<div className={styles.titlePlan}>
+						<h1 className={styles.title}>Actualiza tú plan!</h1>
+					</div>
+					<div className={styles.rightSection}>
+							<h1>Plan Super Destacado</h1>
+						</div>
 						<div className={styles.planes}>
 							<CardPlan
 								tittle='Plan Super Destacado'
@@ -125,15 +131,8 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 								id='4'
 							/>
 						</div>
-					</div>
-
-					<div className={styles.rightSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
 				</div>
 			</div>
-			<br />
-			<br />
 		</>
 	);
 }

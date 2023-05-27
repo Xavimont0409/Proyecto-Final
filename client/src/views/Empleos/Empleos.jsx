@@ -28,7 +28,7 @@ const Empleos = ({ setCurrentUserStore }) => {
             <NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
             <div className={style.filterAndCardsContainer}>
                 <div className={style.filters}>
-                    <Filter ></Filter>
+                    <Filter/>
                 </div>
                 <div className={style.cardsDiv}>
 
