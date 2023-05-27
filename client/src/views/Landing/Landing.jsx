@@ -3,17 +3,14 @@ import { Button } from "react-bootstrap";
 import video from "../../assets/video/Fondo.mp4";
 import MisionVisión from "../../components/MisionVision/MisionVisión";
 import NavBar from "../../components/NavBar/NavBar";
-import Loading from "../../components/Loading/Loading";
 import CardsEquipo from "../../components/CardEquipo/CardEquipo";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 const Landing = ({
   setValidateState,
   setCurrentUserStore2,
 }) => {
   const user = JSON.parse(localStorage.getItem("currentUser2"))
-  const adminPanel = process.env.REACT_APP_ADMIN_PANEL;
 
 
   return (

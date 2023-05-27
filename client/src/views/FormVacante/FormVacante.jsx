@@ -9,6 +9,7 @@ import { postVacant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 import validateFormInputs from './validation';
 import { useEffect } from 'react';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function FormVacante({ setValidateState, setCurrentUserStore2}) {

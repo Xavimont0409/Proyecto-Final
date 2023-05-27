@@ -12,7 +12,7 @@ const Profiles = ({ setValidateState, setCurrentUserStore2 }) => {
     const usersRaw = useSelector(state => state.Users);
     const users = usersRaw.filter((user) => user.Cv !== null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [usersPerPage, setusersPerPage] = useState(6);
+    const [usersPerPage, /* setusersPerPage */] = useState(6);
     const indexOfLastCharacter = currentPage * usersPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - usersPerPage;
     const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +22,7 @@ const Profiles = ({ setValidateState, setCurrentUserStore2 }) => {
     useEffect(()=> {
         dispatch(getAllUsers())
         dispatch(getAllCv())
-    },[dispatch, getAllUsers, getAllCv]);
+    },[dispatch]);
     
     useEffect(() => {
         setTimeout(() => {

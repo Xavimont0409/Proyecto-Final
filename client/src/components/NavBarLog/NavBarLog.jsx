@@ -1,8 +1,6 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { findPerName } from "../../Redux/Actions/actionsFunction/actionsSearchBar";
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
-import { login } from "../../Redux/Actions/actionsFunction/actionsLogin";
 import style from "./NavBarLog.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -69,18 +67,18 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
           </button>
           <ul className={style.navList}>
             <li>
-              <a href="#" onClick={handlerLogin}>
+              <h3 onClick={handlerLogin}>
                 cerrar sesion
-              </a>
+              </h3>
             </li>
             {userLocalStorage?.profile === "Admin" ? (
               <li>
-                <a
+                {/* <a
                   href="https://jobportalx-adminpanel.vercel.app"
                   target="_blank"
                 >
                   Dashboard
-                </a>
+                </a> */}
               </li>
             ) : null}
           </ul>

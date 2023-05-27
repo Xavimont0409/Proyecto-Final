@@ -1,10 +1,8 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../../components/Loading/Loading"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import style from "./MiPerfil.module.css"
-import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
 import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
@@ -21,14 +19,12 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   const handleClick = () => {
     setShowPDF(!showPDF);
   };
-  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   const userDetail = JSON.parse(localStorage.getItem("currentUser2"))
   const validacion = JSON.parse(localStorage.getItem("state"));
 
   const CvDetail = useSelector(state => state.CvDetail);
-  const aplicantDetail = useSelector(state => state.UserDetail)
 
   const [perfil, setPerfil] = useState({
     photo: '',
@@ -48,9 +44,9 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
 
   useEffect(() => {
-    dispatch(getCvById(userDetail?.Cv.id))
+    dispatch(getCvById(userDetail.Cv.id))
     dispatch(getUserDetail(userDetail.id))
-  }, []);
+  }, [dispatch, userDetail.Cv.id, userDetail.id]);
 
 
   // console.log(aplicantDetail)
