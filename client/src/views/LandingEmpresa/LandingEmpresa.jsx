@@ -18,9 +18,9 @@ const LandingEmpresa = ({ setCurrentUserStore }) => {
 	return (
 		<>
 			<div className={style.container}>
-				<div className={style.containerComponents}>
-					<NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
-				</div>
+
+				<NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
+				
 				<div className={style.containerPrincipal}>
 					<div className={style.saludo}>
 						<h1 className={style.titulo}>{greeting}</h1>
@@ -62,65 +62,56 @@ const LandingEmpresa = ({ setCurrentUserStore }) => {
 						</Link>
 					</div>
 				</div>
-			</div>
-
-			<div className={style.contenedor}>
-				<div className={style.titlePlan}>
-					<h2>Actualiza tú plan!</h2>
-				</div>
-
-				<div className={style.prueba}>
-					<div className={style.leftSection}>
-						<div className={style.planes}>
-							<CardPlan
-								tittle='Plan Básico'
-								text='Publica vacantes semanales con un límite de tiempo'
-								price='30'
-								id='1'
-							/>
+				<div className={style.contenedor}>
+					<div className={style.prueba}>
+						<div className={style.titlePlan}>
+							<h2 className={style.title}>Actualiza tú plan!</h2>
 						</div>
-					</div>
-
-					<div className={style.rightSection}>
-						<h1>Plan Básico</h1>
-					</div>
-				</div>
-
-				<div className={style.prueba}>
-					<div className={style.leftSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
-
-					<div className={style.middleSection}>
-						<div className={style.planes}>
-							<CardPlan
-								tittle='Plan Destacado'
-								text='Publica más vacante por semana con duración mayor'
-								price='50'
-								id='2'
-							/>
+						<div className={style.rightSection}>
+							<h1>Plan Básico</h1>
 						</div>
+							<div className={style.planes}>
+								<CardPlan
+									tittle='Plan Básico'
+									text='Publica vacantes semanales con un límite de tiempo'
+									price='30'
+									id='1'
+								/>
+							</div>
 					</div>
 
-					<div className={style.rightSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
-				</div>
-
-				<div className={style.prueba}>
-					<div className={style.leftSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
-
-					<div className={style.rightSection}>
-						<div className={style.planes}>
-							<CardPlan
-								tittle='Plan Premium'
-								text='Publica vacantes ilimitadas y sin fecha límite'
-								price='90'
-								id='3'
-							/>
+					<div className={style.prueba}>
+						<div className={style.titlePlan}>
+							<h2 className={style.title}>Actualiza tú plan!</h2>
 						</div>
+						<div className={style.rightSection}>
+							<h2>Plan Destacado</h2>
+						</div>
+							<div className={style.planes}>
+								<CardPlan
+									tittle='Plan Destacado'
+									text='Publica más vacante por semana con duración mayor'
+									price='50'
+									id='2'
+								/>
+							</div>
+					</div>
+
+					<div className={style.prueba}>
+						<div className={style.titlePlan}>
+							<h2 className={style.title}>Actualiza tú plan!</h2>
+						</div>
+						<div className={style.rightSection}>
+							<h2>Plan Premium</h2>
+						</div>
+							<div className={style.planes}>
+								<CardPlan
+									tittle='Plan Premium'
+									text='Publica vacantes ilimitadas y sin fecha límite'
+									price='90'
+									id='3'
+								/>
+							</div>
 					</div>
 				</div>
 			</div>
