@@ -12,7 +12,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { getCompanyDetail } from "../../Redux/Actions/actionsFunction/actionsCompanys";
 import NavBar from "../../components/NavBar/NavBar";
-import img from "../../assets/img/email.png";
 
 export default function PerfilCompany({ setCurrentUserStore }) {
 	const userType = JSON.parse(localStorage.getItem("currentUser"));
@@ -32,7 +31,11 @@ export default function PerfilCompany({ setCurrentUserStore }) {
 
 			<div className={style.datosCompany}>
 				<div>
-					<img className={style.image} src={img} alt='Profile' />
+					<img
+						className={style.image}
+						src={companyData.photo}
+						alt='Profile'
+					/>
 				</div>
 
 				<div className={style.companyName}>
