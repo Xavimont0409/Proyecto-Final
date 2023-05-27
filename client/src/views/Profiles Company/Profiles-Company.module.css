@@ -2,15 +2,15 @@
     border: 3px solid black;
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    min-height: 100vh;
 }
 
 .cardsContainer{
-  
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 3px;
+    padding: 3vw;
     border-radius: 3px;
     align-items: center;
+    min-height: fit-content;
 }

@@ -14,6 +14,19 @@ const RatingListDiv = () => {
         dispatch(getCompanyDetail(userType.id));
     }, []);
 
+    const starsArray = []; 
+
+    companyDetails?.map((review) => {
+        const stars = parseInt(review.stars, 10);
+        starsArray.push(stars);
+    });
+
+    const sum = starsArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+    const average = (sum / starsArray.length).toFixed(2);
+
+    const averageNumber = parseFloat(average);
+    
     return (
         <div className={style.table}>
             <div className={style.titles}>
@@ -24,36 +37,35 @@ const RatingListDiv = () => {
                     <p>Comments</p>
                 </div>
             </div>
-            {
-                companyDetails?.map((company) => {
-                    console.log(company.Stars);
-                    
-                    if (company.Stars.length > 0) {
-                        const starsArray = company.Stars.map((review) => parseInt(review.stars));
-                        const sum = starsArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-                        const average = sum / starsArray.length;
-                        const roundedAverage = Math.round(average);
-
-                        return (
-                            <div key={company.id} className={style.reviewsColumn}>
-                                <div className={style.starRow}>
-                                        <p key='{review.id}' className={style.pText}>{roundedAverage}</p>
-                                </div>
-                                <div className={style.textRow}>
-                                    {
-                                        company.Stars?.map((description) => {
-                                            return (
-                                                <p key='{description.id}' className={style.pText}>{description.text}</p>
-                                            )
-                                        })
-                                    }</div>
-                            </div>
-                        )
-                    }
-                })
-            }
+            <div className={style.reviewsColumn}>
+                <div className={style.starRow}>
+                        <p key='{review.id}' className={style.pText}>{averageNumber}</p>
+                </div>
+                <div className={style.textRow}>
+                    {
+                        companyDetails?.map((description) => {
+                            return (
+                                <p key='{description.id}' className={style.pText}>{description.text}</p>
+                            )
+                        })
+                    }</div>
+            </div>
         </div>
     )
 };
 
 export default RatingListDiv;
+
+
+// companyDetails?.map((company) => {
+//                     console.log(company.stars);
+                    
+//                     if (company.length > 0) {
+//                         const starsArray = [];
+//                         starsArray.push(company.stars)
+//                         console.log(starsArray);
+//                         const sum = starsArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+//                         console.log(sum);
+//                         const average = sum / starsArray.length;
+//                         console.log(average);
+//                         const roundedAverage = Math.round(average);

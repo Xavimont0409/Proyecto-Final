@@ -25,9 +25,8 @@ const Landing = ({ currentUserStore, setCurrentUserStore }) => {
 
     return (
         <div className={style.landingDiv}>
-            <div className={style.containerComponents}>
-                <NavBar setCurrentUserStore={setCurrentUserStore} />
-            </div>
+
+            <NavBar setCurrentUserStore={setCurrentUserStore} />
             
             <div className={style.container}>
                 <div className={style.videoDiv}>
