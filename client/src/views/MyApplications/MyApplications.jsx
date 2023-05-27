@@ -7,7 +7,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 
-const MyApplications = () => {
+const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
     const userType = JSON.parse(localStorage.getItem("currentUser2"));
     const userDetail = useSelector(state=> state.UserDetail);
     const empresas = useSelector(state => state.Company)
@@ -23,10 +23,10 @@ const MyApplications = () => {
     return (
         <div className={style.container}>
             <div className={style.containerNav}>
-                <NavBar/>
+                <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />
             </div>
 
-                 <h1 className={style.title}>Mis Postulaciones</h1>
+                  <h1 className={style.title}>Mis Postulaciones</h1>
     
     <Table className={style.table}>
       <thead className={style.tHead}>

@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 import style from './FormregistroEstudio.module.css'
 import { createFormation } from "../../Redux/Actions/actionsFunction/actionsFormation";
 
-const FormRegistroEstudio = ({ setCurrentUserStore }) => {
+const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
 
 
     const countriesNames = Object.values(countries.countries).map(
@@ -93,7 +93,7 @@ const FormRegistroEstudio = ({ setCurrentUserStore }) => {
     return (
 
         <div className={style.mainContainer}>
-            <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
+            <NavBar setValidateState={setValidateState}  setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
           <h2 style={{ 'margin': '30px' }}>Agrega estudios a tu CV</h2>
         
           <Form className={style.Form} validated={!validated} onSubmit={handleSubmit}>

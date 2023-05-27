@@ -1,3 +1,4 @@
+
 import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
@@ -31,8 +32,8 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
   
   const onSuccess = (response) => {
     const {email, googleId } = response.profileObj;
-    dispatch(getLoginApplicant({email, googleId}))
-    setCurrentUserStore({email, googleId})
+    dispatch(getLoginApplicant({email, password: googleId}))
+    setCurrentUserStore({email, password: googleId})
     setValidateState(true)
     setTimeout(()=>{
       navigate("/empresa")

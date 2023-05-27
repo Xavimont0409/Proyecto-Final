@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants'
 
 
-const Empleos = ({ setCurrentUserStore }) => {
+const Empleos = ({ setCurrentUserStore2, setValidateState }) => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
     const currentCard = useSelector(state => state.Vacant)
@@ -25,7 +25,7 @@ const Empleos = ({ setCurrentUserStore }) => {
     }
     return (
         <div className={style.mainContainer}>
-            <NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
+            <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
             <div className={style.filterAndCardsContainer}>
                 <div className={style.filters}>
                     <Filter ></Filter>

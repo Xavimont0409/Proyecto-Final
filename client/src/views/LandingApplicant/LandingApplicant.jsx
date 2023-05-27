@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaWpforms } from "react-icons/fa";
 
-export default function LandingApplicant({ setCurrentUserStore }) {
+export default function LandingApplicant({ setValidateState, setCurrentUserStore2 }) {
 	const [greeting, setGreeting] = useState("");
 	const validate = JSON.parse(localStorage.getItem("state"))
 	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
@@ -21,7 +21,7 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 		<>
 			<div className={styles.container}>
 				<div className={styles.containerComponents}>
-					<NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
+					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
 
 				<div className={styles.containerPrincipal}>

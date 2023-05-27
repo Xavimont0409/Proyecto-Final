@@ -65,35 +65,35 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore} />} />
         <Route path="/ServerDevelop" element={<ServerMaintenance />} />
-        <Route path="/product/:id" element={<DetailProduct currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
+        <Route path="/product/:id" element={<DetailProduct setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         
         <Route element={<ProtectedRoute isAutenticate={validate} />/*Todos*/}>
-          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail currentUserStore={currentUserStore} setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path='/profiles' element={<Profiles setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path="/MiPerfil" element={<MiPerfil setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path="/operation" element={<Operation setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path='/profiles-company' element={<ProfilesCompany setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path='/profiles' element={<Profiles setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/MiPerfil" element={<MiPerfil setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/operation" element={<Operation setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/success" element={<Success />} />
         </Route>
                 
         {/* (userLocalStorage.profile === "Company" || userLocalStorage.profile === "Admin") */}
         <Route element={<ProtectedRoute isAutenticate={validate && (userType2?.profile === 'Company' || userType2?.profile === 'Admin' )} />/*Empresa*/}>
-          <Route path='/profiles-company' element={<ProfilesCompany setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path="/registro-vacante" element={<FormVacante setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path="/empresa" element={<LandingEmpresa setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path="/registro-empresa" element={<FormEmpresa setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path='/profiles-company' element={<ProfilesCompany setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/registro-vacante" element={<FormVacante setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/empresa" element={<LandingEmpresa setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/registro-empresa" element={<FormEmpresa setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
           <Route path="/vacantes" element={<Vacantes />} />
-          <Route path="/perfil-company" element={<PerfilCompany setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/perfil-company" element={<PerfilCompany setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         </Route>
 
         <Route element={<ProtectedRoute isAutenticate={validate && (userType2?.profile === 'Applicant' || userType2?.profile === 'Admin' )} />/*Empleado*/}>
-          <Route path="/registro-cv" element={<FormCv setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path='/applicant' element={<LandingApplicant setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path="/registro-experiencia" element={<FormRegistroExperincia setCurrentUserStore={setCurrentUserStore} />} />
-          <Route path="/registro-estudio" element={<FormRegistroEstudio setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/registro-cv" element={<FormCv setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path='/applicant' element={<LandingApplicant setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/registro-experiencia" element={<FormRegistroExperincia setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/registro-estudio" element={<FormRegistroEstudio setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/registro-usuario" element={<FormRegistroUsuario />} />
-          <Route path="/postulaciones" element={<MyApplications setCurrentUserStore={setCurrentUserStore} />} />
+          <Route path="/postulaciones" element={<MyApplications setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           
         </Route>
       </Routes>

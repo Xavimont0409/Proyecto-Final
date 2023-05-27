@@ -19,10 +19,11 @@ const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore})
   const [isLoading, setIsLoading] = useState(true);
   const [newUserApplicant, setNewUserApplicant] = useState({
     name: Applicant.nombre,
-    lastName: "",
+    lastName: Applicant.apellido,
     email: Applicant.email,
     cellphone: "",
     registed: true,
+    password: Applicant.contraseña,
   })
 
   const handleInputChange = (event) => {
@@ -78,7 +79,9 @@ const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore})
                   value={newUserApplicant.name}
                   type="text"
                   onChange={handleInputChange}
-                  required />
+                  required 
+                  disabled={newUserApplicant.name === Applicant.nombre ? true : false}
+                  />
                 <Form.Control.Feedback type="invalid">
                   Rellena este campo
                 </Form.Control.Feedback>
@@ -93,7 +96,9 @@ const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore})
                   value={newUserApplicant.lastName}
                   type="text"
                   onChange={handleInputChange}
-                  required />
+                  required
+                  disabled={newUserApplicant.lastName === Applicant.apellido ? true : false}
+                  />
                 <Form.Control.Feedback type="invalid">
                   Rellena este campo
                 </Form.Control.Feedback>
@@ -110,7 +115,9 @@ const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore})
                   value={newUserApplicant.email}
                   type="text"
                   onChange={handleInputChange}
-                  required />
+                  required
+                  disabled={newUserApplicant.email === Applicant.email ? true : false}
+                  />
                 <Form.Control.Feedback type="invalid">
                   Rellena este campo
                 </Form.Control.Feedback>
@@ -127,6 +134,22 @@ const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore})
                   type="number"
                   onChange={handleInputChange}
                   required />
+                <Form.Control.Feedback type="invalid">
+                  Rellena este campo
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group as={Col} md='6' className="mb-3" >
+                <FormLabel  >Password</FormLabel>
+                <FormControl
+                  name='password'
+                  placeholder='Password'
+                  value={newUserApplicant.password}
+                  type="password"
+                  onChange={handleInputChange}
+                  required 
+                  disabled={newUserApplicant.password === Applicant.contraseña ? true : false}
+                  />
                 <Form.Control.Feedback type="invalid">
                   Rellena este campo
                 </Form.Control.Feedback>

@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 
 
-function FormCv({setCurrentUserStore}) {
+function FormCv({ setValidateState ,setCurrentUserStore2}) {
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
 
   const [step, setStep] = useState(1);
@@ -75,7 +75,7 @@ function FormCv({setCurrentUserStore}) {
 
     <div className={style.container}>
 
-      <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
+      <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
 
       <div className={style.container2} style={{ display: 'flex', flexDirection: 'row' }}>
         <div style={{ flex: 1 }}>

@@ -16,7 +16,7 @@ import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
 // import email from "../../assets/img/email.svg"
 
-const MiPerfil = ({ setCurrentUserStore }) => {
+const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
   const [showPDF, setShowPDF] = useState(false);
 
@@ -27,12 +27,11 @@ const MiPerfil = ({ setCurrentUserStore }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const userDetail = JSON.parse(localStorage.getItem("currentUser"))
+  const userDetail = JSON.parse(localStorage.getItem("currentUser2"))
+  const validacion = JSON.parse(localStorage.getItem("state"));
 
   const CvDetail = useSelector(state => state.CvDetail);
   const aplicantDetail = useSelector(state => state.UserDetail)
-
-  const { user, isAuthenticated, isLoading, logout } = useAuth0();
 
   const [perfil, setPerfil] = useState({
     photo: '',
@@ -52,7 +51,7 @@ const MiPerfil = ({ setCurrentUserStore }) => {
 
 
   useEffect(() => {
-    dispatch(getCvById(userDetail.Cv.id))
+    dispatch(getCvById(userDetail?.Cv.id))
     dispatch(getUserDetail(userDetail.id))
   }, []);
 
@@ -100,14 +99,14 @@ const MiPerfil = ({ setCurrentUserStore }) => {
 
 
 
-  if (isAuthenticated) {
+  if (validacion) {
     if (!userDetail || !CvDetail) {
       return <div><Loading /></div>
     } else {
       return (
         // isAuthenticated && (
         <>
-          <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
+          <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
           <div  className={style.container}>
 
 

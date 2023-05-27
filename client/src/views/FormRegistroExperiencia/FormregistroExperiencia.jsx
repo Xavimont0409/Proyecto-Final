@@ -12,7 +12,7 @@ import style from "./FormregistroExperiencia.module.css";
 import Swal from 'sweetalert2';
 
 
-const FormRegistroExperincia = ({ setCurrentUserStore }) => {
+const FormRegistroExperincia = ({setValidateState, setCurrentUserStore2 }) => {
 
 
     const countriesNames = Object.values(countries.countries).map(
@@ -89,7 +89,7 @@ const FormRegistroExperincia = ({ setCurrentUserStore }) => {
     return (
 
         <div className={style.mainContainer}>
-             <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
+             <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
             <h2 style={{ 'margin': '30px' }}>Añadir Experiencia Profesional al CV</h2>
             <Form className={style.Form} validated={!validated}>
 

@@ -11,6 +11,7 @@ const NewRegistroApplicant = ({ setCurrentUserStore2, setValidateState, setCurre
     email: "",
     nombre: "",
     apellido: "",
+    contraseña: "",
   });
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const NewRegistroApplicant = ({ setCurrentUserStore2, setValidateState, setCurre
       email: newUserApplicant.email,
       nombre: newUserApplicant.givenName,
       apellido: newUserApplicant.familyName,
+      contraseña: newUserApplicant.googleId
     });
   };
   const onFailure = () => {

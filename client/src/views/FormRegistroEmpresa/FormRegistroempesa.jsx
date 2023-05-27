@@ -1,17 +1,13 @@
 import Form from 'react-bootstrap/Form';
 import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
-import ButtonGeneral from '../../components/Button/ButtonGeneral';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postCompany } from '../../Redux/Actions/actionsFunction/actionsCompanys';
-import validateFormInputs from '../FormVacante/validation';
 import Loading from '../../components/Loading/Loading';
 import style from './FormRegistroEmpesa.module.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import countries from "countries-list";
-import Swal from 'sweetalert2';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
-import { login } from '../../Redux/Actions/actionsFunction/actionsLogin';
 
 
 const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState }) => {
@@ -25,8 +21,8 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     registed: true,
     name: Company.nombre,
     email: Company.email,
+    password: Company.contraseña
   });
-
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
   );
@@ -84,7 +80,9 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
                   value={newEmpresa.name}
                   type="text"
                   onChange={handleInputChange}
-                  required />
+                  required
+                  disabled={newEmpresa.name === Company.nombre ? true : false}
+                  />
               </FormGroup>
               <FormGroup as={Col} md='6' >
                 <FormLabel>Nombre comercial</FormLabel>
@@ -129,7 +127,20 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
                   value={newEmpresa.email}
                   type="text"
                   onChange={handleInputChange}
-                  required />
+                  required
+                  disabled={newEmpresa.email === Company.email ? true : false}
+                  />
+              </FormGroup>
+              <FormGroup as={Col} md='10'  >
+                <FormLabel>Contraseña</FormLabel>
+                <FormControl
+                  name='password'
+                  placeholder='Password'
+                  value={newEmpresa.password}
+                  type="password"
+                  onChange={handleInputChange}
+                  required 
+                  disabled={newEmpresa.password === Company.contraseña ? true : false} />
               </FormGroup>
             </Row>
           </Form>

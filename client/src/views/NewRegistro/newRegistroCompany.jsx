@@ -11,8 +11,8 @@ const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrent
     email: "",
     nombre: "",
     apellido: "",
+    contraseña: "",
   });
-
   useEffect(() => {
     const start = () => {
       gapi.auth2.init({
@@ -27,8 +27,9 @@ const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrent
     setCompany({
       imagen: newUserCompany.imageUrl,
       email: newUserCompany.email,
-      nombre: newUserCompany.givenName,
+      nombre: newUserCompany.name,
       apellido: newUserCompany.familyName,
+      contraseña: newUserCompany.googleId
     });
   };
   const onFailure = () => {

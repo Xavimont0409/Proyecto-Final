@@ -22,7 +22,6 @@ export const getCompany = (payload) =>{
     try {
       const json = await axios.post('/login/company', payload)
       const data = json.data
-      console.log(data);
       return dispatch({
         type: LOGIN_COMPANY,
         payload: data

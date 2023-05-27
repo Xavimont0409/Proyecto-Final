@@ -19,7 +19,7 @@ import NavBar from "../../components/NavBar/NavBar";
 
 
 
-export default function PerfilCompany({ setCurrentUserStore }) {
+export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }) {
 	const userType = JSON.parse(localStorage.getItem("currentUser2"));
 	const companyData = useSelector((state) => state.CompanyDetail);
 	const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export default function PerfilCompany({ setCurrentUserStore }) {
 	return (
 		<div className={style.container}>
 			<div className={style.containerNav}>
-				<NavBar />
+				<NavBar setValidateState={setValidateState}  setCurrentUserStore2={setCurrentUserStore2}/>
 			</div>
 			<h1 className={style.title}>Perfil de la Empresa</h1>
 

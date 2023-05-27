@@ -1,7 +1,5 @@
 import NavBarLog from "../NavBarLog/NavBarLog";
 import NavbarUnlog from "../NavBarUnlog/NavBarUnlog";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useSelector } from "react-redux";
 
 const NavBar = ({ setValidateState, setCurrentUserStore2 }) => {
   const validacion = JSON.parse(localStorage.getItem("state"));

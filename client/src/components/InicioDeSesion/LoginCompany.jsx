@@ -28,10 +28,13 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
     });
 
   };
+  //103227077001918393252
+  //103227077001918393252
+
   const onSuccess = (response) => {
     const {email, googleId } = response.profileObj;
-    dispatch(getCompany({email, googleId}))
-    setCurrentUserStore({email, googleId})
+    dispatch(getCompany({email, password: googleId}))
+    setCurrentUserStore({email, password: googleId})
     setValidateState(true)
     setTimeout(()=>{
       navigate("/empresa")
@@ -46,7 +49,7 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
     setValidateState(true)
     setTimeout(()=>{
       navigate("/empresa")
-    },1500)
+    },2000)
   }
 
   return (

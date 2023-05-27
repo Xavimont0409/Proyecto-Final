@@ -11,7 +11,7 @@ const {
 
 const getUserApplicant = async (email, password) => {
   const findApplicant = await Applicant.findAll({
-    where: { email: email },
+    where: { email: email, password: password },
     include: [{ model: Cv }, { model: Vacant }],
   });
 
@@ -19,7 +19,7 @@ const getUserApplicant = async (email, password) => {
 };
 const getUserComany = async(email, password) =>{
   const findCompany = await Company.findAll({
-    where: { email: email },
+    where: { email: email, password: password },
     include: [
       {
         model: Vacant,

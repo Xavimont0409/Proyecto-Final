@@ -9,9 +9,9 @@ import { postVacant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 import validateFormInputs from './validation';
 import { useEffect } from 'react';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
-import { useAuth0 } from '@auth0/auth0-react';
 
-export default function FormVacante({setCurrentUserStore}) {
+
+export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
 
     const today = new Date();
     const dateOnly = today.toISOString().slice(0, 10);
@@ -82,7 +82,7 @@ export default function FormVacante({setCurrentUserStore}) {
 
         <div className={style.mainContainer}>
 
-            <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
+            <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
 
 
             <h2 style={{ 'margin': '20px' }}>Crear nueva vacante</h2>
