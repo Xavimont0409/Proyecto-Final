@@ -7,7 +7,7 @@
     border-radius: 7px;
     width: 25vw;
     height: 60vh;
-    background: var(--sub-white);
+    background: #E1ECFC;
     margin-left: 3vw;
     margin-right: 3vw;
     margin-top: 2vh;
@@ -15,7 +15,7 @@
 
 .select {
     border-radius: 3px;
-    background-color: var(--battleship);
+    background-color: white;
 }
 
 .button {

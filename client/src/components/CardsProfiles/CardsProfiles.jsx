@@ -12,46 +12,47 @@ const CardProfile =  ({id, cv, photo, name, lastName, profession, personal_descr
 
 
   return (
-        <div className={style.mainContainer} >
-        <div className={style.containerImgEmpresa}>
-        <img className={style.img} variant="top" src={photo}/>
+          <div className={style.mainContainer} >
+            <div className={style.containerImgEmpresa}>
+              <img className={style.img} variant="top" src={photo} alt="/"/>
+            </div>
+            <Card.Body >
+              <Card.Title className={style.title}>{name} {lastName}</Card.Title>
+              <Card.Text className={style.text}>{profession}</Card.Text>
+            </Card.Body>
+            <ListGroup className={style.infoContainer}>
+              <ListGroup.Item className={style.item}>{personal_description} </ListGroup.Item>
+              <ListGroup.Item className={style.item}>Skills: {skills}</ListGroup.Item>
+              <ListGroup.Item className={style.item}>DNI : {dni}</ListGroup.Item>
+              <ListGroup.Item className={style.item}>Teléfono: {phone}</ListGroup.Item>
+              <ListGroup.Item className={style.item}>Email: {email}</ListGroup.Item>
+            </ListGroup>
+            <Card.Body >
+            <Card.Title className={style.title2}>Experiencia</Card.Title>
+
+          {
+            !experience ? (<ListGroup className={style.infoContainer2}>
+                <ListGroup.Item className={style.item}>No hay experiencias registradas</ListGroup.Item>
+                </ListGroup>)  
+              : 
+              (<ListGroup className={style.infoContainer2}>
+                <ListGroup.Item className={style.item}>Cargo: {experience.charge}</ListGroup.Item>
+                <ListGroup.Item className={style.item}>Seniority: {experience.experience_level}</ListGroup.Item>
+                </ListGroup>)   
+          }
+            
+
+            </Card.Body>
+
+            <Card.Body>
+              <Link to={linkedin}>
+              <BsLinkedin className={style.linkedin}/>
+              </Link>
+              <Link to={`/detailProfile/${id}`}>
+                <FcSearch className={style.lupa} />
+                </Link>
+              </Card.Body>
         </div>
-        <Card.Body >
-          <Card.Title className={style.title}>{name} {lastName}</Card.Title>
-          <Card.Text className={style.text}>{profession}</Card.Text>
-        </Card.Body>
-        <ListGroup className={style.infoContainer}>
-          <ListGroup.Item className={style.item}>{personal_description} </ListGroup.Item>
-          <ListGroup.Item className={style.item}>Skills: {skills}</ListGroup.Item>
-          <ListGroup.Item className={style.item}>DNI : {dni}</ListGroup.Item>
-          <ListGroup.Item className={style.item}>Teléfono: {phone}</ListGroup.Item>
-          <ListGroup.Item className={style.item}>Email: {email}</ListGroup.Item>
-        </ListGroup>
-        <Card.Body >
-         <Card.Title className={style.title2}>Experiencia</Card.Title>
-
-        {!experience ? (<ListGroup className={style.infoContainer2}>
-          <ListGroup.Item className={style.item}>No hay experiencias registradas</ListGroup.Item>
-          </ListGroup>)  
-        : 
-        (<ListGroup className={style.infoContainer2}>
-          <ListGroup.Item className={style.item}>Cargo: {experience.charge}</ListGroup.Item>
-          <ListGroup.Item className={style.item}>Seniority: {experience.experience_level}</ListGroup.Item>
-          </ListGroup>)   
-      }
-        
-
-        </Card.Body>
-
-        <Card.Body>
-          <Link to={linkedin}>
-          <BsLinkedin className={style.linkedin}/>
-          </Link>
-          <Link to={`/detailProfile/${id}`}>
-            <FcSearch className={style.lupa} />
-            </Link>
-          </Card.Body>
-      </div>
     )
 };
 

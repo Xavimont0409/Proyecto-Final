@@ -3,25 +3,29 @@ import styles from "./LandingApplicant.module.css";
 import {NavBar, CardPlan} from '../../components';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 import { FaWpforms } from "react-icons/fa";
 
-export default function LandingApplicant({ setCurrentUserStore }) {
+export default function LandingApplicant({ setValidateState, setCurrentUserStore2 }) {
+
 	const [greeting, setGreeting] = useState("");
-	const { isAuthenticated, user } = useAuth0();
+	const validate = JSON.parse(localStorage.getItem("state"))
+	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+
 
 	useEffect(() => {
-		if (isAuthenticated && user) {
-			const name = user.name;
+		if (validate && userType2) {
+			const name = userType2.name;
 			setGreeting(`Hola, ${name}!`);
 		}
-	}, [isAuthenticated, user]);
+
+	}, [validate, userType2]);
 	return (
 		<>
 			<div className={styles.container}>
 				<div className={styles.containerComponents}>
-					<NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
+					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
+
 
 				<div className={styles.containerPrincipal}>
 					<div className={styles.saludo}>
@@ -38,7 +42,7 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 						</div>
 					</div>
 					<div className={styles.containerButtons}>
-						<Link to='/profiles'>
+						<Link to='/postulaciones'>
 							<button
 								className={styles.Button}
 								title='Mis postulaciones'
@@ -56,7 +60,9 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 								<span className={styles.ButtonIcon}>
 									<FaWpforms />
 								</span>
-								<span className={styles.ButtonText}>Cv</span>
+								<span className={styles.ButtonText}>
+									Crear Cv
+								</span>
 							</button>
 						</Link>
 						<Link to='/registro-experiencia'>
@@ -65,7 +71,7 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Experience
+									Registra Experiencia
 								</span>
 							</button>
 						</Link>
@@ -99,13 +105,13 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 								</span>
 							</button>
 						</Link>
-						<Link to='/MiEducacion'>
+						<Link to='/registro-estudio'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Mi educacion
+									Registra Educacion
 								</span>
 							</button>
 						</Link>
@@ -114,7 +120,12 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 			</div>
 			<div className={styles.contenedor}>
 				<div className={styles.prueba}>
-					<div className={styles.leftSection}>
+					<div className={styles.titlePlan}>
+						<h1 className={styles.title}>Actualiza tú plan!</h1>
+					</div>
+					<div className={styles.rightSection}>
+							<h1>Plan Super Destacado</h1>
+						</div>
 						<div className={styles.planes}>
 							<CardPlan
 								tittle='Plan Super Destacado'
@@ -123,15 +134,8 @@ export default function LandingApplicant({ setCurrentUserStore }) {
 								id='4'
 							/>
 						</div>
-					</div>
-
-					<div className={styles.rightSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
 				</div>
 			</div>
-			<br />
-			<br />
 		</>
 	);
 }

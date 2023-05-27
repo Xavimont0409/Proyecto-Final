@@ -8,6 +8,7 @@ import FormRegistroUsuario from "./FormRegistroUsuario/FormRegistroUsuario";
 import FormCv from "./FormCv/FormCv";
 import FormVacante from "./FormVacante/FormVacante";
 import FormEmpresa from "./FormEmpresa/FormEmpresa";
+import PerfilCompany from "./PerfilCompany/PerfilCompany";
 import Profiles from "./Profiles/Profiles";
 import MiPerfil from "./MiPerfil/MiPerfil";
 import LandingApplicant from "./LandingApplicant/LandingApplicant";
@@ -19,6 +20,7 @@ import Success from "./Success/Success";
 import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperiencia";
 import Vacantes from "./Vacantes/Vacantes"
 import FormRegistroEstudio from "./FormRegistroEstudio/FormregistroEstudio";
+import MyApplications from "./MyApplications/MyApplications";
 
 export {
     //AboutUs,
@@ -31,7 +33,8 @@ export {
     FormRegistroUsuario, 
     FormCv, 
     FormVacante, 
-    FormEmpresa, 
+    FormEmpresa,
+    PerfilCompany,
     Profiles,
     MiPerfil,
     LandingApplicant,
@@ -42,4 +45,5 @@ export {
     FormRegistroExperincia,
     Vacantes,
     FormRegistroEstudio,
+    MyApplications
 }

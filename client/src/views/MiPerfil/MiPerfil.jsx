@@ -1,36 +1,30 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "../../components/Loading/Loading"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import style from "./MiPerfil.module.css"
-import { useNavigate } from "react-router-dom";
-import NavBarLog from "../../components/NavBar/NavBarLog"
+import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
-import { PDFViewer, PDFDownloadLink, Document, Page, Text } from "@react-pdf/renderer"
+import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
 import DocuPDF from "./DocuPDF"
-import {getCvById } from "../../Redux/Actions/actionsFunction/actionsCv";
+import { getCvById } from "../../Redux/Actions/actionsFunction/actionsCv";
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
-// import email from "../../assets/img/email.svg"
+import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
+import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
 
-const MiPerfil = ({ setCurrentUserStore }) => {
 
+const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
   const [showPDF, setShowPDF] = useState(false);
-
-
   const handleClick = () => {
-    if(!showPDF) setShowPDF(true);
-    if(showPDF) setShowPDF(false)
+    setShowPDF(!showPDF);
   };
-  const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const userDetail = JSON.parse(localStorage.getItem("currentUser"))
-  
-  const CvDetail = useSelector(state => state.CvDetail);
+  const userDetail = JSON.parse(localStorage.getItem("currentUser2"))
+  const validacion = JSON.parse(localStorage.getItem("state"));
 
-  const { user, isAuthenticated, isLoading, logout } = useAuth0();
+  const CvDetail = useSelector(state => state.CvDetail);
 
   const [perfil, setPerfil] = useState({
     photo: '',
@@ -50,11 +44,13 @@ const MiPerfil = ({ setCurrentUserStore }) => {
 
 
   useEffect(() => {
-   dispatch(getCvById(userDetail.Cv.id))
-  }, []);
+    dispatch(getCvById(userDetail.Cv.id))
+    dispatch(getUserDetail(userDetail.id))
+  }, [dispatch, userDetail.Cv.id, userDetail.id]);
 
 
-console.log(CvDetail)
+  // console.log(aplicantDetail)
+  console.log(CvDetail)
 
   useEffect(() => {
     if (userDetail) {
@@ -73,29 +69,43 @@ console.log(CvDetail)
         skills: userDetail.Cv?.skill,
       }));
     }
-    else{
+    else {
       return <div><Loading /></div>
     }
   }, []);
 
 
+  const contentRef = useRef(null);
 
-  if (isAuthenticated) {
-    if ( !userDetail) {
+  const generatePDF = () => {
+
+    if(userDetail && CvDetail){
+
+      const element = document.getElementById('pdf-content');
+      
+      //html2pdf().from(element).save('documento.pdf');
+    }else {
+      return (<Loading></Loading>)
+    }
+  };
+
+
+
+  if (validacion) {
+
+    if (!userDetail || !CvDetail) {
       return <div><Loading /></div>
     } else {
       return (
         // isAuthenticated && (
         <>
-          <NavBarLog setCurrentUserStore={setCurrentUserStore} ></NavBarLog>
-          <div className={style.container}>
-
-
+          <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
+          <div  className={style.container}>
 
 
             <h1>Mi Perfil</h1>
 
-            <div className={style.container2}>
+            <div id="pdf-content" className={style.container2}>
 
               <div className={style.container1}>
 
@@ -109,82 +119,93 @@ console.log(CvDetail)
                 <div>
                   <h1>{perfil.name} {perfil.apellido}</h1>
 
-                  <div className={style.container4}>
+                  <div className={style.container6}>
 
-                    <div className={style.container3}>
-                      <BsFillEnvelopeAtFill></BsFillEnvelopeAtFill>
-                      {/* <img src={email} alt="correo" /> */}
-                      <p>{perfil.email}</p>
+                    <div className={style.container4}>
+
+                      <div className={style.container3}>
+                        <BsFillEnvelopeAtFill></BsFillEnvelopeAtFill>
+                        <p style={{ 'marginBottom': '3px' }}>{perfil.email}</p>
+                      </div>
+
+                      <div className={style.container3}>
+                        <BsLinkedin></BsLinkedin>
+                        <p style={{ whiteSpace: 'nowrap', 'marginBottom': '3px' }} >{perfil.linkedin}</p>
+                      </div>
+
                     </div>
 
-                    <div className={style.container3}>
-                      <BsFillTelephoneFill></BsFillTelephoneFill>
-                      <p>{perfil.celular}</p>
+
+                    <div className={style.container4}>
+
+
+
+
+                      <div className={style.container3}>
+                        <BsFillTelephoneFill></BsFillTelephoneFill>
+                        <p style={{ 'marginBottom': '3px' }}>{perfil.celular}</p>
+                      </div>
+
+
+                      <div className={style.container3}>
+                        <BsGlobeAmericas></BsGlobeAmericas>
+                        <p style={{ whiteSpace: 'nowrap', 'marginBottom': '3px' }}>{perfil.pais}</p>
+                      </div>
+
                     </div>
 
                   </div>
 
 
-                  <div className={style.container4}>
-
-                    <div className={style.container3}>
-                      <BsLinkedin></BsLinkedin>
-                      <p>{perfil.linkedin}</p>
-                    </div>
-
-                    <div className={style.container3}>
-                      <BsGlobeAmericas></BsGlobeAmericas>
-                      <p>{perfil.pais}</p>
-                    </div>
-
-                  </div>
-
 
                 </div>
 
               </div>
 
               <div className={style.container5}>
-              <h4 style={{'text-align': 'left'}}>{perfil.profesion}</h4>
-                <p style={{'text-align': 'justify'}}>{perfil.descripcion}</p>
+                <h4 style={{ 'text-align': 'left' }}>{perfil.profesion}</h4>
+                <p style={{ 'text-align': 'justify' }}>{perfil.descripcion}</p>
               </div>
 
               <div className={style.container5}>
-                <h4 style={{'text-align': 'left'}}>Mis experiencias profesionales</h4>
-               <div className={style.containerList}>
+                <h4 style={{ 'text-align': 'left' }}>Mis experiencias profesionales</h4>
+                <div className={style.containerList}>
 
-               {CvDetail.Experiences?.map(exp=>{
-                 return(
-                   <ListItem charge={exp.charge}
-                   company={exp.company}
-                   startDate={exp.start_date}
-                   endDate={exp.still_working?'Actualmente':exp.end_date}>
-                </ListItem>               
-                )})
-}
+                  {CvDetail.Experiences?.map(exp => {
+                    return (
+                      <ListItem charge={exp.charge}
+                        company={exp.company}
+                        startDate={exp.start_date}
+                        endDate={exp.still_working ? 'Actualmente' : exp.end_date}>
+                      </ListItem>
+                    )
+                  })
+                 }
                 </div>
               </div>
 
               <div className={style.container5}>
-              <h4 style={{'text-align': 'left'}}>Mis estudios</h4>
+                <h4 style={{ 'text-align': 'left' }}>Mis estudios</h4>
 
-              <div className={style.containerList}>
+                <div className={style.containerListStudy}>
 
-               {CvDetail.Experiences?.map(exp=>{
-                 return(
-                   <ListItem charge={exp.charge}
-                   company={exp.company}
-                   startDate={exp.start_date}
-                   endDate={exp.still_working?'Actualmente':exp.end_date}>
-                </ListItem>               
-                )})
-}
+                  {CvDetail.Formations?.map(study => {
+                    return (
+                      <ListItemStudy study_level={study.study_level}
+                        title={study.title}
+                        institute={study.institute}
+                        state={study.state}>
+                      </ListItemStudy>
+                    )
+                  })
+                  } 
+
                 </div>
-                
+
               </div>
 
               <div className={style.container5}>
-              <h4 style={{'text-align': 'left'}}>Skills</h4>
+                <h4 style={{ 'text-align': 'left' }}>Skills</h4>
                 <p>{perfil.skills}</p>
               </div>
 
@@ -192,24 +213,25 @@ console.log(CvDetail)
 
                 <button
                   style={{ backgroundColor: 'gray' }}
-                  onClick={handleClick}>{showPDF? 'Ocultar PDF': 'Ver CV en PDF'}</button>
+                  onClick={handleClick}>{showPDF ? 'Ocultar PDF' : 'Ver CV en PDF'}</button>
 
                 {showPDF && (
                   <PDFViewer width="1000" height="600">
-                    <DocuPDF perfil={perfil}>
+                    <DocuPDF perfil={perfil}
+                    CvDetail={CvDetail}>
 
                     </DocuPDF>
                   </PDFViewer>
                 )}
 
 
-                <PDFDownloadLink document={<DocuPDF perfil={perfil}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
+                <PDFDownloadLink document={<DocuPDF perfil={perfil} CvDetail={CvDetail}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
                   <button style={{ 'backgroundColor': 'gray' }}>Descargar CV en PDF</button>
                 </PDFDownloadLink>
+
+
+
               </div>
-
-
-
             </div>
           </div>
         </>

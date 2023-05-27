@@ -1,5 +1,5 @@
 import styles from './Profiles-Company.module.css';
-import NavBar from '../../components/NavBar/NavBarUnlog';
+import NavBar from '../../components/NavBarUnlog/NavBarUnlog';
 import Page from '../../components/Paginated/Page';
 import CardProfileCompany from '../../components/CardsProfilesCompany/CardsProfilesCompany';
 import { useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
-const ProfilesCompany = ({setCurrentUserStore}) => {
+const ProfilesCompany = ({setValidateState, setCurrentUserStore2}) => {
     const company = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
     const [companiesPerPage, setcompaniesPerPage] = useState(4);
@@ -37,10 +37,10 @@ const ProfilesCompany = ({setCurrentUserStore}) => {
 
     return (
         <div className={styles.container}>
-            <NavBar setCurrentUserStore={setCurrentUserStore}/>
+            <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>
             <Page
-                companiesPerPage={companiesPerPage}
-                companies={company}
+                usersPerPage={companiesPerPage}
+                users={company}
                 paginated={paginated}
             />
             {  isLoading ? (

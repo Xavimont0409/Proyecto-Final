@@ -5,9 +5,8 @@ import validation from "./validation";
 import Loading from "../Loading/Loading";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
-import { Cloudinary } from "cloudinary-core";
+import Swal from "sweetalert2";
 
-const cloudinary = new Cloudinary({ cloud_name: "portaljobx" });
 
 
 function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
@@ -21,10 +20,12 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
     event.preventDefault();
     console.log(cv)
     if (!validation(cv)) {
-      alert('Completa todos los campos')
+      Swal.fire({
+			title: "Faltan Datos",
+			text: "Completa todos los campos",
+			icon: "warning",
+		});
     } else {
-      if (cv.photo === '') alert('Debes elegir una foto')
-      console.log(cv)
       setValidated(true)
       nextStep()
     }
@@ -61,13 +62,20 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
       );
 
       const uploadData = await uploadResponse.json();
-      console.log(uploadData);
       setCv({...cv, photo:uploadData.secure_url})
-      alert('Imagen cargada correctamente')
-      setImage(null)
+      Swal.fire({
+        title: "Éxito",
+        text: "Imagen cargada correctamente",
+        icon: "success",
+      });
+      // setImage(null)
 
     } catch (error) {
-      console.error(error);
+      Swal.fire({
+        title: "Error",
+        text: `${error}`,
+        icon: "error",
+      });
     }
   };
 
@@ -231,12 +239,16 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
         </FormGroup>
       </Form>
 
+
+<div style={{margin: '5px', padding:'1'}}>
+
       <FormGroup as={Col} md="6" className="mb-3 ">
         <ButtonGeneral
           textButton="Siguiente"
           handlerClick={(event)=>handleNext(event)}
-        />
+          />
       </FormGroup>
+          </div>
 
     </div>
   )};

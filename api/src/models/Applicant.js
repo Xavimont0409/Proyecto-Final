@@ -34,6 +34,9 @@ module.exports = (sequelize) => {
         profile:{
             type: DataTypes.STRING,
             defaultValue: "Applicant"
+        },
+        password:{
+            type: DataTypes.STRING,
         }
     }, {
         timestamps: false
