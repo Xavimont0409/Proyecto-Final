@@ -6,10 +6,8 @@ import { Link } from "react-router-dom";
 import { GiWorld } from "react-icons/gi";
 
 
-
 const CardProfileCompany = ({ id, logo, business_name, description, work_sector, name, country, cuit, email, web }) => {
    
-
 
 
   return (
@@ -42,3 +40,4 @@ const CardProfileCompany = ({ id, logo, business_name, description, work_sector,
 };
 
 export default CardProfileCompany;
+

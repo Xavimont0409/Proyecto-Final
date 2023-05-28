@@ -34,18 +34,10 @@ module.exports = (sequelize) => {
 
         start_date: {
             type: DataTypes.STRING,
-<<<<<<< HEAD
-            allowNull: false,
-        },
-        end_date: {
-            type: DataTypes.STRING,
-
-=======
             
         },
         end_date: {
             type: DataTypes.STRING,
->>>>>>> 2ae2a0e729920d7bfe41619f846301e449106501
         },
     },
     { 
