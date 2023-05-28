@@ -73,12 +73,12 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
             </li>
             {userLocalStorage?.profile === "Admin" ? (
               <li>
-                {/* <a
+                {<a
                   href="https://jobportalx-adminpanel.vercel.app"
                   target="_blank"
                 >
                   Dashboard
-                </a> */}
+                </a>}
               </li>
             ) : null}
           </ul>

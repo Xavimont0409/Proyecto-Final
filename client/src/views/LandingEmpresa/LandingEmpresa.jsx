@@ -25,21 +25,17 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 				<div className={style.containerPrincipal}>
 					<div className={style.saludo}>
 						<h1 className={style.titulo}>{greeting}</h1>
-					</div>
-					<div>
-						<div className={style.bienvenida}>
-							<h3 className={style.info}>
-								Te deseamos una bienvenida a JobPortalX
-							</h3>
-						</div>
-						<div className={style.pregunta}>
-							<h4 className={style.info}>¿Qué quieres hacer?</h4>
-						</div>
+						<div>
+						    <h1 className={style.info}>Te damos la bienvenida a JobPortalX</h1>
+						    <div className={style.pregunta}>
+						    	<h4>¿Qué quieres hacer?</h4>
+						    </div>
+					    </div>
 					</div>
 					<div className={style.containerButtons}>
 						<Link to='/registro-vacante'>
 							<button className={style.Button}>
-								<FaWpforms /> Crear vacante
+								Crear vacante
 							</button>
 						</Link>
 						<Link to='/vacantes'>
@@ -63,13 +59,13 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 						</Link>
 					</div>
 				</div>
-				<div className={style.contenedor}>
+				<div className={style.titlePlan}>
+					<h2 className={style.title}>¡Adquiere o actualiza tu plan!</h2>
+				</div>
+				<div className={style.contenedor}>						
 					<div className={style.prueba}>
-						<div className={style.titlePlan}>
-							<h2 className={style.title}>Actualiza tú plan!</h2>
-						</div>
 						<div className={style.rightSection}>
-							<h1>Plan Básico</h1>
+							<h2>Plan Básico</h2>
 						</div>
 							<div className={style.planes}>
 								<CardPlan
@@ -82,9 +78,7 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 					</div>
 
 					<div className={style.prueba}>
-						<div className={style.titlePlan}>
-							<h2 className={style.title}>Actualiza tú plan!</h2>
-						</div>
+
 						<div className={style.rightSection}>
 							<h2>Plan Destacado</h2>
 						</div>
@@ -99,9 +93,6 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 					</div>
 
 					<div className={style.prueba}>
-						<div className={style.titlePlan}>
-							<h2 className={style.title}>Actualiza tú plan!</h2>
-						</div>
 						<div className={style.rightSection}>
 							<h2>Plan Premium</h2>
 						</div>

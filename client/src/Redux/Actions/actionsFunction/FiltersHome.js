@@ -32,6 +32,7 @@ export const getEmail = (email) => {
     try {
       const json = await axios(`/email?email=${email}`);
       const data = json.data;
+      console.log(data);
       return dispatch({
         type: GET_EMAIL,
         payload: data,
