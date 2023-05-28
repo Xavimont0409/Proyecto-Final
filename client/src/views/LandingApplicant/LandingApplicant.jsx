@@ -32,7 +32,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 					<div>
 						<div className={styles.bienvenida}>
 							<h3 className={styles.info}>
-								Te deseamos una bienvenida a JobPortalX
+								Te damos la bienvenida a JobPortalX
 							</h3>
 						</div>
 						<div className={styles.pregunta}>
