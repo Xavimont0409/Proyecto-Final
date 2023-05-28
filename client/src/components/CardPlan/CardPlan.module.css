@@ -5,20 +5,23 @@
     align-items: center;
     padding: 2vw;
     gap: 2vh;
-    border-radius: 3px;
+    border-radius: 25px;
     box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.427);
     max-width: 15vw;
     min-height: 42vh;
     align-items: center;
     background-color: rgba(180, 184, 188, 0.427);
-    transition: all 0.3s;
+    transition: transform 0.3s ease;
+    transition: 0.6s;
+    cursor: pointer;
 }
 
 .MainContainer:hover {
-    min-width: 19vw;
-    min-height: 47vh;
-    background-color: #1A4E8A;
-    border-radius: 2%;
+    transform: scale(1.1) ;
+    transition: 0.3s;
+    background-color: #4a88cea9;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 

@@ -92,7 +92,6 @@ function App() {
           <Route path="/registro-estudio" element={<FormRegistroEstudio setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/registro-usuario" element={<FormRegistroUsuario />} />
           <Route path="/postulaciones" element={<MyApplications setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
-          
         </Route>
       </Routes>
       {isLoading ? <></> : <Footer />}
