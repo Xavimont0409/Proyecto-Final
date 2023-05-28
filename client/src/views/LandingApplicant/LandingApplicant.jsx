@@ -25,8 +25,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 				<div className={styles.containerComponents}>
 					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
-
-
 				<div className={styles.containerPrincipal}>
 					<div className={styles.saludo}>
 						<h1 className={styles.titulo}>{greeting}</h1>
