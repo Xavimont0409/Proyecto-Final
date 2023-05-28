@@ -28,15 +28,12 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 				<div className={styles.containerPrincipal}>
 					<div className={styles.saludo}>
 						<h1 className={styles.titulo}>{greeting}</h1>
-					</div>
-					<div>
-						<div className={styles.bienvenida}>
-							<h3 className={styles.info}>
-								Te damos la bienvenida a JobPortalX
-							</h3>
+						<div>
+
 						</div>
+						<h3 className={styles.info}>Te damos la bienvenida a JobPortalX</h3>
 						<div className={styles.pregunta}>
-							<h4 className={styles.info}>¿Qué quieres hacer?</h4>
+							<h4>¿Qué quieres hacer?</h4>
 						</div>
 					</div>
 					<div className={styles.containerButtons}>
