@@ -56,7 +56,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Crear Cv
+									Crear CV
 								</span>
 							</button>
 						</Link>
@@ -66,7 +66,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Registra Experiencia
+									Registrar experiencia
 								</span>
 							</button>
 						</Link>
@@ -96,7 +96,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Perfiles Empresa
+									Perfiles de empresas
 								</span>
 							</button>
 						</Link>
@@ -106,7 +106,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Registra Educacion
+									Registrar educacion
 								</span>
 							</button>
 						</Link>
