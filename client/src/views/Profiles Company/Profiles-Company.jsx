@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
-
 const ProfilesCompany = ({ setCurrentUserStore }) => {
     const companies = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
@@ -45,13 +44,12 @@ const ProfilesCompany = ({ setCurrentUserStore }) => {
     }, [currentCompanies, companies, companiesPerPage]);
 
 
-
     return (
         <div className={styles.container}>
             <NavBar setCurrentUserStore={setCurrentUserStore}/>
             <Page
                 usersPerPage={companiesPerPage}
-                users={company}
+                users={companies}
                 paginated={paginated}
             />
             {  isLoading ? (
@@ -88,4 +86,3 @@ const ProfilesCompany = ({ setCurrentUserStore }) => {
 };
 
 export default ProfilesCompany;
-
