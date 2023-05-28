@@ -24,7 +24,7 @@ const CardEmpleoDetail = ({id, CompanyId, title, description, createdAt, Workday
 
   useEffect(() => {
     dispatch(getUserDetail(currentUserId));
-  }, [dispatch, getUserDetail]);
+  }, [currentUserId, dispatch]);
 
   useEffect(() => {
     if(vacantPostuled) setValidate(true);
