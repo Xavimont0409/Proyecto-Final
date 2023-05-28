@@ -1,5 +1,5 @@
-import styles from './Profiles-Company.module.css';
-import NavBar from '../../components/NavBar/NavBarUnlog';
+import styles from './ProfilesCompany.module.css';
+import NavBar from '../../components/NavBar/NavBar';
 import Page from '../../components/Paginated/Page';
 import CardProfileCompany from '../../components/CardsProfilesCompany/CardsProfilesCompany';
 import { useDispatch, useSelector } from 'react-redux';
