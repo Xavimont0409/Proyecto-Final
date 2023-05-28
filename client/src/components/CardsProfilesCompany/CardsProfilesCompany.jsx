@@ -1,8 +1,6 @@
 import style from './CardsProfilesCompany.module.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { BsLinkedin } from "react-icons/bs";
-import { Link } from "react-router-dom";
 
 const CardProfileCompany = ({ /*image,*/ business_name, country, email }) => {
     return (

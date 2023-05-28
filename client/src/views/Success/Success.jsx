@@ -5,11 +5,13 @@ import { FcApproval } from "react-icons/fc";
 const Success = ({ currentUserStore }) => {
 	const navigate = useNavigate();
 	const currentDate = new Date().toLocaleDateString();
+	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+
 
 	const handleReturnHome = () => {
-		if (currentUserStore === "Applicant") {
+		if (userType2.profile === "Applicant") {
 			navigate("/applicant");
-		} else if (currentUserStore === "Company") {
+		} else if (userType2.profile === "Company") {
 			navigate("/empresa");
 		} else {
 			navigate("/");

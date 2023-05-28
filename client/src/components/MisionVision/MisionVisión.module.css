@@ -25,9 +25,9 @@
     position: absolute;
     top: -3vh;
     right: -2vw;
-    background-color: var(--avocado);
+    background-color: #E1ECFC;
     border-radius: 20px;
-    color: aliceblue;
+    color: #1C1C1C;
     transition: all 0.3s;
 }
 
@@ -37,13 +37,13 @@
 }
 
 .title {
-    margin: 3vw auto;
+    text-align: center;
 }
 
 .text {
-    width: 90%;
-    margin: 2vh auto;
-    text-align: justify;
+    min-width: fit-content;
+    padding: 1vw;
+    text-align: left;
 }
 
 @media only screen and (max-width: 767px) {

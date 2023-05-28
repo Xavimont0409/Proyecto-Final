@@ -2,24 +2,27 @@ import Form from 'react-bootstrap/Form';
 import style from "./FormVacante.module.css"
 import { useState } from "react";
 import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
-import NavBar from "../../components/NavBar/NavBarLog"
+import NavBar from "../../components/NavBarLog/NavBarLog"
 import ButtonGeneral from '../../components/Button/ButtonGeneral';
 import { useDispatch, useSelector } from "react-redux";
 import { postVacant } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 import validateFormInputs from './validation';
 import { useEffect } from 'react';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
-import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-export default function FormVacante({setCurrentUserStore}) {
+export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
 
+    const navigate = useNavigate();
     const today = new Date();
     const dateOnly = today.toISOString().slice(0, 10);
 
     const dispatch = useDispatch();
+    const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+    const validate = JSON.parse(localStorage.getItem("state"))
     const currentUser = useSelector(state=>state.dataEmail[0])
     console.log(currentUser)
-    const { user, isAuthenticated } = useAuth0();
 
     const [validated, setValidated] = useState(false);
 
@@ -29,12 +32,12 @@ export default function FormVacante({setCurrentUserStore}) {
 
     useEffect(() => {
         const handleUserAuthentication = () => {
-            if (isAuthenticated && user) {
-                dispatch(getEmail(user.email));
+            if (validate && userType2) {
+                dispatch(getEmail(userType2.email));
             }
         };
         handleUserAuthentication();
-    }, [dispatch, isAuthenticated, user]);
+    }, [dispatch, validate, userType2]);
 
 
 
@@ -58,8 +61,11 @@ export default function FormVacante({setCurrentUserStore}) {
     const handleSubmit = (event) => {
         event.preventDefault()
         if (!validateFormInputs(newVacant)) {
-            
-            alert('Completa todos los campos')
+            Swal.fire({
+                title:'Faltan Datos',
+                text:'Completa todos los campos',
+                icon:'warning'
+              })
         } else {
             setValidated(true)
             dispatch(postVacant({...newVacant,  CompanyId: currentUser.id} ))
@@ -72,7 +78,8 @@ export default function FormVacante({setCurrentUserStore}) {
                 SeniorityId: "",
                 creation_date: dateOnly
             })
-            setValidated(false)
+            setValidated(false);
+            navigate('/empresa')
         }
     };
 
@@ -81,7 +88,7 @@ export default function FormVacante({setCurrentUserStore}) {
 
         <div className={style.mainContainer}>
 
-            <NavBar setCurrentUserStore={setCurrentUserStore} ></NavBar>
+            <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
 
 
             <h2 style={{ 'margin': '20px' }}>Crear nueva vacante</h2>
@@ -157,11 +164,11 @@ export default function FormVacante({setCurrentUserStore}) {
                             onChange={handleInputChange}
                             required>
                             <option disabled ></option>
-                            <option value={1}>Sin Experiencia</option>
-                            <option value={2}>Trainee</option>
+                            <option value={0}>Sin Experiencia</option>
+                            <option value={4}>Trainee</option>
                             <option value={3}>Junior</option>
-                            <option value={4}>Semi-senior</option>
-                            <option value={5}>Senior</option>
+                            <option value={2}>Semi-senior</option>
+                            <option value={1}>Senior</option>
                         </FormSelect>
                         <Form.Control.Feedback type="invalid">
                             Selecciona una opcion

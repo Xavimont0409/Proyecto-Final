@@ -12,7 +12,7 @@ import PerfilCompany from "./PerfilCompany/PerfilCompany";
 import Profiles from "./Profiles/Profiles";
 import MiPerfil from "./MiPerfil/MiPerfil";
 import LandingApplicant from "./LandingApplicant/LandingApplicant";
-import ProfilesCompany from "./Profiles Company/Profiles-Company";
+import ProfilesCompany from "./ProfilesCompany/ProfilesCompany";
 import FormRegisterEmpresa from "./FormRegistroEmpresa/FormRegistroempesa";
 import DetailProduct from "./DetailProduct/DetailProduct";
 import Operation from "./Operation/Operation";
@@ -20,6 +20,10 @@ import Success from "./Success/Success";
 import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperiencia";
 import Vacantes from "./Vacantes/Vacantes"
 import FormRegistroEstudio from "./FormRegistroEstudio/FormregistroEstudio";
+import MyApplications from "./MyApplications/MyApplications";
+import NewRegistroCompany from './NewRegistro/newRegistroCompany';
+import NewRegistroApplicant from './NewRegistro/newResgistroApplicant';
+import Ratings from './Ratings/Ratings';
 
 export {
     //AboutUs,
@@ -44,4 +48,8 @@ export {
     FormRegistroExperincia,
     Vacantes,
     FormRegistroEstudio,
+    MyApplications,
+    Ratings,
+    NewRegistroApplicant,
+    NewRegistroCompany
 }

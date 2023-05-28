@@ -1,44 +1,41 @@
 import style from "./LandignEmpresa.module.css";
 import NavBar from "../../components/NavBar/NavBar";
 import CardPlan from "../../components/CardPlan/CardPlan";
-import CarouselPerfiles from "../../components/CarouselPerfiles/CarouselPerfiles";
 import { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import { FaWpforms } from "react-icons/fa";
-const LandingEmpresa = ({ setCurrentUserStore }) => {
+const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 	const [greeting, setGreeting] = useState("");
-	const { isAuthenticated, user } = useAuth0();
+	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+	const validate = JSON.parse(localStorage.getItem("state"))
+
 	useEffect(() => {
-		if (isAuthenticated && user) {
-			const name = user.name;
+		if (validate && userType2) {
+			const name = userType2.name;
 			setGreeting(`Hola, ${name}!`);
 		}
-	}, [isAuthenticated, user]);
+	}, [validate, userType2]);
 	return (
 		<>
 			<div className={style.container}>
 				<div className={style.containerComponents}>
-					<NavBar setCurrentUserStore={setCurrentUserStore}></NavBar>
+					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
+
 				<div className={style.containerPrincipal}>
 					<div className={style.saludo}>
 						<h1 className={style.titulo}>{greeting}</h1>
-					</div>
-					<div>
-						<div className={style.bienvenida}>
-							<h3 className={style.info}>
-								Te deseamos una bienvenida a JobPortalX
-							</h3>
-						</div>
-						<div className={style.pregunta}>
-							<h4 className={style.info}>¿Qué quieres hacer?</h4>
-						</div>
+						<div>
+						    <h1 className={style.info}>Te damos la bienvenida a JobPortalX</h1>
+						    <div className={style.pregunta}>
+						    	<h4>¿Qué quieres hacer?</h4>
+						    </div>
+					    </div>
 					</div>
 					<div className={style.containerButtons}>
 						<Link to='/registro-vacante'>
 							<button className={style.Button}>
-								<FaWpforms /> Crear vacante
+								Crear vacante
 							</button>
 						</Link>
 						<Link to='/vacantes'>
@@ -49,8 +46,8 @@ const LandingEmpresa = ({ setCurrentUserStore }) => {
 						<Link to='/perfil-company'>
 							<button className={style.Button}>Mi perfil</button>
 						</Link>
-						<Link to='/ranking'>
-							<button className={style.Button}>Ranking</button>
+						<Link to='/ratings'>
+							<button className={style.Button}>Ratings</button>
 						</Link>
 						<Link to='/profiles'>
 							<button className={style.Button}>
@@ -62,65 +59,51 @@ const LandingEmpresa = ({ setCurrentUserStore }) => {
 						</Link>
 					</div>
 				</div>
-			</div>
-
-			<div className={style.contenedor}>
 				<div className={style.titlePlan}>
-					<h2>Actualiza tú plan!</h2>
+					<h2 className={style.title}>¡Adquiere o actualiza tu plan!</h2>
 				</div>
-
-				<div className={style.prueba}>
-					<div className={style.leftSection}>
-						<div className={style.planes}>
-							<CardPlan
-								tittle='Plan Básico'
-								text='Publica vacantes semanales con un límite de tiempo'
-								price='30'
-								id='1'
-							/>
+				<div className={style.contenedor}>						
+					<div className={style.prueba}>
+						<div className={style.rightSection}>
+							<h2>Plan Básico</h2>
 						</div>
+							<div className={style.planes}>
+								<CardPlan
+									tittle='Plan Básico'
+									text='Publica vacantes semanales con un límite de tiempo'
+									price='30'
+									id='1'
+								/>
+							</div>
 					</div>
 
-					<div className={style.rightSection}>
-						<h1>Plan Básico</h1>
-					</div>
-				</div>
+					<div className={style.prueba}>
 
-				<div className={style.prueba}>
-					<div className={style.leftSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
-
-					<div className={style.middleSection}>
-						<div className={style.planes}>
-							<CardPlan
-								tittle='Plan Destacado'
-								text='Publica más vacante por semana con duración mayor'
-								price='50'
-								id='2'
-							/>
+						<div className={style.rightSection}>
+							<h2>Plan Destacado</h2>
 						</div>
+							<div className={style.planes}>
+								<CardPlan
+									tittle='Plan Destacado'
+									text='Publica más vacante por semana con duración mayor'
+									price='50'
+									id='2'
+								/>
+							</div>
 					</div>
 
-					<div className={style.rightSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
-				</div>
-
-				<div className={style.prueba}>
-					<div className={style.leftSection}>
-						<h1>Actualiza tú plan!</h1>
-					</div>
-
-					<div className={style.rightSection}>
-						<div className={style.planes}>
-							<CardPlan
-								tittle='Plan Premium'
-								text='Publica vacantes ilimitadas y sin fecha límite'
-								price='90'
-								id='3'
-							/>
+					<div className={style.prueba}>
+						<div className={style.rightSection}>
+							<h2>Plan Premium</h2>
 						</div>
+							<div className={style.planes}>
+								<CardPlan
+									tittle='Plan Premium'
+									text='Publica vacantes ilimitadas y sin fecha límite'
+									price='90'
+									id='3'
+								/>
+							</div>
 					</div>
 				</div>
 			</div>

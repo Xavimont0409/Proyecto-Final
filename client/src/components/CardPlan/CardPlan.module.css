@@ -1,19 +1,40 @@
 .MainContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    border-radius: 10px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2vw;
+    gap: 2vh;
+    border-radius: 25px;
     box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.427);
-    width: 12vw;
-    height: 32vh;
-    line-height: 1.3em;
+    max-width: 15vw;
+    min-height: 42vh;
     align-items: center;
     background-color: rgba(180, 184, 188, 0.427);
-    transition: all 0.3s;
+    transition: transform 0.3s ease;
+    transition: 0.6s;
+    cursor: pointer;
 }
 
 .MainContainer:hover {
-    width: 14vw;
-    height: 34vh;
-    background-color: var(--caribbean-current);
+    transform: scale(1.1) ;
+    transition: 0.3s;
+    background-color: #4a88cea9;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+
+.title{
+    text-align: center;
+    color: #E1ECFC;
+}
+
+.price{
+    color: #E1ECFC;
+}
+
+.text{
+    text-align: center;
+    color: #E1ECFC;
 }

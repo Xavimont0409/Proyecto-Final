@@ -1,8 +1,8 @@
 const { Applicant } = require('../../db')
 const {transporter} = require('../../config/mailer')
 
-const postApplicant = async( name, lastName, email, cellphone, registed ) =>{
-    const newApplicant = await Applicant.create({name, lastName, email, cellphone, registed });
+const postApplicant = async( name, lastName, email, cellphone, registed, password ) =>{
+    const newApplicant = await Applicant.create({name, lastName, email, cellphone, registed, password });
 
 
   // send mail with defined transport object
