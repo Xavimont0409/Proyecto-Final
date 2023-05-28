@@ -22,27 +22,22 @@ const DetailProduct = ({ setValidateState, setCurrentUserStore2 }) => {
   const navigate = useNavigate();
   const product = useSelector((state) => state.Product);
   const payMethods = useSelector((state) => state.PayMethods);
-  console.log(userType2);
+
   useEffect(() => {
-    const handleUserAuthentication = () => {
-      if (validate && userType2) {
-        dispatch(getEmail(userType2.email));
-      }
-    };
-    handleUserAuthentication();
     dispatch(getAllProduct(id));
     dispatch(getAllPayMethods());
     return () => {
       dispatch(cleanDetail());
     };
-  }, [dispatch, validate, userType2, id]);
+  }, [dispatch, id]);
 
   const [form, setForm] = useState({
     cost: product?.price,
     detail: product?.name,
     details: product?.details,
-    CompanyId: userType2?.id || null,
+    CompanyId: userType2.profile === "Company" ? userType2.id : null,
     PayMethodId: 0,
+    ApplicantId: userType2.profile === "Applicant" ? userType2.id : null,
     name: userType2?.name,
     email: userType2?.email,
     PayMethod: "",
@@ -54,11 +49,10 @@ const DetailProduct = ({ setValidateState, setCurrentUserStore2 }) => {
       cost: product?.price,
       detail: product?.name,
       details: product?.details,
-      CompanyId: userType2?.id || null,
+      CompanyId: userType2.profile === "Company" ? userType2.id : null,
       PayMethodId: value,
-      name: userType2?.name,
-      email: userType2?.email,
-      PayMethod: payMethods.find(
+      ApplicantId: userType2.profile === "Applicant" ? userType2.id : null,
+      PayMethod: payMethods?.find(
         (payMethod) => payMethod.id === parseInt(value)
       ).name,
     });
@@ -74,6 +68,7 @@ const DetailProduct = ({ setValidateState, setCurrentUserStore2 }) => {
         text: "Operación creada correctamente",
         icon: "success",
       });
+      console.log(form);
       return navigate("/operation");
     } else {
       return Swal.fire({
