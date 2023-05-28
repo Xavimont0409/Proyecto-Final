@@ -72,15 +72,18 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
     else {
       return <div><Loading /></div>
     }
-  }, []);
+  }, [userDetail]);
 
 
+  // eslint-disable-next-line no-undef, no-unused-vars
   const contentRef = useRef(null);
 
+  // eslint-disable-next-line no-unused-vars
   const generatePDF = () => {
 
     if(userDetail && CvDetail){
 
+      // eslint-disable-next-line no-unused-vars
       const element = document.getElementById('pdf-content');
       
       //html2pdf().from(element).save('documento.pdf');

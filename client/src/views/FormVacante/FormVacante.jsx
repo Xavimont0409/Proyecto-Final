@@ -10,7 +10,7 @@ import validateFormInputs from './validation';
 import { useEffect } from 'react';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 import { useNavigate } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 
 export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
 

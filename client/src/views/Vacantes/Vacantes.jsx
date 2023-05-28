@@ -12,7 +12,7 @@ const Vacantes = () => {
 
   useEffect(() => {
     dispatch(getCompanyDetail(userType.id));
-  }, []);
+  }, [dispatch, userType.id]);
   return (
     <div className={style.container}>
       <div className={style.containerNav}>

@@ -2,18 +2,12 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications} from './views';
-import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading } from './components';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany } from './views';
+import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading, LoginApplicant, LoginCompany } from './components';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
-import NewRegistroCompany from './views/NewRegistro/newRegistroCompany';
-import NewRegistroApplicant from './views/NewRegistro/newResgistroApplicant';
-import LoginCompany from './components/InicioDeSesion/LoginCompany'
-import LoginApplicant from './components/InicioDeSesion/LoginApplicant'
-import Ratings from './views/Ratings/Ratings';
-
 
 //axios.defaults.baseURL = 'http://localhost:3001'
 axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
