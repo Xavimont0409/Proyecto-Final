@@ -27,13 +27,13 @@
     
 }
 
-.title h3 {
+.title a {
     text-decoration: none;
     color: #1c1c1c; 
     cursor: pointer;
 }
     
-.title h3:hover {
+.title a:hover {
     text-decoration: none;
     cursor: pointer;
 }
@@ -149,7 +149,9 @@
     font-size: xx-large;
 }
 .navList li{
+    color: #E1ECFC;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .navList li:hover {

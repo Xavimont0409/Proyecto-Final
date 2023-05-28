@@ -96,9 +96,11 @@ const DetailProduct = ({ setValidateState, setCurrentUserStore2 }) => {
             <div className={style.box} key={product.name}>
               <div className={style.containerDetail}>
                 <div className={style.divContenedorInfo}>
-                  <h2 className={style.nameCard}>Name: {product.name} </h2>
-                  <p className={style.infoCard}>Detalle: {product.details} </p>
-                  <p className={style.infoCard}>Price: {product.price} </p>
+                  <div className={style.divFinalInfo}>
+                    <h2 className={style.nameCard}> Plan {product.name} </h2>
+                    <p className={`${style.infoCard} ${style.p}`}> {product.details} </p>
+                    <p className={style.infoCard}>Price: ${product.price} </p>
+                  </div>
                   <label htmlFor="PayMethod"></label>
                   <select
                     name="PayMethod"
@@ -116,19 +118,12 @@ const DetailProduct = ({ setValidateState, setCurrentUserStore2 }) => {
                       <Loading />
                     )}
                   </select>
-
                   <div className={style.containerButton}>
-                    <button
-                      className={styles.button}
-                      onClick={() => handleSubmit()}
-                    >
-                      Comprar
-                    </button>
+                    <button className={styles.button} onClick={() => handleSubmit()}> Comprar</button>
                   </div>
                 </div>
               </div>
             </div>
-            <Footer />
           </div>
         </div>
       ) : (

@@ -13,9 +13,9 @@ const CardPlan = ({id, tittle, text, price }) => {
     // }
     return (
         <div className={style.MainContainer}>
-            <h3>{tittle}</h3>
-            <h2>$ {price}</h2>
-            <p>{text}</p>
+            <h3 className={style.title}>{tittle}</h3>
+            <h2 className={style.price}>$ {price}</h2>
+            <p className={style.text}>{text}</p>
 
             {
                 id === '1' 
