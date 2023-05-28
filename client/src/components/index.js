@@ -6,10 +6,13 @@ import Footer from "./Footer/Footer";
 //import FooterCompany from "./FooterCompany/FooterCompany";
 //import FooterDefault from "./FooterDefault/FooterDefault";
 import Loading from "./Loading/Loading";
+import LoginApplicant from './InicioDeSesion/LoginApplicant'
+import LoginCompany from './InicioDeSesion/LoginCompany'
 import NavBar from "./NavBar/NavBar";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import ServerMaintenance from "./ServerMaintenance/ServerMaintenance";
 import TermsAndConditions from "../views/TermsAndConditions/TermsAndConditions";
+
 
 
 export {
@@ -21,6 +24,8 @@ Footer,
 //FooterCompany,
 //FooterDefault,
 Loading,
+LoginApplicant,
+LoginCompany,
 NavBar,
 ProtectedRoute,
 ServerMaintenance,
