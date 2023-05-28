@@ -15,8 +15,8 @@ import LoginApplicant from './components/InicioDeSesion/LoginApplicant'
 import Ratings from './views/Ratings/Ratings';
 
 
-axios.defaults.baseURL = 'http://localhost:3001'
-//axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+//axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 
 function App() {
