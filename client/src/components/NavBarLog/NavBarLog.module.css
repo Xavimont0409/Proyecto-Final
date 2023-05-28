@@ -27,13 +27,15 @@
     
 }
 
-.title a {
+.title h3 {
     text-decoration: none;
     color: #1c1c1c; 
+    cursor: pointer;
 }
     
-.title a:hover {
+.title h3:hover {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .title:hover {
@@ -111,7 +113,7 @@
     visibility: hidden;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     gap: 1rem;
     position: absolute;
     top: 0;
@@ -138,7 +140,7 @@
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .navList li a {

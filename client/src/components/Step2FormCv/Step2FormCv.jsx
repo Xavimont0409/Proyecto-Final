@@ -7,9 +7,11 @@ import validation from "./validation";
 import { useDispatch } from "react-redux";
 import { postCv } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
   
+  const navigate = useNavigate()
   const dispatch = useDispatch();
  
   const enCurso = cv.state === 'cursando' ? true : false
@@ -19,7 +21,6 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
   const handleNext = (event) => {
     event.preventDefault();
     if (!validation(cv)) {
-      console.log(cv)
       Swal.fire({
 			title: "Faltan Datos",
 			text: "Completa todos los campos",
@@ -27,7 +28,6 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
 		});
     } else {
       setValidated(true)
-      console.log(cv)
       dispatch(postCv(cv))
       setCv({
         dni: '',
@@ -45,6 +45,7 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
         finish_date: '',
         ApplicantId: ''
       })
+      navigate('/applicant')
     }
   };
 

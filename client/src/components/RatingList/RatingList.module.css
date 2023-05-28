@@ -1,0 +1,60 @@
+.table{
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+.titles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 100vw;
+    margin-top: 10vh;
+    background-color: #E1ECFC;
+}
+
+.titleStars{
+    min-width: 8vw;
+    margin-top: 2vh;
+    border: 5px solid #1A4E8A;
+    background-color: #1C1C1C;
+    color: white;
+}
+
+.titleComments{
+    min-width: 87vw;
+    margin-top: 2vh;
+    border: 5px solid #1A4E8A;
+    background-color: #1C1C1C;
+    color: white;
+}
+
+.reviewsColumn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 100vw;
+    min-height: fit-content;
+    background-color: #E1ECFC;
+}
+
+.starRow{
+    min-width: 8vw;
+    margin-bottom: 2vh;
+    border: 5px solid #1A4E8A;
+    background-color: #1C1C1C;
+    color: white;
+}
+
+.textRow{
+    min-width: 87vw;
+    margin-bottom: 2vh;
+    border: 3px solid #1A4E8A;
+    background-color: #1C1C1C;
+    color: white;
+}
+
+.pText{
+
+}

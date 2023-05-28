@@ -6,7 +6,7 @@ import Page from "../Paginated/Page";
 
 const CardsContainerEmpleo = ({ vacants }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [vacantsPerPage, setVacantsPerPagePerPage] = useState(5);
+    const [vacantsPerPage, /* setVacantsPerPagePerPage */] = useState(5);
     const indexOfLastCharacter = currentPage * vacantsPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - vacantsPerPage;
 
@@ -22,7 +22,7 @@ const CardsContainerEmpleo = ({ vacants }) => {
             const newPage = Math.ceil(vacants.length / vacantsPerPage);
             setCurrentPage(newPage);
     }
-    }, [currentVacants, vacants]);
+    }, [currentVacants, vacants, vacantsPerPage]);
 
     return (
         <div className={style.mainContainer}>
@@ -32,14 +32,19 @@ const CardsContainerEmpleo = ({ vacants }) => {
                 paginated={paginated}
             />
             <div className={style.cardsContainer}>
-                 {currentVacants?.map(vacancy => {
-                    return <Card
-                        key={vacancy.id}
-                        id={vacancy.id}
-                        // logo={vacancy.logo}
-                        title={vacancy.title}
-                        description={vacancy.description} />
-                })}
+                {
+                    currentVacants?.map(vacancy => {
+                        return (
+                            <Card
+                                key={vacancy.id}
+                                id={vacancy.id}
+                                // logo={vacancy.logo}
+                                title={vacancy.title}
+                                description={vacancy.description}
+                            />
+                        )
+                    })
+                }
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import styles from './Profiles-Company.module.css';
+import styles from './ProfilesCompany.module.css';
 import NavBar from '../../components/NavBarUnlog/NavBarUnlog';
 import Page from '../../components/Paginated/Page';
 import CardProfileCompany from '../../components/CardsProfilesCompany/CardsProfilesCompany';
@@ -7,9 +7,10 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
-const ProfilesCompany = ({setCurrentUserStore}) => {
+const ProfilesCompany = ({setValidateState, setCurrentUserStore2}) => {
     const company = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
+    // eslint-disable-next-line no-unused-vars
     const [companiesPerPage, setcompaniesPerPage] = useState(4);
     const indexOfLastCharacter = currentPage * companiesPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - companiesPerPage;
@@ -37,7 +38,7 @@ const ProfilesCompany = ({setCurrentUserStore}) => {
 
     return (
         <div className={styles.container}>
-            <NavBar setCurrentUserStore={setCurrentUserStore}/>
+            <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>
             <Page
                 usersPerPage={companiesPerPage}
                 users={company}

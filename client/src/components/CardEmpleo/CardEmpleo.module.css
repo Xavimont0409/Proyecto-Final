@@ -12,6 +12,7 @@
     background: var(--sub-white);
     padding: 10px;
     transition: 0.2s ease-in-out;
+    background-color: #E1ECFC;
 }
 
 .mainContainer:hover {
