@@ -21,7 +21,6 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 				<div className={style.containerComponents}>
 					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
-
 				<div className={style.containerPrincipal}>
 					<div className={style.saludo}>
 						<h1 className={style.titulo}>{greeting}</h1>
