@@ -10,7 +10,7 @@ import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 
 
 
-const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore}) => {
+const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState, setCurrentUserStore}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -41,12 +41,13 @@ const FormRegistroUsuario = ({Applicant, setValidateState, setCurrentUserStore})
       dispatch(postUser(newUserApplicant))
       setTimeout(()=>{
         dispatch(getEmail(newUserApplicant.email))
-      },1000)
+      },500)
       setCurrentUserStore(newUserApplicant)
+      setCurrentUserStore2(newUserApplicant)
       setValidateState(true)
-      setTimeout(()=>{
+      return setTimeout(()=>{
       navigate("/applicant")
-    },1500)
+      },1500)
     }
   };
 

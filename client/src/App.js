@@ -23,6 +23,7 @@ function App() {
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
   const validate = JSON.parse(localStorage.getItem("state"))
 
+  console.log(currentUser);
   useEffect(() => {
     if (validateState === true && Object.keys(userType).length > 1) {
       setCurrentUserStore2(currentUser)
@@ -34,7 +35,7 @@ function App() {
       setCurrentUserStore2("")
       setValidateState(false)
     }
-  }, [currentUser, setCurrentUserStore, userType, setCurrentUserStore2, setValidateState, userType2, validateState ]);
+  }, [currentUser ]);
 
   useEffect(() => {
     setTimeout(() => {
