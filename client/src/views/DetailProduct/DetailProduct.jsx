@@ -89,48 +89,39 @@ const handleSubmit = async () => {
 
 return (
   <div>
-     {
-    product.name ?
-    <div>
-        <NavBar setCurrentUserStore={setCurrentUserStore}/>
-         <div className={style.container}>
-        
+    {
+    product.name 
+    ?<div>
+      <NavBar setCurrentUserStore={setCurrentUserStore}/>
+      <div className={style.container}>
         <div className={style.box} key={product.name}>
-              <div className={style.containerDetail}>
-             <div className={style.divContenedorInfo}>
-               <h2 className={style.nameCard}>Name: {product.name} </h2>
-               <p className={style.infoCard}>Detalle:  {product.details} </p>
-               <p className={style.infoCard}>Price: {product.price} </p>
-               <label htmlFor="PayMethod"></label>
-                <select name="PayMethod" onChange={(event) => handleChangeSelect(event)}>
-                
-               { payMethods ?
-                    (payMethods.map((payMethod) => {
-                      return (
-                        <option value={payMethod.id} key={payMethod.id}>{payMethod.name}</option>
-                      )
-                    }))
-                 
-                :<Loading/>}
-                </select>
-
-                <div className={style.containerButton}>
-                  <button className={styles.button} onClick={() => handleSubmit()}>Comprar</button>
-                </div>
-               
-             </div>
-             </div>
-           </div>
-           <Footer/>
-    </div>
-    </div> :
-<Loading/>
-  } 
+          <div className={style.containerDetail}>
+            <div className={style.divContenedorInfo}>
+              <h2 className={style.nameCard}>Name: {product.name} </h2>
+              <p className={style.infoCard}>Detalle:  {product.details} </p>
+              <p className={style.infoCard}>Price: {product.price} </p>
+              <label htmlFor="PayMethod"></label>
+              <select name="PayMethod" onChange={(event) => handleChangeSelect(event)}>
+                { payMethods 
+                  ?(payMethods.map((payMethod) => {
+                    return (
+                      <option value={payMethod.id} key={payMethod.id}>{payMethod.name}</option>
+                    )
+                  }))
+                  :<Loading/>
+                }
+              </select>
+              <div className={style.containerButton}>
+                <button className={styles.button} onClick={() => handleSubmit()}>Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    :<Loading/>
+    } 
   </div>
- 
-    
-   
-)
-}
+)}
 
 export default DetailProduct;
