@@ -116,7 +116,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 			<div className={styles.contenedor}>
 				<div className={styles.prueba}>
 					<div className={styles.titlePlan}>
-						<h1 className={styles.title}>Adquiere o actualiza tu plan!</h1>
+						<h1 className={styles.title}>¡Adquiere o actualiza tu plan!</h1>
 					</div>
 					<div className={styles.rightSection}>
 							<h1>Plan Super Destacado</h1>
