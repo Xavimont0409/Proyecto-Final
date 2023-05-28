@@ -52,6 +52,8 @@ const DetailProduct = ({ setValidateState, setCurrentUserStore2 }) => {
       CompanyId: userType2.profile === "Company" ? userType2.id : null,
       PayMethodId: value,
       ApplicantId: userType2.profile === "Applicant" ? userType2.id : null,
+      name: userType2?.name,
+      email: userType2?.email,
       PayMethod: payMethods?.find(
         (payMethod) => payMethod.id === parseInt(value)
       ).name,
