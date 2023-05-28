@@ -8,6 +8,7 @@ import { getAllVacants, getVacantDetail } from '../../Redux/Actions/actionsFunct
 
 function MiniCardEmpleosRel({idEmpleoSelected, title}) {
   
+// eslint-disable-next-line no-unused-vars
 const navigation = useNavigate();
 
 const dispatch = useDispatch();
@@ -15,12 +16,13 @@ const dispatch = useDispatch();
 useEffect(()=>{
   dispatch(getAllVacants());
 
-},[dispatch, getAllVacants])
+},[dispatch])
 
 const empleos = useSelector(state => state.Vacant);
 
  const wordKeysRaw = title.split(' ');
       const wordKeys = wordKeysRaw.filter((wrd) => wrd.length > 3);
+      // eslint-disable-next-line array-callback-return
       const empleosRelSelected = empleos.filter((emple) => {
             if(emple.id !== idEmpleoSelected ){
               return wordKeys.some((word) => emple.title.includes(word) ) 

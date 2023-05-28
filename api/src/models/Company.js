@@ -39,6 +39,21 @@ module.exports = (sequelize) => {
         profile:{
             type:DataTypes.STRING,
             defaultValue: "Company"
+        },
+        photo:{
+            type: DataTypes.STRING,
+        },
+        description:{
+            type: DataTypes.STRING,
+        },
+        webPage:{
+            type: DataTypes.STRING,
+        },
+        job_area:{
+            type: DataTypes.STRING
+        },
+        password:{
+            type: DataTypes.STRING,
         }
     }, {
         timestamps: false

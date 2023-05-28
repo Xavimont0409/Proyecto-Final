@@ -11,7 +11,7 @@ const ListItem = ({ charge, company, startDate, endDate }) => {
   };
 
   return (
-    <div>
+    <div className={style.container1}>
       <h6>{charge}</h6>
       <h7>{company}</h7>
       <div className={style.container2}>

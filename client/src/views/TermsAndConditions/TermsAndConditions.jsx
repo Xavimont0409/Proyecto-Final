@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './TermsAndConditions.module.css'
 import { useState } from 'react';
-import NavBar from '../../components/NavBar/NavBarUnlog';
+import NavBar from '../../components/NavBarUnlog/NavBarUnlog';
 import Footer from '../../components/Footer/Footer';
 
 
-function TermsAndConditions({ setCurrentUserStore }) {
+function TermsAndConditions({setValidateState, setCurrentUserStore2 }) {
   const [accepted, setAccepted] = useState(false);
 
   const handleAcceptance = () => {
@@ -22,7 +22,7 @@ function TermsAndConditions({ setCurrentUserStore }) {
 
   return (
     <>
-    <NavBar setCurrentUserStore={setCurrentUserStore}/>
+    <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>
       <div className={styles.container}>
         <h1>Términos y Condiciones de uso de JobPortalX</h1>
         <hr />

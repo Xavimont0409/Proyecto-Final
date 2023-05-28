@@ -10,6 +10,7 @@ const productRouter = require('./productRouter');
 const starsRouter = require('./StarsRouter');
 const routerPayMethod = require('./payMethodRouter');
 const formationRouter = require('./FormationRouter')
+const loginRouter = require('./LoginRouter')
 
 
 const router = Router();
@@ -25,5 +26,6 @@ router.use("/product", productRouter);
 router.use("/stars", starsRouter);
 router.use("/payMethod", routerPayMethod);
 router.use("/formation", formationRouter)
+router.use("/login", loginRouter)
 
 module.exports = router;

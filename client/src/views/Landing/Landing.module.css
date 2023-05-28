@@ -4,6 +4,11 @@
     /*  background-color: #ccc; */
 }
 
+.containerComponents{
+    width: 100vw;
+    z-index: 10;
+}
+
 .container {
     display: -webkit-flex;
     display: flex;

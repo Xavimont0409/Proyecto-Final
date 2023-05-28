@@ -38,13 +38,7 @@ const Filter = () => {
   return (
     <div className={style.mainContainer}>
       <div className={style.allFilters}>
-        <div className={style.filterContainer}>
-          <p className={style.p}>Ciudad</p>
-          <select name="FilterByCity" className={style.select}>
-            <option value={"Filter"}>Todos</option>
-          </select>
-        </div>
-
+        
         <div className={style.selectSpecial}>
           <p className={style.pSpecial}>Fecha de publicación</p>
           <select

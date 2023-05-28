@@ -1,143 +1,178 @@
 import React from "react";
-import {BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin} from 'react-icons/bs'
-// import style from "./MiPerfil.module.css"
 import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
-// import email from "../../assets/img/email.svg"
+// import ListItem from "../../components/ListItemExperience/ListItemExperience";
+import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
+import email from "../../assets/img/email.png"
+import linkedin from "../../assets/img/linkedin.png"
+import phone from "../../assets/img/phone.png"
+import world from "../../assets/img/world.png"
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 
-const DocuPDF = ({perfil}) => {
+const DocuPDF = ({ perfil, CvDetail }) => {
+
+    const formatDate = (date) => {
+        const formattedDate = format(new Date(date), 'MMMM yyyy', { locale: es });
+        return formattedDate;
+      };
 
 
-    const styles = StyleSheet.create( {
-        image: {
-          width: '15vw',
-          height: '20vh',
-          borderRadius: '50%',
-        },
-        container: {
-          padding: '2%',
-          margin: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '30pt',
+
+
+
+    const styles = StyleSheet.create({
+        container2: {
+            padding: 20,
         },
         container1: {
-          marginRight: 'auto',
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-          gap: '20pt',
+            display: 'flex',
+            flexDirection: 'row',
+            marginBottom: 20,
         },
-        container2: {
-          padding: '2%',
-          margin: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-        //   justifyContent: 'space-evenly',
-          alignItems: 'center',
-        //   gap: '30pt',
-          border: 'solid black 1pt',
-          width: '80%',
-          height: '100%',
-        },
-        container3: {
-          display: 'flex',
-          flexDirection: 'row',
-        //   gap: '10pt',
+        image: {
+            width: 100,
+            height: 100,
+            marginRight: 20,
+            borderRadius:100,
+            borderWidth:1,
+            borderColor: 'blue',
         },
         container4: {
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        //   gap: '30pt',
+            display: 'flex',
+            flexDirection: 'row',
+            marginBottom: 10,
         },
-      });
+        container3: {
+            display: 'flex',
+            flexDirection: 'row',
+            marginRight: 10,
+        },
+        container5: {
+            marginBottom: 20,
+        },
+        containerList: {
+            marginBottom: 10,
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            padding: 10,
+        
+
+        },
+        containerListStudy: {
+            marginBottom: 10,
+            padding:1,
+        },
+        container: {
+            marginBottom: 10,
+        },
+        charge: {
+            fontSize: 12,
+            fontWeight: 'bold',
+        },
+        company: {
+            fontSize: 11,
+        },
+        dates: {
+            fontSize: 11,
+        },
+    });
+
+
+    const ListItem = ({ charge, company, startDate, endDate }) => (
+        <View >
+          <Text style={styles.charge}>{charge}</Text>
+          <Text style={styles.company}>{company}</Text>
+          <Text style={styles.dates}>{formatDate(startDate)} - {endDate === 'Actualmente' ? endDate : formatDate(endDate)}</Text>
+        </View>
+      );
+
 
 
 
     return (
         <Document>
-            <Page size='A4'>
-                {perfil ?
-                    <>
-                        <View style={styles.container2}>   {/*container 2*/}
+            <Page style={styles.container2}>
+                <View style={styles.container1}>
+                    <View>
+                        <Image style={styles.image} src={perfil.photo} alt="Profile" />
+                    </View>
+                    <View>
+                        <Text>{perfil.name} {perfil.apellido}</Text>
+                        <View style={styles.container4}>
+                            <View style={styles.container3}>
 
-                            <View style={styles.container1}>   {/*Container 1*/}
+                                <Image style={{
+                                    'width': '15pt',
+                                    'height': '20pt'
+                                }}
+                                    src={email} >
+                                </Image>
 
-                                <View>
-                                    <Image
-                                        style={styles.image}
-                                        src={perfil.photo}
-                                        alt="Profile" />
-                                </View>
-
-                                <View>
-                                    <Text>{perfil.name} {perfil.apellido}</Text>
-
-                                    <View style={styles.container4}>
-
-                                        <View style={styles.container3}>
-                                            <BsFillEnvelopeAtFill></BsFillEnvelopeAtFill>
-                                            {/* <Image src={email}></Image> */}
-                                            <Text>{perfil.email}</Text>
-                                        </View>
-
-                                        <View style={styles.container3}>
-                                            <BsFillTelephoneFill></BsFillTelephoneFill>
-                                            <Text>{perfil.celular}</Text>
-                                        </View>
-
-                                    </View>
-
-                                    <View style={styles.container4}>
-
-                                        <View style={styles.container3}>
-                                            <BsLinkedin></BsLinkedin>
-                                            <Text>{perfil.linkedin}</Text>
-                                        </View>
-
-                                        <View style={styles.container3}>
-                                            <BsGlobeAmericas></BsGlobeAmericas>
-                                            <Text>{perfil.pais}</Text>
-                                        </View>
-
-                                    </View>
-
-                                </View>
-
+                                <Text>{perfil.email}</Text>
                             </View>
+                            <View style={styles.container3}>
 
-                            <View>
-                                <Text>{perfil.profesion}</Text>
-                                <Text>{perfil.descripcion}</Text>
+                                <Image style={{
+                                    'width': '15pt',
+                                    'height': '20pt'
+                                }}
+                                    src={phone} >
+                                </Image>
+
+                                <Text>{perfil.celular}</Text>
                             </View>
-
-                            <View>
-                                <Text>Mis experiencias profesionales</Text>
-                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias soluta omnis, quidem neque laboriosam delectus eos rerum! Aperiam, sint itaque necessitatibus ipsum perspiciatis similique recusandae doloribus fugit. Quidem, amet vero?</Text>
-                            </View>
-
-                            <View>
-                                <Text>Mis estudios</Text>
-                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias soluta omnis, quidem neque laboriosam delectus eos rerum! Aperiam, sint itaque necessitatibus ipsum perspiciatis similique recusandae doloribus fugit. Quidem, amet vero?</Text>
-                            </View>
-
-                            <View>
-                                <Text>Skills</Text>
-                                <Text>{perfil.skills}</Text>
-                            </View>
-
                         </View>
+                        <View style={styles.container4}>
+                            <View style={styles.container3}>
+                                <Image style={{
+                                    'width': '15pt',
+                                    'height': '20pt'
+                                }}
+                                    src={linkedin} >
+                                </Image>
+                                <Text>{perfil.linkedin}</Text>
+                            </View>
+                            <View style={styles.container3}>
 
-                    </>
-                    : <Text>Cargando...</Text>}
+                                <Image style={{
+                                    'width': '15pt',
+                                    'height': '20pt'
+                                }}
+                                    src={world} >
+                                </Image>
 
-
-            </Page>
-        </Document>
+                                <Text>{perfil.pais}</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.container5}>
+                    <Text style={{ textAlign: 'left' }}>{perfil.profesion}</Text>
+                    <Text style={{ textAlign: 'justify' }}>{perfil.descripcion}</Text>
+                </View>
+                <View style={styles.container5}>
+                    <Text style={{ textAlign: 'left' }}>Mis experiencias profesionales</Text>
+                    <View >
+                        {CvDetail.Experiences?.map(exp => (
+                            <ListItem charge={exp.charge} company={exp.company} startDate={exp.start_date} endDate={exp.still_working ? 'Actualmente' : exp.end_date} />
+                        ))}
+                    </View>
+                </View>
+                <View style={styles.container5}>
+                    <Text style={{ textAlign: 'left' }}>Mis estudios</Text>
+                    <View style={styles.containerListStudy}>
+              {CvDetail.Formations?.map(study => (
+                <ListItemStudy study_level={study.study_level} title={study.title} institute={study.institute} state={study.state} />
+              ))}
+            </View>
+          </View>
+          <View style={styles.container5}>
+            <Text style={{ textAlign: 'left' }}>Skills</Text>
+            <Text>{perfil.skills}</Text>
+          </View>
+        </Page>
+      </Document>
 
     )
 

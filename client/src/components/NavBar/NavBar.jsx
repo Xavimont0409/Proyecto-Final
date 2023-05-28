@@ -1,19 +1,21 @@
-import NavBarLog from "./NavBarLog";
-import NavbarUnlog from "./NavBarUnlog";
-import { useAuth0 } from "@auth0/auth0-react";
+import NavBarLog from "../NavBarLog/NavBarLog";
+import NavbarUnlog from "../NavBarUnlog/NavBarUnlog";
 
-
-const NavBar = ({ setCurrentUserStore }) => {
-    
-    const { isAuthenticated } = useAuth0();
-
-    return (
-        <div>
-            {
-                (isAuthenticated) ? (<NavBarLog setCurrentUserStore={ setCurrentUserStore } />) : (<NavbarUnlog/>)
-            }
-        </div>
-    )
-}
+const NavBar = ({ setValidateState, setCurrentUserStore2 }) => {
+  const validacion = JSON.parse(localStorage.getItem("state"));
+  
+  return (
+    <div>
+      {validacion === true ? (
+        <NavBarLog
+          setValidateState={setValidateState}
+          setCurrentUserStore2={setCurrentUserStore2}
+        />
+      ) : (
+        <NavbarUnlog />
+      )}
+    </div>
+  );
+};
 
 export default NavBar;

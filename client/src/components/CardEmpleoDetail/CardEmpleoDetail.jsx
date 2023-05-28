@@ -11,7 +11,7 @@ import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers'
 
 const CardEmpleoDetail = ({id, CompanyId, title, description, createdAt, Workday, WorkMethod}) => {
   const dispatch = useDispatch();
-  const currentUserId = JSON.parse(localStorage.getItem("currentUser")).id;
+  const currentUserId = JSON.parse(localStorage.getItem("currentUser2")).id;
   const userVacants = useSelector(state => state.UserDetail.Vacants);
   const vacantPostuled = userVacants?.find((vacant) => vacant.id === id);
   const [validate, setValidate] = useState(false);
@@ -24,7 +24,7 @@ const CardEmpleoDetail = ({id, CompanyId, title, description, createdAt, Workday
 
   useEffect(() => {
     dispatch(getUserDetail(currentUserId));
-  }, [dispatch, getUserDetail]);
+  }, [currentUserId, dispatch]);
 
   useEffect(() => {
     if(vacantPostuled) setValidate(true);
@@ -34,10 +34,6 @@ const handlerClick = () => {
   dispatch(relationVacantApplicant(relationIds));
   setValidate(true);
 };
-
-console.log(userVacants);
-console.log(vacantPostuled);
-
 
   return (
     <Card style={{ width: '100%' }}>

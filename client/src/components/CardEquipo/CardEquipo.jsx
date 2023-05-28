@@ -66,27 +66,28 @@ const CardsEquipo = () => {
 
     return (
         <div className={style.containerPadre}>
-             <h1 className={style.firstTitle}>Nuestro Equipo de desarrolladores</h1>
-             <div className={style.firstContainer}>
-                 {arrayEquipo.map((integrante) => {
-                return(
-                    <div className={style.container} style={{backgroundImage: `url(${integrante.photo})`}} key={integrante.id}>
-                            <div className={style.content}>
-                            <h3 className={style.title}>{integrante.name} {integrante.lastname}</h3>
-                            <div className={style.containerLinks}>
-                                <Link to={integrante.linkedin} target="_blank">
-                            <BsLinkedin className={style.Links}/>
-                            </Link>
-                            <Link to={integrante.github} target="_blank">
-                            <BsGithub className={style.Links}/>
-                            </Link>
+            <h1 className={style.firstTitle}>Nuestro Equipo de desarrolladores</h1>
+            <div className={style.firstContainer}>
+                {
+                    arrayEquipo.map((integrante) => {
+                        return (
+                            <div className={style.container} style={{backgroundImage: `url(${integrante.photo})`}} key={integrante.id}>
+                                    <div className={style.content}>
+                                    <h3 className={style.title}>{integrante.name} {integrante.lastname}</h3>
+                                    <div className={style.containerLinks}>
+                                        <Link to={integrante.linkedin} target="_blank">
+                                            <BsLinkedin className={style.Links}/>
+                                        </Link>
+                                        <Link to={integrante.github} target="_blank">
+                                            <BsGithub className={style.Links}/>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                       
-                    </div>
-                )
-            })}
-             </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 

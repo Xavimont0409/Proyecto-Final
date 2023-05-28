@@ -4,6 +4,7 @@
     list-style: none;
     margin: 1rem 0;
     padding: 0;
+    color: white
 }
 
 .paginado li {
@@ -20,13 +21,13 @@
 }
 
 .paginado a:hover {
-    background-color: #fbc531;
+    background-color: #E1ECFC;
     border-radius: 4px;
     color: #fff;
 }
 
 .currentPage {
-    background-color: #f9ca24;
+    background-color: #331460;
     font-weight: bold;
     border-radius: 3px;
 }

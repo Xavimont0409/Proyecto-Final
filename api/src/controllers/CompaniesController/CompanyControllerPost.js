@@ -1,8 +1,8 @@
 const { Company } = require('../../db');
 const {transporter} = require('../../config/mailer')
 
-const postCompany = async (name, business_name, ruc, cuit, country, email, password, registed) => {
-  const newCompany = await Company.create({name, business_name, ruc, cuit, country, email, password, registed});
+const postCompany = async (name, business_name, ruc, cuit, country, email, password, registed, photo, description, webPage, job_area) => {
+  const newCompany = await Company.create({name, business_name, ruc, cuit, country, email, password, registed, photo, description, webPage, job_area});
   
   
     // send mail with defined transport object
