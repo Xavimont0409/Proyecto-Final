@@ -49,9 +49,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   }, [dispatch, userDetail.Cv.id, userDetail.id]);
 
 
-  // console.log(aplicantDetail)
-  console.log(CvDetail)
-
   useEffect(() => {
     if (userDetail) {
       setPerfil(prevCv => ({
