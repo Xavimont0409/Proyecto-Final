@@ -112,25 +112,25 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						</Link>
 					</div>
 				</div>
-			</div>
-			<div className={styles.titlePlan}>
-				<h1 className={styles.title}>¡Adquiere o actualiza tu plan!</h1>
-			</div>
-			<div className={styles.contenedor}>
-				<div className={styles.prueba}>
-					<div className={styles.rightSection}>
-						<h1>Plan Super Destacado</h1>
-					</div>
-					<div className={styles.planes}>
-						<CardPlan
-							tittle='Plan Super Destacado'
-							text='Aumenta la visibilidad de tu perfil profesional y recibe aviso de nuevas propuestas '
-							price='5'
-							id='4'
-						/>
-					</div>
-				</div>
-			</div>
+				<div className={styles.titlePlan}>
+			    	<h1 className={styles.title}>¡Adquiere o actualiza tu plan!</h1>
+			    </div>
+			    <div className={styles.contenedor}>
+			    	<div className={styles.prueba}>
+			    		<div className={styles.rightSection}>
+			    			<h1>Plan Super Destacado</h1>
+			    		</div>
+			    		<div className={styles.planes}>
+			    			<CardPlan
+			    				tittle='Plan Super Destacado'
+			    				text='Aumenta la visibilidad de tu perfil profesional y recibe aviso de nuevas propuestas '
+			    				price='5'
+			    				id='4'
+			    			/>
+			    		</div>
+			    	</div>
+			    </div>
+			</div>    
 		</>
 	);
 }
