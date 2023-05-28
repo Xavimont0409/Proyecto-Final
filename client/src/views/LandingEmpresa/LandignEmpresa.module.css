@@ -64,3 +64,44 @@
     font-weight: bold;
 }
 
+
+
+.contenedor {
+    background-color: #1C1C1C;
+    color: antiquewhite;
+}
+
+h2{
+    font-size: 3em;
+}
+
+.prueba {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin-right: 10vh;
+}
+
+.leftSection {
+    flex: 1;
+    text-align: center;
+}
+
+.middleSection {
+    flex: 1;
+    text-align: center;
+}
+
+.rightSection {
+    flex: 1;
+    text-align: center;
+}
+
+.planes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 5vh;
+    color: var(--jet);
+}

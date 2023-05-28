@@ -8,6 +8,7 @@ import FormRegistroUsuario from "./FormRegistroUsuario/FormRegistroUsuario";
 import FormCv from "./FormCv/FormCv";
 import FormVacante from "./FormVacante/FormVacante";
 import FormEmpresa from "./FormEmpresa/FormEmpresa";
+import PerfilCompany from "./PerfilCompany/PerfilCompany";
 import Profiles from "./Profiles/Profiles";
 import MiPerfil from "./MiPerfil/MiPerfil";
 import LandingApplicant from "./LandingApplicant/LandingApplicant";
@@ -31,7 +32,8 @@ export {
     FormRegistroUsuario, 
     FormCv, 
     FormVacante, 
-    FormEmpresa, 
+    FormEmpresa,
+    PerfilCompany,
     Profiles,
     MiPerfil,
     LandingApplicant,
