@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
+
 import styles from "../Success/Success.module.css";
+
 import { FcExpired } from "react-icons/fc";
 
 const Pending = ({ currentUserStore }) => {
