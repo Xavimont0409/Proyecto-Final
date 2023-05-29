@@ -3,7 +3,8 @@ import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import { getCompany } from '../../Redux/Actions/actionsFunction/actionLogin2'
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import style from './inicioSesion.module.css';
 
 const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
   const clientID = "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
@@ -53,15 +54,17 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
   }
 
   return (
-    <div>
-      <h1>Login Empresa</h1>
-      <div>
+    <div className={style.container}>
+      <div className={style.containerData}>
+        <h1 className={style.title}>Login Empresa</h1>
+      <div className={style.containerInicio}>
         <input
           type="text"
           placeholder="Email"
           name="email"
           value={company.email}
           onChange={handlerChange}
+          className={style.input}
         />
         <input
           type="password"
@@ -69,17 +72,21 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
           name="password"
           value={company.password}
           onChange={handlerChange}
+          className={style.input}
         />
-        <button onClick={handlerSumit}>Iniciar sesion</button>
-        <div>
+        <button onClick={handlerSumit} className={style.input}>Iniciar sesión</button>
+        <div className={style.containerButtons}>
           <GoogleLogin
             clientId={clientID}
             onSuccess={onSuccess}
             onFailure={onFailure}
             cookiePolicy={"single_host_policy"}
           />
+          <Link to='/loginApplicant'><button className={style.button}>Iniciar como Aplicante</button></Link>
         </div>
       </div>
+      </div>
+      
     </div>
   );
 };
