@@ -18,8 +18,8 @@ const operationHandlerPost = async (req, res) =>{
             ],
             "back_urls": {
                 "success": "http://localhost:3000/success",
-                "failure": "http://www.failure.com",
-                "pending": "http://www.pending.com"
+                "failure": "http://localhost:3000/failure",
+                "pending": "http://localhost:3000/pending"
             },
             "auto_return": "approved",
         })

@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, FormCv, FormEmpresa, FormVacante, Profiles, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany } from './views';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading, LoginApplicant, LoginCompany } from './components';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
@@ -72,6 +72,8 @@ function App() {
           <Route path="/MiPerfil" element={<MiPerfil setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/operation" element={<Operation setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/failure" element={<Failure />} />
+          <Route path="/pending" element={<Pending />} />
         </Route>
                 
         {/* (userLocalStorage.profile === "Company" || userLocalStorage.profile === "Admin") */}

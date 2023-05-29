@@ -24,6 +24,8 @@ import MyApplications from "./MyApplications/MyApplications";
 import NewRegistroCompany from './NewRegistro/newRegistroCompany';
 import NewRegistroApplicant from './NewRegistro/newResgistroApplicant';
 import Ratings from './Ratings/Ratings';
+import Failure from './Failure/Failure';
+import Pending from './Pending/Pending';
 
 export {
     //AboutUs,
@@ -32,11 +34,13 @@ export {
     Empleos, 
     Landing, 
     LandingEmpresa, 
-    Registro, 
+    Registro,
+    Failure, 
     FormRegistroUsuario, 
     FormCv, 
     FormVacante, 
     FormEmpresa,
+    Pending,
     PerfilCompany,
     Profiles,
     MiPerfil,
