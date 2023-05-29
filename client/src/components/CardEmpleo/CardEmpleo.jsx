@@ -4,34 +4,33 @@ import { FaMedal } from 'react-icons/fa'
 import style from './CardEmpleo.module.css';
 
 const CardEmpleo = (props) => {
-
 return (
         <Link className={style.words} to={`/empleoDetail/${props.id}`}>
             <div className={style.mainContainer}>
                 <div className={style.containerInfo}>
-                    {/* <img className={style.image} src={props.logo} alt="logo" /> */}
+                    <img className={style.image} src={props.logo} alt="logo" />
                     <h2 className={style.temps} >{props.title}</h2>
                     <p className={style.description} >{props.description}</p>
                 </div>
                 <div className={style.containerView}>
                     <div className={style.containerIcons}>
-                        <div>
+                        <div className={style.detailIcons}>
                             <BsBuildings className={style.icons}/>
                         </div>
                         <div className={style.containerText}>
-                            <p className={style.text}>{props.WorkMethodId}</p>
+                            <p className={style.text}>{props.WorkMethod}</p>
                         </div>   
                     </div>
                     <div className={style.containerIcons}>
                         <BsStopwatch className={style.icons}/>
                         <div className={style.containerText}>
-                            <p className={style.text}>{props.WorkMethodId}</p>
+                            <p className={style.text}>{props.Workday}</p>
                         </div> 
                     </div>
                     <div className={style.containerIcons}>
                         <FaMedal className={style.icons}/>
                         <div className={style.containerText}>
-                            <p className={style.text}>{props.WorkMethodId}</p>
+                            <p className={style.text}>{props.Seniority}</p>
                         </div> 
                     </div>
                 </div>

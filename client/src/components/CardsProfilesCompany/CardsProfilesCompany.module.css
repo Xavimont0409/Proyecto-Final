@@ -1,6 +1,11 @@
 
 .mainContainer{
-    height: 110vh;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
     width: 30vw;
     border-radius: 0 15%;
     border: 5px solid var(--battleship-gray);
@@ -9,35 +14,30 @@
 }
 
 .infoContainer{
-    margin-top: 5%;
+  
     margin-bottom: 5%;
-    height: auto;
+    min-height: 20vh;
     border-top: 3px solid var(--battleship-gray);
     border-bottom: 3px solid var(--battleship-gray);
     border-radius: 0%;
+    height: fit-content;
+    width: fit-content;
 }
 
-.infoContainer2{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 5%;
-    height: auto;
-    border-top: 3px solid var(--battleship-gray);
-    border-bottom: 3px solid var(--battleship-gray);
-    border-radius: 0%;
-}
 
 .img{
     width: 130px;
     height: 130px;
     border: 4px solid var(--oxford-blue);
     border-radius: 100%;
+    margin-left: 35%;
 }
 
 .title{
-    margin-top: 2%;
     color: var(--oxford-blue);
+    margin-bottom: 4%;
+    margin-top: 4%;
+
 }
 
 .title2{
@@ -46,12 +46,13 @@
     color: var(--oxford-blue);
 }
 
-.item{ 
+.item{
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 66%;
-    height: auto;
+    min-height: 10vh;  
+    min-width: 10vh;
     color: var(--oxford-blue);
 }
 
