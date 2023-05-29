@@ -1,22 +1,10 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBarLog/NavBarLog";
 import { useDispatch, useSelector } from "react-redux";
-import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
-import {
-  Form,
-  FormLabel,
-  FormSelect,
-  FormGroup,
-  Row,
-  Col,
-  FormCheck,
-} from "react-bootstrap";
+import { Form, FormLabel, FormSelect, FormGroup, Row, Col, FormCheck, } from "react-bootstrap";
 import countries from "countries-list";
 import ButtonGeneral from "../../components/Button/ButtonGeneral";
-import {
-  getUserDetail,
-  postExpe,
-} from "../../Redux/Actions/actionsFunction/actionsUsers";
+import { getUserDetail, postExpe, } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import validation from "./validation";
 import style from "./FormregistroExperiencia.module.css";
 import Swal from "sweetalert2";
@@ -29,16 +17,9 @@ const FormRegistroExperincia = ({ setValidateState, setCurrentUserStore2 }) => {
   const dispatch = useDispatch();
   const validate = JSON.parse(localStorage.getItem("state"));
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
-  const currentUser = useSelector((state) => state.dataEmail[0]);
+  const currentUser = useSelector((state) => state.UserDetail);
   const [validated, setValidated] = useState(false);
 
-  useEffect(() => {
-    if (validate) {
-      if (userType2 && userType2.email) {
-        dispatch(getEmail(userType2.email));
-      }
-    }
-  }, [dispatch, validate, userType2]);
 
   const [experiencia, setExperiencia] = useState({
     company: "",
@@ -55,13 +36,13 @@ const FormRegistroExperincia = ({ setValidateState, setCurrentUserStore2 }) => {
 
   useEffect(() => {
     if (currentUser) {
-      dispatch(getUserDetail(currentUser.id));
+      dispatch(getUserDetail(userType2.id));
       setExperiencia((prevExp) => ({
         ...prevExp,
         CvId: currentUser.Cv?.id,
       }));
     }
-  }, [currentUser, dispatch]);
+  }, [dispatch]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
