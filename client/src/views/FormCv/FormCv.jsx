@@ -5,6 +5,8 @@ import Step2FormCv from "../../components/Step2FormCv/Step2FormCv";
 import style from "./FormCv.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
+import Footer from '../../components/Footer/Footer';
+import cv from '../../assets/img/cv.jpg';
 
 function FormCv({ setValidateState, setCurrentUserStore2 }) {
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
@@ -63,7 +65,11 @@ function FormCv({ setValidateState, setCurrentUserStore2 }) {
   };
 
   return (
-    <div className={style.container}>
+    <div className={style.containerMain}>
+      <div className={style.containerFirst}>
+       {/* no quitar */}
+      </div>
+      <div className={style.containerSecond}>
       <NavBar
         setValidateState={setValidateState}
         setCurrentUserStore2={setCurrentUserStore2}
@@ -82,7 +88,7 @@ function FormCv({ setValidateState, setCurrentUserStore2 }) {
         className={style.container2}
         style={{ display: "flex", flexDirection: "row" }}
       >
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1 }} className={style.step}>
           {step === 1 && (
             <Step1FormCv
               cv={cv}
@@ -114,6 +120,7 @@ function FormCv({ setValidateState, setCurrentUserStore2 }) {
             />
           } */}
         </div>
+      </div>
       </div>
     </div>
   );
