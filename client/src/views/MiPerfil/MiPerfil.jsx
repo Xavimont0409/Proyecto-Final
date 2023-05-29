@@ -11,20 +11,32 @@ import { getCvById } from "../../Redux/Actions/actionsFunction/actionsCv";
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
+import { useNavigate } from "react-router-dom";
 
 
 const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
+  const userDetail = JSON.parse(localStorage.getItem("currentUser2"))
+
   const [showPDF, setShowPDF] = useState(false);
+
   const handleClick = () => {
     setShowPDF(!showPDF);
   };
+
+  const [dataReg, setDataReg] = useState(false)
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const userDetail = JSON.parse(localStorage.getItem("currentUser2"))
-  const validacion = JSON.parse(localStorage.getItem("state"));
-
+  
+  const userDetail2 = useSelector(state => state.UserDetail) 
   const CvDetail = useSelector(state => state.CvDetail);
+ 
+
+  useEffect(() => {
+    dispatch(getUserDetail(userDetail.id))
+}, [dispatch, userDetail.id]);
+
 
   const [perfil, setPerfil] = useState({
     photo: '',
@@ -38,70 +50,60 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
     pais: '',
     linkedin: '',
     skills: '',
-
-
   });
 
 
   useEffect(() => {
-    dispatch(getCvById(userDetail.Cv.id))
-    dispatch(getUserDetail(userDetail.id))
-  }, [dispatch, userDetail.Cv.id, userDetail.id]);
-
-
-  useEffect(() => {
-    if (userDetail) {
+    if (userDetail2.Cv) {
       setPerfil(prevCv => ({
         ...prevCv,
-        photo: userDetail.Cv?.photo,
-        name: userDetail.name,
-        email: userDetail.email,
-        celular: userDetail.cellphone,
-        profile: userDetail.profile,
-        profesion: userDetail.Cv?.profession,
-        descripcion: userDetail.Cv?.personal_description,
-        apellido: userDetail.lastName,
-        pais: userDetail.Cv?.country,
-        linkedin: userDetail.Cv?.linkedin,
-        skills: userDetail.Cv?.skill,
+        photo: userDetail2.Cv?.photo,
+        name: userDetail2.name,
+        email: userDetail2.email,
+        celular: userDetail2.cellphone,
+        profile: userDetail2.profile,
+        profesion: userDetail2.Cv?.profession,
+        descripcion: userDetail2.Cv?.personal_description,
+        apellido: userDetail2.lastName,
+        pais: userDetail2.Cv?.country,
+        linkedin: userDetail2.Cv?.linkedin,
+        skills: userDetail2.Cv?.skill,
       }));
     }
     else {
       return <div><Loading /></div>
     }
-  }, [userDetail]);
-
-
-  // eslint-disable-next-line no-undef, no-unused-vars
-  const contentRef = useRef(null);
-
-  // eslint-disable-next-line no-unused-vars
-  const generatePDF = () => {
-
-    if(userDetail && CvDetail){
-
-      // eslint-disable-next-line no-unused-vars
-      const element = document.getElementById('pdf-content');
-      
-      //html2pdf().from(element).save('documento.pdf');
-    }else {
-      return (<Loading></Loading>)
-    }
-  };
+  }, [dispatch, userDetail2]);
 
 
 
-  if (validacion) {
+  // useEffect(() => {
+  //   const fetchCvById = async () => {
+  //     try {
+  //       if (Object.keys(userDetail2.Cv).length > 0) {
+  //         await dispatch(getCvById(userDetail2.Cv?.id));
+  //       } else {
+  //         alert('No tienes CV registrado');
+  //         navigate('/registro-cv');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error al obtener el CV:', error);
+  //     }
+  //   };
+  
+  //   fetchCvById();
+  // }, [dispatch, navigate, userDetail2.Cv, userDetail2.Cv?.id]);
 
-    if (!userDetail || !CvDetail) {
+
+  
+
+    if (!userDetail2 || !CvDetail) {
       return <div><Loading /></div>
     } else {
       return (
-        // isAuthenticated && (
         <>
           <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
           <div  className={style.container}>
-
 
             <h1>Mi Perfil</h1>
 
@@ -171,7 +173,11 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                 <h4 style={{ 'text-align': 'left' }}>Mis experiencias profesionales</h4>
                 <div className={style.containerList}>
 
-                  {CvDetail.Experiences?.map(exp => {
+                  {/* { !dataReg
+                  ? <p>No tienes experiencia registrada <button onClick={()=>navigate('/registro-experiencia')}>Registar Experiencia</button> </p>
+                  : */}
+                  
+                  {/* {CvDetail.Experiences?.map(exp => {
                     return (
                       <ListItem charge={exp.charge}
                         company={exp.company}
@@ -180,7 +186,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                       </ListItem>
                     )
                   })
-                 }
+                 } */}
                 </div>
               </div>
 
@@ -189,7 +195,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
                 <div className={style.containerListStudy}>
 
-                  {CvDetail.Formations?.map(study => {
+                  {/* {CvDetail.Formations?.map(study => {
                     return (
                       <ListItemStudy study_level={study.study_level}
                         title={study.title}
@@ -198,7 +204,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                       </ListItemStudy>
                     )
                   })
-                  } 
+                  }  */}
 
                 </div>
 
@@ -211,18 +217,17 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
               <div className={style.container3}>
 
-                <button
+                {/* <button
                   style={{ backgroundColor: 'gray' }}
                   onClick={handleClick}>{showPDF ? 'Ocultar PDF' : 'Ver CV en PDF'}</button>
 
                 {showPDF && (
-                  <PDFViewer width="1000" height="600">
-                    <DocuPDF perfil={perfil}
-                    CvDetail={CvDetail}>
-
-                    </DocuPDF>
-                  </PDFViewer>
-                )}
+                  <div>
+                    <PDFViewer width="1000" height="600">
+                      <DocuPDF perfil={perfil} CvDetail={CvDetail} />
+                    </PDFViewer>
+                  </div>
+                )} */}
 
 
                 <PDFDownloadLink document={<DocuPDF perfil={perfil} CvDetail={CvDetail}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
@@ -237,7 +242,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
         </>
       )
     }
-  }
+
 }
 
 export default MiPerfil;
