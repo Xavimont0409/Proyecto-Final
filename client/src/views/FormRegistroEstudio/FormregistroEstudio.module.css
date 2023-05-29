@@ -1,16 +1,44 @@
 .mainContainer {
     display: flex;
-    flex-direction: column;
+    background: #1C1C1C;
+    background-size: 400% 400%;
+    width: 100vw;
+    height: fit-content;
     align-items: center;
+    padding: 0;
+    margin: 0;
+    font-family: 'letters';
     }
-  
+
+h2{
+  color: #e1ecfc;
+}    
+
   .Form {
     margin: auto;
     background-color: var(--battleship-gray);
-    width: 50%;
+    width: 100%;
     border-radius: 10px;
     padding: 1%;
     font-size: large;
   }
-    
-    
+
+.containerFirst {
+  width: 60vw;
+  height: 102vh;
+  background-image: url('../../assets//img/estudios.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  order: 1;
+}
+
+.containerSecond {
+  width: 90vw;
+  height: fit-content;
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
