@@ -5,12 +5,19 @@
     overflow: hidden;
 }
 
+.title{
+    color: white;
+    font-family: 'letters';
+    text-decoration: underline;
+    font-size: 4rem;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(-40deg, var(--mustard), var(--avocado), white, var(--caribbean-current));
+    background: #1C1C1C;
     background-size: 400% 400%;
     animation: container 10s ease infinite;
     height: 100vh;
@@ -27,81 +34,40 @@
     justify-content: space-around;
 }
 
-.cardContainer1 {
+.cardContainer1, .cardContainer2 {
     margin: auto;
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
-    border-radius: 10px;
-    box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.427);
-    width: 23vw;
+    width: 20vw;
     height: 40vh;
-    align-items: center;
-    background-color: var(--caribbean-current);
+    align-items: flex-end;
     transition: all 0.3s;
     font-size: 1.5em;
-    color: var(--battleship-gray);
-}
-
-.cardContainer1:hover {
-    transform: translateY(-15px);
-    background-color: var(--caribbean-current);
-    /* box-shadow: 0 12px 16px rgba(0,0,0,1); */
-    width: 25vw;
-    height: 50vh;
-    box-shadow: -20px 22px 5px 0px rgba(0, 0, 0, 0.41);
-    -webkit-box-shadow: -20px 22px 5px 0px rgba(0, 0, 0, 0.41);
-    -moz-box-shadow: -20px 22px 5px 0px rgba(0, 0, 0, 0.41);
-    color:var(--sub-white);
-    font-size: 2em;
+    border-radius: 50%;
+    background-image: url('../../assets//img/empresa.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .cardContainer2 {
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border-radius: 10px;
-    box-shadow: 0px 0px 100px 10px rgba(0, 0, 0, 0.427);
-    width: 23vw;
-    height: 40vh;
-    align-items: center;
-    background-color: var(--caribbean-current);
-    transition: all 0.3s;
-    font-size: 1.5em;
-    color: var(--battleship-gray);
-
+    background-image: url('../../assets//img/freelancer.jpg');
 }
 
-.cardContainer2:hover {
+.cardContainer1:hover, .cardContainer2:hover {
     transform: translateY(-15px);
-    background-color: var(--caribbean-current);
     width: 25vw;
     height: 50vh;
-    box-shadow: 20px 22px 5px 0px rgba(0, 0, 0, 0.41);
-    -webkit-box-shadow: 20px 22px 5px 0px rgba(0, 0, 0, 0.41);
-    -moz-box-shadow: 20px 22px 5px 0px rgba(0, 0, 0, 0.41);
-    color: var(--sub-white);
+    box-shadow: 0px 0px 100px 10px rgba(189, 188, 188, 0.427);
+    -webkit-box-shadow: 0px 0px 100px 10px rgba(189, 188, 188, 0.427);
+    -moz-box-shadow: 0px 0px 100px 10px rgba(189, 188, 188, 0.427);
+    color:var(--sub-white);
     font-size: 2em;
 }
 
 .words {
     color: var(--battleship-gray);
     text-decoration: none;
-}
-
-@keyframes container {
-    0% {
-        background-position: 0 50%;
-    }
-
-    50% {
-        background-position: 100% 50%
-    }
-
-    100% {
-        background-position: 0 50%;
-    }
 }
 
 @media (max-width: 768px) {
@@ -130,7 +96,6 @@
     .cardContainer1:hover {
         transform: translateY(-15px);
         background-color: var(--caribbean-current);
-        /* box-shadow: 0 12px 16px rgba(0,0,0,1); */
         width: 38vw;
         height: 42vh;
         box-shadow: -20px 22px 5px 0px rgba(0, 0, 0, 0.41);

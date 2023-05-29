@@ -68,7 +68,7 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
           <ul className={style.navList}>
             <li>
               <h3 onClick={handlerLogin}>
-                cerrar sesion
+                Cerrar sesion
               </h3>
             </li>
             {userLocalStorage?.profile === "Admin" ? (

@@ -25,7 +25,7 @@ const Page = ({ usersPerPage, users, paginated }) => {
             .slice(firstPageToShow - 1, lastPageToShow)
             .map((number) => (
                 <li key={number} className={currentPage === number ? style.currentPage : undefined}>
-                    <button onClick={() => paginatedHandler(number)}>{number}</button>
+                    <a onClick={() => paginatedHandler(number)}>{number}</a>
                 </li> 
             ));
     };
@@ -35,13 +35,13 @@ const Page = ({ usersPerPage, users, paginated }) => {
             <ul className={style.paginado}>
                 {currentPage > 1 && (
                     <li>
-                        <button onClick={() => paginatedHandler(currentPage - 1)}>Prev</button>
+                        <a onClick={() => paginatedHandler(currentPage - 1)}>Prev</a>
                     </li>
                 )}
                 {renderPageNumbers()}
                 {currentPage < pageNumbers.length && (
                     <li>
-                        <button onClick={() => paginatedHandler(currentPage + 1)}>Next</button>
+                        <a onClick={() => paginatedHandler(currentPage + 1)}>Next</a>
                     </li>
                 )}
             </ul>
