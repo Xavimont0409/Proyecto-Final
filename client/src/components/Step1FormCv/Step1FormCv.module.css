@@ -6,7 +6,7 @@
   }
 
 .Form {
-  margin: auto;
+  margin: 2vh auto;
   background-color: var(--battleship-gray);
   width: 50%;
   border-radius: 10px;

@@ -205,8 +205,8 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
         </Row>
       </Form>
 
+<div className={style.containerButton}>
 
-      <FormGroup as={Col} md="6" className="mb-3 ">
         <ButtonGeneral
           textButton="Anterior"
           handlerClick={previousStep}
@@ -215,7 +215,9 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
           textButton="Cargar CV"
           handlerClick={handleNext}
         />
-      </FormGroup>
+
+</div>
+      
 
     </div>
   );
