@@ -64,6 +64,8 @@ function App() {
         <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore} />} />
         <Route path="/ServerDevelop" element={<ServerMaintenance />} />
         <Route path="/product/:id" element={<DetailProduct setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+        <Route path="/registroini-empresa" element={<FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} />} />
+        <Route path="/registro-usuario" element={<FormRegistroUsuario setCurrentUserStore2={setCurrentUserStore2} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} />} />
         
         <Route element={<ProtectedRoute isAutenticate={validate} />/*Todos*/}>
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
@@ -82,7 +84,6 @@ function App() {
           <Route path="/registro-vacante" element={<FormVacante setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/empresa" element={<LandingEmpresa setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/registro-empresa" element={<FormEmpresa setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
-          <Route path="/registroini-empresa" element={<FormRegisterEmpresa />} />
           <Route path="/vacantes" element={<Vacantes />} />
           <Route path="/perfil-company" element={<PerfilCompany setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         </Route>
@@ -92,7 +93,6 @@ function App() {
           <Route path='/applicant' element={<LandingApplicant setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/registro-experiencia" element={<FormRegistroExperincia setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/registro-estudio" element={<FormRegistroEstudio setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
-          <Route path="/registro-usuario" element={<FormRegistroUsuario />} />
           <Route path="/postulaciones" element={<MyApplications setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         </Route>
       </Routes>
