@@ -9,19 +9,23 @@ import Footer from '../../components/Footer/Footer';
 import cv from '../../assets/img/cv.jpg';
 
 function FormCv({ setValidateState, setCurrentUserStore2 }) {
-  const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
+  
+  
+  
+  
+  const currentUser = JSON.parse(localStorage.getItem("currentUser2"));
 
   const [step, setStep] = useState(1);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (userType2 && userType2.email) {
-      dispatch(getEmail(userType2.email));
-    }
-  }, [dispatch, userType2]);
+  // useEffect(() => {
+  //   if (userType2 && userType2.email) {
+  //     dispatch(getEmail(userType2.email));
+  //   }
+  // }, [dispatch, userType2]);
 
-  const currentUser = useSelector((state) => state.dataEmail[0]);
+  // const currentUser = useSelector((state) => state.dataEmail[0]);
 
   const [cv, setCv] = useState({
     dni: "",
