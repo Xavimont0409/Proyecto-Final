@@ -53,15 +53,17 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
   }
 
   return (
-    <div>
-      <h1>Login Applicant</h1>
-      <div>
+    <div className={style.container}>
+      <div className={style.containerData}>
+      <h1 className={style.title}>Login Aplicante</h1>
+      <div className={style.containerInicio}>
       <input
           type="text"
           placeholder="Email"
           name="email"
           value={applicant.email}
           onChange={handlerChange}
+          className={style.input}
         />
         <input
           type="password"
@@ -69,9 +71,10 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
           name="password"
           value={applicant.password}
           onChange={handlerChange}
+          className={style.input}
         />
-        <button onClick={handlerSumit} >Iniciar sesión</button>
-        <div>
+        <button onClick={handlerSumit} className={style.input}>Iniciar sesión</button>
+        <div className={style.containerButtons}>
         <GoogleLogin
           clientId={clientID}
           onSuccess={onSuccess}
@@ -81,6 +84,8 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
         <Link to='/loginCompany'><button className={style.button}>Iniciar como Empresa</button></Link>
       </div>
       </div>
+      </div>
+      
     </div>
   );
 };

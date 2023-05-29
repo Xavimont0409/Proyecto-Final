@@ -22,26 +22,19 @@ const Registro = () => {
     <>
       <div className={style.mainContainer}>
         <div className={style.container}>
-          <h1>Selecciona tu perfil</h1>
+          <h1 className={style.title}>Selecciona tu perfil</h1>
           <div className={style.cardsContainer}>
             <div className={style.cardContainer1}>
               <ButtonGeneral
                 textButton="Soy empresa"
                 handlerClick={() => navigate("/newRegistroCompany")}
               ></ButtonGeneral>
-              <p className={style.parrafo}>
-                Encuentra los mejores candidatos para tu empresa
-              </p>
             </div>
             <div className={style.cardContainer2}>
               <ButtonGeneral
                 textButton="Soy aplicante"
                 handlerClick={() => navigate("/newRegistroApplicant")}
               ></ButtonGeneral>
-              <p className={style.parrafo}>
-                Filtra las miles de vacantes que tenemos disponibles segun tus
-                preferencias
-              </p>
             </div>
           </div>
         </div>

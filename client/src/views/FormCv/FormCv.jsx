@@ -46,7 +46,7 @@ function FormCv({ setValidateState, setCurrentUserStore2 }) {
         ApplicantId: currentUser.id,
       }));
     }
-  }, [currentUser]);
+  }, []);
 
   const nextStep = () => {
     setStep(step + 1);
