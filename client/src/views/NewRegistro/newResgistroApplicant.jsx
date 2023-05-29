@@ -3,8 +3,10 @@ import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import FormRegistroUsuario from "../FormRegistroUsuario/FormRegistroUsuario";
 import style from "./NewRegistro.module.css";
+import { useNavigate } from "react-router-dom";
 
 const NewRegistroApplicant = ({ setCurrentUserStore2, setValidateState, setCurrentUserStore }) => {
+  const navigate = useNavigate()
   const clientID =
     "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
   const [Applicant, setApplicant] = useState({
@@ -43,6 +45,7 @@ const NewRegistroApplicant = ({ setCurrentUserStore2, setValidateState, setCurre
       <div className={style.containerData}>
         <h1 className={style.title}>Registro de Applicante</h1>
         <div>
+        <button className={style.button} onClick={()=> navigate('/registro-usuario')} >Registrarte con otro correo</button>
         <GoogleLogin
           clientId={clientID}
           onSuccess={onSuccess}
