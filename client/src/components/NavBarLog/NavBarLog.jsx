@@ -39,13 +39,13 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
     <div className={`${style.fixed} ${isNavVisible ? style.fixedOpen : ""}`}>
       <div className={style.container}>
         <h2 className={style.title}>
-          {userLocalStorage?.profile === "Admin" ? (
-            <a href="/">JobPortalX</a>
-          ) : userLocalStorage?.profile === "Applicant" ? (
-            <a href="/Applicant">JobPortalX</a>
-          ) : (
-            <a href="/empresa">JobPortalX</a>
-          )}
+          {
+          userLocalStorage?.profile === "Admin" 
+          ? (<a href="/">JobPortalX</a>) 
+          : userLocalStorage?.profile === "applicant" 
+            ? (<a href="/Applicant">JobPortalX</a>) 
+            : (<a href="/empresa">JobPortalX</a>)
+          }
         </h2>
         <form className={style.SearchBarContainer}>
           <input
@@ -55,15 +55,15 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
             onChange={(event) => handlerSearchName(event)}
           />
           <button className={style.Botton} onClick={() => searchName(name)}>
-            <i class="bi bi-search"></i>
+            <i className="bi bi-search"></i>
           </button>
         </form>
         <button className={style.abrirNav} onClick={abrirNav}>
-          <i class="bi bi-arrow-bar-right"></i>
+          <i className="bi bi-arrow-bar-right"></i>
         </button>
         <nav className={`${style.nav} ${isNavVisible ? style.navVisible : ""}`}>
           <button className={style.cerrarNav} onClick={cerrarNav}>
-            <i class="bi bi-arrow-bar-left"></i>
+            <i className="bi bi-arrow-bar-left"></i>
           </button>
           <ul className={style.navList}>
             <li>
