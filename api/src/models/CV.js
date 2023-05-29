@@ -58,6 +58,10 @@ module.exports = (sequelize) => {
           finish_date: {
             type: DataTypes.STRING,
             allowNull: true
+          },
+          registed: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
           }
     });
 };
