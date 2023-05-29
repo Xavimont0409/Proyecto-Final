@@ -25,20 +25,15 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 				<div className={styles.containerComponents}>
 					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
-
-
 				<div className={styles.containerPrincipal}>
 					<div className={styles.saludo}>
 						<h1 className={styles.titulo}>{greeting}</h1>
-					</div>
-					<div>
-						<div className={styles.bienvenida}>
-							<h3 className={styles.info}>
-								Te deseamos una bienvenida a JobPortalX
-							</h3>
+						<div>
+
 						</div>
+						<h3 className={styles.info}>Te damos la bienvenida a JobPortalX</h3>
 						<div className={styles.pregunta}>
-							<h4 className={styles.info}>¿Qué quieres hacer?</h4>
+							<h4>¿Qué quieres hacer?</h4>
 						</div>
 					</div>
 					<div className={styles.containerButtons}>
@@ -61,7 +56,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Crear Cv
+									Crear CV
 								</span>
 							</button>
 						</Link>
@@ -71,7 +66,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Registra Experiencia
+									Registrar experiencia
 								</span>
 							</button>
 						</Link>
@@ -101,7 +96,7 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Perfiles Empresa
+									Perfiles de empresas
 								</span>
 							</button>
 						</Link>
@@ -111,31 +106,31 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
-									Registra Educacion
+									Registrar educacion
 								</span>
 							</button>
 						</Link>
 					</div>
 				</div>
-			</div>
-			<div className={styles.contenedor}>
-				<div className={styles.prueba}>
-					<div className={styles.titlePlan}>
-						<h1 className={styles.title}>Actualiza tú plan!</h1>
-					</div>
-					<div className={styles.rightSection}>
-							<h1>Plan Super Destacado</h1>
-						</div>
-						<div className={styles.planes}>
-							<CardPlan
-								tittle='Plan Super Destacado'
-								text='Aumenta la visibilidad de tu perfil profesional y recibe aviso de nuevas propuestas '
-								price='5'
-								id='4'
-							/>
-						</div>
-				</div>
-			</div>
+				<div className={styles.titlePlan}>
+			    	<h1 className={styles.title}>¡Adquiere o actualiza tu plan!</h1>
+			    </div>
+			    <div className={styles.contenedor}>
+			    	<div className={styles.prueba}>
+			    		<div className={styles.rightSection}>
+			    			<h1>Plan Super Destacado</h1>
+			    		</div>
+			    		<div className={styles.planes}>
+			    			<CardPlan
+			    				tittle='Plan Super Destacado'
+			    				text='Aumenta la visibilidad de tu perfil profesional y recibe aviso de nuevas propuestas '
+			    				price='5'
+			    				id='4'
+			    			/>
+			    		</div>
+			    	</div>
+			    </div>
+			</div>    
 		</>
 	);
 }
