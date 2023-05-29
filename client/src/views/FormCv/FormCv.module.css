@@ -1,9 +1,8 @@
 .container{
     display: flex;
     flex-direction: column;
-    background: linear-gradient(-40deg, var(--mustard), var( --avocado), white, var(--caribbean-current));
+    background: #1C1C1C;
     background-size: 400% 400%;
-    animation: container 10s ease infinite;
     top: 0;
     left: 0;
     width: 100%;
@@ -13,9 +12,7 @@
 }
 
 .container2{
-    /* margin-top: 120px; */
     display: flex;
-    /* justify-content:space-between; */
     flex-direction: row;
     align-items: center;
     width: 100%;
@@ -41,17 +38,3 @@
     border-radius: 50%;
     background-color: rgb(100, 100, 100);
   }
-
-
-
-@keyframes container {
-    0%{
-        background-position: 0 50%;
-    }
-    50%{
-        background-position: 100% 50%
-    }
-    100%{
-        background-position: 0 50%;
-    }
-}

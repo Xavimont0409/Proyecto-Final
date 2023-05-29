@@ -2,6 +2,7 @@ import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import FormRegisterEmpresa from "../FormRegistroEmpresa/FormRegistroempesa";
+import style from "./NewRegistro.module.css";
 
 const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrentUserStore }) => {
   const clientID =
@@ -37,20 +38,24 @@ const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrent
   };
 
   return (
-    <div>
-      <h1>Registro Company</h1>
-      <div>
-        <GoogleLogin
+    <div className={style.container}>
+      <div className={style.containerData}>
+        <h1 className={style.title}>Registro Company</h1>
+        <div>
+           <GoogleLogin
           clientId={clientID}
           onSuccess={onSuccess}
           onFailure={onFailure}
           cookiePolicy={"single_host_policy"}
         />
-      </div>
-      {
+        {
         Company.nombre.length > 1 ? <FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} Company={Company} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} /> : <div></div>
       }
-    </div>
+        </div>
+       
+      </div>
+      
+      </div>
   );
 };
 

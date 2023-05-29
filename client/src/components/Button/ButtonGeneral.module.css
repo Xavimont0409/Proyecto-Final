@@ -1,20 +1,20 @@
 .button {
-    background-color: var(--battleship-gray);
     color: black;
     padding: 1%;
-    font-weight: bold;
     cursor: pointer;
     transition: all 0.1s ease;
     position: relative;
     display: inline-block;
     outline: none;
     border-radius: 5px;
-    margin: 1%;
+    margin: 10vh auto;
     z-index: 0;
     overflow: hidden;
     border: 1px solid var(--oxford-blue) ;
     color: var(--jet);
+    font-family: 'letters';
     font-size: 1em;
+    
   }
   .button:hover {
     color:white;
