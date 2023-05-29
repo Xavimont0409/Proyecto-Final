@@ -21,7 +21,6 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 				<div className={style.containerComponents}>
 					<NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}></NavBar>
 				</div>
-
 				<div className={style.containerPrincipal}>
 					<div className={style.saludo}>
 						<h1 className={style.titulo}>{greeting}</h1>
@@ -67,14 +66,14 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 						<div className={style.rightSection}>
 							<h2>Plan Básico</h2>
 						</div>
-							<div className={style.planes}>
-								<CardPlan
-									tittle='Plan Básico'
-									text='Publica vacantes semanales con un límite de tiempo'
-									price='30'
-									id='1'
-								/>
-							</div>
+						<div className={style.planes}>
+							<CardPlan
+								tittle='Plan Básico'
+								text='Publica vacantes semanales con un límite de tiempo'
+								price='30'
+								id='1'
+							/>
+						</div>
 					</div>
 
 					<div className={style.prueba}>
@@ -82,28 +81,28 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
 						<div className={style.rightSection}>
 							<h2>Plan Destacado</h2>
 						</div>
-							<div className={style.planes}>
-								<CardPlan
-									tittle='Plan Destacado'
-									text='Publica más vacante por semana con duración mayor'
-									price='50'
-									id='2'
-								/>
-							</div>
+						<div className={style.planes}>
+							<CardPlan
+								tittle='Plan Destacado'
+								text='Publica más vacante por semana con duración mayor'
+								price='50'
+								id='2'
+							/>
+						</div>
 					</div>
 
 					<div className={style.prueba}>
 						<div className={style.rightSection}>
 							<h2>Plan Premium</h2>
 						</div>
-							<div className={style.planes}>
-								<CardPlan
-									tittle='Plan Premium'
-									text='Publica vacantes ilimitadas y sin fecha límite'
-									price='90'
-									id='3'
-								/>
-							</div>
+						<div className={style.planes}>
+							<CardPlan
+								tittle='Plan Premium'
+								text='Publica vacantes ilimitadas y sin fecha límite'
+								price='90'
+								id='3'
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
