@@ -6,7 +6,7 @@
     /* border: solid black 1px ; */
     border-radius: 7px;
     width: 25vw;
-    height: 60vh;
+    height: 68vh;
     background: #E1ECFC;
     margin-left: 3vw;
     margin-right: 3vw;
@@ -21,7 +21,8 @@
 .button {
     background-color: var(--battleship);
     width: 15vw;
-    height: 3.5vh;
+    height: 6vh;
+    margin-left: 15%;
 }
 
 .selectSpecial {

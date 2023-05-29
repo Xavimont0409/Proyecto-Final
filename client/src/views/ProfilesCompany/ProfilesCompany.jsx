@@ -46,11 +46,13 @@ const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
     return (
         <div className={styles.container}>
             <NavBar setCurrentUserStore={setCurrentUserStore}/>
+            <div className={styles.page}>
             <Page
                 usersPerPage={companiesPerPage}
                 users={companies}
                 paginated={paginated}
             />
+            </div>
             {  isLoading ? (
                 <Loading/>
             ) : (
@@ -62,15 +64,15 @@ const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
                                         <CardProfileCompany
                                         key={compan.id}
                                         id={compan.id}
-                                        // logo={compan.logo}
+                                        photo={compan.photo}
                                         business_name={compan.business_name}
-                                        // description={compan.description}
-                                        // work_sector={compan.work_sector}
+                                        description={compan.description}
+                                        job_area={compan.job_area}
                                         name={compan.name}
                                         country={compan.country}
                                         cuit={compan.cuit}
                                         email={compan.email}
-                                        // web={compan.web}
+                                        web={compan.webPage}
                                         />
                                     </div>
                                 )

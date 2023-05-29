@@ -6,7 +6,7 @@ import Page from "../Paginated/Page";
 
 const CardsContainerEmpleo = ({ vacants }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [vacantsPerPage, /* setVacantsPerPagePerPage */] = useState(5);
+    const [vacantsPerPage, /* setVacantsPerPagePerPage */] = useState(20);
     const indexOfLastCharacter = currentPage * vacantsPerPage;
     const indexOfFirstCharacter = indexOfLastCharacter - vacantsPerPage;
 
@@ -23,7 +23,7 @@ const CardsContainerEmpleo = ({ vacants }) => {
             setCurrentPage(newPage);
     }
     }, [currentVacants, vacants, vacantsPerPage]);
-
+console.log(vacants);
     return (
         <div className={style.mainContainer}>
             <Page
@@ -34,13 +34,20 @@ const CardsContainerEmpleo = ({ vacants }) => {
             <div className={style.cardsContainer}>
                 {
                     currentVacants?.map(vacancy => {
+                        let truncatedDescription = vacancy.description.slice(0, 200);
+                            if (vacancy.description.length > 200) {
+                                 truncatedDescription += ' . . . ';
+                                 }
                         return (
                             <Card
                                 key={vacancy.id}
                                 id={vacancy.id}
                                 // logo={vacancy.logo}
                                 title={vacancy.title}
-                                description={vacancy.description}
+                                description={truncatedDescription}
+                                Workday={vacancy.Workday.name}
+                                WorkMethod={vacancy.WorkMethod.name}
+                                Seniority={vacancy.Seniority.name}
                             />
                         )
                     })
