@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
         still_working: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        registed: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
         }
     },
     { 
