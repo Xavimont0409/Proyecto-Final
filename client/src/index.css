@@ -28,3 +28,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'letters';
+  src: url('./assets//font/Inconsolata-Regular.ttf');
+  font-weight: 400;
+}

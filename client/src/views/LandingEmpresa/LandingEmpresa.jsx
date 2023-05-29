@@ -1,20 +1,13 @@
-import style from "./LandignEmpresa.module.css";
+import style from "./LandingEmpresa.module.css";
 import NavBar from "../../components/NavBar/NavBar";
 import CardPlan from "../../components/CardPlan/CardPlan";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaWpforms } from "react-icons/fa";
 const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
-	const [greeting, setGreeting] = useState("");
 	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
 	const validate = JSON.parse(localStorage.getItem("state"))
-
-	useEffect(() => {
-		if (validate && userType2) {
-			const name = userType2.name;
-			setGreeting(`Hola, ${name}!`);
-		}
-	}, [validate, userType2]);
+	const [greeting, setGreeting] = useState(`Hola, ${userType2.name}!`);
 	return (
 		<>
 			<div className={style.container}>
