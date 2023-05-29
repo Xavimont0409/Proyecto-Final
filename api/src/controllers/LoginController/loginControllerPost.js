@@ -7,12 +7,13 @@ const {
   WorkMethod,
   Seniority,
   Star,
+  PayMethod
 } = require("../../db");
 
 const getUserApplicant = async (email, password) => {
   const findApplicant = await Applicant.findAll({
     where: { email: email, password: password },
-    include: [{ model: Cv }, { model: Vacant }],
+    include: [{ model: Cv }, { model: Vacant },{model:PayMethod}],
   });
 
   return findApplicant;
@@ -42,7 +43,8 @@ const getUserComany = async(email, password) =>{
       {
         model: Star,
         attributes: ["stars", "text"]
-      }
+      },
+      {model:PayMethod}
     ],
   });
   return findCompany
