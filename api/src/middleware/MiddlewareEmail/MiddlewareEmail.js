@@ -1,8 +1,10 @@
 const {transporter} = require('../../config/mailer');
 
 const middlewareEmail = async (email, name, detail, details, cost, PayMethodId, PayMethod) => {
+  console.log(email)
         await transporter.sendMail({
             from: '"¡JobPortallX! GRACIAS POR ACTUALIZAR TU PLAN 👻" <jobportalxcompany@gmail.com>', // sender address
+
             to: email, // list of receivers
             subject: "¡JobPortallX! GRACIAS POR ACTUALIZAR TU PLAN 👻", // Subject line
             // text: "Hello world?", // plain text body

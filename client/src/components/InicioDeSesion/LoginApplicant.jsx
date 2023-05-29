@@ -36,7 +36,7 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
     setCurrentUserStore({email, password: googleId})
     setValidateState(true)
     setTimeout(()=>{
-      navigate("/empresa")
+      navigate("/applicant")
     },1500)
   };
   const onFailure = () => {
