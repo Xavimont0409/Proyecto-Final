@@ -1,10 +1,7 @@
-.words {
-}
-
 .mainContainer {
     border-radius: 10px;
     width: 50vw;
-    height: 12vh;
+    height: 11.5vh;
     display: flex;
     margin-top: 3px;
     margin-bottom: 7px;
