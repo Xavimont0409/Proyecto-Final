@@ -119,7 +119,6 @@
     margin-bottom: 2rem;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+li a {
+    color: #e1ecfc;
 }

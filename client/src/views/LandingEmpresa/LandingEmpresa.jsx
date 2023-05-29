@@ -1,4 +1,4 @@
-import style from "./LandignEmpresa.module.css";
+import style from "./LandingEmpresa.module.css";
 import NavBar from "../../components/NavBar/NavBar";
 import CardPlan from "../../components/CardPlan/CardPlan";
 import { useState, useEffect } from "react";
