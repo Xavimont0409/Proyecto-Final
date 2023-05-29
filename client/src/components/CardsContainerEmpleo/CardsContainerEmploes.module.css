@@ -1,4 +1,4 @@
-.mainContainer{
+.mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,7 @@
 }
 
 
-.cardsContainer{
+.cardsContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -20,6 +20,7 @@
     overflow-y: scroll;
     height: 89vh;
     justify-content: flex-start;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
