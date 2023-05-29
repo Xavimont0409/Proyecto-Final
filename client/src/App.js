@@ -34,7 +34,7 @@ function App() {
       setCurrentUserStore2("")
       setValidateState(false)
     }
-  }, [currentUser ]);
+  }, [currentUser]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -51,7 +51,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route exact path="/" element={<Landing setValidateState={setValidateState} setCurrentUserStore2= {setCurrentUserStore2}/>} />
-        <Route path="/empleos" element={<Empleos setCurrentUserStore={setCurrentUserStore} />} />
+        <Route path="/empleos" element={<Empleos setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
 
         <Route path="/registro" element={<Registro currentUserStore2={currentUserStore2} currentUserStore={currentUserStore} />}/>
         <Route path='/newRegistroApplicant' element={<NewRegistroApplicant setCurrentUserStore2={setCurrentUserStore2}  setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} />} />
