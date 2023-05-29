@@ -4,7 +4,8 @@ import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import { getLoginApplicant } from '../../Redux/Actions/actionsFunction/actionLogin2'
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import style from './inicioSesion.module.css'
 
 const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
   const clientID = "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
@@ -69,7 +70,7 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
           value={applicant.password}
           onChange={handlerChange}
         />
-        <button onClick={handlerSumit}>Iniciar sesion</button>
+        <button onClick={handlerSumit} >Iniciar sesión</button>
         <div>
         <GoogleLogin
           clientId={clientID}
@@ -77,6 +78,7 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
           onFailure={onFailure}
           cookiePolicy={"single_host_policy"}
         />
+        <Link to='/loginCompany'><button className={style.button}>Iniciar como Empresa</button></Link>
       </div>
       </div>
     </div>

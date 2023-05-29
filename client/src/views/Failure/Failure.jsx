@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./Failure.module.css";
+
+import styles from "../Success/Success.module.css";
+
 import { FcHighPriority } from "react-icons/fc";
 
 const Failure = ({ currentUserStore }) => {
