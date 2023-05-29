@@ -14,6 +14,7 @@
     align-items: center;
     max-width: 100vw;
     overflow-x: hidden;
+    font-family: 'letters';
 }
 
 .appName {
