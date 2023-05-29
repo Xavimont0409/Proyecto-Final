@@ -3,7 +3,8 @@ import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import { getCompany } from '../../Redux/Actions/actionsFunction/actionLogin2'
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import style from './inicioSesion.module.css';
 
 const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
   const clientID = "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
@@ -78,6 +79,7 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
             onFailure={onFailure}
             cookiePolicy={"single_host_policy"}
           />
+          <Link to='/loginApplicant'><button className={style.button}>Iniciar como Aplicante</button></Link>
         </div>
       </div>
     </div>
