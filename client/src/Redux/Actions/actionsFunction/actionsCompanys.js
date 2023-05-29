@@ -53,7 +53,11 @@ export const postCompany = (payload) => {
         type: POST_COMPANY,
         payload: data,
       })
-        ? alert("Usuario creado, se envió una notificación al correo ingresado")
+        ? 
+        Swal.fire({
+        title: "Exito",
+        text: 'Usuario creado, se envió una notificación al correo ingresado',
+        icon: 'success'})
         : data;
     } catch (error) {
       return Swal.fire({
