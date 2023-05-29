@@ -6,14 +6,18 @@ import style from "./Empleos.module.css";
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants'
+import { getAllCompanys } from "../../Redux/Actions/actionsFunction/actionsCompanys";
 
 
 const Empleos = ({ setCurrentUserStore2, setValidateState }) => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(true);
-    const currentCard = useSelector(state => state.Vacant)
+    const currentCard = useSelector(state => state.Vacant);
+    const companies = useSelector(state => state.Company);
+
     useEffect(()=>{
-        dispatch(getAllVacants())
+        dispatch(getAllVacants());
+        dispatch(getAllCompanys());
     },[dispatch])
     useEffect(() => {
         setTimeout(() => {
@@ -34,7 +38,9 @@ const Empleos = ({ setCurrentUserStore2, setValidateState }) => {
 
                     <CardsContainerEmpleo 
                         className={style.cards}
-                        vacants={currentCard} />
+                        vacants={currentCard}
+                        companies={companies}
+                         />
 
                 </div>
             </div>
