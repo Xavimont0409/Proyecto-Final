@@ -26,10 +26,6 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
 
     const [validated, setValidated] = useState(false);
 
-    
-
-    
-
     useEffect(() => {
         const handleUserAuthentication = () => {
             if (validate && userType2) {
@@ -47,7 +43,8 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2}) {
         WorkdayId: "",
         WorkMethodId: "",
         SeniorityId: "",
-        creation_date: dateOnly
+        creation_date: dateOnly,
+        operation: userType2.PayMethods === [] ? "none" : userType2.PayMethods[0].Operation.detail
     });
 
 
