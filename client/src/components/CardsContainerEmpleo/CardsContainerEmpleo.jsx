@@ -4,7 +4,7 @@ import style from "./CardsContainerEmploes.module.css";
 import Page from "../Paginated/Page";
 
 
-const CardsContainerEmpleo = ({ vacants }) => {
+const CardsContainerEmpleo = ({ vacants, companies }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [vacantsPerPage, /* setVacantsPerPagePerPage */] = useState(20);
     const indexOfLastCharacter = currentPage * vacantsPerPage;
@@ -23,7 +23,7 @@ const CardsContainerEmpleo = ({ vacants }) => {
             setCurrentPage(newPage);
     }
     }, [currentVacants, vacants, vacantsPerPage]);
-console.log(vacants);
+
     return (
         <div className={style.mainContainer}>
             <Page
@@ -42,7 +42,7 @@ console.log(vacants);
                             <Card
                                 key={vacancy.id}
                                 id={vacancy.id}
-                                // logo={vacancy.logo}
+                                company={companies.find((comp)=> vacancy.CompanyId === comp.id)}
                                 title={vacancy.title}
                                 description={truncatedDescription}
                                 Workday={vacancy.Workday.name}

@@ -8,7 +8,7 @@ return (
         <Link className={style.words} to={`/empleoDetail/${props.id}`}>
             <div className={style.mainContainer}>
                 <div className={style.containerInfo}>
-                    <img className={style.image} src={props.logo} alt="logo" />
+                    <img className={style.image} src={props.company?.photo} alt="logo" />
                     <h2 className={style.temps} >{props.title}</h2>
                     <p className={style.description} >{props.description}</p>
                 </div>

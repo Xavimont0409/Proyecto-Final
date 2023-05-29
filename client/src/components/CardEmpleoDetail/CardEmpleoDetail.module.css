@@ -1,14 +1,29 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container2{
+align-self: baseline;
+width: 100%;
+
+}
+
 .logo{
     
         width: 260px;
         height: 160px;
         border: 4px solid var(--oxford-blue);
         border-radius: 10%;
+        justify-self: center;
+        align-self: center;
 }
 
 .btn{
     background-color: var(--oxford-blue);
     color: white;
+
 }
 
 .btn:hover{
