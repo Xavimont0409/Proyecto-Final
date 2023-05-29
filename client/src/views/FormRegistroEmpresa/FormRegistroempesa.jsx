@@ -19,9 +19,9 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     cuit: "",
     country: "",
     registed: true,
-    name: Company.nombre,
-    email: Company.email,
-    password: Company.contraseña
+    name: Company ? Company.nombre : "",
+    email: Company? Company.email : "",
+    password:Company? Company.contraseña: ""
   });
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
@@ -81,7 +81,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
                   type="text"
                   onChange={handleInputChange}
                   required
-                  disabled={newEmpresa.name === Company.nombre ? true : false}
+                  disabled={newEmpresa.name === Company?.nombre ? true : false}
                   />
               </FormGroup>
               <FormGroup as={Col} md='6' >
@@ -128,7 +128,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
                   type="text"
                   onChange={handleInputChange}
                   required
-                  disabled={newEmpresa.email === Company.email ? true : false}
+                  disabled={newEmpresa.email === Company?.email ? true : false}
                   />
               </FormGroup>
               <FormGroup as={Col} md='10'  >
@@ -140,7 +140,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
                   type="password"
                   onChange={handleInputChange}
                   required 
-                  disabled={newEmpresa.password === Company.contraseña ? true : false} />
+                  disabled={newEmpresa.password === Company?.contraseña ? true : false} />
               </FormGroup>
             </Row>
           </Form>

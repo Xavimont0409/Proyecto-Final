@@ -3,8 +3,10 @@ import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import FormRegisterEmpresa from "../FormRegistroEmpresa/FormRegistroempesa";
 import style from "./NewRegistro.module.css";
+import { useNavigate } from "react-router-dom";
 
 const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrentUserStore }) => {
+  const navigate = useNavigate()
   const clientID =
     "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
   const [Company, setCompany] = useState({
@@ -42,7 +44,8 @@ const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrent
       <div className={style.containerData}>
         <h1 className={style.title}>Registro Company</h1>
         <div>
-           <GoogleLogin
+          <button className={style.button} onClick={()=> navigate('/registroini-empresa')} >Registrarte con otro correo</button>
+          <GoogleLogin
           clientId={clientID}
           onSuccess={onSuccess}
           onFailure={onFailure}
@@ -51,7 +54,7 @@ const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrent
         {
         Company.nombre.length > 1 ? <FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} Company={Company} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} /> : <div></div>
       }
-        </div>
+        </div>3
        
       </div>
       
