@@ -13,15 +13,15 @@ import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const [ expe, setExpe ] = useLocalStorage('expe', '0')
-  const [ date, setdate ] = useLocalStorage('time', '')
-  const [ method, setMethod ] = useLocalStorage('method', '')
+  const [expe, setExpe] = useLocalStorage('expe', '0');
+  const [date, setdate] = useLocalStorage('time', '');
+  const [method, setMethod] = useLocalStorage('method', '');
+  const [operation, setOperation] = useLocalStorage('operation', '');
 
 
   const handlerFilterSeniority = (event) => {
     setExpe(event.target.value)
     dispatch(filterPerSeniority(event.target.value));
-
   };
 
   const handlerFilterWordkMethod = (event) => {
@@ -32,7 +32,6 @@ const Filter = () => {
   const handlerFilterTime = (event) => {
     setdate(event.target.value)
     dispatch(filterPerTime(event.target.value));
-
   };
 
   return (

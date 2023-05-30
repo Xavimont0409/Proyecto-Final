@@ -13,11 +13,11 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
   const currentURL = window.location.href;
 
   useEffect(() => {
-      dispatch(findPerName(name));
-      if(location.pathname !== "/empleos"){
-        window.localStorage.setItem("name", "");
-      }
-  }, [dispatch])
+    dispatch(findPerName(name));
+    if (location.pathname !== "/empleos") {
+      window.localStorage.setItem("name", "");
+    }
+  }, [dispatch]);
 
   const [isNavVisible, setIsNavVisible] = useState(false);
 
