@@ -48,6 +48,7 @@ const CardsContainerEmpleo = ({ vacants, companies }) => {
                                 Workday={vacancy.Workday.name}
                                 WorkMethod={vacancy.WorkMethod.name}
                                 Seniority={vacancy.Seniority.name}
+                                operation={vacancy.operation}
                             />
                         )
                     })
