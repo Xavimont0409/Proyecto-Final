@@ -6,12 +6,12 @@
   }
 
 .Form {
-  margin: 2vh auto;
+  margin: 0.5vh auto;
   background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
   color: #e1ecfc;
-  width: 50%;
+  width: 60%;
   border-radius: 10px;
-  padding: 1%;
+  padding: 2%;
   font-size: large;
 }
   
@@ -24,8 +24,8 @@
   cursor:pointer;
   background-color: var(--sub-white);
   border: solid black 2px;
-  width: 30vw;
-  height: 10vh;
+  width: 10vw;
+  height: 20vh;
   border: 2px dashed #ccc;
   border-radius: 10px;
 }
@@ -36,7 +36,7 @@
 }
 
 .image{
-  width: 15vw;
+  width: 10vw;
   height: 20vh;
   border-radius: 10px;
 }

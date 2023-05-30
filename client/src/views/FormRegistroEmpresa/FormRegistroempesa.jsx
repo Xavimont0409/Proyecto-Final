@@ -32,7 +32,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     photo: "",
     description: "",
     job_area: "",
-    web: "",
+    webPage: "",
   });
 
 
@@ -219,9 +219,9 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
                 <FormGroup>
                   <FormLabel>Página web</FormLabel>
                   <FormControl
-                    name='web'
+                    name='webPage'
                     placeholder='Página web'
-                    value={newEmpresa.web}
+                    value={newEmpresa.webPage}
                     type="text"
                     onChange={handleInputChange}
                     required />
