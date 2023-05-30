@@ -5,8 +5,8 @@ import { useState } from "react";
 import style from "./MiPerfil.module.css"
 import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
-import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
-import DocuPDF from "../../components/DocuPDF/DocuPDF"
+// import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
+// import DocuPDF from "../../components/DocuPDF/DocuPDF"
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
@@ -18,7 +18,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [showPDF, setShowPDF] = useState(false);
+  // const [showPDF, setShowPDF] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
   
@@ -76,7 +76,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
         Formations:userDetail.Cv?.Formations
       }));
     }
-  }, [navigate, userDetail.Cv]);
+  }, [navigate, userDetail.Cv, userDetail.cellphone, userDetail.email, userDetail.lastName, userDetail.name, userDetail.profile]);
 
 
 
@@ -87,12 +87,9 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   }, []);
 
 
-  console.log(userDetail);
-
-
-  const handleClick = () => {
-    setShowPDF(!showPDF);
-  };
+  // const handleClick = () => {
+  //   setShowPDF(!showPDF);
+  // };
 
 
   if(!isLoading2){
@@ -199,7 +196,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 											navigate("/registro-experiencia")
 										}
 									>
-										Registar
+										Registrar
 									</button>{" "}
 								</div>
 							) : (
@@ -234,7 +231,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 											navigate("/registro-estudio")
 										}
 									>
-										Registar
+										Registrar
 									</button>{" "}
 								</div>
 							) : (
