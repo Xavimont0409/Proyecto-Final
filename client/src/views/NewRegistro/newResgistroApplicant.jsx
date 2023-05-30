@@ -3,7 +3,7 @@ import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import FormRegistroUsuario from "../FormRegistroUsuario/FormRegistroUsuario";
 import style from "./NewRegistro.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const NewRegistroApplicant = ({ setCurrentUserStore2, setValidateState, setCurrentUserStore }) => {
   const navigate = useNavigate()
@@ -59,7 +59,12 @@ const NewRegistroApplicant = ({ setCurrentUserStore2, setValidateState, setCurre
         </div>
        
       </div>
-      
+      <div className={style.containerRutaAlternativa}>
+        <span className={style.textoAlternativa}>
+        ¿Quieres iniciar sesión?
+        </span>
+        <Link to='/loginApplicant'><span className={style.textoLink}>Inicio de Sesión</span></Link>
+      </div>
     </div>
   );
 };

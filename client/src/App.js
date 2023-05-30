@@ -84,7 +84,7 @@ function App() {
           <Route path="/registro-vacante" element={<FormVacante setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/empresa" element={<LandingEmpresa setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/registro-empresa" element={<FormEmpresa setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
-          <Route path="/vacantes" element={<Vacantes setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+          <Route path="/vacantes" element={<Vacantes />} />
           <Route path="/perfil-company" element={<PerfilCompany setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         </Route>
 
