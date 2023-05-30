@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 
-//axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+axios.defaults.baseURL = 'http://localhost:3001'
+// axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
@@ -60,7 +60,7 @@ function App() {
         <Route path='/ratings' element={<Ratings/> } />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
-        <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore} />} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} setCurrentUserStore2={setCurrentUserStore2} />} />
         <Route path="/ServerDevelop" element={<ServerMaintenance />} />
         <Route path="/product/:id" element={<DetailProduct setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         <Route path="/registroini-empresa" element={<FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} />} />
