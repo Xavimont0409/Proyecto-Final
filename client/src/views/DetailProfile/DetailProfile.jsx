@@ -2,28 +2,25 @@ import Loading from "../../components/Loading/Loading"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
-import style from "./MiPerfil.module.css"
+import style from "./DetailProfile.module.css"
 import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
-import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
-import DocuPDF from "../../components/DocuPDF/DocuPDF"
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 
-const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
+const DetailProfile = ({ setValidateState, setCurrentUserStore2 }) => {
 
+  const id = useParams().id;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [showPDF, setShowPDF] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
   
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser2"))
 
   const userDetail = useSelector(state => state.UserDetail);
 
@@ -47,9 +44,9 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
 
   useEffect(() => {
-    dispatch(getUserDetail(currentUser.id))
+    dispatch(getUserDetail(id))
 
-  }, [currentUser.id, dispatch]);
+  }, [id, dispatch]);
 
   
 
@@ -85,14 +82,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
       setIsLoading2(true);
     }, 2000);
   }, []);
-
-
-  console.log(userDetail);
-
-
-  const handleClick = () => {
-    setShowPDF(!showPDF);
-  };
 
 
   if(!isLoading2){
@@ -162,11 +151,11 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
 
               <div className={style.container5}>
-              <h4 style={{ 'text-align': 'left' }}>Mis experiencias profesionales</h4>
+              <h4 style={{ 'text-align': 'left' }}>Experiencias profesionales</h4>
               <div className={style.containerList}>
 
                 {perfil.Experiences?.length === 0
-                  ? <div>No tienes experiencia registrada <button onClick={() => navigate('/registro-experiencia')}>Registar</button> </div>
+                  ? <div>El aspirante no tiene experiencia registrada</div>
                   :perfil.Experiences?.map(exp => {
                     return (
                       <ListItem charge={exp.charge}
@@ -182,13 +171,13 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
             </div>
 
             <div className={style.container5}>
-              <h4 style={{ 'text-align': 'left' }}>Mis estudios</h4>
+              <h4 style={{ 'text-align': 'left' }}>Estudios</h4>
 
               <div className={style.containerListStudy}>
 
 
                 {perfil.Formations?.length === 0
-                  ? <div>No tienes formación registrada <button onClick={() => navigate('/registro-estudio')}>Registar</button> </div>
+                  ? <div>El aspirante no tiene formación registrada</div>
                   : perfil.Formations?.map(exp => {
                     return (
                       <ListItemStudy 
@@ -208,26 +197,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                 <h4 style={{ 'text-align': 'left' }}>Skills</h4>
                 <p>{perfil.skills}</p>
               </div>
-
-              {/* {userDetail.Cv &&  <div className={style.container3}>
-
-                <button
-                  style={{ backgroundColor: 'gray' }}
-                  onClick={handleClick}>{showPDF ? 'Ocultar PDF' : 'Ver CV en PDF'}</button>
-
-                {showPDF && (
-                  <div>
-                    <PDFViewer width="1000" height="600">
-                      <DocuPDF perfil={perfil} />
-                    </PDFViewer>
-                  </div>
-                )}
-
-                <PDFDownloadLink document={<DocuPDF perfil={perfil}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
-                  <button style={{ 'backgroundColor': 'gray' }}>Descargar CV en PDF</button>
-                </PDFDownloadLink>
-
-              </div>} */}
             </div>
           </div>
         </>
@@ -236,4 +205,4 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
 }
 
-export default MiPerfil;
+export default DetailProfile;

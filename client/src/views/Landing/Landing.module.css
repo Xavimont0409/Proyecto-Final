@@ -1,133 +1,296 @@
 .landingDiv {
     min-height: 100vh;
     overflow: hidden;
-    /*  background-color: #ccc; */
+    background: #1C1C1C;
 }
 
-.containerComponents{
-    width: 100vw;
-    z-index: 10;
-}
-
-.container {
-    display: -webkit-flex;
+.containerFirst{
+    height: 90vh;
+    margin-top: 10vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.videoDiv {
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-}
-
-.searchDiv {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 60vw;
-    height: 40vh;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.616);
-    border-radius: 10px;
-    z-index: 2;
-    backdrop-filter: blur(4px) saturate(1000%)
+    height: fit-content;
 }
 
-.input {
-    width: 20vw;
-    margin-bottom: 5px;
-    margin-top: 5px;
-    border-radius: 3px;
-    background-color: white;
+.containerBienvenida, .containerText{
+    width: 50vw;
+    height: 80vh;
+    margin-right: 10vw;
 }
 
-.paragraph {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.title{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin-top: 8vh;
+    text-justify: center;
 }
 
-.title {
-    font-size: 400%;
-    color: white;
+.parrafo{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 2.3rem;
+    text-justify: center;
+    margin-top: 8vh;
 }
 
-.text {
-    margin-top: 3vh auto;
+.containerLogo, .containerLogo2, .containerLogo3{
     width: 30vw;
-    font-size: 120%;
-    color: white;
+    height: 76vh;
 }
 
-.buttonDiv {
-    display: flex;
-    flex-direction: column;
-    margin-top: 2vh;
+.imageFirst{
+border-radius: 20px;
 }
+.containerSecond{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerLogo2{
+    margin-right: 5vw;
+}
+
+.containerText{
+    margin-top: 6vh;
+}
+
+.titleSecond{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 3.2rem;
+    text-justify: center;
+    margin-bottom: 10vw;
+}
+
+.imageSecond{
+    border-radius: 30px;
+}
+
+.containerThird{
+    height:60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerLogo3{
+    height: 100%;
+}
+
+.imageThird{
+    width: 25vw;
+    height: 50vh;
+    margin-right: 8vw;
+}
+
+.containerText3{
+    margin: 0 4vw 6vw 10vw;
+}
+
+.titleThird{
+    margin-top: 1vh;
+    color: #fff;
+    font-family: 'letters';
+    font-size: 4rem;
+    font-weight: bold;
+    text-justify: center;
+    margin-bottom: 6vh;
+}
+
+.parrafo2{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 3rem;
+    text-justify: center;
+    margin-bottom: 4vh;
+}
+
+.containerOportunidades{
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxOportunidades{
+    width: 20%;
+    height: 100%;
+    margin: auto 1vw;
+    padding-left: 10px;
+    color: #fff;
+    font-family: 'letters';
+    font-size: 2rem;
+    text-justify: center;
+    border-left: 8px solid #331460;
+}
+
+.containerFourth{
+    height: 57vh;
+    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerText4{
+    height: 100%;
+    width:60vw;
+    margin: 4vh 2vw 4vw 4vw;
+}
+
+.containerLogo4{
+    width: 40vw;
+    height: 100%;
+}
+
+.imageFour{
+    width: 40vw;
+    height: 40vh;
+    margin: 0 0 0 2vw;
+    border-radius: 20px;
+}
+
+.titleFourth{
+    margin-top: 1vh;
+    color: #fff;
+    font-family: 'letters';
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-justify: center;
+    margin-bottom: 4vh;
+}
+
+.parrafo3{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 1.9rem;
+    text-justify: center;
+    margin-bottom: 4vh;
+}
+
+.containerLi{
+    list-style: none;
+}
+
+.icono{
+    width: 1.3vw;
+    height: 3vh;
+    margin-right: 0.5vw;
+}
+
+.textoIcono{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 1.2rem;
+    text-justify: center;
+    margin-bottom: 0.3vh;
+}
+
+@media screen and (max-width: 1900px) {
+
+    .containerFirst{
+        width: 100vw;
+        height: 90vh;
+        margin-top: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .containerBienvenida, .containerText{
+        width: 55vw;
+        height: 80vh;
+        margin-right: 10vw;
+    }
+
+    .title{
+        font-size: 3rem;
+        margin: 2vh;
+    }
+
+    .parrafo{
+        font-size: 1.7rem;
+        text-justify: center;
+        margin-top: 12vh;
+    }
+
+    .containerLogo, .containerLogo2, .containerLogo3{
+        margin: auto 1vw;
+    }
+
+    .containerText{
+        margin-top: 2vh;
+    }
+
+    .titleSecond{
+        font-size: 2.5rem;
+        margin-bottom: 18vh;
+        margin-left: 4vw;
+    }
+
+    .titleThird{
+        margin-top: 10vh;
+        font-size: 2.5rem;
+        margin-bottom: 8vh;
+    }
+
+    .parrafo2{
+        font-size: 2rem;
+        margin-bottom: 8vh;
+    }
+
+    .containerOportunidades{
+        margin-top: 4vh;
+    }
+
+    .boxOportunidades{
+        width: 22%;
+        font-size: 1.4rem;
+    }
+
+    .containerFourth{
+        height: fit-content;
+        margin-top: 10vh;
+    }
+
+    .imageFour{
+        width: 35vw;
+        height: 35vh;
+        margin: 2vh 0 0 2vw;
+    }
+
+    .titleFourth{
+        margin-top: 4vh;
+        font-size: 2.4rem;
+        margin-bottom: 4vh;
+    }
+
+    .parrafo3{
+        font-size: 1.2rem;
+        margin-bottom: 4vh;
+    }
+
+    .containerLi{
+        width: 100%;
+    }
+
+    .textoIcono{
+        color: #fff;
+        font-family: 'letters';
+        font-size: 0.9rem;
+        text-justify: center;
+        margin-bottom: 0.4vh;
+    }
+    
+
+}
+
 
 @media (max-width: 780px) {
-    .landingDiv {
-        min-height: 100vh;
-    }
-
-    .container {
-        display: -webkit-flex;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 90vh;
-        max-width: 100%;
-        overflow: hidden;
-    }
-
-    .videoDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .imgDiv {
-        margin-top: 20px;
-        margin-bottom: 15px;
-        margin-left: 5px;
-        border-radius: 3px;
-    }
-
-    .img {
-        width: 300px;
-        height: 700px;
-        border-radius: 3px;
-    }
-
-    .searchDiv {
-        display: flex;
-        flex-direction: column;
-        width: 80vw;
-        height: fit-content;
-        margin-top: 0;
-    }
-
-    .paragraph {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 5px;
-        height: fit-content;
-    }
-
-    .buttonDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 7px;
-    }
-
-    .input {
-        width: 35vw;
-        margin-bottom: 3px;
-        border-radius: 3px;
-        background-color: white;
-    }
+    
 }

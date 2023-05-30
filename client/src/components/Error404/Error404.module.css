@@ -5,6 +5,7 @@
     justify-content: center;
     height: 100vh;
     text-align: center;
+    color: #e1ecfc;
 }
 
 .errorImage {
@@ -26,4 +27,46 @@
     padding-left: 1.5em;
     padding-right: 1.5em;
     border-radius: 8px;
+}
+
+.errorButton {
+    color: black;
+    padding: 1%;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    margin: 10vh auto;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid var(--oxford-blue);
+    color: var(--jet);
+    font-family: 'letters';
+    font-size: 1em;
+
+}
+
+.errorButton:hover {
+    color: white;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.errorButton:hover:after {
+    width: 100%;
+}
+
+.errorButton:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: var(--jet);
+
 }

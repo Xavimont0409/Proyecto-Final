@@ -9,7 +9,7 @@ import { FcSearch } from "react-icons/fc";
 const CardProfile =  ({id, cv, photo, name, lastName, profession, personal_description, skills, dni, phone, email, linkedin}) => {
 
   const experience = cv.Experiences[0];
-
+console.log(linkedin);
 
   return (
           <div className={style.mainContainer} >

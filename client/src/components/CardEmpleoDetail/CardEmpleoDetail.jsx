@@ -7,10 +7,12 @@ import { relationVacantApplicant } from "../../Redux/Actions/actionsFunction/axt
 import { useEffect, useState } from "react";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import { getCompanyDetail } from "../../Redux/Actions/actionsFunction/actionsCompanys";
+import Swal from "sweetalert2";
 
 const CardEmpleoDetail = ({ id, CompanyId, title, description, createdAt, Workday, WorkMethod, Seniority }) => {
   const dispatch = useDispatch();
   const currentUserId = JSON.parse(localStorage.getItem("currentUser2")).id;
+  const currentUser= JSON.parse(localStorage.getItem("currentUser2"));
   const userVacants = useSelector((state) => state.UserDetail.Vacants);
   const vacantPostuled = userVacants?.find((vacant) => vacant.id === id);
   const [validate, setValidate] = useState(false);
@@ -30,11 +32,20 @@ const CardEmpleoDetail = ({ id, CompanyId, title, description, createdAt, Workda
     if (vacantPostuled) setValidate(true);
   }, [vacantPostuled, validate]);
 
+
   const handlerClick = () => {
+    if (!currentUser.Cv){
+      return Swal.fire({
+        title: "Error",
+        text: "Debes registrar tu CV para poder postular a una vacante",
+        icon: 'error'
+      })
+    }else{
     dispatch(relationVacantApplicant(relationIds));
     setValidate(true);
+    }
   };
-
+  
   return (
     <Card className={style.mainContainer} style={{ width: "100%" }}>
       <div>
@@ -42,7 +53,7 @@ const CardEmpleoDetail = ({ id, CompanyId, title, description, createdAt, Workda
       </div>
       <Card.Body className={style.containerTitle}>
         <Card.Title>{title}</Card.Title>
-        <pre style={{ whiteSpace: "pre-wrap" , height: "50vh"}}>{description}</pre>
+        <pre style={{ whiteSpace: "pre-wrap"}}>{description}</pre>
       </Card.Body>
       <ListGroup className={style.container2}>
         <ListGroup.Item>Jornada: {Workday}</ListGroup.Item>
