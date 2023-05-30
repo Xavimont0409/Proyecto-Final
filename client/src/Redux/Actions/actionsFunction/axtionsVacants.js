@@ -99,3 +99,31 @@ export const relationVacantApplicant = (payload) =>{
     }
   }
 }
+
+
+export const deleteVacant = (id) =>{
+  return async function(){
+    try {
+       await axios.delete(`/job/${id}`)
+      // const data = json.data;
+    // dispatch({
+        // type: POST_RELATION_VACANT_APPLICANT,
+        // payload: data,
+      // };
+
+      return Swal.fire({
+        title: "Realizado",
+        text: 'Has cancelado tu aplicación a la vacante',
+        icon: 'success'
+      })
+
+
+    } catch (error) {
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
+    }
+  }
+}
