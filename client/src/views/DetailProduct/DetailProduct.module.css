@@ -63,10 +63,8 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-
-    
-   
 }
+
 .divContenedorInfo{
     background-color: rgb(95, 95, 95);
     padding: 5vh;
@@ -75,7 +73,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
+    font-family: 'letters';
     border-radius: 20px;
 
 }
@@ -102,12 +100,13 @@
 }
 
 .infoCard{
-    font-family: sans-serif;
+   font-family: 'letters';
     font-size: 20px;
 } 
 
 .nameCard{
     font-size: 30px;
+    font-family: 'letters';
 }
 
 .containerButton{
@@ -117,5 +116,32 @@
     justify-content: center;
     align-items: flex-end;
     padding: 1vh;
+    margin-top: 10vh;
+}
+
+
+@media screen and (max-width: 1900px) {
+    .box{
+        width: 50vw;
+        height: 50vh;
+       padding: 20px;
+    }
+
+    .divFinalInfo{
+        margin-top: 4vh;
+    }
+
+    .nameCard{
+        margin-top: 0.4vh;
+    }
+
+    .p {
+        margin-bottom: 3vh;
+    }
+
+    .containerButton{
+    margin-top: 10vh;
+}
+
 }
 
