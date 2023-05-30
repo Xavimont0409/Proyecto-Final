@@ -10,34 +10,41 @@ import {
 import { useDispatch } from "react-redux";
 import { getAllVacants } from "../../Redux/Actions/actionsFunction/axtionsVacants";
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
+import { useState } from "react";
+import { findPerName } from '../../Redux/Actions/actionsFunction/actionsSearchBar'
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const [expe, setExpe] = useLocalStorage('expe', '0');
-  const [date, setdate] = useLocalStorage('time', '');
-  const [method, setMethod] = useLocalStorage('method', '');
-  const [operation, setOperation] = useLocalStorage('operation', '');
-
+  const [expe, setExpe] = useLocalStorage("expe", "0");
+  const [date, setdate] = useLocalStorage("time", "");
+  const [method, setMethod] = useLocalStorage("method", "");
+  const [name, setName] = useState('')
 
   const handlerFilterSeniority = (event) => {
-    setExpe(event.target.value)
+    setExpe(event.target.value);
     dispatch(filterPerSeniority(event.target.value));
   };
 
   const handlerFilterWordkMethod = (event) => {
-    setMethod(event.target.value)
+    setMethod(event.target.value);
     dispatch(filterPerWordkmethod(event.target.value));
   };
 
   const handlerFilterTime = (event) => {
-    setdate(event.target.value)
+    setdate(event.target.value);
     dispatch(filterPerTime(event.target.value));
   };
-
+  const handlerChangeInput = (event) =>{
+    setName(event.target.value)
+  }
   return (
     <div className={style.mainContainer}>
       <div className={style.allFilters}>
-        
+        <div className={style.divInput}>
+          <input type="text" className={style.input} placeholder="Buscar..." onChange={(event)=> handlerChangeInput(event)} />
+          <button className={style.button2} onClick={()=> dispatch(findPerName(name)) }>Buscar</button>
+        </div>
+
         <div className={style.selectSpecial}>
           <p className={style.pSpecial}>Fecha de publicación</p>
           <select
@@ -46,9 +53,11 @@ const Filter = () => {
             value={date}
             onChange={(event) => handlerFilterTime(event)}
           >
-            <option value={date === "Filter" ? date : "Filter" }>Todos</option>
+            <option value={date === "Filter" ? date : "Filter"}>Todos</option>
             <option value={date === "Hoy" ? date : "Hoy"}>Hoy</option>
-            <option value={date === "Semana" ? date : "Semana"}>Esta semana</option>
+            <option value={date === "Semana" ? date : "Semana"}>
+              Esta semana
+            </option>
             <option value={date === "Mes" ? date : "Mes"}>Este mes</option>
           </select>
         </div>
@@ -62,10 +71,14 @@ const Filter = () => {
             onChange={(event) => handlerFilterSeniority(event)}
           >
             <option value={expe === "0" ? expe : "0"}>Todos</option>
-            <option value={expe ==="senior" ? expe : "senior"}>Senior</option>
-            <option value={expe === "semiSenior" ? expe: "semiSenior"}>Semi-Senior</option>
-            <option value={expe ==="junior" ? expe : "junior"}>Junior</option>
-            <option value={expe ==="trainee" ? expe : "trainee"}>Trainee</option>
+            <option value={expe === "senior" ? expe : "senior"}>Senior</option>
+            <option value={expe === "semiSenior" ? expe : "semiSenior"}>
+              Semi-Senior
+            </option>
+            <option value={expe === "junior" ? expe : "junior"}>Junior</option>
+            <option value={expe === "trainee" ? expe : "trainee"}>
+              Trainee
+            </option>
           </select>
         </div>
 
@@ -78,9 +91,15 @@ const Filter = () => {
             onChange={(event) => handlerFilterWordkMethod(event)}
           >
             <option value={method === "All" ? method : "All"}>Todos</option>
-            <option value={method === "presencial" ? method : "presencial"}>Presencial</option>
-            <option value={method === "hibrido" ? method : "hibrido"}>Hibrido</option>
-            <option value={method === "remoto" ? method : "remoto"}>Remoto</option>
+            <option value={method === "presencial" ? method : "presencial"}>
+              Presencial
+            </option>
+            <option value={method === "hibrido" ? method : "hibrido"}>
+              Hibrido
+            </option>
+            <option value={method === "remoto" ? method : "remoto"}>
+              Remoto
+            </option>
           </select>
         </div>
         <div className={style.emptyFilters}>
@@ -88,10 +107,10 @@ const Filter = () => {
             className={style.button}
             style={{ borderRadius: "5px" }}
             onClick={() => {
-              setExpe("0")
-              setMethod("All")
-              setdate("Filter")
-              return dispatch(getAllVacants())
+              setExpe("0");
+              setMethod("All");
+              setdate("Filter");
+              return dispatch(getAllVacants());
             }}
           >
             Limpiar filtros
