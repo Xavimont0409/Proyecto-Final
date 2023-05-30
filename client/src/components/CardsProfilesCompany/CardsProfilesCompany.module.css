@@ -10,10 +10,13 @@
     border: 5px solid var(--battleship-gray);
     padding: 2%;
     margin-top: 3vh;
+    background: #1c1c1c;
+    font-family: 'letters';
+    color: #e1ecfc;
 }
 
 .infoContainer{
-    
+    color: #e1ecfc;
     margin-bottom: 5%;
     min-height: 20vh;
     border-top: 3px solid var(--battleship-gray);
@@ -37,10 +40,9 @@
 }
 
 .title{
-    color: var(--oxford-blue);
+    color: white;
     margin-top: 4%;
     font-size: 4vh;
-
 }
 
 
@@ -51,7 +53,8 @@
     font-size: 3vh;
     min-height: 10vh;  
     min-width: 10vh;
-    color: var(--oxford-blue);
+    color: #e1ecfc;
+    background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
 }
 
 .text{
