@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import NavBar from '../../components/NavBar/NavBar'
 import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers';
-import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants';
+import { deleteVacant, getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 import { BsFillTrashFill } from 'react-icons/bs'
+import Swal from 'sweetalert2';
 
 const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
     const userType = JSON.parse(localStorage.getItem("currentUser2"));
@@ -17,12 +18,28 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
     const {confirm} = window;
 
   const handlerClick = (id, title) => {
-    const result = confirm(`¿Esta seguro que desea cancelar su postulacion a la vacante ${title}?`);
-    if (result) {
 
-    } else {
+    Swal.fire({
+      title: "Consulta",
+      text: `¿Esta seguro que desea cancelar su postulacion a la vacante ${title}?`,
+      icon: 'question',
+      showCancelButton: true,
 
-    }
+      preConfirm: () => {
+        return dispatch(deleteVacant(id))
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(response.statusText)
+            }
+            return response.name + " fue eliminada"
+          })
+          .catch(error => {
+            Swal.showValidationMessage(
+              `Request failed: ${error}`
+            )
+          })
+      },
+    })
   }
 
 
