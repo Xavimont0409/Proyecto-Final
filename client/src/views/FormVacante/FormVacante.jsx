@@ -59,12 +59,15 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2 }) 
 
   return (
     <div className={style.mainContainer}>
+      <div className={style.containerFirst}>{/* no quitar */}</div>
+			<div className={style.containerSecond}>
       <NavBar
         setValidateState={setValidateState}
         setCurrentUserStore2={setCurrentUserStore2}
       ></NavBar>
-
-      <h2 style={{ margin: "20px" }}>Crear nueva vacante</h2>
+      <div className={style.title}>
+      <h2>Crear nueva vacante</h2>
+      </div>
       <Form
         validated={!validated}
         className={style.Form}
@@ -166,6 +169,7 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2 }) 
           type="submit"
           handlerClick={handleSubmit}
         ></ButtonGeneral>
+      </div>
       </div>
     </div>
   );
