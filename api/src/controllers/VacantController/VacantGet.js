@@ -3,7 +3,6 @@ const { Op } = require('sequelize')
 
 const getAllVacant = () => {
   return Vacant.findAll({
-    attributes:["id","title", "description","createdAt","CompanyId","operation"],
     include: [{model:Applicant},
       {
         model: Workday,
@@ -25,7 +24,6 @@ const getVacantByName = async (name) => {
   const nameUpper = name.toUpperCase()
   const findVacant = await Vacant.findAll({
     where: { title: {[Op.iLike]: `%${nameUpper}%` } },
-    attributes:["id","title", "description","createdAt","CompanyId","operation"],
     include: [{model:Applicant},
       {
         model: Workday,
