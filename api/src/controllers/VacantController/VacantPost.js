@@ -1,8 +1,8 @@
 const { Vacant, ApplicantVacant, Applicant, Company } = require('../../db');
 const {transporter} = require('../../config/mailer');
 
-const postVacant = async(title, description, CompanyId, WorkdayId, WorkMethodId, SeniorityId, creation_date ) =>{
-    const newVacant = await Vacant.create({title, description, CompanyId, WorkdayId, WorkMethodId, SeniorityId, creation_date });
+const postVacant = async(title, description, CompanyId, WorkdayId, WorkMethodId, SeniorityId, creation_date, operation ) =>{
+    const newVacant = await Vacant.create({title, description, CompanyId, WorkdayId, WorkMethodId, SeniorityId, creation_date, operation });
     return newVacant;
 }
 const postVacantRelation = async(VacantId, ApplicantId)=>{

@@ -4,7 +4,8 @@ const {
   Workday,
   WorkMethod,
   Seniority,
-  Star
+  Star,
+  PayMethod,
 } = require("../../db");
 
 const getAllCompany = () => {
@@ -30,18 +31,19 @@ const getAllCompany = () => {
       },
       {
         model: Star,
-        attributes: ["id","stars","text"]
-      }
+        attributes: ["id", "stars", "text"],
+      },
+      { model: PayMethod },
     ],
   });
 };
 
 const getCompanyId = (id) => {
-  return Company.findByPk(id,{
+  return Company.findByPk(id, {
     include: [
       {
         model: Vacant,
-        attributes: ["id","title", "description","createdAt"],
+        attributes: ["id", "title", "description", "createdAt"],
         include: [
           {
             model: Workday,
@@ -59,8 +61,9 @@ const getCompanyId = (id) => {
       },
       {
         model: Star,
-        attributes: ["id","stars", "text"]
-      }
+        attributes: ["id", "stars", "text"],
+      },
+      { model: PayMethod },
     ],
   });
 };
