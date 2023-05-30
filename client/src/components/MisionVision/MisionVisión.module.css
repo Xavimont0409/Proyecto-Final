@@ -74,3 +74,25 @@
         text-align: justify;
     }
 }
+
+@media screen and (max-width: 1900px) {
+
+    .box {
+        width: 24vw;
+        height: 34vh;
+    }
+
+    .containerInfo {
+        font-size: 14px;
+        text-justify: center;
+        
+    }
+
+    .containerInfo:hover {
+        position: absolute;
+        color: #1C1C1C;
+        background-color: #E1ECFC;
+        border-radius: 20px;
+        
+    }
+}
