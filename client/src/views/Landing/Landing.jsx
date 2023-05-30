@@ -10,6 +10,7 @@ import { Button } from "react-bootstrap";
 import icono from "../../assets/img/icono.png";
 
 const Landing = ({ setValidateState, setCurrentUserStore2 }) => {
+  // eslint-disable-next-line
   const user = JSON.parse(localStorage.getItem("currentUser2"));
 
   return (
@@ -131,35 +132,5 @@ const Landing = ({ setValidateState, setCurrentUserStore2 }) => {
   );
 };
 
-/* <div className={style.container }>
-        <div className={style.searchDiv}>
-          <div className={style.paragraph}>
-            <h1 className={style.title}>JobPortalX</h1>
-            <p className={style.text}>
-              Somos el nuevo portal de trabajo, con mas dinamismo del mercado,
-              donde encontrarás las mejores oportunidades laborales
-            </p>
-          </div>
-          <div className={style.buttonDiv}>
-            <Link to="/empleos">
-              <Button variant="outline-secondary" className="ms-auto">
-                Busca Tu Trabajo
-              </Button>
-            </Link>
-          </div>
-          <div className={style.buttonDiv}>
-             {user?.profile === "Admin" ? (
-                            <Link to={process.env.ADMIN_PANEL} target='_blank'>
-                                <Button variant="outline-secondary" className="ms-auto">Dashboard Admin</Button>
-                            </Link>
-                        ): (<></>)} 
-          </div>
-        </div>
-      </div> 
-      
-      <MisionVisión />
-      <CardsEquipo />
-      
-      */
 
 export default Landing;
