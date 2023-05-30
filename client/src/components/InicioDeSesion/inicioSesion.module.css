@@ -70,4 +70,10 @@
     margin-right: 0.8vw;
 }
 
+@media screen and (max-width: 1900px) {
+    .containerData{
+        height: 54vh;
+    }
+
+}
 
