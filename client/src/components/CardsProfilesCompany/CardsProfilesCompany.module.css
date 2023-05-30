@@ -38,7 +38,6 @@
 
 .title{
     color: var(--oxford-blue);
-    margin-bottom: 4%;
     margin-top: 4%;
     font-size: 4vh;
 
@@ -56,7 +55,9 @@
 }
 
 .text{
-    margin-top: 2%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
 }
 
 .skills{
