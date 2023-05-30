@@ -74,12 +74,17 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
 
   return (
     <div className={style.mainContainer}>
+      <div className={style.containerFirst}>
+        {/* no quitar */}
+      </div>
+			<div className={style.containerSecond}>
       <NavBar
         setValidateState={setValidateState}
         setCurrentUserStore2={setCurrentUserStore2}
       ></NavBar>
+      <div className={style.title}>
       <h2 style={{ margin: "30px" }}>Agrega estudios a tu CV</h2>
-
+      </div>
       <Form
         className={style.Form}
         validated={!validated}
@@ -227,12 +232,13 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
         </Row>
       </Form>
 
-      <FormGroup as={Col} md="6" className="mb-3 ">
+      <FormGroup>
         <ButtonGeneral
           textButton="Añadir Estudio"
           handlerClick={handleSubmit}
         />
       </FormGroup>
+      </div>
     </div>
   );
 };

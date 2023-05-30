@@ -1,15 +1,55 @@
 .mainContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  background: #1C1C1C;
+  background-size: 400% 400%;
+  width: 100vw;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  font-family: 'letters';
   }
 
 .Form {
-  margin: 10px;
-  background-color: var(--battleship-gray);
+  margin: auto;
+  background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
+  color: #e1ecfc;
   height: fit-content;
-  width: 50%;
+  width: 80%;
   border-radius: 10px;
   padding: 1%;
   font-size: large;
+}
+
+.title {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  color: #e1ecfc;
+}
+
+.check{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.containerFirst {
+  width: 80vw;
+  height: 92vh;
+  background-image: url('../../assets/img/experiencia.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  order: 2;
+}
+
+.containerSecond {
+  width: 90vw;
+  height: fit-content;
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
