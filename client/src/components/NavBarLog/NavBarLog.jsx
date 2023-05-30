@@ -12,12 +12,12 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
   const [name, setName] = useLocalStorage("name", "");
   const currentURL = window.location.href;
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(findPerName(name));
     if (location.pathname !== "/empleos") {
       window.localStorage.setItem("name", "");
     }
-  }, [dispatch]);
+  }, [dispatch]); */
 
   const [isNavVisible, setIsNavVisible] = useState(false);
 
@@ -28,7 +28,7 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
     setIsNavVisible(false);
   };
 
-  const handlerSearchName = (event) => {
+  /* const handlerSearchName = (event) => {
     setName(event.target.value);
   };
 
@@ -37,7 +37,7 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
     if(location.pathname === "/empleos") {
       setName("")
     }
-  };
+  }; */
 
 
 
@@ -61,7 +61,7 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
             : (<a href="/empresa">JobPortalX</a>)
           }
         </h2>
-        <form className={style.SearchBarContainer}>
+        {/* <form className={style.SearchBarContainer}>
           <input
             type="text"
             placeholder="Empleos..."
@@ -79,7 +79,7 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
               </button>
              </Link>
           }
-        </form>
+        </form> */}
         <button className={style.abrirNav} onClick={abrirNav}>
           <i className="bi bi-arrow-bar-right"></i>
         </button>
