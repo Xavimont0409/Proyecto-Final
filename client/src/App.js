@@ -33,6 +33,7 @@ function App() {
       setCurrentUserStore2("")
       setValidateState(false)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   useEffect(() => {
