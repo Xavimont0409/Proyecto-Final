@@ -85,7 +85,12 @@ const LoginApplicant = ({setValidateState, setCurrentUserStore}) => {
       </div>
       </div>
       </div>
-      
+      <div className={style.containerRutaAlternativa}>
+        <span className={style.textoAlternativa}>
+          ¿Aún no te has registrado?
+        </span>
+        <Link to='/newRegistroApplicant'><span className={style.textoLink}>Registrarte</span></Link>
+      </div>
     </div>
   );
 };
