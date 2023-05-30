@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
-import { useDispatch, useSelector } from "react-redux";
-import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
-import {
-  Form,
-  FormLabel,
-  FormSelect,
-  FormGroup,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { Form,  FormLabel,  FormSelect,  FormGroup,  Row,  Col,} from "react-bootstrap";
 import countries from "countries-list";
 import ButtonGeneral from "../../components/Button/ButtonGeneral";
-import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
 import validation from "./validation";
 import Swal from "sweetalert2";
 import style from "./FormregistroEstudio.module.css";
@@ -26,19 +17,11 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
     (country) => country
   );
 
-  const validate = JSON.parse(localStorage.getItem("state"));
-  const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
+  const currentUser = JSON.parse(localStorage.getItem("currentUser2"));
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.dataEmail[0]);
   const [validated, setValidated] = useState(false);
 
-  useEffect(() => {
-    if (validate) {
-      if (userType2 && userType2.email) {
-        dispatch(getEmail(userType2.email));
-      }
-    }
-  }, [dispatch, validate, userType2]);
+  console.log(currentUser)
 
   const [estudio, setEstudio] = useState({
     title: "",
@@ -52,17 +35,15 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
     CvId: "",
   });
 
-  useEffect(() => {
+  useEffect( () => {
     if (currentUser) {
-      dispatch(getUserDetail(currentUser.id));
       setEstudio((prevEst) => ({
         ...prevEst,
-        CvId: currentUser.Cv?.id,
+        CvId: currentUser.Cv?.id
       }));
     }
-  }, [currentUser, dispatch]);
+  }, []);
 
-  console.log(estudio);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -93,12 +74,17 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
 
   return (
     <div className={style.mainContainer}>
+      <div className={style.containerFirst}>
+        {/* no quitar */}
+      </div>
+			<div className={style.containerSecond}>
       <NavBar
         setValidateState={setValidateState}
         setCurrentUserStore2={setCurrentUserStore2}
       ></NavBar>
+      <div className={style.title}>
       <h2 style={{ margin: "30px" }}>Agrega estudios a tu CV</h2>
-
+      </div>
       <Form
         className={style.Form}
         validated={!validated}
@@ -246,12 +232,13 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
         </Row>
       </Form>
 
-      <FormGroup as={Col} md="6" className="mb-3 ">
+      <FormGroup>
         <ButtonGeneral
           textButton="Añadir Estudio"
           handlerClick={handleSubmit}
         />
       </FormGroup>
+      </div>
     </div>
   );
 };

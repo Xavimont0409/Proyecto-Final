@@ -1,4 +1,4 @@
-import { Form, Row, Col, FormGroup, FormLabel, FormControl} from "react-bootstrap";
+import { Form, Row, Col, FormGroup, FormLabel, FormControl, FormSelect} from "react-bootstrap";
 import style from "./Step1FormCv.module.css"
 import ButtonGeneral from "../Button/ButtonGeneral";
 import validation from "./validation";
@@ -6,11 +6,15 @@ import Loading from "../Loading/Loading";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import Swal from "sweetalert2";
+import countries from "countries-list";
+import { BsCheckCircleFill, BsFillTrashFill } from 'react-icons/bs'
 
 
 
 function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 
+
+  const countriesNames = Object.values(countries.countries).map((country) => country);
 
   const [validated, setValidated] = useState(false);
   const [image, setImage] = useState(null);
@@ -87,171 +91,175 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 
 
 
-  if(!currentUser ){
-    return(
+  if (!currentUser) {
+    return (
       <Loading></Loading>
     )
-  }else{
+  } else {
 
-  
 
-  return (
 
-    <div className={style.mainContainer}>
-      <h2 style={{ 'margin': '40px' }}>Información personal</h2>
+    return (
 
-      <Form className={style.Form}  validated={!validated}>
+      <div className={style.mainContainer}>
+        <h2 style={{ 'margin': '40px' }}>Información personal</h2>
 
-        <Row className="mb-3 ">
+        <Form className={style.Form} validated={!validated}>
 
-          <FormGroup as={Col} md="6" >
-            <Form.Label>DNI</Form.Label>
-            <Form.Control
-              name="dni"
-              placeholder="dni"
-              value={cv.dni}
-              onChange={(event) => handlerChange(event, cv, setCv)}
-              type="number"
-              required />
-            <Form.Control.Feedback type="invalid">
-              Rellena este campo.
-            </Form.Control.Feedback>
+          <Row className="mb-3 ">
+
+            <FormGroup as={Col} md="6" >
+              <Form.Label>DNI</Form.Label>
+              <Form.Control
+                name="dni"
+                placeholder="dni"
+                value={cv.dni}
+                onChange={(event) => handlerChange(event, cv, setCv)}
+                type="number"
+                required />
+              <Form.Control.Feedback type="invalid">
+                Rellena este campo.
+              </Form.Control.Feedback>
+            </FormGroup>
+
+            <FormGroup as={Col} md="6" >
+              <FormLabel>Número de celular</FormLabel>
+              <Form.Control
+                name="phone"
+                placeholder="Número de celular"
+                value={cv.phone}
+                onChange={(event) => handlerChange(event, cv, setCv)}
+                type="number"
+                required />
+              <Form.Control.Feedback type="invalid">
+                Rellena este campo
+              </Form.Control.Feedback>
+            </FormGroup>
+
+          </Row>
+
+
+
+
+
+          <Row className="mb-3" >
+
+            <FormGroup as={Col} md="6" >
+              <FormLabel>Dirección</FormLabel>
+              <FormControl
+                name="address"
+                placeholder="Dirección"
+                value={cv.address}
+                onChange={(event) => handlerChange(event, cv, setCv)}
+                type="text"
+                required />
+              <Form.Control.Feedback type="invalid">
+                Rellena este campo
+              </Form.Control.Feedback>
+            </FormGroup>
+
+
+            <FormGroup as={Col} md="6" >
+              <FormLabel>LinkedIn o sitio web</FormLabel>
+              <FormControl
+                name="linkedin"
+                placeholder="LinkedIn o sitio web"
+                value={cv.linkedin}
+                onChange={(event) => handlerChange(event, cv, setCv)}
+                type="text"
+                required />
+              <Form.Control.Feedback type="invalid">
+                Rellena este campo
+              </Form.Control.Feedback>
+            </FormGroup>
+
+          </Row>
+
+
+
+
+
+          <Row>
+            <Col md={6}>
+              <div style={{ display: 'flex', alignItems: 'start', flexDirection: 'column' }}>
+                <FormLabel style={{ marginRight: '10px' }}>Foto</FormLabel>
+
+                <div className={!image ? style.dropzone : 'none'}>
+                  <Dropzone onDrop={handleDrop}>
+                    {({ getRootProps, getInputProps }) => (
+                      <div {...getRootProps()}>
+                        <input {...getInputProps()} />
+
+                        {!image ? <p style={{ 'color': 'gray', 'textAlign': 'center' }}>Selecciona o arrastra una imagen</p> : <></>}
+                      </div>
+                    )}
+                  </Dropzone>
+                </div>
+
+                {image && (
+                  <div>
+                    <img className={style.image} src={image} alt="Imagen cargada" />
+                    <button style={{ margin: '5px' }} onClick={(event) => handleRemove(event)}>
+                      <BsFillTrashFill />
+                    </button>
+                    <button onClick={(event) => handleUpload(event)}>
+                      <BsCheckCircleFill />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </Col>
+
+            <Col md={6}>
+              <FormGroup>
+                <FormLabel>Fecha de nacimiento</FormLabel>
+                <FormControl
+                  name='initial_date'
+                  placeholder='Página web'
+                  value={cv.initial_date}
+                  type="date"
+                  onChange={(event) => handlerChange(event, cv, setCv)}
+                  required />
+                <Form.Control.Feedback type="invalid">
+                  Rellena este campo.
+                </Form.Control.Feedback>
+              </FormGroup>
+
+              <FormGroup  >
+                <FormLabel>Nacionalidad</FormLabel>
+                <FormSelect
+                  name='country'
+                  value={cv.country}
+                  onChange={(event) => handlerChange(event, cv, setCv)}
+                  required>
+                  <option disabled></option>
+                  {countriesNames.map((count) => <option id={count.emoji} value={count.name}>{count.name}</option>)}
+                </FormSelect>
+                <Form.Control.Feedback type="invalid">
+                  Seleciona una opcion.
+                </Form.Control.Feedback>
+              </FormGroup>
+            </Col>
+
+
+
+          </Row>
+
+        </Form>
+
+
+        <div style={{ margin: '5px', padding: '1' }}>
+          <FormGroup as={Col} md="6" className="mb-3 ">
+            <ButtonGeneral
+              textButton="Siguiente"
+              handlerClick={(event) => handleNext(event)}
+            />
           </FormGroup>
-
-          <FormGroup as={Col} md="6" >
-            <FormLabel>Número de celular</FormLabel>
-            <Form.Control
-              name="phone"
-              placeholder="Número de celular"
-              value={cv.phone}
-              onChange={(event) => handlerChange(event, cv, setCv)}
-              type="number"
-              required />
-            <Form.Control.Feedback type="invalid">
-              Rellena este campo
-            </Form.Control.Feedback>
-          </FormGroup>
-
-        </Row>
-
-
-
-
-
-        <Row className="mb-3" >
-
-          <FormGroup as={Col} md="6" >
-            <FormLabel>Dirección</FormLabel>
-            <FormControl
-              name="address"
-              placeholder="Dirección"
-              value={cv.address}
-              onChange={(event) => handlerChange(event, cv, setCv)}
-              type="text"
-              required />
-            <Form.Control.Feedback type="invalid">
-              Rellena este campo
-            </Form.Control.Feedback>
-          </FormGroup>
-
-
-          <FormGroup as={Col} md="6" >
-            <FormLabel>LinkedIn o sitio web</FormLabel>
-            <FormControl
-              name="linkedin"
-              placeholder="LinkedIn o sitio web"
-              value={cv.linkedin}
-              onChange={(event) => handlerChange(event, cv, setCv)}
-              type="text"
-              required />
-            <Form.Control.Feedback type="invalid">
-              Rellena este campo
-            </Form.Control.Feedback>
-          </FormGroup>
-
-        </Row>
-
-
-
-
-
-        <Row>
-  <FormGroup md="6"className="mb-3" >
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <FormLabel style={{ marginRight: '10px' }}>Foto</FormLabel>
-
-      <div className={!image ? style.dropzone : 'none'}>
-        <Dropzone onDrop={handleDrop}>
-          {({ getRootProps, getInputProps }) => (
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-
-              {!image ? <p>Selecciona o arrastra una imagen</p> : <></>}
-            </div>
-          )}
-        </Dropzone>
-      </div>
-
-      {image && (
-        <div>
-          <img className={style.image} src={image} alt="Imagen cargada" />
-          <button style={{ margin: '10px' }} onClick={(event)=>handleRemove(event)}>
-            Eliminar
-          </button>
-          <button onClick={(event)=>handleUpload(event)}>Confirmar</button>
         </div>
-      )}
-    </div>
-  </FormGroup>
-</Row>
 
-
-
-        <FormGroup as={Col} md="12" >
-          <FormLabel className="custom-label">Skills</FormLabel>
-          <Form.Control
-            name="skill"
-            placeholder="Escribe tus skills (max. 60 caracteres)"
-            value={cv.skill}
-            onChange={(event) => handlerChange(event, cv, setCv)}
-            as="textarea"
-            rows={3}
-            maxLength={60}
-            required />
-          <Form.Control.Feedback type="invalid">
-            Rellena este campo
-          </Form.Control.Feedback>
-        </FormGroup>
-
-        <FormGroup as={Col} md="12" >
-          <FormLabel>Descripción</FormLabel>
-          <Form.Control
-            name="personal_description"
-            placeholder="Escribe una breve descripcion de tu perfil profesional (max. 200 caracteres)"
-            value={cv.personal_description}
-            onChange={(event) => handlerChange(event, cv, setCv)}
-            as="textarea" rows={5}
-            maxLength={200}
-            required />
-          <Form.Control.Feedback type="invalid">
-            Rellena este campo
-          </Form.Control.Feedback>
-        </FormGroup>
-      </Form>
-
-
-<div style={{margin: '5px', padding:'1'}}>
-
-      <FormGroup as={Col} md="6" className="mb-3 ">
-        <ButtonGeneral
-          textButton="Siguiente"
-          handlerClick={(event)=>handleNext(event)}
-          />
-      </FormGroup>
-          </div>
-
-    </div>
-  )};
+      </div>
+    )
+  };
 }
 
 export default Step1FormCv

@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
-const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
+const ProfilesCompany = ({ setCurrentUserStore2, setValidateState }) => {
     const companies = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
     const [companiesPerPage, setCompaniesPerPage] = useState(6);
@@ -45,32 +45,35 @@ const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
 
     return (
         <div className={styles.container}>
-            <NavBar setCurrentUserStore={setCurrentUserStore}/>
+            <NavBar setCurrentUserStore2={setCurrentUserStore2} setValidateState={setValidateState}/>
+            <div className={styles.page}>
             <Page
                 usersPerPage={companiesPerPage}
                 users={companies}
                 paginated={paginated}
             />
+            </div>
             {  isLoading ? (
                 <Loading/>
             ) : (
                     <div className={styles.cardsContainer}>
                         {
                             currentCompanies?.map(compan => {
+                                console.log(compan.webPage);
                                 return ( 
                                     <div key={compan.id} className={styles.cardDiv}>
                                         <CardProfileCompany
                                         key={compan.id}
                                         id={compan.id}
-                                        // logo={compan.logo}
+                                        photo={compan.photo}
                                         business_name={compan.business_name}
-                                        // description={compan.description}
-                                        // work_sector={compan.work_sector}
+                                        description={compan.description}
+                                        job_area={compan.job_area}
                                         name={compan.name}
                                         country={compan.country}
                                         cuit={compan.cuit}
                                         email={compan.email}
-                                        // web={compan.web}
+                                        webPage={compan.webPage}
                                         />
                                     </div>
                                 )

@@ -2,12 +2,22 @@ import { useDispatch } from "react-redux";
 import { findPerName } from "../../Redux/Actions/actionsFunction/actionsSearchBar";
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 import style from "./NavBarLog.module.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [name, setName] = useLocalStorage("name", "");
+  const currentURL = window.location.href;
+
+  useEffect(() => {
+    dispatch(findPerName(name));
+    if (location.pathname !== "/empleos") {
+      window.localStorage.setItem("name", "");
+    }
+  }, [dispatch]);
 
   const [isNavVisible, setIsNavVisible] = useState(false);
 
@@ -18,15 +28,19 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
     setIsNavVisible(false);
   };
 
-  const [name, setName] = useLocalStorage("name", "");
-
   const handlerSearchName = (event) => {
     setName(event.target.value);
   };
-  const searchName = (name) => {
-    navigate("/empleos");
+
+  const searchName = async (name) => {
     dispatch(findPerName(name));
+    if(location.pathname === "/empleos") {
+      setName("")
+    }
   };
+
+
+
   const handlerLogin = () => {
     setValidateState(false);
     setCurrentUserStore2("");
@@ -39,13 +53,13 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
     <div className={`${style.fixed} ${isNavVisible ? style.fixedOpen : ""}`}>
       <div className={style.container}>
         <h2 className={style.title}>
-          {userLocalStorage?.profile === "Admin" ? (
-            <a href="/">JobPortalX</a>
-          ) : userLocalStorage?.profile === "Applicant" ? (
-            <a href="/Applicant">JobPortalX</a>
-          ) : (
-            <a href="/empresa">JobPortalX</a>
-          )}
+          {
+          userLocalStorage?.profile === "Admin" 
+          ? (<a href="/">JobPortalX</a>) 
+          : userLocalStorage?.profile === "applicant" 
+            ? (<a href="/Applicant">JobPortalX</a>) 
+            : (<a href="/empresa">JobPortalX</a>)
+          }
         </h2>
         <form className={style.SearchBarContainer}>
           <input
@@ -54,16 +68,24 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
             className={style.Input}
             onChange={(event) => handlerSearchName(event)}
           />
-          <button className={style.Botton} onClick={() => searchName(name)}>
-            <i class="bi bi-search"></i>
-          </button>
+          { 
+          currentURL === "http://localhost:3000/empleos"
+            ?<button className={style.Botton} type="button" onClick={() =>searchName(name)}>
+              <i className="bi bi-search"></i>
+             </button>
+            :<Link to="/empleos">
+              <button className={style.Botton} type="button" onClick={() =>searchName(name)}>
+              <i className="bi bi-search"></i>
+              </button>
+             </Link>
+          }
         </form>
         <button className={style.abrirNav} onClick={abrirNav}>
-          <i class="bi bi-arrow-bar-right"></i>
+          <i className="bi bi-arrow-bar-right"></i>
         </button>
         <nav className={`${style.nav} ${isNavVisible ? style.navVisible : ""}`}>
           <button className={style.cerrarNav} onClick={cerrarNav}>
-            <i class="bi bi-arrow-bar-left"></i>
+            <i className="bi bi-arrow-bar-left"></i>
           </button>
           <ul className={style.navList}>
             <li>

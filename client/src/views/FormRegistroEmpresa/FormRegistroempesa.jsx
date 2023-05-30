@@ -8,21 +8,88 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import countries from "countries-list";
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
+import Dropzone from "react-dropzone";
+import Swal from "sweetalert2";
+import { BsCheckCircleFill, BsFillTrashFill } from 'react-icons/bs'
 
 
 const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(true);
+
+  const [image, setImage] = useState(null);
+
   const [newEmpresa, setNewEmpresa] = useState({
     business_name: "",
     cuit: "",
     country: "",
     registed: true,
-    name: Company ? Company.nombre : "",
-    email: Company? Company.email : "",
-    password:Company? Company.contraseña: ""
+    name: "",
+    email: Company ? Company.email : "",
+    password: Company ? Company.contraseña : "",
+    photo: "",
+    description: "",
+    job_area: "",
+    webPage: "",
   });
+
+
+
+  const handleDrop = async (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  const handleUpload = async (event) => {
+    event.preventDefault()
+    try {
+      const response = await fetch(image);
+      const data = await response.blob();
+
+      const formData = new FormData();
+      formData.append("file", data);
+      formData.append("upload_preset", "portaljobx");
+
+      const uploadResponse = await fetch(
+        `https://api.cloudinary.com/v1_1/portaljobx/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const uploadData = await uploadResponse.json();
+      setNewEmpresa({ ...newEmpresa, photo: uploadData.secure_url })
+      Swal.fire({
+        title: "Éxito",
+        text: "Imagen cargada correctamente",
+        icon: "success",
+      });
+      // setImage(null)
+
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: `${error}`,
+        icon: "error",
+      });
+    }
+  };
+
+  const handleRemove = (event) => {
+    event.preventDefault()
+    setImage(null);
+  };
+
+
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
   );
@@ -35,22 +102,22 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    if(
+    if (
       newEmpresa.business_name &&
       newEmpresa.cuit &&
       newEmpresa.country &&
       newEmpresa.name &&
       newEmpresa.email
-    ){
+    ) {
       dispatch(postCompany(newEmpresa))
-      setTimeout(()=>{
+      setTimeout(() => {
         dispatch(getEmail(newEmpresa.email))
-      },1000)
+      }, 1000)
       setCurrentUserStore(newEmpresa)
       setValidateState(true)
-      setTimeout(()=>{
-      navigate("/empresa")
-    },1500)
+      setTimeout(() => {
+        navigate("/empresa")
+      }, 1500)
     }
   };
 
@@ -66,93 +133,218 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
   }
 
   return (
-    <div className={style.mainContainer}>
-      <div className={style.container2}>
-        <div>
-          <h2 style={{ 'margin': '20px' }}>Registro Empresa</h2>
-          <Form >
-            <Row>
-              <FormGroup as={Col} md='6' >
-                <FormLabel>Nombre</FormLabel>
-                <FormControl
-                  name='name'
-                  placeholder='Nombre del representante'
-                  value={newEmpresa.name}
-                  type="text"
-                  onChange={handleInputChange}
-                  required
-                  disabled={newEmpresa.name === Company?.nombre ? true : false}
-                  />
-              </FormGroup>
-              <FormGroup as={Col} md='6' >
-                <FormLabel>Nombre comercial</FormLabel>
-                <FormControl
-                  name='business_name'
-                  placeholder='Nonmbre de la empresa'
-                  value={newEmpresa.business_name}
-                  type="text"
-                  onChange={handleInputChange}
-                  required />
-              </FormGroup>
-            </Row>
-            <Row>
-              <Form.Group as={Col} md='6' className="mb-3"  >
-                <FormLabel>CUIT</FormLabel>
-                <FormControl
-                  name='cuit'
-                  placeholder='Cuit'
-                  value={newEmpresa.cuit}
-                  type="text"
-                  onChange={handleInputChange}
-                  required />
-              </Form.Group>
-              <FormGroup as={Col} md="6" >
-                <FormLabel>País</FormLabel>
-                <FormSelect
-                  name='country'
-                  value={newEmpresa.country}
-                  onChange={handleInputChange}
-                  required>
-                  <option disabled></option>
-                  {countriesNames.map((count) => <option key={count.emoji} id={count.emoji} value={count.name}>{count.name}</option>)}
-                </FormSelect>
-              </FormGroup>
-            </Row>
-            <Row>
-              <FormGroup as={Col} md='10'  >
-                <FormLabel>Email</FormLabel>
-                <FormControl
-                  name='email'
-                  placeholder='Email'
-                  value={newEmpresa.email}
-                  type="text"
-                  onChange={handleInputChange}
-                  required
-                  disabled={newEmpresa.email === Company?.email ? true : false}
-                  />
-              </FormGroup>
-              <FormGroup as={Col} md='10'  >
-                <FormLabel>Contraseña</FormLabel>
-                <FormControl
-                  name='password'
-                  placeholder='Password'
-                  value={newEmpresa.password}
-                  type="password"
-                  onChange={handleInputChange}
-                  required 
-                  disabled={newEmpresa.password === Company?.contraseña ? true : false} />
-              </FormGroup>
-            </Row>
-          </Form>
-          <button
-            type='submit'
-            onClick={(event)=>handleSubmit(event)}
-          > registrate
-          </button>
-        </div>
-      </div>
-    </div>
-  )
+		<div className={style.mainContainer}>
+			<div className={style.containerFirst}>{/* no quitar */}</div>
+			<div className={style.containerSecond}>
+				<div className={style.title}>
+					<h2 style={{ margin: "20px" }}>Registro Empresa</h2>
+				</div>
+				<Form className={style.Form}>
+					<Row>
+						<FormGroup as={Col} md='6'>
+							<FormLabel>Nombre</FormLabel>
+							<FormControl
+								name='name'
+								placeholder='Nombre del reclutador'
+								value={newEmpresa.name}
+								type='text'
+								onChange={handleInputChange}
+								required
+							/>
+						</FormGroup>
+						<FormGroup as={Col} md='6'>
+							<FormLabel>Nombre comercial</FormLabel>
+							<FormControl
+								name='business_name'
+								placeholder='Nombre de la empresa'
+								value={newEmpresa.business_name}
+								type='text'
+								onChange={handleInputChange}
+								required
+							/>
+						</FormGroup>
+					</Row>
+					<Row>
+						<Form.Group as={Col} md='6' className='mb-3'>
+							<FormLabel>CUIT</FormLabel>
+							<FormControl
+								name='cuit'
+								placeholder='Cuit'
+								value={newEmpresa.cuit}
+								type='text'
+								onChange={handleInputChange}
+								required
+							/>
+						</Form.Group>
+						<FormGroup as={Col} md='6'>
+							<FormLabel>País</FormLabel>
+							<FormSelect
+								name='country'
+								value={newEmpresa.country}
+								onChange={handleInputChange}
+								required
+							>
+								<option disabled></option>
+								{countriesNames.map((count) => (
+									<option
+										key={count.emoji}
+										id={count.emoji}
+										value={count.name}
+									>
+										{count.name}
+									</option>
+								))}
+							</FormSelect>
+						</FormGroup>
+					</Row>
+
+					<Row>
+						<Col md={6}>
+							<div
+								style={{
+									display: "flex",
+									alignItems: "start",
+									flexDirection: "column",
+								}}
+							>
+								<FormLabel style={{ marginRight: "10px" }}>
+									Logo
+								</FormLabel>
+
+								<div
+									className={!image ? style.dropzone : "none"}
+								>
+									<Dropzone onDrop={handleDrop}>
+										{({ getRootProps, getInputProps }) => (
+											<div {...getRootProps()}>
+												<input {...getInputProps()} />
+
+												{!image ? (
+													<p>
+														Selecciona o arrastra
+														una imagen
+													</p>
+												) : (
+													<></>
+												)}
+											</div>
+										)}
+									</Dropzone>
+								</div>
+
+								{image && (
+									<div>
+										<img
+											className={style.image}
+											src={image}
+											alt='Imagen cargada'
+										/>
+										<button
+											style={{ margin: "10px" }}
+											onClick={(event) =>
+												handleRemove(event)
+											}
+										>
+											<BsFillTrashFill />
+										</button>
+										<button
+											onClick={(event) =>
+												handleUpload(event)
+											}
+										>
+											<BsCheckCircleFill />
+										</button>
+									</div>
+								)}
+							</div>
+						</Col>
+
+						<Col md={6}>
+							<FormGroup>
+								<FormLabel>Página web</FormLabel>
+								<FormControl
+									name='webPage'
+									placeholder='Página web'
+									value={newEmpresa.webPage}
+									type='text'
+									onChange={handleInputChange}
+									required
+								/>
+							</FormGroup>
+
+							<FormGroup>
+								<FormLabel>Área de trabajo</FormLabel>
+								<FormControl
+									name='job_area'
+									placeholder='Área de trabajo'
+									value={newEmpresa.job_area}
+									type='text'
+									onChange={handleInputChange}
+									required
+								/>
+							</FormGroup>
+						</Col>
+					</Row>
+
+					<FormGroup as={Col} md='12'>
+						<FormLabel>Descripción</FormLabel>
+						<Form.Control
+							name='description'
+							placeholder='Escribe una breve descripcion de tu empresa (max. 200 caracteres)'
+							value={newEmpresa.description}
+							onChange={handleInputChange}
+							as='textarea'
+							rows={5}
+							maxLength={200}
+							required
+						/>
+						<Form.Control.Feedback type='invalid'>
+							Rellena este campo
+						</Form.Control.Feedback>
+					</FormGroup>
+
+					<Row>
+						<FormGroup as={Col} md='6' className='mb-3'>
+							<FormLabel>Email</FormLabel>
+							<FormControl
+								name='email'
+								placeholder='Email'
+								value={newEmpresa.email}
+								type='text'
+								onChange={handleInputChange}
+								required
+								disabled={
+									newEmpresa.email === Company?.email
+										? true
+										: false
+								}
+							/>
+						</FormGroup>
+						<FormGroup as={Col} md='6'>
+							<FormLabel>Contraseña</FormLabel>
+							<FormControl
+								name='password'
+								placeholder='Password'
+								value={newEmpresa.password}
+								type='password'
+								onChange={handleInputChange}
+								required
+								disabled={
+									newEmpresa.password === Company?.contraseña
+										? true
+										: false
+								}
+							/>
+						</FormGroup>
+					</Row>
+				</Form>
+				<button className={style.button} type='submit' onClick={(event) => handleSubmit(event)}>
+					{" "}
+					Registrate
+				</button>
+			</div>
+		</div>
+  );
 };
 
 export default FormRegisterEmpresa;

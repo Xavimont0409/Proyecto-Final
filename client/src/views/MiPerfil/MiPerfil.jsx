@@ -6,25 +6,27 @@ import style from "./MiPerfil.module.css"
 import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
 import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
-import DocuPDF from "./DocuPDF"
-import { getCvById } from "../../Redux/Actions/actionsFunction/actionsCv";
+import DocuPDF from "../../components/DocuPDF/DocuPDF"
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
+import { useNavigate } from "react-router-dom";
 
 
 const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
-  const [showPDF, setShowPDF] = useState(false);
-  const handleClick = () => {
-    setShowPDF(!showPDF);
-  };
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const userDetail = JSON.parse(localStorage.getItem("currentUser2"))
-  const validacion = JSON.parse(localStorage.getItem("state"));
+  const [showPDF, setShowPDF] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(false);
+  
 
-  const CvDetail = useSelector(state => state.CvDetail);
+  const currentUser = JSON.parse(localStorage.getItem("currentUser2"))
+
+  const userDetail = useSelector(state => state.UserDetail);
+
 
   const [perfil, setPerfil] = useState({
     photo: '',
@@ -38,19 +40,25 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
     pais: '',
     linkedin: '',
     skills: '',
-
-
+    Experiences:[],
+    Formations:[],
+    
   });
 
 
   useEffect(() => {
-    dispatch(getCvById(userDetail.Cv.id))
-    dispatch(getUserDetail(userDetail.id))
-  }, [dispatch, userDetail.Cv.id, userDetail.id]);
+    dispatch(getUserDetail(currentUser.id))
 
+  }, [currentUser.id, dispatch]);
+
+  
 
   useEffect(() => {
-    if (userDetail) {
+    if (userDetail.Cv === null) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      setIsLoading2(false);
       setPerfil(prevCv => ({
         ...prevCv,
         photo: userDetail.Cv?.photo,
@@ -64,102 +72,85 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
         pais: userDetail.Cv?.country,
         linkedin: userDetail.Cv?.linkedin,
         skills: userDetail.Cv?.skill,
+        Experiences:userDetail.Cv?.Experiences,
+        Formations:userDetail.Cv?.Formations
       }));
     }
-    else {
-      return <div><Loading /></div>
-    }
-  }, [userDetail]);
+  }, [navigate, userDetail.Cv]);
 
 
-  // eslint-disable-next-line no-undef, no-unused-vars
-  const contentRef = useRef(null);
 
-  // eslint-disable-next-line no-unused-vars
-  const generatePDF = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading2(true);
+    }, 2000);
+  }, []);
 
-    if(userDetail && CvDetail){
 
-      // eslint-disable-next-line no-unused-vars
-      const element = document.getElementById('pdf-content');
-      
-      //html2pdf().from(element).save('documento.pdf');
-    }else {
-      return (<Loading></Loading>)
-    }
+  console.log(userDetail);
+
+
+  const handleClick = () => {
+    setShowPDF(!showPDF);
   };
 
 
+  if(!isLoading2){
+    return <div><Loading /></div>
+  }
 
-  if (validacion) {
+  if (!isLoading) {
+    return (<div className={style.container}>
+      <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
+      <div style={{ 'margin': '10vh auto' }}>
+        <p style={{ 'margin': '10vh auto' }}>No tienes Cv registrada <button onClick={() => navigate('/registro-cv')} > Registar CV</button></p>
+      </div>
+    </div>)
+  } else {
+    return (
+      <>
+        <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
+        <div className={style.container}>
 
-    if (!userDetail || !CvDetail) {
-      return <div><Loading /></div>
-    } else {
-      return (
-        // isAuthenticated && (
-        <>
-          <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
-          <div  className={style.container}>
+          <h1>Mi Perfil</h1>
 
+          <div id="pdf-content" className={style.container2}>
 
-            <h1>Mi Perfil</h1>
-
-            <div id="pdf-content" className={style.container2}>
-
-              <div className={style.container1}>
+            <div className={style.container1}>
 
 
                 <div>
                   <img className={style.image} src={perfil.photo} alt="Profile" />
                 </div>
 
-
-
                 <div>
-                  <h1>{perfil.name} {perfil.apellido}</h1>
+                  <h1 style={{ whiteSpace: 'nowrap' }}>{perfil.name} {perfil.apellido}</h1>
 
                   <div className={style.container6}>
-
                     <div className={style.container4}>
-
                       <div className={style.container3}>
                         <BsFillEnvelopeAtFill></BsFillEnvelopeAtFill>
                         <p style={{ 'marginBottom': '3px' }}>{perfil.email}</p>
                       </div>
-
                       <div className={style.container3}>
                         <BsLinkedin></BsLinkedin>
                         <p style={{ whiteSpace: 'nowrap', 'marginBottom': '3px' }} >{perfil.linkedin}</p>
                       </div>
-
                     </div>
 
-
                     <div className={style.container4}>
-
-
-
-
                       <div className={style.container3}>
                         <BsFillTelephoneFill></BsFillTelephoneFill>
                         <p style={{ 'marginBottom': '3px' }}>{perfil.celular}</p>
                       </div>
 
-
                       <div className={style.container3}>
                         <BsGlobeAmericas></BsGlobeAmericas>
                         <p style={{ whiteSpace: 'nowrap', 'marginBottom': '3px' }}>{perfil.pais}</p>
                       </div>
-
                     </div>
-
                   </div>
-
-
-
                 </div>
-
               </div>
 
               <div className={style.container5}>
@@ -167,39 +158,48 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                 <p style={{ 'text-align': 'justify' }}>{perfil.descripcion}</p>
               </div>
 
-              <div className={style.container5}>
-                <h4 style={{ 'text-align': 'left' }}>Mis experiencias profesionales</h4>
-                <div className={style.containerList}>
 
-                  {CvDetail.Experiences?.map(exp => {
+
+
+              <div className={style.container5}>
+              <h4 style={{ 'text-align': 'left' }}>Mis experiencias profesionales</h4>
+              <div className={style.containerList}>
+
+                {perfil.Experiences?.length === 0
+                  ? <div>No tienes experiencia registrada <button onClick={() => navigate('/registro-experiencia')}>Registar</button> </div>
+                  :perfil.Experiences?.map(exp => {
                     return (
                       <ListItem charge={exp.charge}
                         company={exp.company}
                         startDate={exp.start_date}
                         endDate={exp.still_working ? 'Actualmente' : exp.end_date}>
                       </ListItem>
+
                     )
                   })
-                 }
-                </div>
+                } 
               </div>
+            </div>
 
-              <div className={style.container5}>
-                <h4 style={{ 'text-align': 'left' }}>Mis estudios</h4>
+            <div className={style.container5}>
+              <h4 style={{ 'text-align': 'left' }}>Mis estudios</h4>
 
-                <div className={style.containerListStudy}>
+              <div className={style.containerListStudy}>
 
-                  {CvDetail.Formations?.map(study => {
+
+                {perfil.Formations?.length === 0
+                  ? <div>No tienes formación registrada <button onClick={() => navigate('/registro-estudio')}>Registar</button> </div>
+                  : perfil.Formations?.map(exp => {
                     return (
-                      <ListItemStudy study_level={study.study_level}
-                        title={study.title}
-                        institute={study.institute}
-                        state={study.state}>
+                      <ListItemStudy 
+                        title={exp.title}
+                        study_level={exp.study_level}
+                        institute={exp.institute}
+                        state={exp.state}>
                       </ListItemStudy>
                     )
                   })
-                  } 
-
+                }
                 </div>
 
               </div>
@@ -209,35 +209,31 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                 <p>{perfil.skills}</p>
               </div>
 
-              <div className={style.container3}>
+              {/* {userDetail.Cv &&  <div className={style.container3}>
 
                 <button
                   style={{ backgroundColor: 'gray' }}
                   onClick={handleClick}>{showPDF ? 'Ocultar PDF' : 'Ver CV en PDF'}</button>
 
                 {showPDF && (
-                  <PDFViewer width="1000" height="600">
-                    <DocuPDF perfil={perfil}
-                    CvDetail={CvDetail}>
-
-                    </DocuPDF>
-                  </PDFViewer>
+                  <div>
+                    <PDFViewer width="1000" height="600">
+                      <DocuPDF perfil={perfil} />
+                    </PDFViewer>
+                  </div>
                 )}
 
-
-                <PDFDownloadLink document={<DocuPDF perfil={perfil} CvDetail={CvDetail}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
+                <PDFDownloadLink document={<DocuPDF perfil={perfil}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
                   <button style={{ 'backgroundColor': 'gray' }}>Descargar CV en PDF</button>
                 </PDFDownloadLink>
 
-
-
-              </div>
+              </div>} */}
             </div>
           </div>
         </>
       )
     }
-  }
+
 }
 
 export default MiPerfil;
