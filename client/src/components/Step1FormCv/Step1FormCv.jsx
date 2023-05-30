@@ -98,7 +98,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
   return (
 
     <div className={style.mainContainer}>
-      <h2 style={{ 'margin': '30px' }}>Información personal</h2>
+      <h2 style={{ 'margin': '40px' }}>Información personal</h2>
 
       <Form className={style.Form}  validated={!validated}>
 

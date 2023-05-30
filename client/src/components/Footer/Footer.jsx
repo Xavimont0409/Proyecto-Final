@@ -16,11 +16,15 @@ const Footer = () => (
 					<div className={styles.lists}>
 						<ul>
 							<li>
-								<a href='/registro'>Sign In</a>
+								<a href='/registro'>
+									Inicia Sesion
+								</a>
 							</li>
-							<li>About Us</li>
-							<li>Become an Affiliate</li>
-							<li>Advertise with Us</li>
+							<li>
+								<a href="/aboutUs">
+								Sobre nosotros	
+								</a>
+							</li>
 							<li>
 								<a href='/TermsAndConditions'>
 									Terminos y condiciones
@@ -52,14 +56,22 @@ const Footer = () => (
 						</div>
 					</div>
 					<div className={styles.helpSec}>
-					<div className={styles.footerTitle}>Help</div>
+					<div className={styles.footerTitle}>Ayuda</div>
 					<div className={styles.lists}>
 						<ul>
-							<li>Help</li>
-							<li>Feedback</li>
+							<li>
+								<a href="/help">
+								Ayuda	
+								</a>
+							</li>
+							<li>
+								<a href="/FAQ's">
+								Preguntas Frecuentes	
+								</a>
+							</li>
 							<li>
 								<a href='jobportalxcompany@gmail.com'>
-									Report a Issue / Bug
+									Reporta errores
 								</a>
 							</li>
 						</ul>

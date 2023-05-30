@@ -1,15 +1,14 @@
-.mainContainer{
+.mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 63vw;
-    height: 84vh;
+    height: 100vh;
     justify-content: flex-start;
-    margin-top: 2vh;
 }
 
 
-.cardsContainer{
+.cardsContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -18,8 +17,9 @@
     gap: 1em;
     padding: 20px;
     overflow-y: scroll;
-    height: 89vh;
+    min-height: 92vh;
     justify-content: flex-start;
+  
 }
 
 @media (max-width: 768px) {

@@ -42,6 +42,33 @@
         gap: 30px;
   }
 
+
+
+  .dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    background-color: var(--sub-white);
+    border: solid black 2px;
+    width: 13vw;
+    height: 15vh;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+  }
+  
+  .dropzone.active {
+    background-color: aqua;
+    border: solid black 2px;
+  }
+  
+  .image{
+    width: 13vw;
+    height: 15vh;
+    border-radius: 10px;
+  }
+
   @keyframes container {
     0%{
         background-position: 0 50%;

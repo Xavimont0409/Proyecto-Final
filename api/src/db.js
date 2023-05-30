@@ -62,6 +62,9 @@ Applicant.belongsToMany(Vacant, {through: 'ApplicantVacant'});
 Applicant.belongsToMany(PayMethod, {through: Operation});
 PayMethod.belongsToMany(Applicant, {through: Operation});
 
+Vacant.hasMany(Operation);
+Operation.belongsTo(Vacant);
+
 module.exports = {
   ...sequelize.models, 
   conn: sequelize,     

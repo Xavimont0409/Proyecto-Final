@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
             }
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         }, 
         creation_date: {
@@ -24,6 +24,10 @@ module.exports = (sequelize) => {
         status: {
             type: DataTypes.BOOLEAN,
             defaultValue: true,
+        },
+        operation:{
+            type: DataTypes.STRING,
+            defaultValue: "none",
         }
     })
 }
