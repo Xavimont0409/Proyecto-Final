@@ -100,7 +100,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
     return (<div className={style.container}>
       <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
       <div style={{ 'margin': '10vh auto' }}>
-        <p style={{ 'margin': '10vh auto' }}>No tienes Cv registrada <button onClick={() => navigate('/registro-cv')} > Registar CV</button></p>
+        <p style={{ 'margin': '10vh auto', color:'white' }}>No tienes Cv registrada <button onClick={() => navigate('/registro-cv')} > Registar CV</button></p>
       </div>
     </div>)
   } else {
