@@ -99,7 +99,7 @@
     margin-top: 8vh;
 }
 
-.containerLogo, .containerLogo2{
+.containerLogo, .containerLogo2, .containerLogo3{
     width: 30vw;
     height: 76vh;
 }
@@ -132,6 +132,274 @@ border-radius: 20px;
 
 .imageSecond{
     border-radius: 30px;
+}
+
+.containerThird{
+    height:60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerLogo3{
+    height: 100%;
+}
+
+.imageThird{
+    width: 25vw;
+    height: 50vh;
+    margin-right: 8vw;
+}
+
+.containerText3{
+    margin: 0 4vw 6vw 10vw;
+}
+
+.titleThird{
+    margin-top: 1vh;
+    color: #fff;
+    font-family: 'letters';
+    font-size: 4rem;
+    font-weight: bold;
+    text-justify: center;
+    margin-bottom: 6vh;
+}
+
+.parrafo2{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 3rem;
+    text-justify: center;
+    margin-bottom: 4vh;
+}
+
+.containerOportunidades{
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxOportunidades{
+    width: 20%;
+    height: 100%;
+    margin: auto 1vw;
+    padding-left: 10px;
+    color: #fff;
+    font-family: 'letters';
+    font-size: 2rem;
+    text-justify: center;
+    border-left: 8px solid #331460;
+}
+
+.containerFourth{
+    height: 57vh;
+    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerText4{
+    height: 100%;
+    width:60vw;
+    margin: 4vh 2vw 4vw 4vw;
+}
+
+.containerLogo4{
+    width: 40vw;
+    height: 100%;
+}
+
+.imageFour{
+    width: 40vw;
+    height: 40vh;
+    margin: 0 0 0 2vw;
+}
+
+.titleFourth{
+    margin-top: 1vh;
+    color: #fff;
+    font-family: 'letters';
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-justify: center;
+    margin-bottom: 4vh;
+}
+
+.parrafo3{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 1.9rem;
+    text-justify: center;
+    margin-bottom: 4vh;
+}
+
+.containerLi{
+    list-style: none;
+}
+
+.icono{
+    width: 1.3vw;
+    height: 3vh;
+    margin-right: 0.5vw;
+}
+
+.textoIcono{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 1.2rem;
+    text-justify: center;
+    margin-bottom: 0.3vh;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .landingDiv {
+        min-height: 100vh;
+        overflow: hidden;
+        background: #1C1C1C;
+    }
+    
+    
+    .containerFirst{
+        height: 90vh;
+        margin-top: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+    
+    .containerBienvenida, .containerText{
+        width: 50vw;
+        height: 80vh;
+        margin-right: 10vw;
+    }
+    
+    .title{
+        color: #fff;
+        font-family: 'letters';
+        font-size: 4.5rem;
+        font-weight: bold;
+        margin-top: 8vh;
+        text-justify: center;
+    }
+    
+    .parrafo{
+        color: #fff;
+        font-family: 'letters';
+        font-size: 2.3rem;
+        text-justify: center;
+        margin-top: 8vh;
+    }
+    
+    .containerLogo, .containerLogo2, .containerLogo3{
+        width: 30vw;
+        height: 76vh;
+    }
+    
+    .imageFirst{
+    border-radius: 20px;
+    }
+    .containerSecond{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .containerLogo2{
+        margin-right: 5vw;
+    }
+    
+    .containerText{
+        margin-top: 6vh;
+    }
+    
+    .titleSecond{
+        color: #fff;
+        font-family: 'letters';
+        font-size: 3.2rem;
+        text-justify: center;
+        margin-bottom: 10vw;
+    }
+    
+    .imageSecond{
+        border-radius: 30px;
+    }
+    
+    .containerThird{
+        height:60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .containerLogo3{
+        height: 100%;
+    }
+    
+    .imageThird{
+        width: 25vw;
+        height: 50vh;
+        margin-right: 8vw;
+    }
+    
+    .containerText3{
+        margin: 0 4vw 6vw 10vw;
+    }
+    
+    .titleThird{
+        margin-top: 1vh;
+        color: #fff;
+        font-family: 'letters';
+        font-size: 4rem;
+        font-weight: bold;
+        text-justify: center;
+        margin-bottom: 6vh;
+    }
+    
+    .parrafo2{
+        color: #fff;
+        font-family: 'letters';
+        font-size: 3rem;
+        text-justify: center;
+        margin-bottom: 4vh;
+    }
+    
+    .containerOportunidades{
+        width: 100vw;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .boxOportunidades{
+        width: 20%;
+        height: 100%;
+        margin: auto 1vw;
+        padding-left: 10px;
+        color: #fff;
+        font-family: 'letters';
+        font-size: 2rem;
+        text-justify: center;
+        border-left: 8px solid #331460;
+    }
+    
+    .containerFourth{
+        height: 70vh;
+        border: 1px solid #fff;
+        margin-top: 8vh;
+    }
+    
+    .imageFour{
+        width: 40vw;
+        height: 40vh;
+        margin: 2vh 0 0 2vw;
+    }
+
 }
 
 
