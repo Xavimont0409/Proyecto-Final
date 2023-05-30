@@ -7,7 +7,12 @@
 .container2{
 align-self: baseline;
 width: 100%;
+}
 
+.containerTitle{
+    width: 100%;
+    align-self: center;
+    justify-self: center;
 }
 
 .logo{

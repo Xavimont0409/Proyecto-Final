@@ -44,7 +44,7 @@ const handlerClick = () => {
       <div>
  <Card.Img className={style.logo} variant="top" src={company.photo}/>   
     </div>
-      <Card.Body>
+      <Card.Body className={style.containerTitle}>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{description}</Card.Text>
       </Card.Body>
