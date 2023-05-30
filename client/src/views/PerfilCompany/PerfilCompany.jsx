@@ -65,7 +65,7 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 
 					<div className={style.companyData}>
 						<BsFillFileTextFill />
-						<p>Plan: {companyData.plan}</p>
+						<p>Plan: {companyData.PayMethods?.Operation?.detail}</p>
 					</div>
 
 					<div className={style.companyData}>
