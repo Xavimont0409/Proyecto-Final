@@ -36,7 +36,7 @@ return (
                 </div>
                 <div className={style.containerLastIcons}>
                     <BsBookmark className={style.icons}/>
-                    <p className={style.identification}>Plan de pago</p>
+                    <p className={style.identification}>{props.operation}</p>
                 </div>
             </div>
         </Link>
