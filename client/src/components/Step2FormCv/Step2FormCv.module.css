@@ -6,7 +6,8 @@
 
 .Form {
   margin: 2vh auto;
-  background-color: var(--battleship-gray);
+  background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
+  color: #e1ecfc;
   width: 50%;
   border-radius: 10px;
   padding: 1%;
