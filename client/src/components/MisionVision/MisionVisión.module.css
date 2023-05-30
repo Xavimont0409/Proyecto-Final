@@ -50,7 +50,6 @@
 .text {
     min-width: fit-content;
     padding: 1vw;
-
     text-align: left;
     text-justify: center;
 }
