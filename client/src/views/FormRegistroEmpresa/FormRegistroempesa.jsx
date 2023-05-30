@@ -32,7 +32,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     photo: "",
     description: "",
     job_area: "",
-    web: "",
+    webPage: "",
   });
 
 
@@ -137,7 +137,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 			<div className={style.containerFirst}>{/* no quitar */}</div>
 			<div className={style.containerSecond}>
 				<div className={style.title}>
-					<h2>Registro Empresa</h2>
+					<h2 style={{ margin: "20px" }}>Registro Empresa</h2>
 				</div>
 				<Form className={style.Form}>
 					<Row>
@@ -263,9 +263,9 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 							<FormGroup>
 								<FormLabel>Página web</FormLabel>
 								<FormControl
-									name='web'
+									name='webPage'
 									placeholder='Página web'
-									value={newEmpresa.web}
+									value={newEmpresa.webPage}
 									type='text'
 									onChange={handleInputChange}
 									required
