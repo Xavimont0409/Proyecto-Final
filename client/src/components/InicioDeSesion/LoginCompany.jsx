@@ -2,11 +2,14 @@ import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
 import { useEffect, useState } from "react";
 import { getCompany } from '../../Redux/Actions/actionsFunction/actionLogin2'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
+import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys'
+import Swal from "sweetalert2";
 import style from './inicioSesion.module.css';
 
 const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
+  const valdiateCompanys = useSelector((state) => state.Company);
   const clientID = "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -21,7 +24,8 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
       });
     };
     gapi.load("client:auth2", start);
-  }, []);
+    dispatch(getAllCompanys())
+  }, [dispatch]);
   const handlerChange = (event) => {
     setCompany({
       ...company,
@@ -29,28 +33,56 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
     });
 
   };
-  //103227077001918393252
-  //103227077001918393252
+  const filterCompanys = (company) => {
+    let filtro = {
+      email: company.email,
+      password: company.googleId || company.password,
+    };
+    let filter = valdiateCompanys.filter((users) => {
+      return (
+        users.email === filtro.email &&
+        users.password === filtro.password &&
+        users.registed === true
+      );
+    });
+    return filter.length;
+  };
 
   const onSuccess = (response) => {
     const {email, googleId } = response.profileObj;
-    dispatch(getCompany({email, password: googleId}))
-    setCurrentUserStore({email, password: googleId})
-    setValidateState(true)
-    setTimeout(()=>{
-      navigate("/empresa")
-    },1500)
+    if (filterCompanys(response.profileObj) === 0) {
+      return Swal.fire({
+        title: "Error",
+        text: "Empresa no registrada",
+        icon: "error",
+      });
+    } else {
+      dispatch(getCompany({ email, password: googleId }));
+      setCurrentUserStore({ email, password: googleId });
+      setValidateState(true);
+      setTimeout(() => {
+        navigate("/empresa");
+      }, 1500);
+    }
   };
   const onFailure = () => {
     console.log("Something went wrong");
   };
   const handlerSumit = () =>{
-    dispatch(getCompany(company))
-    setCurrentUserStore(company)
-    setValidateState(true)
-    setTimeout(()=>{
-      navigate("/empresa")
-    },2000)
+    if (filterCompanys(company) === 0) {
+      return Swal.fire({
+        title: "Error",
+        text: "Empresa no registrada",
+        icon: "error",
+      });
+    } else {
+      dispatch(getCompany(company));
+      setCurrentUserStore(company);
+      setValidateState(true);
+      setTimeout(() => {
+        navigate("/empresa");
+      }, 2000);
+    }
   }
 
   return (
@@ -86,7 +118,12 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
         </div>
       </div>
       </div>
-      
+      <div className={style.containerRutaAlternativa}>
+        <span className={style.textoAlternativa}>
+          ¿Aún no te has registrado?
+        </span>
+        <Link to='/newRegistroCompany'><span className={style.textoLink}>Registrarte</span></Link>
+      </div>
     </div>
   );
 };

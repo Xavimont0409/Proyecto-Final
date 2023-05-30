@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table';
 import NavBar from '../../components/NavBar/NavBar'
 import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants';
+import { BsFillTrashFill } from 'react-icons/bs'
 
 const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
     const userType = JSON.parse(localStorage.getItem("currentUser2"));
@@ -13,6 +14,16 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
     const empresas = useSelector(state => state.Company)
     const vacantes = useSelector(state => state.Vacant)
     const dispatch = useDispatch();
+    const {confirm} = window;
+
+  const handlerClick = (id, title) => {
+    const result = confirm(`¿Esta seguro que desea cancelar su postulacion a la vacante ${title}?`);
+    if (result) {
+
+    } else {
+
+    }
+  }
 
 
     useEffect(()=>{
@@ -20,6 +31,8 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
         dispatch(getAllCompanys())
         dispatch(getAllVacants())
     }, [dispatch, userType.id])
+
+
     return (
         <div className={style.container}>
             <div className={style.containerNav}>
@@ -35,9 +48,10 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
           <th>Título</th>
           <th>Descripción</th>
           <th>Fecha de postulación</th>
-          <th>Experiencia</th>
+          <th>Experiencia requerida</th>
           <th>Tipo de trabajo</th>
-          <th>Jornada Laboral</th>
+          <th>Jornada laboral</th>
+          <th>Cancelar postulación</th>
         </tr>
       </thead>
       <tbody className={style.tBody}>
@@ -52,6 +66,7 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
                <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Seniority?.name}</td>
                <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.WorkMethod?.name}</td>
                <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Workday?.name}</td>
+               <td style={{ textAlign: 'center', margin: 'auto' }} ><button onClick={() => handlerClick(elem.id, elem.title)} ><BsFillTrashFill /></button></td>
              </tr>
            ) 
         }

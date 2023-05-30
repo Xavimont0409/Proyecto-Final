@@ -36,8 +36,8 @@ const CardsContainerEmpleo = ({ vacants, companies }) => {
                     currentVacants?.map(vacancy => {
                         let truncatedDescription = vacancy.description.slice(0, 200);
                             if (vacancy.description.length > 200) {
-                                 truncatedDescription += ' . . . ';
-                                 }
+                                truncatedDescription += ' . . . ';
+                            }
                         return (
                             <Card
                                 key={vacancy.id}

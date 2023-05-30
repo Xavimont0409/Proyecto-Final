@@ -1,5 +1,5 @@
 function validation(obj) {
-  const requiredProperties = ['profession', 'country', 'educational_institution', 'state', 'initial_date'];
+  const requiredProperties = ['profession', 'educational_institution', 'skill', 'personal_description'];
 
   for (const prop of requiredProperties) {
     if (obj[prop] === '') {

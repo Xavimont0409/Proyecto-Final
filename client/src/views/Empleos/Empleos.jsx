@@ -40,7 +40,7 @@ const Empleos = ({ setCurrentUserStore2, setValidateState }) => {
                         className={style.cards}
                         vacants={currentCard}
                         companies={companies}
-                         />
+                    />
 
                 </div>
             </div>
