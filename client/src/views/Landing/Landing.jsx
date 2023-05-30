@@ -1,10 +1,9 @@
 import style from "./Landing.module.css";
-import { Button } from "react-bootstrap";
-import video from "../../assets/video/Fondo.mp4";
 import MisionVisión from "../../components/MisionVision/MisionVisión";
 import NavBar from "../../components/NavBar/NavBar";
-import CardsEquipo from "../../components/CardEquipo/CardEquipo";
 import { Link } from "react-router-dom";
+import cartel from '../../assets/img/cartel.jpg';
+import celular from '../../assets/img/celular.jpg';
 
 const Landing = ({
   setValidateState,
@@ -19,12 +18,39 @@ const Landing = ({
         setValidateState={setValidateState}
         setCurrentUserStore2={setCurrentUserStore2}
       />
-      <div className={style.container}>
-        <div className={style.videoDiv}>
-          <video loop autoPlay muted>
-            <source src={video} type="video/mp4" />
-          </video>
+    <div className={style.containerFirst}>
+        <div className={style.containerBienvenida}>
+          <h1 className={style.title}>Bienvenido a JobPortalX, el sinónimo de trabajo Perfecto</h1>
+          <p className={style.parrafo}> Somos el nuevo portal de trabajo, con más dinamismo del mercado,
+              donde encontrarás las mejores oportunidades laborales</p>
         </div>
+        <div className={style.containerLogo}>
+          <img src={cartel} alt="Logo de empresa" className={style.imageFirst}/>
+        </div>
+    </div>
+
+    <div className={style.containerSecond}>
+        <div className={style.containerLogo2}>
+            <img src={celular} alt="Foto de celular" className={style.imageSecond}/>
+        </div>
+        <div className={style.containerText}>
+            <h2 className={style.titleSecond}>Nuestra misión y visión reflejan lo más profundo de JobPortalX</h2>
+            <MisionVisión />
+        </div>
+    </div>
+
+    <div className={style.containerThird}>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div></div>
+      
+    </div>
+  );
+};
+
+/* <div className={style.container }>
         <div className={style.searchDiv}>
           <div className={style.paragraph}>
             <h1 className={style.title}>JobPortalX</h1>
@@ -33,7 +59,6 @@ const Landing = ({
               donde encontrarás las mejores oportunidades laborales
             </p>
           </div>
-          <input className={style.input} placeholder="" />
           <div className={style.buttonDiv}>
             <Link to="/empleos">
               <Button variant="outline-secondary" className="ms-auto">
@@ -49,12 +74,11 @@ const Landing = ({
                         ): (<></>)} 
           </div>
         </div>
-      </div>
-
+      </div> 
+      
       <MisionVisión />
       <CardsEquipo />
-    </div>
-  );
-};
+      
+      */
 
 export default Landing;

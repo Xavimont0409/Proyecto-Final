@@ -1,10 +1,10 @@
 .landingDiv {
     min-height: 100vh;
     overflow: hidden;
-    /*  background-color: #ccc; */
+    background: #1C1C1C;
 }
 
-.containerComponents{
+/* .containerComponents{
     width: 100vw;
     z-index: 10;
 }
@@ -65,7 +65,75 @@
     display: flex;
     flex-direction: column;
     margin-top: 2vh;
+} */
+
+.containerFirst{
+    height: 90vh;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
 }
+
+.containerBienvenida, .containerText{
+    width: 50vw;
+    height: 80vh;
+    margin-right: 10vw;
+}
+
+.title{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin-top: 8vh;
+    text-justify: center;
+}
+
+.parrafo{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 2.3rem;
+    text-justify: center;
+    margin-top: 8vh;
+}
+
+.containerLogo, .containerLogo2{
+    width: 30vw;
+    height: 76vh;
+}
+
+.imageFirst{
+border-radius: 20px;
+}
+.containerSecond{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerLogo2{
+    margin-right: 5vw;
+}
+
+.containerText{
+    margin-top: 6vh;
+}
+
+.titleSecond{
+    color: #fff;
+    font-family: 'letters';
+    font-size: 3.2rem;
+    text-justify: center;
+    margin-bottom: 10vw;
+}
+
+.imageSecond{
+    border-radius: 30px;
+}
+
 
 @media (max-width: 780px) {
     .landingDiv {
