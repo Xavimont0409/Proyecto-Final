@@ -3,29 +3,13 @@ import NavBar from "../../components/NavBarLog/NavBarLog";
 import Step1FormCv from "../../components/Step1FormCv/Step1FormCv";
 import Step2FormCv from "../../components/Step2FormCv/Step2FormCv";
 import style from "./FormCv.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
-import Footer from '../../components/Footer/Footer';
-import cv from '../../assets/img/cv.jpg';
 
 function FormCv({ setValidateState, setCurrentUserStore2 }) {
-  
-  
   
   
   const currentUser = JSON.parse(localStorage.getItem("currentUser2"));
 
   const [step, setStep] = useState(1);
-
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (userType2 && userType2.email) {
-  //     dispatch(getEmail(userType2.email));
-  //   }
-  // }, [dispatch, userType2]);
-
-  // const currentUser = useSelector((state) => state.dataEmail[0]);
 
   const [cv, setCv] = useState({
     dni: "",
@@ -38,9 +22,9 @@ function FormCv({ setValidateState, setCurrentUserStore2 }) {
     profession: "",
     country: "",
     educational_institution: "",
-    state: "",
+    state: "x",
     initial_date: "",
-    finish_date: "",
+    finish_date: "x",
     ApplicantId: "",
   });
 
@@ -112,17 +96,6 @@ function FormCv({ setValidateState, setCurrentUserStore2 }) {
               nextStep={nextStep}
             />
           )}
-
-          {/* {step === 3 &&
-            <Step3FormCv
-              cv={cv}
-              setCv={setCv}
-              experiencia={experiencia}
-              setExperiencia={setExperiencia}
-              handlerChange={handlerChange}
-              previousStep={previousStep}
-            />
-          } */}
         </div>
       </div>
       </div>
