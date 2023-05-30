@@ -1,39 +1,53 @@
 .mainContainer {
-    /* display: flex; */
-    /* flex-direction: column; */
-    justify-items: center;
-    align-items: center;
-    background: linear-gradient(-40deg, var(--mustard), var(--avocado), white, var(--caribbean-current));
-    background-size: 400% 400%;
-    animation: container 10s ease infinite;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
+  display: flex;
+  align-items: center;
+  background-color: #1c1c1c;
+  background-size: 400% 400%;
+  width: 100vw;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  font-family: 'letters';
+  color: #e1ecfc;
 }
 
-
-.container2{
-    margin-top: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+.title {
+  margin-top: 10vh;
+  margin-bottom: 3vh;
+  color: #e1ecfc;
 }
 
- .Form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--battleship-gray);
-    width:100%;
-    border-radius: 10px;
-    padding: 2%;
-    font-size: large;
-    margin: 1%;
-  }
+.Form {
+  margin: auto;
+  background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
+  color: #e1ecfc;
+  height: fit-content;
+  width: 80%;
+  border-radius: 10px;
+  padding: 1%;
+  font-size: large;
+  margin-bottom: 2vh;
+}
+
+.containerFirst {
+  width: 40vw;
+  height: 62vh;
+  background-image: url('../../assets/img/registroempresa.png');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  order: 1;
+}
+
+.containerSecond {
+  width: 70vw;
+  height: fit-content;
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 
 
   .container3{
@@ -68,6 +82,51 @@
     height: 15vh;
     border-radius: 10px;
   }
+
+.button {
+  color: black;
+  padding: 1%;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 2vh;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid var(--oxford-blue);
+  color: var(--jet);
+  font-family: 'letters';
+  font-size: 1em;
+
+}
+
+.button:hover {
+  color: white;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+
+.button:hover:after {
+  width: 100%;
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: var(--jet);
+
+}
+
+
+
 
   @keyframes container {
     0%{

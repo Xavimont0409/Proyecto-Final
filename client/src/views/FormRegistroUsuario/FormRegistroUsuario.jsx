@@ -62,107 +62,127 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
   }
 
   return (
+		<div className={style.mainContainer}>
+			<div className={style.containerFirst}>{/* no quitar */}</div>
+			<div className={style.containerSecond}>
+					<div className={style.title}>
+						<h2>Completa tu Registro como Postulante</h2>
+					</div>
+					<Form>
+						<Row>
+							<Form.Group as={Col} md='6' className='mb-3'>
+								<FormLabel>Nombre</FormLabel>
+								<FormControl
+									name='name'
+									placeholder='Nombre'
+									value={newUserApplicant.name}
+									type='text'
+									onChange={handleInputChange}
+									required
+									disabled={
+										newUserApplicant.name ===
+										Applicant?.nombre
+											? true
+											: false
+									}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Rellena este campo
+								</Form.Control.Feedback>
+							</Form.Group>
 
-    <div className={style.mainContainer}>
-      <div className={style.container2}>
-        <div>
-          <h2 style={{ 'margin': '20px' }}>Completa tu Registro como Postulante</h2>
-          <Form >
-            <Row>
-              <Form.Group as={Col} md='6' className="mb-3"  >
-                <FormLabel>Nombre</FormLabel>
-                <FormControl
-                  name='name'
-                  placeholder='Nombre'
-                  value={newUserApplicant.name}
-                  type="text"
-                  onChange={handleInputChange}
-                  required 
-                  disabled={newUserApplicant.name === Applicant?.nombre ? true : false}
-                  />
-                <Form.Control.Feedback type="invalid">
-                  Rellena este campo
-                </Form.Control.Feedback>
-              </Form.Group>
+							<Form.Group as={Col} md='6' className='mb-3'>
+								<FormLabel>Apellido</FormLabel>
+								<FormControl
+									name='lastName'
+									placeholder='Apellido'
+									value={newUserApplicant.lastName}
+									type='text'
+									onChange={handleInputChange}
+									required
+									disabled={
+										newUserApplicant.lastName ===
+										Applicant?.apellido
+											? true
+											: false
+									}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Rellena este campo
+								</Form.Control.Feedback>
+							</Form.Group>
+						</Row>
 
+						<Row>
+							<Form.Group as={Col} md='6' className='mb-3'>
+								<FormLabel>Email</FormLabel>
+								<FormControl
+									name='email'
+									placeholder='Email'
+									value={newUserApplicant.email}
+									type='text'
+									onChange={handleInputChange}
+									required
+									disabled={
+										newUserApplicant.email ===
+										Applicant?.email
+											? true
+											: false
+									}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Rellena este campo
+								</Form.Control.Feedback>
+							</Form.Group>
 
-              <Form.Group as={Col} md='6' className="mb-3"  >
-                <FormLabel>Apellido</FormLabel>
-                <FormControl
-                  name='lastName'
-                  placeholder='Apellido'
-                  value={newUserApplicant.lastName}
-                  type="text"
-                  onChange={handleInputChange}
-                  required
-                  disabled={newUserApplicant.lastName === Applicant?.apellido ? true : false}
-                  />
-                <Form.Control.Feedback type="invalid">
-                  Rellena este campo
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Row>
+							<Form.Group as={Col} md='6' className='mb-3'>
+								<FormLabel>Celular</FormLabel>
+								<FormControl
+									name='cellphone'
+									placeholder='Numero de celular'
+									value={newUserApplicant.cellphone}
+									type='number'
+									onChange={handleInputChange}
+									required
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Rellena este campo
+								</Form.Control.Feedback>
+							</Form.Group>
 
-
-            <Row>
-              <Form.Group as={Col} md='6' className="mb-3"  >
-                <FormLabel>Email</FormLabel>
-                <FormControl
-                  name='email'
-                  placeholder='Email'
-                  value={newUserApplicant.email}
-                  type="text"
-                  onChange={handleInputChange}
-                  required
-                  disabled={newUserApplicant.email === Applicant?.email ? true : false}
-                  />
-                <Form.Control.Feedback type="invalid">
-                  Rellena este campo
-                </Form.Control.Feedback>
-              </Form.Group>
-
-
-
-              <Form.Group as={Col} md='6' className="mb-3" >
-                <FormLabel  >Celular</FormLabel>
-                <FormControl
-                  name='cellphone'
-                  placeholder='Numero de celular'
-                  value={newUserApplicant.cellphone}
-                  type="number"
-                  onChange={handleInputChange}
-                  required />
-                <Form.Control.Feedback type="invalid">
-                  Rellena este campo
-                </Form.Control.Feedback>
-              </Form.Group>
-
-              <Form.Group as={Col} md='6' className="mb-3" >
-                <FormLabel  >Password</FormLabel>
-                <FormControl
-                  name='password'
-                  placeholder='Password'
-                  value={newUserApplicant.password}
-                  type="password"
-                  onChange={handleInputChange}
-                  required 
-                  disabled={newUserApplicant.password === Applicant?.contraseña ? true : false}
-                  />
-                <Form.Control.Feedback type="invalid">
-                  Rellena este campo
-                </Form.Control.Feedback>
-              </Form.Group>
-            </Row>
-          </Form>
-          <button
-            type='submit'
-            onClick={(event)=>handleSubmit(event)}
-          > registrate
-          </button>
-        </div>
-      </div>
-    </div>
-  )
+							<Form.Group as={Col} md='6' className='mb-3'>
+								<FormLabel>Password</FormLabel>
+								<FormControl
+									name='password'
+									placeholder='Password'
+									value={newUserApplicant.password}
+									type='password'
+									onChange={handleInputChange}
+									required
+									disabled={
+										newUserApplicant.password ===
+										Applicant?.contraseña
+											? true
+											: false
+									}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Rellena este campo
+								</Form.Control.Feedback>
+							</Form.Group>
+						</Row>
+					</Form>
+					<button
+            className={style.button}
+						type='submit'
+						onClick={(event) => handleSubmit(event)}
+					>
+						{" "}
+						Registrate
+					</button>
+			</div>
+		</div>
+  );
 };
 
 export default FormRegistroUsuario;
