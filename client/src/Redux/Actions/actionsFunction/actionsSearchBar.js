@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 export const findPerName = (name) => {
   return async function(dispatch){
     try {
-      const json = await axios(`http://localhost:3001/job?name=${name}`)
+      const json = await axios(`/job?name=${name}`)
       const data = json.data
       data.length === 0 
       ?  

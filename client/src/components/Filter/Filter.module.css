@@ -12,6 +12,41 @@
     margin-right: 3vw;
     margin-top: 2vh;
 }
+.divInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 17vw;
+    height: 4vh;
+    border-radius: 7px;
+    border: solid black 1px;
+}
+.button2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 5vw;
+    height: 4vh;
+    border-radius: 7px;
+    border: solid black 1px;
+    background: var(--battleship);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0F0F0F;
+    transition: all 0.3s ease-in-out;
+
+}
 
 .select {
     border-radius: 3px;
