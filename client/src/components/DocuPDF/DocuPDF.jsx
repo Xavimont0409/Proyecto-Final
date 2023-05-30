@@ -1,7 +1,7 @@
 import React from "react";
 import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
 // import ListItem from "../../components/ListItemExperience/ListItemExperience";
-import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
+import ListItemStudy from "../ListItemStudy/ListItemStudy";
 import email from "../../assets/img/email.png"
 import linkedin from "../../assets/img/linkedin.png"
 import phone from "../../assets/img/phone.png"
@@ -10,7 +10,7 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
 
-const DocuPDF = ({ perfil, CvDetail }) => {
+const DocuPDF = ({ perfil }) => {
 
     const formatDate = (date) => {
         const formattedDate = format(new Date(date), 'MMMM yyyy', { locale: es });
@@ -87,9 +87,6 @@ const DocuPDF = ({ perfil, CvDetail }) => {
         </View>
       );
 
-
-
-
     return (
         <Document>
             <Page style={styles.container2}>
@@ -154,25 +151,29 @@ const DocuPDF = ({ perfil, CvDetail }) => {
                 <View style={styles.container5}>
                     <Text style={{ textAlign: 'left' }}>Mis experiencias profesionales</Text>
                     <View >
-                        {CvDetail.Experiences?.map(exp => (
-                            <ListItem charge={exp.charge} company={exp.company} startDate={exp.start_date} endDate={exp.still_working ? 'Actualmente' : exp.end_date} />
-                        ))}
+                        {perfil.Experiences?.length === 0
+                            ? <Text>No tienes experiencia registrada</Text>
+                            : perfil.Experiences?.map(exp => (
+                                <ListItem charge={exp.charge} company={exp.company} startDate={exp.start_date} endDate={exp.still_working ? 'Actualmente' : exp.end_date} />
+                            ))}
                     </View>
                 </View>
                 <View style={styles.container5}>
                     <Text style={{ textAlign: 'left' }}>Mis estudios</Text>
                     <View style={styles.containerListStudy}>
-              {CvDetail.Formations?.map(study => (
-                <ListItemStudy study_level={study.study_level} title={study.title} institute={study.institute} state={study.state} />
-              ))}
-            </View>
-          </View>
-          <View style={styles.container5}>
-            <Text style={{ textAlign: 'left' }}>Skills</Text>
-            <Text>{perfil.skills}</Text>
-          </View>
-        </Page>
-      </Document>
+                        {perfil.Formations?.length === 0
+                            ? <Text>No tienes estudios registrados</Text>
+                            : perfil.Formations?.map(study => (
+                                <ListItemStudy study_level={study.study_level} title={study.title} institute={study.institute} state={study.state} />
+                            ))}
+                    </View>
+                </View>
+                <View style={styles.container5}>
+                    <Text style={{ textAlign: 'left' }}>Skills</Text>
+                    <Text>{perfil.skills}</Text>
+                </View>
+            </Page>
+        </Document>
 
     )
 

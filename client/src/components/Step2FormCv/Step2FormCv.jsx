@@ -80,7 +80,7 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
               // type="textarea"
               as="textarea"
               rows={2}
-              maxLength={60}
+              maxLength={200}
               onChange={(event) => handlerChange(event, cv, setCv)}
               required />
             <Form.Control.Feedback type="invalid">
