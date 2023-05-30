@@ -1,4 +1,4 @@
-const { Applicant, Cv, Vacant } = require("../../db");
+const { Applicant, Cv, Vacant, Workday, WorkMethod, Seniority } = require("../../db");
 
 const vacantDelete = async (id, body) => {
   let response = {};
