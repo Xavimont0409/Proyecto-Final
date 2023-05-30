@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #1C1C1C;
 }
 
 .containerData{
@@ -49,5 +50,24 @@
     border-radius: 4px;
     font-size:15px;
     font-weight: 100;
-    margin: 0.8vh auto
+    margin: 0.8vh auto 0 auto
 }
+
+.containerRutaAlternativa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.8vh;
+}
+
+.textoAlternativa, .textoLink{
+    font-family: 'letters';
+    font-size: 20px;
+}
+
+.textoAlternativa{
+    color: #fff;
+    margin-right: 0.8vw;
+}
+
+

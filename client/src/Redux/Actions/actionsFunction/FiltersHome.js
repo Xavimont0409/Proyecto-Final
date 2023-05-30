@@ -2,10 +2,18 @@ import {
   FILTER_PER_SENIORITY,
   FILTER_PER_WORDKMETHOD,
   FILTER_PER_TIME,
+  FILTER_PER_OPERATION,
   GET_EMAIL,
 } from "../actions-types/action-types";
 import axios from "axios";
 import Swal from 'sweetalert2';
+
+export const filterPerOperation = (payload) => {
+  return {
+    type: FILTER_PER_OPERATION,
+    payload: payload
+  }
+};
 
 export const filterPerSeniority = (payload) => {
   return {
