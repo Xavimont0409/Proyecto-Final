@@ -11,6 +11,16 @@ const CardProfile =  ({id, cv, photo, name, lastName, profession, personal_descr
   const experience = cv.Experiences[0];
 console.log(linkedin);
 
+let truncatedDescription = personal_description.slice(0, 200);
+    if (personal_description.length > 200) {
+    truncatedDescription += ' . . . ';
+    };
+    
+let truncatedSkills = skills.slice(0, 50);
+    if (skills.length > 50) {
+      truncatedSkills += ' . . . ';
+    };
+
   return (
           <div className={style.mainContainer} >
             <div className={style.containerImgEmpresa}>
@@ -21,13 +31,13 @@ console.log(linkedin);
               <Card.Text className={style.text}>{profession}</Card.Text>
             </Card.Body>
             <ListGroup className={style.infoContainer}>
-              <ListGroup.Item className={style.item}>{personal_description} </ListGroup.Item>
-              <ListGroup.Item className={style.item}>Skills: {skills}</ListGroup.Item>
+              <ListGroup.Item className={style.item}>{truncatedDescription} </ListGroup.Item>
+              <ListGroup.Item className={style.item}>Skills: {truncatedSkills}</ListGroup.Item>
               <ListGroup.Item className={style.item}>DNI : {dni}</ListGroup.Item>
               <ListGroup.Item className={style.item}>Teléfono: {phone}</ListGroup.Item>
               <ListGroup.Item className={style.item}>Email: {email}</ListGroup.Item>
             </ListGroup>
-            <Card.Body >
+            <Card.Body className={style.containerExperience}>
             <Card.Title className={style.title2}>Experiencia</Card.Title>
 
           {
@@ -44,7 +54,7 @@ console.log(linkedin);
 
             </Card.Body>
 
-            <Card.Body>
+            <Card.Body className={style.containerIcons}>
               <Link to={linkedin}>
               <BsLinkedin className={style.linkedin}/>
               </Link>
