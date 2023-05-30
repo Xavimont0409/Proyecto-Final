@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys';
 
-const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
+const ProfilesCompany = ({ setCurrentUserStore2, setValidateState }) => {
     const companies = useSelector(state => state.Company);
     const [currentPage, setCurrentPage] = useState(1);
     const [companiesPerPage, setCompaniesPerPage] = useState(6);
@@ -45,7 +45,7 @@ const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
 
     return (
         <div className={styles.container}>
-            <NavBar setCurrentUserStore={setCurrentUserStore}/>
+            <NavBar setCurrentUserStore2={setCurrentUserStore2} setValidateState={setValidateState}/>
             <div className={styles.page}>
             <Page
                 usersPerPage={companiesPerPage}
@@ -59,6 +59,7 @@ const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
                     <div className={styles.cardsContainer}>
                         {
                             currentCompanies?.map(compan => {
+                                console.log(compan.webPage);
                                 return ( 
                                     <div key={compan.id} className={styles.cardDiv}>
                                         <CardProfileCompany
@@ -72,7 +73,7 @@ const ProfilesCompany = ({ setCurrentUserStore, setCurrentUserStore2 }) => {
                                         country={compan.country}
                                         cuit={compan.cuit}
                                         email={compan.email}
-                                        web={compan.webPage}
+                                        webPage={compan.webPage}
                                         />
                                     </div>
                                 )
