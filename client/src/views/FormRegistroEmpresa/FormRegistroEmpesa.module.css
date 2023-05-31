@@ -3,14 +3,17 @@
   align-items: center;
   background-color: #1c1c1c;
   background-size: 400% 400%;
-  width: 100vw;
-  height: fit-content;
+  max-width: 99vw;
+  min-height: fit-content;
   padding: 0;
   margin: 0;
+  margin-bottom: 50px;
   font-family: 'letters';
   color: #e1ecfc;
 }
-
+.errors{
+  color: red;
+}
 .title {
   margin-bottom: 3vh;
   color: #e1ecfc;

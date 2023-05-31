@@ -2,15 +2,16 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany } from './views';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading, LoginApplicant, LoginCompany } from './components';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 
-//axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+axios.defaults.baseURL = 'http://localhost:3001'
+
+//axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
@@ -33,6 +34,7 @@ function App() {
       setCurrentUserStore2("")
       setValidateState(false)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   useEffect(() => {
@@ -60,13 +62,14 @@ function App() {
         <Route path='/ratings' element={<Ratings/> } />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
-        <Route path="/TermsAndConditions" element={<TermsAndConditions setCurrentUserStore={setCurrentUserStore} />} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions setValidateState={setValidateState} setCurrentUserStore={setCurrentUserStore} setCurrentUserStore2={setCurrentUserStore2} />} />
         <Route path="/ServerDevelop" element={<ServerMaintenance />} />
         <Route path="/product/:id" element={<DetailProduct setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         <Route path="/registroini-empresa" element={<FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} />} />
         <Route path="/registro-usuario" element={<FormRegistroUsuario setCurrentUserStore2={setCurrentUserStore2} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} />} />
         
         <Route element={<ProtectedRoute isAutenticate={validate} />/*Todos*/}>
+          <Route path="/aboutUs" element={<AboutUs setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/empleoDetail/:detailId" element={<EmpleoDetail setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path='/profiles-company' element={<ProfilesCompany setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path='/profiles' element={<Profiles setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
