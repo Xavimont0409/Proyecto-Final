@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs,, FAQ  PlansAndPrices } from './views';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs, FAQ , PlansAndPrices } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading, LoginApplicant, LoginCompany } from './components';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
