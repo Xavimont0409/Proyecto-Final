@@ -21,7 +21,7 @@ const CardsContainerEmpleo = ({ vacants, companies }) => {
         if (currentVacants.length === 0 && vacants.length > 0) {
             const newPage = Math.ceil(vacants.length / vacantsPerPage);
             setCurrentPage(newPage);
-    }
+        }
     }, [currentVacants, vacants, vacantsPerPage]);
 
     return (
@@ -35,14 +35,14 @@ const CardsContainerEmpleo = ({ vacants, companies }) => {
                 {
                     currentVacants?.map(vacancy => {
                         let truncatedDescription = vacancy.description.slice(0, 200);
-                            if (vacancy.description.length > 200) {
-                                truncatedDescription += ' . . . ';
-                            }
-                        return (
+                        if (vacancy.description.length > 200) {
+                            truncatedDescription += ' . . . ';
+                        }
+                        return vacancy.status === true ? (
                             <Card
                                 key={vacancy.id}
                                 id={vacancy.id}
-                                company={companies.find((comp)=> vacancy.CompanyId === comp.id)}
+                                company={companies.find((comp) => vacancy.CompanyId === comp.id)}
                                 title={vacancy.title}
                                 description={truncatedDescription}
                                 Workday={vacancy.Workday.name}
@@ -50,7 +50,7 @@ const CardsContainerEmpleo = ({ vacants, companies }) => {
                                 Seniority={vacancy.Seniority.name}
                                 operation={vacancy.operation}
                             />
-                        )
+                        ) : (<></>) 
                     })
                 }
             </div>

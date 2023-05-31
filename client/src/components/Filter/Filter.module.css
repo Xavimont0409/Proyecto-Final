@@ -175,3 +175,59 @@
         border-radius: 20%;
     }
 }
+
+
+@media screen and (max-width: 1900px) {
+
+    .mainContainer {
+        height: 72vh;
+        width: 20vw;
+        margin-left: 0;
+        margin-right: 0vw;
+    }
+
+    .divInput{
+        margin: 0 0 0 0 ;
+    }
+
+    .input{
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 12vw;
+    }
+
+    .button2{
+        margin: 0 0 0 0;
+        font-size: 0.75rem;
+    }
+
+    .filterContainer {
+        margin-top: 1.5vh;
+    }
+
+    .selectSpecial {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .orderContainer {
+        width: 80%;
+        text-align: center;
+    }
+
+    .select{
+        width: 80%;
+    }
+
+    .filterContainer{
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .button{
+        margin: 0 0 0 3.5vw;
+        font-size: 0.75rem;
+    }
+
+}
