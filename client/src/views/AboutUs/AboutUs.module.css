@@ -1,0 +1,99 @@
+*{
+    font-family: 'letters';
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerFirst {
+    padding: 2rem;
+    text-align: center;
+    color: #1c1c1c;
+    border: 1px solid #fff;
+    background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: fit-content;
+}
+
+.title {
+    color: #e1ecfc;
+    width: 30vw;
+    height: 40vh;
+    margin-right: 8vw;
+}
+
+.titleFirst{
+    font-family: 'letters';
+    font-size: 3.2rem;
+}
+
+.parrafoFirst {
+    font-size: 1.2rem;
+    color: #e1ecfc;
+    text-align: center;
+    width: 40vw;
+}
+
+.containerSecond {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;
+}
+
+.containerGrupo {
+    margin-right: 2vw;
+}
+
+.imageSecond {
+    width: 600px;
+    height: 600px;
+    border-radius: 10px;
+}
+
+.containerText {
+    margin-top: 2rem;
+    width: 50vw;
+    max-width: 800px;
+}
+
+.titleSecond {
+    font-size: 2.5rem;
+    color: #e1ecfc;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.parrafoSecond {
+    font-size: 1.8rem;
+    color: #e1ecfc;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.containerThree{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem;   
+}
+
+.imageThree {
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+    margin-right: 20vw;
+}
+
+.valuesSection{
+    font-size: 1.8rem;
+    color: #e1ecfc;
+    text-align: center;
+    margin-top: 2rem;
+}

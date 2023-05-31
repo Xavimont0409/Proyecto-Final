@@ -13,6 +13,7 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
+    color: #e1ecfc;
 }
 
 .container1{
@@ -36,6 +37,7 @@
     border: solid black 1px;
     width: 70%;
     height: 100%;
+    background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
 }
 
 .container3{
