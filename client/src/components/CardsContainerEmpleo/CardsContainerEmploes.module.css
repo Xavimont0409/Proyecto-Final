@@ -19,7 +19,6 @@
     overflow-y: scroll;
     min-height: 92vh;
     justify-content: flex-start;
-  
 }
 
 @media (max-width: 768px) {
@@ -28,16 +27,24 @@
         flex-direction: column;
         align-items: center;
         width: 97vw;
-        height: 79vh;
+        height: 80vh;
         margin-top: 1vh;
         overflow-x: hidden;
+        border: 3px solid green;
     }
 
     .cardsContainer {
         width: 95vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr;
         overflow-x: hidden;
+        border: 3px solid purple;
+    }
+}
+
+@media screen and (max-width: 1900px) {
+
+    .mainContainer {
+        width: 100%;
     }
 }

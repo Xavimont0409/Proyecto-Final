@@ -34,7 +34,7 @@ const Vacantes = () => {
           </tr>
         </thead>
         <tbody className={style.tBody}>
-          {companyDetail.Vacants?.map((elem) => (
+          {companyDetail.Vacants?.map((elem) => elem.status === true ?(
             <tr key={elem.id}>
               <td>{elem.id}</td>
               <td>{elem.title}</td>
@@ -44,7 +44,7 @@ const Vacantes = () => {
               <td>{elem.WorkMethod?.name}</td>
               <td>{elem.Workday?.name}</td>
             </tr>
-          ))}
+          ): (<></>))}
         </tbody>
       </Table>
     </div>

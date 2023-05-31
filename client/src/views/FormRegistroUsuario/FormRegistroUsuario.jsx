@@ -7,12 +7,14 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postUser } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
-
+import { validation } from './validation';
+import { FiEye, FiEyeOff } from "react-icons/fi"
 
 
 const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState, setCurrentUserStore}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [ pass, setPass ] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [newUserApplicant, setNewUserApplicant] = useState({
     name: Applicant ? Applicant.nombre : "",
@@ -22,14 +24,21 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
     registed: true,
     password:Applicant ? Applicant.contraseña : "",
   })
+  const [ errors, setErrors ] = useState({
+	name: "",
+    lastName:"",
+    email:"",
+    cellphone: "",
+    registed: true,
+    password:"",
+  })
 
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
     setNewUserApplicant({ ...newUserApplicant, [property]: value });
+	setErrors(validation({ ...newUserApplicant, [property]: value }))
   }
-
-
   const handleSubmit = (event) => {
     event.preventDefault()
     if(
@@ -86,9 +95,7 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
 											: false
 									}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Rellena este campo
-								</Form.Control.Feedback>
+								<p className={style.errors}>{errors.name}</p>
 							</Form.Group>
 
 							<Form.Group as={Col} md='6' className='mb-3'>
@@ -107,9 +114,7 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
 											: false
 									}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Rellena este campo
-								</Form.Control.Feedback>
+								<p className={style.errors}>{errors.lastName}</p>
 							</Form.Group>
 						</Row>
 
@@ -130,9 +135,7 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
 											: false
 									}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Rellena este campo
-								</Form.Control.Feedback>
+								<p className={style.errors}>{errors.email}</p>
 							</Form.Group>
 
 							<Form.Group as={Col} md='6' className='mb-3'>
@@ -141,22 +144,21 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
 									name='cellphone'
 									placeholder='Numero de celular'
 									value={newUserApplicant.cellphone}
-									type='number'
+									type='text'
 									onChange={handleInputChange}
 									required
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Rellena este campo
-								</Form.Control.Feedback>
+								<p className={style.errors}>{errors.cellphone}</p>
 							</Form.Group>
 
 							<Form.Group as={Col} md='6' className='mb-3'>
 								<FormLabel>Password</FormLabel>
+							{pass ?	<FiEye className={style.icon} onClick={() => setPass(false)}></FiEye>  : <FiEyeOff className={style.icon} onClick={() => setPass(true)}></FiEyeOff> }
 								<FormControl
 									name='password'
 									placeholder='Password'
 									value={newUserApplicant.password}
-									type='password'
+									type={Applicant ? "password" : ( pass ? 'text': 'password')}
 									onChange={handleInputChange}
 									required
 									disabled={
@@ -166,9 +168,7 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
 											: false
 									}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Rellena este campo
-								</Form.Control.Feedback>
+								{Applicant ? <p></p> : <p className={style.errors}>{errors.password}</p>}
 							</Form.Group>
 						</Row>
 					</Form>

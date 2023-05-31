@@ -46,9 +46,17 @@ const NewRegistroApplicant = ({
 
   return (
     <div className={style.container}>
-      <div className={style.containerData}>
+      {Applicant.nombre.length > 1 ? (
+        <FormRegistroUsuario
+          setCurrentUserStore2={setCurrentUserStore2}
+          Applicant={Applicant}
+          setCurrentUserStore={setCurrentUserStore}
+          setValidateState={setValidateState}
+        />
+      ) : (
+        <div className={style.containerData}>
         <h1 className={style.title}>Registro de Applicante</h1>
-        <div>
+        <div className={style.containerButton}>
           <button
             className={style.button}
             onClick={() => navigate("/registro-usuario")}
@@ -61,6 +69,7 @@ const NewRegistroApplicant = ({
             onFailure={onFailure}
             cookiePolicy={"single_host_policy"}
           />
+          </div>
           <div className={style.containerRutaAlternativa}>
             <span className={style.textoAlternativa}>
               ¿Quieres iniciar sesión?
@@ -69,17 +78,8 @@ const NewRegistroApplicant = ({
               <span className={style.textoLink}>Inicio de Sesión</span>
             </Link>
           </div>
-        </div>
+        
       </div>
-      {Applicant.nombre.length > 1 ? (
-        <FormRegistroUsuario
-          setCurrentUserStore2={setCurrentUserStore2}
-          Applicant={Applicant}
-          setCurrentUserStore={setCurrentUserStore}
-          setValidateState={setValidateState}
-        />
-      ) : (
-        <div></div>
       )}
     </div>
   );

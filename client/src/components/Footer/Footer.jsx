@@ -34,17 +34,25 @@ const Footer = () => (
 					<div className={styles.lists}>
 						<ul>
 							<li>
-								<a href='https://www.instagram.com/jobportalcompany'>
+								<a
+									href='https://www.instagram.com/jobportalcompany'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
 									<SiInstagram /> Instagram
 								</a>
 							</li>
 							<li>
-								<a href='jobportalxcompany@gmail.com'>
+								<a href='mailto:jobportalxcompany@gmail.com'>
 									<SiGmail /> Gmail
 								</a>
 							</li>
 							<li>
-								<a href='https://twitter.com/jobportalx'>
+								<a
+									href='https://twitter.com/jobportalx'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
 									<SiTwitter /> Twitter
 								</a>
 							</li>
@@ -56,17 +64,15 @@ const Footer = () => (
 					<div className={styles.lists}>
 						<ul>
 							<li>
-								<a href='jobportalxcompany@gmail.com'>
-									Ayuda
+								<a href='/PlansAndPrices'>
+									Planes y precios
 								</a>
 							</li>
 							<li>
-								<a href="/FAQ's">
-									Preguntas Frecuentes
-								</a>
+								<a href="/FAQ's">Preguntas Frecuentes</a>
 							</li>
 							<li>
-								<a href='jobportalxcompany@gmail.com'>
+								<a href='mailto:jobportalxcompany@gmail.com'>
 									Reporta errores
 								</a>
 							</li>

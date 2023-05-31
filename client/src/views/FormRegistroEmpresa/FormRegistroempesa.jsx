@@ -11,6 +11,8 @@ import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
 import Dropzone from "react-dropzone";
 import Swal from "sweetalert2";
 import { BsCheckCircleFill, BsFillTrashFill } from 'react-icons/bs'
+import { FiEye, FiEyeOff } from "react-icons/fi"
+import { validate } from './validation'
 
 
 const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState }) => {
@@ -18,6 +20,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [ pass, setPass ] = useState(false)
 
   const [image, setImage] = useState(null);
 
@@ -34,7 +37,19 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     job_area: "",
     webPage: "",
   });
-
+  const [ errors, setErrors ] = useState({
+	business_name: "",
+    cuit: "",
+    country: "",
+    registed: true,
+    name: "",
+    email: Company ? Company.email : "",
+    password: Company ? Company.contraseña : "",
+    photo: "",
+    description: "",
+    job_area: "",
+    webPage: "",
+  })
 
 
   const handleDrop = async (acceptedFiles) => {
@@ -44,6 +59,11 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     reader.onload = () => {
       setImage(reader.result);
     };
+	Swal.fire({
+        title: "Info",
+        text: `Por favor haz click en confirmar tu imagen o elimínala`,
+        icon: "info",
+      });
 
     reader.readAsDataURL(file);
   };
@@ -93,13 +113,13 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
   );
-
+  
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
     setNewEmpresa({ ...newEmpresa, [property]: value });
+    setErrors(validate({ ...newEmpresa, [property]: value }))
   }
-
   const handleSubmit = (event) => {
     event.preventDefault()
     if (
@@ -151,6 +171,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 								onChange={handleInputChange}
 								required
 							/>
+            <p className={style.errors}>{errors.name}</p>
 						</FormGroup>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>Nombre comercial</FormLabel>
@@ -162,6 +183,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 								onChange={handleInputChange}
 								required
 							/>
+              <p className={style.errors}>{errors.business_name}</p>
 						</FormGroup>
 					</Row>
 					<Row>
@@ -175,6 +197,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 								onChange={handleInputChange}
 								required
 							/>
+              <p className={style.errors}>{errors.cuit}</p>
 						</Form.Group>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>País</FormLabel>
@@ -220,7 +243,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 												<input {...getInputProps()} />
 
 												{!image ? (
-													<p>
+													<p style={{'color':'gray'}}>
 														Selecciona o arrastra
 														una imagen
 													</p>
@@ -270,6 +293,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 									onChange={handleInputChange}
 									required
 								/>
+                <p className={style.errors}>{errors.webPage}</p>
 							</FormGroup>
 
 							<FormGroup>
@@ -282,6 +306,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 									onChange={handleInputChange}
 									required
 								/>
+                <p className={style.errors}>{errors.job_area}</p>
 							</FormGroup>
 						</Col>
 					</Row>
@@ -298,9 +323,6 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 							maxLength={200}
 							required
 						/>
-						<Form.Control.Feedback type='invalid'>
-							Rellena este campo
-						</Form.Control.Feedback>
 					</FormGroup>
 
 					<Row>
@@ -319,22 +341,25 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 										: false
 								}
 							/>
+              {Company ? <p></p>: <p className={style.errors}>{errors.email}</p>}
 						</FormGroup>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>Contraseña</FormLabel>
+							{pass ?	<FiEye className={style.icon} onClick={() => setPass(false)}></FiEye>  : <FiEyeOff className={style.icon} onClick={() => setPass(true)}></FiEyeOff> }
 							<FormControl
 								name='password'
 								placeholder='Password'
 								value={newEmpresa.password}
-								type='password'
+								type={Company ? "password" :( pass ? 'text': 'password' )}
 								onChange={handleInputChange}
 								required
 								disabled={
 									newEmpresa.password === Company?.contraseña
 										? true
 										: false
-								}
+									}
 							/>
+              {Company ? <p></p> : <p className={style.errors}>{errors.password}</p>}
 						</FormGroup>
 					</Row>
 				</Form>

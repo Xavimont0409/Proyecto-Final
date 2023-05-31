@@ -12,8 +12,8 @@ import Swal from "sweetalert2";
 const CardEmpleoDetail = ({ id, CompanyId, title, description, createdAt, Workday, WorkMethod, Seniority }) => {
   const dispatch = useDispatch();
   const currentUserId = JSON.parse(localStorage.getItem("currentUser2")).id;
-  const currentUser= JSON.parse(localStorage.getItem("currentUser2"));
   const userVacants = useSelector((state) => state.UserDetail.Vacants);
+  const user = useSelector((state) => state.UserDetail);
   const vacantPostuled = userVacants?.find((vacant) => vacant.id === id);
   const [validate, setValidate] = useState(false);
   const company = useSelector((state) => state.CompanyDetail);
@@ -26,15 +26,18 @@ const CardEmpleoDetail = ({ id, CompanyId, title, description, createdAt, Workda
   useEffect(() => {
     dispatch(getUserDetail(currentUserId));
     dispatch(getCompanyDetail(CompanyId));
-  }, [currentUserId, dispatch]);
+    if(vacantPostuled) setValidate(true);
+  }, [dispatch, validate]);
 
-  useEffect(() => {
-    if (vacantPostuled) setValidate(true);
-  }, [vacantPostuled, validate]);
+  // useEffect(() => {
+  //   if (vacantPostuled) {setValidate(true)
+  //   }else{
+  //   setValidate(false)};
+  // }, [vacantPostuled, validate]);
 
 
   const handlerClick = () => {
-    if (!currentUser.Cv){
+    if (!user.Cv){
       return Swal.fire({
         title: "Error",
         text: "Debes registrar tu CV para poder postular a una vacante",

@@ -1,4 +1,4 @@
-//import AboutUs from "./AboutUs/AboutUs";
+import AboutUs from "./AboutUs/AboutUs";
 import EmpleoDetail from "./EmpleoDetail/EmpleoDetail";
 import Empleos from "./Empleos/Empleos";
 import Landing from "./Landing/Landing";
@@ -19,6 +19,7 @@ import DetailProduct from "./DetailProduct/DetailProduct";
 import Operation from "./Operation/Operation";
 import Success from "./Success/Success";
 import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperiencia";
+import FAQ from "./FAQs/FAQs";
 import Vacantes from "./Vacantes/Vacantes"
 import FormRegistroEstudio from "./FormRegistroEstudio/FormregistroEstudio";
 import MyApplications from "./MyApplications/MyApplications";
@@ -27,9 +28,10 @@ import NewRegistroApplicant from './NewRegistro/newResgistroApplicant';
 import Ratings from './Ratings/Ratings';
 import Failure from './Failure/Failure';
 import Pending from './Pending/Pending';
+import PlansAndPrices from "./PlanesYPrecios/PlansAndPrices";
 
 export {
-    //AboutUs,
+    AboutUs,
     DetailProduct,
     EmpleoDetail, 
     Empleos, 
@@ -37,6 +39,7 @@ export {
     LandingEmpresa, 
     Registro,
     Failure, 
+    FAQ,
     FormRegistroUsuario, 
     FormCv, 
     FormVacante, 
@@ -57,5 +60,6 @@ export {
     MyApplications,
     Ratings,
     NewRegistroApplicant,
-    NewRegistroCompany
+    NewRegistroCompany,
+    PlansAndPrices
 }

@@ -16,6 +16,19 @@
     margin-bottom: 3vh;
     color: #e1ecfc;
 }
+.errors{
+    color: red;
+    }
+.icon{
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  color: #1c1c1c;
+  margin-left: 13%;
+  margin-top: 6px;
+  height: 25px;
+  width: 25px;
+}    
 
 .Form {
     margin: auto;
