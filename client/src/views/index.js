@@ -1,4 +1,4 @@
-//import AboutUs from "./AboutUs/AboutUs";
+import AboutUs from "./AboutUs/AboutUs";
 import EmpleoDetail from "./EmpleoDetail/EmpleoDetail";
 import Empleos from "./Empleos/Empleos";
 import Landing from "./Landing/Landing";
@@ -29,7 +29,7 @@ import Failure from './Failure/Failure';
 import Pending from './Pending/Pending';
 
 export {
-    //AboutUs,
+    AboutUs,
     DetailProduct,
     EmpleoDetail, 
     Empleos, 
