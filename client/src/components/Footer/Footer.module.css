@@ -123,3 +123,13 @@ li a {
     color: #e1ecfc;
     text-decoration: none;
 }
+
+@media screen and (max-width: 1900px) {
+
+    .mainContainer {
+        max-height: 100%;
+    }
+    
+
+
+}
