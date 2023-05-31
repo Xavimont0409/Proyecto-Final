@@ -208,3 +208,26 @@
         width: 100px;
     }
 }
+
+.btnNav{
+    border-radius: 50%;
+    transition: all ease 0.4s;
+}
+
+.btnNav:hover{
+    background-color: #1a4e8a;
+    width: 2.5vw;
+    height: 5vh;
+}
+
+.btnNav:active{
+    background-color: #1a4e8a48;
+    width: 2vw;
+    height: 4vh;
+
+}
+
+.pathname{
+    font-family: 'letters';
+    font-size: 1em;
+}

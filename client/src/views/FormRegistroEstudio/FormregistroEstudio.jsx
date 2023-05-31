@@ -27,8 +27,7 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
   useEffect(() => {
     dispatch(getUserDetail(currentUser.id))
   }, [currentUser.id, dispatch]);
-
-
+  
   const [estudio, setEstudio] = useState({
     title: "",
     country: "",
