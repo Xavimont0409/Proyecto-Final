@@ -56,7 +56,7 @@ const NewRegistroApplicant = ({
       ) : (
         <div className={style.containerData}>
         <h1 className={style.title}>Registro de Applicante</h1>
-        <div>
+        <div className={style.containerButton}>
           <button
             className={style.button}
             onClick={() => navigate("/registro-usuario")}
@@ -69,6 +69,7 @@ const NewRegistroApplicant = ({
             onFailure={onFailure}
             cookiePolicy={"single_host_policy"}
           />
+          </div>
           <div className={style.containerRutaAlternativa}>
             <span className={style.textoAlternativa}>
               ¿Quieres iniciar sesión?
@@ -77,7 +78,7 @@ const NewRegistroApplicant = ({
               <span className={style.textoLink}>Inicio de Sesión</span>
             </Link>
           </div>
-        </div>
+        
       </div>
       )}
     </div>

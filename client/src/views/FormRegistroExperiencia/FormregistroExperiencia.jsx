@@ -8,13 +8,14 @@ import { getUserDetail, postExpe, } from "../../Redux/Actions/actionsFunction/ac
 import validation from "./validation";
 import style from "./FormregistroExperiencia.module.css";
 import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
 
 const FormRegistroExperincia = ({ setValidateState, setCurrentUserStore2 }) => {
  
 	const countriesNames = Object.values(countries.countries).map(
     (country) => country
   );
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 //   const validate = JSON.parse(localStorage.getItem("state"));
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
@@ -60,10 +61,11 @@ useEffect(() => {
     } else {
       setValidated(true);
       dispatch(postExpe(experiencia));
-      return Swal.fire({
+	  Swal.fire({
         title: "Registro exitoso",
         icon: "success",
       });
+      return navigate('/applicant')
     }
   };
 
