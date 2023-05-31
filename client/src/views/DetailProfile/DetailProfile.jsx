@@ -73,6 +73,7 @@ const DetailProfile = ({ setValidateState, setCurrentUserStore2 }) => {
         Formations:userDetail.Cv?.Formations
       }));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate, userDetail.Cv]);
 
 

@@ -11,6 +11,7 @@ import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
 import Dropzone from "react-dropzone";
 import Swal from "sweetalert2";
 import { BsCheckCircleFill, BsFillTrashFill } from 'react-icons/bs'
+import { validate } from './validation'
 
 
 const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState }) => {
@@ -34,7 +35,19 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     job_area: "",
     webPage: "",
   });
-
+  const [ errors, setErrors ] = useState({
+	business_name: "",
+    cuit: "",
+    country: "",
+    registed: true,
+    name: "",
+    email: Company ? Company.email : "",
+    password: Company ? Company.contraseña : "",
+    photo: "",
+    description: "",
+    job_area: "",
+    webPage: "",
+  })
 
 
   const handleDrop = async (acceptedFiles) => {
@@ -93,13 +106,13 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
   );
-
+  
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
     setNewEmpresa({ ...newEmpresa, [property]: value });
+    setErrors(validate({ ...newEmpresa, [property]: value }))
   }
-
   const handleSubmit = (event) => {
     event.preventDefault()
     if (
@@ -151,6 +164,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 								onChange={handleInputChange}
 								required
 							/>
+            <p className={style.errors}>{errors.name}</p>
 						</FormGroup>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>Nombre comercial</FormLabel>
@@ -162,6 +176,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 								onChange={handleInputChange}
 								required
 							/>
+              <p className={style.errors}>{errors.business_name}</p>
 						</FormGroup>
 					</Row>
 					<Row>
@@ -175,6 +190,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 								onChange={handleInputChange}
 								required
 							/>
+              <p className={style.errors}>{errors.cuit}</p>
 						</Form.Group>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>País</FormLabel>
@@ -270,6 +286,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 									onChange={handleInputChange}
 									required
 								/>
+                <p className={style.errors}>{errors.webPage}</p>
 							</FormGroup>
 
 							<FormGroup>
@@ -282,6 +299,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 									onChange={handleInputChange}
 									required
 								/>
+                <p className={style.errors}>{errors.job_area}</p>
 							</FormGroup>
 						</Col>
 					</Row>
@@ -319,6 +337,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 										: false
 								}
 							/>
+              {Company ? <p></p>: <p className={style.errors}>{errors.email}</p>}
 						</FormGroup>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>Contraseña</FormLabel>
@@ -335,6 +354,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 										: false
 								}
 							/>
+              {Company ? <p></p> : <p className={style.errors}>{errors.password}</p>}
 						</FormGroup>
 					</Row>
 				</Form>
