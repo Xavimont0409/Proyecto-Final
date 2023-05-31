@@ -16,14 +16,6 @@
     cursor: pointer;
 }
 
-.MainContainer:hover {
-    transform: scale(1.1) ;
-    transition: 0.3s;
-    background-color: #4a88cea9;
-    border-radius: 25px;
-    cursor: pointer;
-}
-
 
 .title{
     text-align: center;
