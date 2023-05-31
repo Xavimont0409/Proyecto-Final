@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  }
+  max-height: 87vh;
+}
 
 .Form {
   margin: 10px;

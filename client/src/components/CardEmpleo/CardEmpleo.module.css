@@ -1,15 +1,14 @@
 .mainContainer {
     border-radius: 10px;
     width: 57vw;
-    height: 33vh;
+    height: 25vh;
     display: flex;
-    margin-top: 3px;
-    margin-bottom: 7px;
     gap: 15px;
     background: var(--sub-white);
     padding: 10px;
     transition: 0.2s ease-in-out;
     background-color: #E1ECFC;
+    border: 3px solid black;
 }
 
 .mainContainer:hover {
@@ -18,14 +17,21 @@
 }
 
 .containerInfo {
-    width: 70%;
+    width: 70vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
     text-decoration: none;
-    height: fit-content;
+    padding: 5px;
+    gap: 3vh;
+    height: 20vh;
+}
 
+.imgContainer{
+}
+
+.descriptionDiv{
 }
 
 .temps {
@@ -122,28 +128,23 @@
 
     .mainContainer {
         border-radius: 5px;
-        width: 87vw;
-        height: 14vh;
+        width: 85vw;
+        height: 24vh;
         display: flex;
-        margin-bottom: 0.5vh;
-        gap: 10px;
+        flex-direction: row;
         background: var(--sub-white);
-        padding: 5px;
         transition: 0.2s ease-in-out;
-    }
-
-    .mainContainer:hover {
-        transform: scale(1.01);
-        box-shadow: 0px 0px 15px var(--jet);
+        border: 3px solid red;
     }
 
     .containerInfo {
-        width: 60%;
+        min-width: 22vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
         text-decoration: none;
+        border: 3px solid blue;
     }
 
     .temps {
@@ -172,28 +173,17 @@
     }
 
     .containerView {
-        width: 30%;
-        border-left: 1px solid #0000001e;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        width: 30vw;
+        text-align: left;
+        border: 3px solid black;
     }
 
     .containerIcons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 8.5vw;
-        height: 4vh;
-        margin: 1vh 0.4vw;
+        border: 3px solid yellow;
     }
 
     .containerText {
-        padding-top: 14px;
-        padding-left: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
+        border: 3px solid purple;
     }
 
 
@@ -204,6 +194,7 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-end;
+        border: 3px solid orange;
     }
 
     .identification {
