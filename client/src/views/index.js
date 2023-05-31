@@ -19,6 +19,7 @@ import DetailProduct from "./DetailProduct/DetailProduct";
 import Operation from "./Operation/Operation";
 import Success from "./Success/Success";
 import FormRegistroExperincia from "./FormRegistroExperiencia/FormregistroExperiencia";
+import FAQ from "./FAQs/FAQs";
 import Vacantes from "./Vacantes/Vacantes"
 import FormRegistroEstudio from "./FormRegistroEstudio/FormregistroEstudio";
 import MyApplications from "./MyApplications/MyApplications";
@@ -37,6 +38,7 @@ export {
     LandingEmpresa, 
     Registro,
     Failure, 
+    FAQ,
     FormRegistroUsuario, 
     FormCv, 
     FormVacante, 
