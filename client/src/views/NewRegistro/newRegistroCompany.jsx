@@ -83,6 +83,7 @@ const NewRegistroCompany = ({
           </div>
         )}
     </div>
+
   );
 };
 
