@@ -61,7 +61,7 @@ const initialState = {
 };
 
 const Reducer = (state = initialState, action) => {
-  let auxFiltros = state.filtrosCombinados
+  let auxFiltros = state.Vacant
   switch (action.type) {
     case CLEAN_DETAIL:
       return {
@@ -149,8 +149,7 @@ const Reducer = (state = initialState, action) => {
       };
 
     case FILTER_PER_SENIORITY:
-      const seniorityVacant =
-        auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
+      const seniorityVacant = auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
 
       const filterPerSeniority =
         action.payload === "senior"
@@ -178,7 +177,7 @@ const Reducer = (state = initialState, action) => {
 
     case FILTER_PER_WORDKMETHOD:
       const wordkmethodVacant =
-        auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;
+        auxFiltros.length === 0 ? state.AuxVacant : auxFiltros;   
       const filterPerWordkmethod =
         action.payload === "presencial"
           ? wordkmethodVacant.filter((vacant) =>
@@ -203,6 +202,9 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         Vacant: action.payload,
+        AuxVacant:action.payload,
+        AuxVacant2:action.payload,
+        filtrosCombinados: action.payload,
       };
 
     case FILTER_PER_TIME:
