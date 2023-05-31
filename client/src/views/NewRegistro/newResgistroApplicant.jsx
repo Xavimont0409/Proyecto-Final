@@ -46,7 +46,15 @@ const NewRegistroApplicant = ({
 
   return (
     <div className={style.container}>
-      <div className={style.containerData}>
+      {Applicant.nombre.length > 1 ? (
+        <FormRegistroUsuario
+          setCurrentUserStore2={setCurrentUserStore2}
+          Applicant={Applicant}
+          setCurrentUserStore={setCurrentUserStore}
+          setValidateState={setValidateState}
+        />
+      ) : (
+        <div className={style.containerData}>
         <h1 className={style.title}>Registro de Applicante</h1>
         <div>
           <button
@@ -71,15 +79,6 @@ const NewRegistroApplicant = ({
           </div>
         </div>
       </div>
-      {Applicant.nombre.length > 1 ? (
-        <FormRegistroUsuario
-          setCurrentUserStore2={setCurrentUserStore2}
-          Applicant={Applicant}
-          setCurrentUserStore={setCurrentUserStore}
-          setValidateState={setValidateState}
-        />
-      ) : (
-        <div></div>
       )}
     </div>
   );

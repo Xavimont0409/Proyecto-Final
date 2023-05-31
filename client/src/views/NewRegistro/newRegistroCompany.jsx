@@ -45,7 +45,12 @@ const NewRegistroCompany = ({
 
   return (
     <div className={style.container}>
-      <div className={style.containerData}>
+      
+      {Company.nombre.length > 1 ? ( 
+        <FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} Company={Company} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} />
+      ) : (
+        <div>
+          <div className={style.containerData}>
         <h1 className={style.title}>Registro Company</h1>
         <div className={style.containerButton}>
           <button
@@ -70,10 +75,7 @@ const NewRegistroCompany = ({
           </Link>
         </div>
       </div>
-      {Company.nombre.length > 1 ? ( 
-        <FormRegisterEmpresa setCurrentUserStore2={setCurrentUserStore2} Company={Company} setCurrentUserStore={setCurrentUserStore} setValidateState={setValidateState} />
-      ) : (
-        <div></div>
+        </div>
       )}
     </div>
   );
