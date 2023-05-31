@@ -10,15 +10,21 @@ import style from "./FormregistroExperiencia.module.css";
 import Swal from "sweetalert2";
 
 const FormRegistroExperincia = ({ setValidateState, setCurrentUserStore2 }) => {
-  const countriesNames = Object.values(countries.countries).map(
+ 
+	const countriesNames = Object.values(countries.countries).map(
     (country) => country
   );
 
   const dispatch = useDispatch();
-  const validate = JSON.parse(localStorage.getItem("state"));
+//   const validate = JSON.parse(localStorage.getItem("state"));
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
   const currentUser = useSelector((state) => state.UserDetail);
   const [validated, setValidated] = useState(false);
+
+
+useEffect(() => {
+	dispatch(getUserDetail(userType2.id));
+}, [dispatch, userType2.id]);
 
 
   const [experiencia, setExperiencia] = useState({
@@ -34,15 +40,14 @@ const FormRegistroExperincia = ({ setValidateState, setCurrentUserStore2 }) => {
 
   const fecharequired = experiencia.still_working;
 
-  useEffect(() => {
-		if (currentUser) {
-			dispatch(getUserDetail(userType2.id));
+	useEffect(() => {
+		if (currentUser.Cv) {
 			setExperiencia((prevExp) => ({
 				...prevExp,
 				CvId: currentUser.Cv?.id,
 			}));
 		}
-  }, [dispatch]);
+	}, [currentUser.Cv]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
