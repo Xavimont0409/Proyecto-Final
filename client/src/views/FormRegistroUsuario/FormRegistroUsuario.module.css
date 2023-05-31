@@ -16,6 +16,9 @@
     margin-bottom: 3vh;
     color: #e1ecfc;
 }
+.errors{
+    color: red;
+    }
 
 .Form {
     margin: auto;
