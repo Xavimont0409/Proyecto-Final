@@ -41,8 +41,9 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2 }) 
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    setNewVacant({ ...newVacant, [property]: value });
+    setNewVacant({ ...newVacant, title : value.toUpperCase(), [property]: value });
   };
+  console.log(newVacant);
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!validateFormInputs(newVacant)) {
@@ -78,7 +79,7 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2 }) 
           <FormControl
             name="title"
             placeholder="Titulo de tu nuvea vacante"
-            value={newVacant.title}
+            value={newVacant.title.toUpperCase()}
             type="text"
             onChange={handleInputChange}
             required

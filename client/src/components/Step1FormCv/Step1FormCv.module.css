@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  }
+  max-height: 87vh;
+}
 
 .Form {
   margin: 0.5vh auto;
@@ -14,7 +15,6 @@
   padding: 2%;
   font-size: large;
 }
-  
 
 .dropzone {
   display: flex;

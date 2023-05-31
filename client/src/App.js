@@ -10,7 +10,12 @@ import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 
 axios.defaults.baseURL = 'http://localhost:3001'
+<<<<<<< HEAD
 // axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+=======
+
+//axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+>>>>>>> 02886db91ddb44aa842e18dfd7316ac048c2abf6
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
