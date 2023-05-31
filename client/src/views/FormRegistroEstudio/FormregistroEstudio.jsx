@@ -21,8 +21,6 @@ const FormRegistroEstudio = ({ setValidateState, setCurrentUserStore2 }) => {
   const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
 
-  console.log(currentUser)
-
   const [estudio, setEstudio] = useState({
     title: "",
     country: "",

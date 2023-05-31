@@ -43,7 +43,7 @@ const NewRegistroCompany = ({ setCurrentUserStore2, setValidateState, setCurrent
   return (
     <div className={style.container}>
       <div className={style.containerData}>
-        <h1 className={style.title}>Registro Company</h1>
+        <h1 className={style.title}>Registro Empresa</h1>
         <div className={style.containerButton}>
           <button className={style.button} onClick={()=> navigate('/registroini-empresa')} >Registrarte con otro correo</button>
           <GoogleLogin
