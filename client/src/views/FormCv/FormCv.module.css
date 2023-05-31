@@ -63,3 +63,23 @@
     border-radius: 50%;
     background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
 }
+
+@media screen and (max-width: 1900px) {
+
+    .containerFirst{
+        width: 30vw;
+        height: 100vh;
+        
+
+    }
+    
+    .circleContainer{
+        margin: 14vh auto;
+    }
+
+    .container2{
+        height: 100vh;
+    
+    }
+
+}

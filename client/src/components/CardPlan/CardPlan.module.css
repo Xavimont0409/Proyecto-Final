@@ -30,3 +30,13 @@
     text-align: center;
     color: #E1ECFC;
 }
+
+@media screen and (max-width: 1900px) {
+
+    .MainContainer {
+        max-width: 50vw;
+        padding: 2vw;
+        gap: 2vh;
+    }
+
+}
