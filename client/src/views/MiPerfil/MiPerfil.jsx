@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import style from "./MiPerfil.module.css"
 import NavBar from "../../components/NavBar/NavBar"
-import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin } from 'react-icons/bs'
+import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin, BsPersonSquare } from 'react-icons/bs'
 // import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
 // import DocuPDF from "../../components/DocuPDF/DocuPDF"
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
@@ -26,7 +26,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser2"))
 
   const userDetail = useSelector(state => state.UserDetail);
-
 
   const [perfil, setPerfil] = useState({
     photo: '',
@@ -73,7 +72,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
         linkedin: userDetail.Cv?.linkedin,
         skills: userDetail.Cv?.skill,
         Experiences:userDetail.Cv?.Experiences,
-        Formations:userDetail.Cv?.Formations
+        Formations:userDetail.Cv?.Formations,
       }));
     }
   }, [navigate, userDetail.Cv, userDetail.cellphone, userDetail.email, userDetail.lastName, userDetail.name, userDetail.profile]);
@@ -168,6 +167,14 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 											{perfil.pais}
 										</p>
 									</div>
+								</div>
+								<div className={style.container4}>
+										<div className={style.container3}>
+										<BsPersonSquare></BsPersonSquare>
+										<p style={{ marginBottom: "3px" , color: "yellow"}}>
+											{userDetail.PayMethods[0].Operation.detail}
+										</p>
+										</div>	
 								</div>
 							</div>
 						</div>
