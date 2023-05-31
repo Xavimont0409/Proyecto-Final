@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading, LoginApplicant, LoginCompany } from './components';
 import axios from 'axios';
@@ -9,9 +9,8 @@ import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 
-axios.defaults.baseURL = 'http://localhost:3001'
-
-//axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+//axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
@@ -21,7 +20,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const userType = JSON.parse(localStorage.getItem("currentUser"))
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
-  const validate = JSON.parse(localStorage.getItem("state"))
+  const validate = JSON.parse(localStorage.getItem("state"));
+  const location = useLocation();
 
   useEffect(() => {
     if (validateState === true && Object.keys(userType).length > 1) {
@@ -38,10 +38,11 @@ function App() {
   }, [currentUser]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
-  }, []);
+  }, [location]);
 
   if (isLoading) {
     return <Loading />;

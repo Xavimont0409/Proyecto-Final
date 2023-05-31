@@ -1,7 +1,7 @@
 import React from "react";
 import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
 // import ListItem from "../../components/ListItemExperience/ListItemExperience";
-import ListItemStudy from "../ListItemStudy/ListItemStudy";
+// import ListItemStudy from "../ListItemStudy/ListItemStudy";
 import email from "../../assets/img/email.png"
 import linkedin from "../../assets/img/linkedin.png"
 import phone from "../../assets/img/phone.png"
@@ -59,6 +59,22 @@ const DocuPDF = ({ perfil }) => {
         
 
         },
+
+        ContainerList: {
+            marginLeft:15,
+            marginRight:15,
+            marginTop: 10,
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+
+        },
+
+
+
+
+
         containerListStudy: {
             marginBottom: 10,
             padding:1,
@@ -86,6 +102,16 @@ const DocuPDF = ({ perfil }) => {
           <Text style={styles.dates}>{formatDate(startDate)} - {endDate === 'Actualmente' ? endDate : formatDate(endDate)}</Text>
         </View>
       );
+
+      const ListItemStudy = ({ study_level, title, institute, state}) => (
+          <View >
+            <Text style={styles.charge}>{study_level}</Text>
+            <Text style={styles.charge}>{title}</Text>
+            <Text style={styles.charge}>{institute}</Text>
+            <Text style={styles.charge}>{state}</Text>
+          </View>
+      ); 
+
 
     return (
         <Document>
@@ -150,7 +176,7 @@ const DocuPDF = ({ perfil }) => {
                 </View>
                 <View style={styles.container5}>
                     <Text style={{ textAlign: 'left' }}>Mis experiencias profesionales</Text>
-                    <View >
+                    <View style={styles.ContainerList}>
                         {perfil.Experiences?.length === 0
                             ? <Text>No tienes experiencia registrada</Text>
                             : perfil.Experiences?.map(exp => (
@@ -160,7 +186,7 @@ const DocuPDF = ({ perfil }) => {
                 </View>
                 <View style={styles.container5}>
                     <Text style={{ textAlign: 'left' }}>Mis estudios</Text>
-                    <View style={styles.containerListStudy}>
+                    <View style={styles.ContainerList} >
                         {perfil.Formations?.length === 0
                             ? <Text>No tienes estudios registrados</Text>
                             : perfil.Formations?.map(study => (
