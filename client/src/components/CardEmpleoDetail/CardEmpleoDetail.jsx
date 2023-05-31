@@ -14,6 +14,7 @@ const CardEmpleoDetail = ({ id, CompanyId, title, description, createdAt, Workda
   const currentUserId = JSON.parse(localStorage.getItem("currentUser2")).id;
   const currentUser= JSON.parse(localStorage.getItem("currentUser2"));
   const userVacants = useSelector((state) => state.UserDetail.Vacants);
+  const user = useSelector((state) => state.UserDetail.Vacants);
   const vacantPostuled = userVacants?.find((vacant) => vacant.id === id);
   const [validate, setValidate] = useState(false);
   const company = useSelector((state) => state.CompanyDetail);
@@ -34,7 +35,7 @@ const CardEmpleoDetail = ({ id, CompanyId, title, description, createdAt, Workda
 
 
   const handlerClick = () => {
-    if (!currentUser.Cv){
+    if (!user.Cv){
       return Swal.fire({
         title: "Error",
         text: "Debes registrar tu CV para poder postular a una vacante",
