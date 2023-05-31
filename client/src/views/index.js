@@ -27,6 +27,7 @@ import NewRegistroApplicant from './NewRegistro/newResgistroApplicant';
 import Ratings from './Ratings/Ratings';
 import Failure from './Failure/Failure';
 import Pending from './Pending/Pending';
+import PlansAndPrices from "./PlanesYPrecios/PlansAndPrices";
 
 export {
     AboutUs,
@@ -57,5 +58,6 @@ export {
     MyApplications,
     Ratings,
     NewRegistroApplicant,
-    NewRegistroCompany
+    NewRegistroCompany,
+    PlansAndPrices
 }
