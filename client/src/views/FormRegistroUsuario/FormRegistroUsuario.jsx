@@ -8,11 +8,13 @@ import { useNavigate } from 'react-router-dom';
 import { postUser } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 import { validation } from './validation';
+import { FiEye, FiEyeOff } from "react-icons/fi"
 
 
 const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState, setCurrentUserStore}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [ pass, setPass ] = useState(false)
   const [isLoading, setIsLoading] = useState(true);
   const [newUserApplicant, setNewUserApplicant] = useState({
     name: Applicant ? Applicant.nombre : "",
@@ -37,8 +39,6 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
     setNewUserApplicant({ ...newUserApplicant, [property]: value });
 	setErrors(validation({ ...newUserApplicant, [property]: value }))
   }
-
-console.log(errors);
   const handleSubmit = (event) => {
     event.preventDefault()
     if(
@@ -153,11 +153,12 @@ console.log(errors);
 
 							<Form.Group as={Col} md='6' className='mb-3'>
 								<FormLabel>Password</FormLabel>
+							{pass ?	<FiEye className={style.icon} onClick={() => setPass(false)}></FiEye>  : <FiEyeOff className={style.icon} onClick={() => setPass(true)}></FiEyeOff> }
 								<FormControl
 									name='password'
 									placeholder='Password'
 									value={newUserApplicant.password}
-									type='password'
+									type={Applicant ? "password" : ( pass ? 'text': 'password')}
 									onChange={handleInputChange}
 									required
 									disabled={

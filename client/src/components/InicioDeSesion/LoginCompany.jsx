@@ -7,9 +7,11 @@ import { useNavigate, Link } from "react-router-dom";
 import { getAllCompanys } from '../../Redux/Actions/actionsFunction/actionsCompanys'
 import Swal from "sweetalert2";
 import style from './inicioSesion.module.css';
+import { FiEye, FiEyeOff } from "react-icons/fi"
 
 const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
   const valdiateCompanys = useSelector((state) => state.Company);
+  const [ pass, setPass ] = useState(false)
   const clientID = "970075390910-oaut1poeo5kbmti73j5fm8t3mrpi8jk7.apps.googleusercontent.com";
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -47,9 +49,30 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
     });
     return filter.length;
   };
+  const banedCompanys = (company) => {
+    let filtro = {
+      email: company.email,
+      password: company.googleId || company.password,
+    };
+    let filter = valdiateCompanys.filter((users) => {
+      return (
+        users.email === filtro.email &&
+        users.password === filtro.password &&
+        users.registed === false
+      );
+    });
+    return filter.length;
+  };
 
   const onSuccess = (response) => {
     const {email, googleId } = response.profileObj;
+    if(banedCompanys(response.profileObj) > 0){
+      return Swal.fire({
+        title: "Error",
+        text: 'Usuario Baneado',
+        icon: 'error'
+      })
+    }
     if (filterCompanys(response.profileObj) === 0) {
       return Swal.fire({
         title: "Error",
@@ -69,6 +92,13 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
     console.log("Something went wrong");
   };
   const handlerSumit = () =>{
+    if(banedCompanys(company) > 0){
+      return Swal.fire({
+        title: "Error",
+        text: 'Usuario Baneado',
+        icon: 'error'
+      })
+    }
     if (filterCompanys(company) === 0) {
       return Swal.fire({
         title: "Error",
@@ -99,13 +129,14 @@ const LoginCompany = ({setValidateState, setCurrentUserStore}) => {
           className={style.input}
         />
         <input
-          type="password"
+          type={ pass ? "text" : "password" }
           placeholder="Contraseña"
           name="password"
           value={company.password}
           onChange={handlerChange}
           className={style.input}
         />
+					{pass ?	<FiEye className={style.icon} onClick={() => setPass(false)}></FiEye>  : <FiEyeOff className={style.icon} onClick={() => setPass(true)}></FiEyeOff> }
         <button onClick={handlerSumit} className={style.input}>Iniciar sesión</button>
         <div className={style.containerButtons}>
           <GoogleLogin
