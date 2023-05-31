@@ -337,7 +337,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 										: false
 								}
 							/>
-              {errors.email && <p className={style.errors}>{errors.email}</p>}
+              {Company ? <p></p>: <p className={style.errors}>{errors.email}</p>}
 						</FormGroup>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>Contraseña</FormLabel>
@@ -354,7 +354,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 										: false
 								}
 							/>
-              <p className={style.errors}>{errors.password}</p>
+              {Company ? <p></p> : <p className={style.errors}>{errors.password}</p>}
 						</FormGroup>
 					</Row>
 				</Form>
