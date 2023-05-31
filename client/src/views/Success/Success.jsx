@@ -5,7 +5,7 @@ import { FcApproval } from "react-icons/fc";
 const Success = ({ currentUserStore }) => {
 	const navigate = useNavigate();
 	const currentDate = new Date().toLocaleDateString();
-	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+	const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
 
 
 	const handleReturnHome = () => {
