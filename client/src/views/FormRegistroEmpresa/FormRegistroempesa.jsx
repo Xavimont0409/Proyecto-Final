@@ -11,6 +11,7 @@ import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
 import Dropzone from "react-dropzone";
 import Swal from "sweetalert2";
 import { BsCheckCircleFill, BsFillTrashFill } from 'react-icons/bs'
+import { FiEye, FiEyeOff } from "react-icons/fi"
 import { validate } from './validation'
 
 
@@ -19,6 +20,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [ pass, setPass ] = useState(false)
 
   const [image, setImage] = useState(null);
 
@@ -57,6 +59,11 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     reader.onload = () => {
       setImage(reader.result);
     };
+	Swal.fire({
+        title: "Info",
+        text: `Por favor haz click en confirmar tu imagen o elimínala`,
+        icon: "info",
+      });
 
     reader.readAsDataURL(file);
   };
@@ -236,7 +243,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 												<input {...getInputProps()} />
 
 												{!image ? (
-													<p>
+													<p style={{'color':'gray'}}>
 														Selecciona o arrastra
 														una imagen
 													</p>
@@ -316,9 +323,6 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 							maxLength={200}
 							required
 						/>
-						<Form.Control.Feedback type='invalid'>
-							Rellena este campo
-						</Form.Control.Feedback>
 					</FormGroup>
 
 					<Row>
@@ -341,18 +345,19 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 						</FormGroup>
 						<FormGroup as={Col} md='6'>
 							<FormLabel>Contraseña</FormLabel>
+							{pass ?	<FiEye className={style.icon} onClick={() => setPass(false)}></FiEye>  : <FiEyeOff className={style.icon} onClick={() => setPass(true)}></FiEyeOff> }
 							<FormControl
 								name='password'
 								placeholder='Password'
 								value={newEmpresa.password}
-								type='password'
+								type={Company ? "password" :( pass ? 'text': 'password' )}
 								onChange={handleInputChange}
 								required
 								disabled={
 									newEmpresa.password === Company?.contraseña
 										? true
 										: false
-								}
+									}
 							/>
               {Company ? <p></p> : <p className={style.errors}>{errors.password}</p>}
 						</FormGroup>
