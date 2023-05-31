@@ -1,4 +1,4 @@
-const { Applicant, Company, Cv,Experience, Formation, Vacant, Workday, WorkMethod, Seniority, PayMethod } = require("../../db");
+const { Applicant, Company, Cv,Experience, Formation, Vacant, Workday, WorkMethod, Seniority, PayMethod, Star } = require("../../db");
 
 const getEmail = async (email) => {
   const findEmailApplicant = await Applicant.findAll({
