@@ -49,7 +49,7 @@ const faqData = [
 	},
 ];
 
-function FAQ() {
+function FAQ({ setValidateState, setCurrentUserStore2 }) {
 	const [activeIndex, setActiveIndex] = useState(null);
 
 	const handleToggle = (index) => {
@@ -62,7 +62,10 @@ function FAQ() {
 
 	return (
 		<div className={style.container}>
-		<NavBar/>	
+			<NavBar
+				setValidateState={setValidateState}
+				setCurrentUserStore2={setCurrentUserStore2}
+			/>
 			<div className={style.title}>
 				<h2 className={style.titulito}>Preguntas frecuentes</h2>
 			</div>

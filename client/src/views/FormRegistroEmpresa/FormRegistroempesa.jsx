@@ -59,6 +59,11 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     reader.onload = () => {
       setImage(reader.result);
     };
+	Swal.fire({
+        title: "Info",
+        text: `Por favor haz click en confirmar tu imagen o elimínala`,
+        icon: "info",
+      });
 
     reader.readAsDataURL(file);
   };
@@ -238,7 +243,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 												<input {...getInputProps()} />
 
 												{!image ? (
-													<p>
+													<p style={{'color':'gray'}}>
 														Selecciona o arrastra
 														una imagen
 													</p>
