@@ -1,12 +1,11 @@
 import style from "./LandingEmpresa.module.css";
 import NavBar from "../../components/NavBar/NavBar";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaWpforms } from "react-icons/fa";
 
 const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
   
   const userType2 = JSON.parse(localStorage.getItem("currentUser2"));
+  // eslint-disable-next-line no-unused-vars
   const validate = JSON.parse(localStorage.getItem("state"));
   const greeting = `Hola, ${userType2?.name}!`;
 
@@ -54,7 +53,6 @@ const LandingEmpresa = ({ setValidateState, setCurrentUserStore2 }) => {
             <Link to='/PlansAndPrices'>
 							<button className={style.Button}>
 								<span className={style.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={style.ButtonText}>
 									Planes y Precios
