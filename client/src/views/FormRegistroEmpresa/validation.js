@@ -4,7 +4,7 @@ export const validate = (company) => {
   const cuitRegex = /^\d{1,12}$/;
   //const phoneNumberRegex = /^\+?\d{1,3}[\s-]?\d{1,14}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const urlRegex = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/;
+  const urlRegex = /^(https?:\/\/)?([A-Za-z\d.-]+)\.([A-Za-z.]{2,6})(\/[\w .-]*)*\/?$/;
   const passwordRegex = /^(?=.*[A-Z])(?=.*[\W_])(?!.*\s).{1,10}$/;
 
   let errors = {};

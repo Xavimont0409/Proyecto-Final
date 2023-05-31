@@ -6,11 +6,6 @@ const CardPlan = ({id, tittle, text, price }) => {
 
     const navigator = useNavigate();
 
-    // if (usuario está suscrito al plan) {
-    //    navigator(/applicant)
-    // } else {
-    //    navigator(/product/id)
-    // }
     return (
         <div className={style.MainContainer}>
             <h3 className={style.title}>{tittle}</h3>

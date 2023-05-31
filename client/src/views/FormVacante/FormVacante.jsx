@@ -34,11 +34,7 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2 }) 
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    if (property === 'title') {
-      setNewVacant({ ...newVacant, title: value.toUpperCase() })
-    } else {
-      setNewVacant({ ...newVacant, [property]: value });
-    }
+    setNewVacant({ ...newVacant, title : value.toUpperCase(), [property]: value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -57,33 +53,33 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2 }) 
   return (
     <div className={style.mainContainer}>
       <div className={style.containerFirst}>{/* no quitar */}</div>
-      <div className={style.containerSecond}>
-        <NavBar
-          setValidateState={setValidateState}
-          setCurrentUserStore2={setCurrentUserStore2}
-        ></NavBar>
-        <div className={style.title}>
-          <h2>Crear nueva vacante</h2>
-        </div>
-        <Form
-          validated={!validated}
-          className={style.Form}
-          onSubmit={handleSubmit}
-        >
-          <Form.Group as={Col} md="12" className="mb-3">
-            <FormLabel>Titulo de la vacante</FormLabel>
-            <FormControl
-              name="title"
-              placeholder="Titulo de tu nuvea vacante"
-              value={newVacant.title.toUpperCase()}
-              type="text"
-              onChange={handleInputChange}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Rellena este campo
-            </Form.Control.Feedback>
-          </Form.Group>
+			<div className={style.containerSecond}>
+      <NavBar
+        setValidateState={setValidateState}
+        setCurrentUserStore2={setCurrentUserStore2}
+      ></NavBar>
+      <div className={style.title}>
+      <h2>Crear nueva vacante</h2>
+      </div>
+      <Form
+        validated={!validated}
+        className={style.Form}
+        onSubmit={handleSubmit}
+      >
+        <Form.Group as={Col} md="12" className="mb-3">
+          <FormLabel>Titulo de la vacante</FormLabel>
+          <FormControl
+            name="title"
+            placeholder="Titulo de tu nuvea vacante"
+            value={newVacant.title.toUpperCase()}
+            type="text"
+            onChange={handleInputChange}
+            required
+          />
+          <Form.Control.Feedback type="invalid">
+            Rellena este campo
+          </Form.Control.Feedback>
+        </Form.Group>
 
           <Form.Group as={Col} md="12" className="mb-3">
             <Form.Label>Descripcion de la vacante</Form.Label>

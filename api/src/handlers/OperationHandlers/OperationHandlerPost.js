@@ -17,9 +17,13 @@ const operationHandlerPost = async (req, res) =>{
                 }
             ],
             "back_urls": {
-                "success": "http://localhost:3000/success",
+               /*  "success": "http://localhost:3000/success",
                 "failure": "http://localhost:3000/failure",
-                "pending": "http://localhost:3000/pending"
+                "pending": "http://localhost:3000/pending" */
+
+                "success": "https://proyecto-final-neon-seven.vercel.app/success",
+                "failure": "https://proyecto-final-neon-seven.vercel.app/failure",
+                "pending": "https://proyecto-final-neon-seven.vercel.app/pending"
             },
             "auto_return": "approved",
         })

@@ -3,11 +3,14 @@ import { findPerName } from "../../Redux/Actions/actionsFunction/actionsSearchBa
 import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 import style from "./NavBarLog.module.css";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { AiFillStepBackward } from "react-icons/ai";
+import Pathname from './Pathname'
 
 const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const { id } = useParams();
   const [isNavVisible, setIsNavVisible] = useState(false);
 
   const abrirNav = () => {
@@ -37,6 +40,12 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
             : (<a href="/empresa">JobPortalX</a>)
           }
         </h2>
+        {location.pathname === '/' ? 
+         <></>
+        : <button onClick={() => window.history.go(-1)} className={style.btnNav}><AiFillStepBackward /></button>
+      }
+
+        <span className={style.pathname}>{location.pathname ? Pathname({location, id}) : <></>}</span>
         <button className={style.abrirNav} onClick={abrirNav}>
           <i className="bi bi-arrow-bar-right"></i>
         </button>

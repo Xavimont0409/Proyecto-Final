@@ -28,7 +28,6 @@ const LoginApplicant = ({ setValidateState, setCurrentUserStore }) => {
     gapi.load("client:auth2", start);
     dispatch(getAllUsers());
   }, [dispatch]);
-  console.log(valdiateUsers);
   const handlerChange = (event) => {
     setapplicant({
       ...applicant,
