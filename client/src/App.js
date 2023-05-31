@@ -2,15 +2,16 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs, PlansAndPrices } from './views';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs,, FAQ  PlansAndPrices } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading, LoginApplicant, LoginCompany } from './components';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 
-//axios.defaults.baseURL = 'http://localhost:3001'
-axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+axios.defaults.baseURL = 'http://localhost:3001'
+//axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
+
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
@@ -234,7 +235,8 @@ function App() {
                 setCurrentUserStore2={setCurrentUserStore2}
               />
             }
-          />
+          /> 
+<Route path="/FAQ'S" element={<FAQ setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
           <Route path="/success" element={<Success />} />
           <Route path="/failure" element={<Failure />} />
           <Route path="/pending" element={<Pending />} />

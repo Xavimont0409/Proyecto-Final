@@ -36,6 +36,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
   };
 
 
+
   const handleDrop = async (acceptedFiles) => {
     const file = acceptedFiles[0];
     const reader = new FileReader();
@@ -43,6 +44,12 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
     reader.onload = () => {
       setImage(reader.result);
     };
+
+      Swal.fire({
+        title: "Info",
+        text: `Por favor haz click en confirmar tu imagen o elimínala`,
+        icon: "info",
+      });
 
     reader.readAsDataURL(file);
   };
@@ -72,8 +79,6 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
         text: "Imagen cargada correctamente",
         icon: "success",
       });
-      // setImage(null)
-
     } catch (error) {
       Swal.fire({
         title: "Error",
@@ -197,7 +202,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
                 </div>
 
                 {image && (
-                  <div>
+                  <div> 
                     <img className={style.image} src={image} alt="Imagen cargada" />
                     <button style={{ margin: '5px' }} onClick={(event) => handleRemove(event)}>
                       <BsFillTrashFill />
