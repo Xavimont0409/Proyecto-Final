@@ -26,6 +26,12 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
     navigate("/");
   };
 
+  const salirDeNav = () => {
+    if (isNavVisible === true) {
+      cerrarNav();
+    }
+  }
+
   const userLocalStorage = JSON.parse(localStorage.getItem("currentUser2"));
 
   return (
@@ -43,12 +49,13 @@ const NavBarCliente = ({ setValidateState, setCurrentUserStore2 }) => {
         {location.pathname === '/' ? 
          <></>
         : <button onClick={() => window.history.go(-1)} className={style.btnNav}><AiFillStepBackward /></button>
-      }
+        }
 
         <span className={style.pathname}>{location.pathname ? Pathname({location, id}) : <></>}</span>
         <button className={style.abrirNav} onClick={abrirNav}>
           <i className="bi bi-arrow-bar-right"></i>
         </button>
+        <div onClick={salirDeNav} className={`${style.restoContainer} ${isNavVisible ? style.restoContainerVisible : ""}`}></div>
         <nav className={`${style.nav} ${isNavVisible ? style.navVisible : ""}`}>
           <button className={style.cerrarNav} onClick={cerrarNav}>
             <i className="bi bi-arrow-bar-left"></i>
