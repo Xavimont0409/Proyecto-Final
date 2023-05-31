@@ -5,7 +5,7 @@ import { useState } from "react";
 import style from "./MiPerfil.module.css"
 import NavBar from "../../components/NavBar/NavBar"
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin, BsPersonSquare } from 'react-icons/bs'
-import { PDFViewer, PDFDownloadLink} from "@react-pdf/renderer"
+import {PDFDownloadLink} from "@react-pdf/renderer"
 import DocuPDF from "../../components/DocuPDF/DocuPDF"
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
@@ -19,7 +19,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [showPDF, setShowPDF] = useState(false);
+//   const [showPDF, setShowPDF] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoading2, setIsLoading2] = useState(false);
   
@@ -74,14 +74,14 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
         pais: userDetail.Cv?.country,
         linkedin: userDetail.Cv?.linkedin,
         skills: userDetail.Cv?.skill,
-		plan: 'ninguno',
-		// plan: userDetail.PayMethods?.length > 0 ?userDetail.PayMethods[0]?.Operation?.detail : 'ninguno',
+		plan: userDetail.PayMethods?.length > 0 ?userDetail.PayMethods[0]?.Operation?.detail : 'ninguno',
+
         objetivo: userDetail.Cv?.educational_institution,
 		Experiences:userDetail.Cv?.Experiences,
         Formations:userDetail.Cv?.Formations
       }));
     }
-  }, [navigate, userDetail.Cv, userDetail.cellphone, userDetail.email, userDetail.lastName, userDetail.name, userDetail.profile]);
+  }, [navigate, userDetail.Cv, userDetail.PayMethods, userDetail.cellphone, userDetail.email, userDetail.lastName, userDetail.name, userDetail.profile]);
 
 
 
@@ -92,9 +92,9 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
   }, []);
 
 
-  const handleClick = () => {
-    setShowPDF(!showPDF);
-  };
+//   const handleClick = () => {
+//     setShowPDF(!showPDF);
+//   };
 
 
   if(!isLoading2){
@@ -113,16 +113,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 		}
       });
 
-    // return (<div className={style.container}>
-    //   <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
-    //   <div style={{ 'margin': '10vh auto' }}>
-    //     <p style={{ 'margin': '10vh auto', color:'white' }}>No tienes Cv registrada <button onClick={() => navigate('/registro-cv')} > Registar CV</button></p>
-    //   </div>
-    // </div>)
-
-
-
-
   } else {
     return (
 		<>
@@ -131,7 +121,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 				setCurrentUserStore2={setCurrentUserStore2}
 			></NavBar>
 			<div className={style.container}>
-				<h1>Mi Perfil</h1>
 
 				<div id='pdf-content' className={style.container2}>
 					<div className={style.container1}>
@@ -167,6 +156,13 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 											{perfil.linkedin}
 										</p>
 									</div>
+									<div className={style.container3}>
+										<BsPersonSquare></BsPersonSquare>
+										<p style={{ marginBottom: "3px" , color: "yellow"}}>
+											{perfil.plan}
+										</p>
+										</div>	
+
 								</div>
 
 								<div className={style.container4}>
@@ -190,12 +186,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 									</div>
 								</div>
 								<div className={style.container4}>
-										<div className={style.container3}>
-										<BsPersonSquare></BsPersonSquare>
-										<p style={{ marginBottom: "3px" , color: "yellow"}}>
-											{/* {userDetail.PayMethods[0].Operation.detail} */}
-										</p>
-										</div>	
 								</div>
 							</div>
 						</div>
@@ -294,7 +284,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
 					{userDetail.Cv &&  <div className={style.container3}>
 
-                <button
+                {/* <button
                   style={{ backgroundColor: 'gray' }}
                   onClick={handleClick}>{showPDF ? 'Ocultar PDF' : 'Ver CV en PDF'}</button>
 
@@ -304,10 +294,10 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
                       <DocuPDF perfil={perfil} />
                     </PDFViewer>
                   </div>
-                )}
+                )} */}
 
                 <PDFDownloadLink document={<DocuPDF perfil={perfil}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
-                  <button style={{ 'backgroundColor': 'gray' }}>Descargar CV en PDF</button>
+                  <button className={style.button}>Descargar CV en PDF</button>
                 </PDFDownloadLink>
 
               </div>}
