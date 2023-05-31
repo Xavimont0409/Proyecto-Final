@@ -1,9 +1,11 @@
-const { Applicant, Company, Cv, Vacant, Workday, WorkMethod, Seniority } = require("../../db");
+const { Applicant, Company, Cv,Experience, Formation, Vacant, Workday, WorkMethod, Seniority, PayMethod } = require("../../db");
 
 const getEmail = async (email) => {
   const findEmailApplicant = await Applicant.findAll({
     where: { email },
-    include: [{ model: Cv }],
+    include: [
+      { model: Cv,include :[{model: Experience},{model: Formation}] },{model:Vacant},{model:PayMethod}
+    ]
   });
   const findEmailCompany = await Company.findAll({
     where: { email },
@@ -26,6 +28,11 @@ const getEmail = async (email) => {
           },
         ],
       },
+      {
+        model: Star,
+        attributes: ["id", "stars", "text"],
+      },
+      { model: PayMethod },
     ],
   });
 
