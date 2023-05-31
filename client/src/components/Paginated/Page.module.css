@@ -49,13 +49,14 @@
     }
 }
 
-@media only screen and (min-width: 768px) {
-    .paginado li {
-        margin: 0 1rem;
+@media screen and (max-width: 1900px) {
+
+    .paginado {
+        margin: 0.2rem 0;
     }
 
     .paginado a {
-        font-size: 1.5rem;
-        padding: 0.5rem;
-    }
+        font-size: 1.2rem;
+}
+
 }
