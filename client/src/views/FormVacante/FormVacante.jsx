@@ -34,7 +34,11 @@ export default function FormVacante({ setValidateState, setCurrentUserStore2 }) 
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
-    setNewVacant({ ...newVacant, title : value.toUpperCase(), [property]: value });
+    if (property === 'title') {
+      setNewVacant({ ...newVacant, title: value.toUpperCase() })
+    } else {
+      setNewVacant({ ...newVacant, [property]: value });
+    }
   };
   const handleSubmit = (event) => {
     event.preventDefault();

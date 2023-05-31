@@ -74,7 +74,8 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
         pais: userDetail.Cv?.country,
         linkedin: userDetail.Cv?.linkedin,
         skills: userDetail.Cv?.skill,
-		plan: userDetail.PayMethods?.length > 0 ?userDetail.PayMethods[0].Operation?.detail : 'ninguno',
+		plan: 'ninguno',
+		// plan: userDetail.PayMethods?.length > 0 ?userDetail.PayMethods[0]?.Operation?.detail : 'ninguno',
         objetivo: userDetail.Cv?.educational_institution,
 		Experiences:userDetail.Cv?.Experiences,
         Formations:userDetail.Cv?.Formations
@@ -192,7 +193,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 										<div className={style.container3}>
 										<BsPersonSquare></BsPersonSquare>
 										<p style={{ marginBottom: "3px" , color: "yellow"}}>
-											{userDetail.PayMethods[0].Operation.detail}
+											{/* {userDetail.PayMethods[0].Operation.detail} */}
 										</p>
 										</div>	
 								</div>
