@@ -82,6 +82,7 @@ const DocuPDF = ({ perfil }) => {
             marginLeft: 20,
         },
 
+
         containerListStudy: {
             marginBottom: 10,
             padding:1,
@@ -118,6 +119,7 @@ const DocuPDF = ({ perfil }) => {
             <Text style={styles.charge}>{title}</Text>
             <Text style={styles.company}>{institute}</Text>
             <Text style={styles.company}>{state}</Text>
+
           </View>
       ); 
 
@@ -196,6 +198,7 @@ const DocuPDF = ({ perfil }) => {
 
                 <View style={styles.container5}>
                     <Text style={{ textAlign: 'left', marginTop:13 }}>Mis experiencias profesionales</Text>
+
                     <View style={styles.ContainerList}>
                         {perfil.Experiences?.length === 0
                             ? <Text>No tienes experiencia registrada</Text>
@@ -206,6 +209,7 @@ const DocuPDF = ({ perfil }) => {
                 </View>
                 <View style={styles.container5}>
                     <Text style={{ textAlign: 'left', marginTop:13 }}>Mis estudios</Text>
+
                     <View style={styles.ContainerList} >
                         {perfil.Formations?.length === 0
                             ? <Text>No tienes estudios registrados</Text>

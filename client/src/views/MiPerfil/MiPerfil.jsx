@@ -75,6 +75,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
         linkedin: userDetail.Cv?.linkedin,
         skills: userDetail.Cv?.skill,
 		plan: userDetail.PayMethods?.length > 0 ?userDetail.PayMethods[0]?.Operation?.detail : 'ninguno',
+
         objetivo: userDetail.Cv?.educational_institution,
 		Experiences:userDetail.Cv?.Experiences,
         Formations:userDetail.Cv?.Formations
@@ -185,13 +186,13 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 									</div>
 								</div>
 								<div className={style.container4}>
-										
 								</div>
 							</div>
 						</div>
 					</div>
 
 					<div className={style.container5}>
+						<h6>Plan: {perfil.plan}</h6>
 						<h4 style={{ "text-align": "left" }}>
 							{perfil.profesion}
 						</h4>

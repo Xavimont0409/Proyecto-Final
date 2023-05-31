@@ -51,3 +51,20 @@
         flex-direction: column;
     }
 }
+
+@media screen and (max-width: 1900px) {
+
+.filterAndCardsContainer {
+    width: 100vw;
+    justify-content: center;
+}
+
+.filters {
+    width: 30vw;
+}
+
+.cardsDiv {
+    width: 70vw;
+}
+
+}
