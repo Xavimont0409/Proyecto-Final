@@ -10,7 +10,7 @@ import DocuPDF from "../../components/DocuPDF/DocuPDF"
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -85,138 +85,134 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 
 
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading2(true);
-    }, 2000);
-  }, []);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading2(true);
+		}, 2000);
+	}, []);
 
 
-//   const handleClick = () => {
-//     setShowPDF(!showPDF);
-//   };
+	//   const handleClick = () => {
+	//     setShowPDF(!showPDF);
+	//   };
 
 
-  if(!isLoading2){
-    return <div><Loading /></div>
-  }
+	if (!isLoading2) {
+		return <div><Loading /></div>
+	}
 
-  if (!isLoading) {
+	if (!isLoading) {
 
 
-	Swal.fire({
-        title: "Opps",
-        text: "Parece que no tienes CV registrada",
-        icon: "warning",
-		preConfirm: () => {
-			navigate('/registro-cv')
-		}
-      });
+		Swal.fire({
+			title: "Opps",
+			text: "Parece que no tienes CV registrada",
+			icon: "warning",
+			preConfirm: () => {
+				navigate('/registro-cv')
+			}
+		});
 
-  } else {
-    return (
-		<>
-			<NavBar
-				setValidateState={setValidateState}
-				setCurrentUserStore2={setCurrentUserStore2}
-			></NavBar>
-			<div className={style.container}>
+	} else {
+		return (
+			<>
+				<NavBar
+					setValidateState={setValidateState}
+					setCurrentUserStore2={setCurrentUserStore2}
+				></NavBar>
+				<div className={style.container}>
 
-				<div id='pdf-content' className={style.container2}>
-					<div className={style.container1}>
-						<div>
-							<img
-								className={style.image}
-								src={perfil.photo}
-								alt='Profile'
-							/>
-						</div>
+					<div id='pdf-content' className={style.container2}>
+						<div className={style.container1}>
+							<div>
+								<img
+									className={style.image}
+									src={perfil.photo}
+									alt='Profile'
+								/>
+							</div>
 
-						<div>
-							<h1 style={{ whiteSpace: "nowrap" }}>
-								{perfil.name} {perfil.apellido}
-							</h1>
+							<div>
+								<h1 style={{ whiteSpace: "nowrap" }}>
+									{perfil.name} {perfil.apellido}
+								</h1>
 
-							<div className={style.container6}>
-								<div className={style.container4}>
-									<div className={style.container3}>
-										<BsFillEnvelopeAtFill></BsFillEnvelopeAtFill>
-										<p style={{ marginBottom: "3px" }}>
-											{perfil.email}
-										</p>
-									</div>
-									<div className={style.container3}>
-										<BsLinkedin></BsLinkedin>
-										<p
-											style={{
-												whiteSpace: "nowrap",
-												marginBottom: "3px",
-											}}
-										>
-											{perfil.linkedin}
-										</p>
-									</div>
-									<div className={style.container3}>
-										<BsPersonSquare></BsPersonSquare>
-										<p style={{ marginBottom: "3px" , color: "yellow"}}>
-											{perfil.plan}
-										</p>
-										</div>	
+								<div className={style.container6}>
+									<div className={style.container4}>
+										<div className={style.container3}>
+											<BsFillEnvelopeAtFill></BsFillEnvelopeAtFill>
+											<p style={{ marginBottom: "3px" }}>
+												{perfil.email}
+											</p>
+										</div>
+										<div className={style.container3}>
+											<BsLinkedin></BsLinkedin>
+											<a href={perfil.linkedin} target="_blank" rel="noopener noreferrer">
+												<p style={{ whiteSpace: 'nowrap', marginBottom: '3px' }}>
+													{perfil.linkedin.slice(12, 35)}...
+												</p>
+											</a>
+										</div>
+										<div className={style.container3}>
+											<BsPersonSquare></BsPersonSquare>
+											<p style={{ marginBottom: "3px", color: "yellow" }}>
+												{perfil.plan}
+											</p>
+										</div>
 
-								</div>
-
-								<div className={style.container4}>
-									<div className={style.container3}>
-										<BsFillTelephoneFill></BsFillTelephoneFill>
-										<p style={{ marginBottom: "3px" }}>
-											{perfil.celular}
-										</p>
 									</div>
 
-									<div className={style.container3}>
-										<BsGlobeAmericas></BsGlobeAmericas>
-										<p
-											style={{
-												whiteSpace: "nowrap",
-												marginBottom: "3px",
-											}}
-										>
-											{perfil.pais}
-										</p>
+									<div className={style.container4}>
+										<div className={style.container3}>
+											<BsFillTelephoneFill></BsFillTelephoneFill>
+											<p style={{ marginBottom: "3px" }}>
+												{perfil.celular}
+											</p>
+										</div>
+
+										<div className={style.container3}>
+											<BsGlobeAmericas></BsGlobeAmericas>
+											<p
+												style={{
+													whiteSpace: "nowrap",
+													marginBottom: "3px",
+												}}
+											>
+												{perfil.pais}
+											</p>
+										</div>
 									</div>
-								</div>
-								<div className={style.container4}>
+									<div className={style.container4}>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
 					<div className={style.container5}>
-						<h6>Plan: {perfil.plan}</h6>
-						<h4 style={{ "text-align": "left" }}>
+						<h2 style={{ "text-align": "left" }}>
 							{perfil.profesion}
-						</h4>
-						<p style={{ "text-align": "justify" }}>
+						</h2>
+						<p style={{ "text-align": "justify", margin: '15px' }}>
 							{perfil.descripcion}
 						</p>
 					</div>
 
 
 					<div className={style.container5}>
-						<h4 style={{ "text-align": "left" }}>Objetivo laboral</h4>
-						<p>{perfil.objetivo}</p>
+						<h2 style={{ "text-align": "left" }}>Objetivo laboral</h2>
+						<p style={{ "text-align": "justify", margin: '15px' }}>{perfil.objetivo}</p>
 					</div>
 
 
 					<div className={style.container5}>
-						<h4 style={{ "text-align": "left" }}>Skills</h4>
-						<p>{perfil.skills}</p>
+						<h2 style={{ "text-align": "left" }}>Skills</h2>
+						<p style={{ "text-align": "justify", margin: '15px' }}>{perfil.skills}</p>
 					</div>
 
 					<div className={style.container5}>
-						<h4 style={{ "text-align": "left" }}>
+						<h2 style={{ "text-align": "left" }}>
 							Mis experiencias profesionales
-						</h4>
+						</h2>
 						<div className={style.containerList}>
 							{perfil.Experiences?.length === 0 ? (
 								<div>
@@ -250,7 +246,7 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 					</div>
 
 					<div className={style.container5}>
-						<h4 style={{ "text-align": "left" }}>Mis estudios</h4>
+						<h2 style={{ "text-align": "left" }}>Mis estudios</h2>
 
 						<div className={style.containerListStudy}>
 							{perfil.Formations?.length === 0 ? (
@@ -283,18 +279,6 @@ const MiPerfil = ({ setValidateState, setCurrentUserStore2 }) => {
 					
 
 					{userDetail.Cv &&  <div className={style.container3}>
-
-                {/* <button
-                  style={{ backgroundColor: 'gray' }}
-                  onClick={handleClick}>{showPDF ? 'Ocultar PDF' : 'Ver CV en PDF'}</button>
-
-                {showPDF && (
-                  <div>
-                    <PDFViewer width="1000" height="600">
-                      <DocuPDF perfil={perfil} />
-                    </PDFViewer>
-                  </div>
-                )} */}
 
                 <PDFDownloadLink document={<DocuPDF perfil={perfil}></DocuPDF>} fileName={`Cv ${perfil.name} ${perfil.apellido}`}>
                   <button className={style.button}>Descargar CV en PDF</button>

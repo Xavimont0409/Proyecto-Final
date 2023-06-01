@@ -64,8 +64,8 @@ const Footer = () => (
 					<div className={styles.lists}>
 						<ul>
 							<li>
-								<a href='mailto:jobportalxcompany@gmail.com'>
-									Ayuda
+								<a href='/PlansAndPrices'>
+									Planes y precios
 								</a>
 							</li>
 							<li>

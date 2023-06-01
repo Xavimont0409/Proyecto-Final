@@ -56,7 +56,7 @@ console.log(company.email);
         <span>En el siguiente enlace podrás ver el detalle de la vacante y de la empresa a la cual aplicaste: </span>
         </br>
         </br>
-        <a href="http://localhost:3000/empleoDetail/${VacantId}"> VER DETALLE DE LA VACANTE</a>
+        <a href="https://proyecto-final-neon-seven.vercel.app/empleoDetail/${VacantId}"> VER DETALLE DE LA VACANTE</a>
         
         <br/>
         <br/>
@@ -98,7 +98,7 @@ console.log(company.email);
         </br>
         </br>
 
-        <a href="#"> VER DETALLE DEL ASPIRANTE</a>
+        <a href="https://proyecto-final-neon-seven.vercel.app/detailProfile/${ApplicantId}"> VER DETALLE DEL ASPIRANTE</a>
         
         <br/>
         <br/>
