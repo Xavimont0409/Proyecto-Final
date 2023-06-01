@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./LandingApplicant.module.css";
-import {NavBar, CardPlan} from '../../components';
-import { useEffect, useState } from "react";
+import {NavBar} from '../../components';
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaWpforms } from "react-icons/fa";
 
 export default function LandingApplicant({ setValidateState, setCurrentUserStore2 }) {
 	
+	// eslint-disable-next-line no-unused-vars
 	const validate = JSON.parse(localStorage.getItem("state"))
 	const userType2 = JSON.parse(localStorage.getItem("currentUser2"))
+	// eslint-disable-next-line no-unused-vars
 	const [greeting, setGreeting] = useState(`Hola, ${userType2.name}!`);
 	
 	return (
@@ -35,7 +36,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 								title='Mis postulaciones'
 							>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Mis postulaciones
@@ -45,7 +45,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						<Link to='/registro-cv'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Crear CV
@@ -55,7 +54,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						<Link to='/registro-experiencia'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Registrar experiencia
@@ -65,7 +63,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						<Link to='/empleos'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Vacantes
@@ -75,7 +72,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						<Link to='/Miperfil'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Mi perfil
@@ -85,7 +81,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						<Link to='/profiles-company'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Perfiles de empresas
@@ -95,7 +90,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						<Link to='/registro-estudio'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Registrar educacion
@@ -105,7 +99,6 @@ export default function LandingApplicant({ setValidateState, setCurrentUserStore
 						<Link to='/PlansAndPrices'>
 							<button className={styles.Button}>
 								<span className={styles.ButtonIcon}>
-									<FaWpforms />
 								</span>
 								<span className={styles.ButtonText}>
 									Planes y Precios

@@ -46,10 +46,21 @@ function FormCv({ setValidateState, setCurrentUserStore2 }) {
     setStep(step - 1);
   };
 
-  const handlerChange = (event, state, setState) => {
+  const handlerChange = (event, state, setState, setValidatedLinkedin) => {
     const property = event.target.name;
     const value = event.target.value;
+    const httpsValidated = value.slice(0,8)
+
     setState({ ...state, [property]: value });
+
+    if(property === "linkedin"){
+      if(httpsValidated !== "https://"){
+        setValidatedLinkedin(false);
+      }else{
+        setValidatedLinkedin(true);
+      }
+    }
+    
   };
 
   return (

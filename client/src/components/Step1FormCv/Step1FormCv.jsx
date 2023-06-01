@@ -17,7 +17,9 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
   const countriesNames = Object.values(countries.countries).map((country) => country);
 
   const [validated, setValidated] = useState(false);
+  const [validatedLinkedin, setValidatedLinkedin] = useState(false);
   const [image, setImage] = useState(null);
+
 
 
   const handleNext = (event) => {
@@ -29,7 +31,14 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 			text: "Completa todos los campos",
 			icon: "warning",
 		});
-    } else {
+    } else if(validatedLinkedin === false){
+      Swal.fire({
+        title: "Error en campo LinkedIn o sitio web",
+        text: "Debe ingresar una URL que inicie por https://, como se muestra en el ejemplo",
+        icon: "warning",
+      });
+
+    }else {
       setValidated(true)
       nextStep()
     }
@@ -168,14 +177,22 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
               <FormLabel>LinkedIn o sitio web</FormLabel>
               <FormControl
                 name="linkedin"
-                placeholder="LinkedIn o sitio web"
+                placeholder="ej: https://www.linkedin.com/usuario"
                 value={cv.linkedin}
-                onChange={(event) => handlerChange(event, cv, setCv)}
+                onChange={(event) => handlerChange(event, cv, setCv, setValidatedLinkedin)}
                 type="text"
                 required />
+
               <Form.Control.Feedback type="invalid">
                 Rellena este campo
               </Form.Control.Feedback>
+
+                {!validatedLinkedin ? (
+                 <div className={style.linkedinError}>Error en Linkedin: la URL debe iniciar por https://</div>
+                ): 
+                (console.log("ok"))
+                }
+              
             </FormGroup>
 
           </Row>

@@ -170,9 +170,8 @@ function App() {
             />
           }
         />
-
-        <Route element={<ProtectedRoute isAutenticate={validate} /> /*Todos*/}>
-          <Route
+        <Route path="/FAQ'S" element={<FAQ setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+         <Route
             path="/plansAndPrices"
             element={
               <PlansAndPrices
@@ -190,6 +189,7 @@ function App() {
               />
             }
           />
+        <Route element={<ProtectedRoute isAutenticate={validate} /> /*Todos*/}>
           <Route
             path="/empleoDetail/:detailId"
             element={
@@ -235,7 +235,7 @@ function App() {
               />
             }
           /> 
-<Route path="/FAQ'S" element={<FAQ setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+        
           <Route path="/success" element={<Success />} />
           <Route path="/failure" element={<Failure />} />
           <Route path="/pending" element={<Pending />} />
