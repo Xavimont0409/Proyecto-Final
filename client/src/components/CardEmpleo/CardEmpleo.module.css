@@ -248,3 +248,11 @@
         background-color: #ffaf02;
     }
 }
+
+@media screen and (max-width: 1900px) {
+
+    .text{
+        font-size: 0.9rem;
+    }
+    
+}

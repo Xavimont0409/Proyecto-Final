@@ -52,11 +52,11 @@
 @media screen and (max-width: 1900px) {
 
     .paginado {
-        margin: 0.2rem 0;
+        margin: 0.1rem 0;
     }
 
     .paginado a {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
 }
 
 }

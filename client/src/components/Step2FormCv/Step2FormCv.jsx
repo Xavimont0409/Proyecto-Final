@@ -42,7 +42,7 @@ function Step2FormCv({ cv, setCv, handlerChange, previousStep, nextStep }) {
         finish_date: '', //!
         ApplicantId: ''
       })
-      navigate('/applicant')
+      //navigate('/applicant')
     }
   };
 

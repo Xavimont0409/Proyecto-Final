@@ -143,7 +143,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
                 placeholder="Número de celular"
                 value={cv.phone}
                 onChange={(event) => handlerChange(event, cv, setCv)}
-                type="number"
+                type="text"
                 required />
               <Form.Control.Feedback type="invalid">
                 Rellena este campo
@@ -271,7 +271,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 
 
         <div style={{ margin: '5px', padding: '1' }}>
-          <FormGroup as={Col} md="6" className="mb-3 ">
+          <FormGroup as={Col} md="6" className="mb-5">
             <ButtonGeneral
               textButton="Siguiente"
               handlerClick={(event) => handleNext(event)}
