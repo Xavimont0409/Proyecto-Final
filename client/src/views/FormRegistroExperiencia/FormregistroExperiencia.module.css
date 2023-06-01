@@ -3,12 +3,12 @@
   align-items: center;
   background: #1C1C1C;
   background-size: 400% 400%;
-  width: 100vw;
+  width: 98vw;
   height: fit-content;
   padding: 0;
   margin: 0;
   font-family: 'letters';
-  }
+}
 
 .Form {
   margin: auto;

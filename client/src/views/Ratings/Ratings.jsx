@@ -7,7 +7,6 @@ const Ratings = () => {
         <div className={style.container}>
             <NavBar/>
             <div className='{style.ratingContainer}'>
-                <h2>Ratings</h2>
                 <RatingListDiv/>
             </div>
         </div>

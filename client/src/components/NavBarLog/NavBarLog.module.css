@@ -82,8 +82,6 @@
     }
 }
 
-
-
 .nav {
     opacity:0;
     visibility: hidden;
@@ -101,7 +99,6 @@
     box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
     transition: 0.5s;
     z-index: 999;
-    
 }
 
 .navVisible {
@@ -109,6 +106,21 @@
     opacity: 1;
     visibility: visible;
 
+}
+
+.restoContainer {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.restoContainerVisible {
+    opacity: 1;
+    visibility: visible;
 }
 
 .navList {

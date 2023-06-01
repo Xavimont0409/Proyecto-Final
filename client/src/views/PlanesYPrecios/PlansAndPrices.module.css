@@ -1,0 +1,75 @@
+.container {
+    margin-top: 12vh;
+    max-width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1C1C1C;
+    font-family: 'letters';
+}
+
+.titlePlan {
+    max-height: fit-content;
+    max-width: fit-content;
+    margin-top: 15vh;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #e1ecfc;
+}
+
+.contenedor {
+    padding-top: 2vh;
+    padding-left: 20vh;
+    padding-right: 20vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 99vw;
+    max-height: fit-content;
+    background-color: #1C1C1C;
+    color: #e1ecfc;
+    margin-top: 0;
+    margin-bottom: 4vh;
+}
+
+.prueba {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 55vh;
+    min-width: 50vh;
+}
+
+.prueba h2 {
+    color: #e1ecfc;
+}
+
+.leftSection {
+    text-align: center;
+}
+
+.middleSection {
+    flex: 1;
+    text-align: center;
+}
+
+.rightSection {
+    min-width: 12vw;
+    max-height: fit-content;
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+.planes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 15vw;
+    max-height: fit-content;
+    margin-bottom: 5vh;
+    color: var(--jet);
+}
