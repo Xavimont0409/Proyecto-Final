@@ -135,7 +135,7 @@ const LoginApplicant = ({ setValidateState, setCurrentUserStore }) => {
             name="password"
             value={applicant.password}
             onChange={handlerChange}
-            className={style.input}
+            className={style.inputPassword}
           />
 					{pass ?	<FiEye className={style.icon} onClick={() => setPass(false)}></FiEye>  : <FiEyeOff className={style.icon} onClick={() => setPass(true)}></FiEyeOff> }
 

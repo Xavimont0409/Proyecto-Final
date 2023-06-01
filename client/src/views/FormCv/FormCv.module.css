@@ -66,11 +66,14 @@
 
 @media screen and (max-width: 1900px) {
 
+    .containerMain{
+      margin-bottom: 16vh;
+    }
+
     .containerFirst{
         width: 30vw;
         height: 100vh;
-        
-
+    
     }
     
     .circleContainer{
