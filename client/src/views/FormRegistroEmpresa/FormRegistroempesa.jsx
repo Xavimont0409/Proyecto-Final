@@ -127,7 +127,13 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
       newEmpresa.cuit &&
       newEmpresa.country &&
       newEmpresa.name &&
-      newEmpresa.email
+      newEmpresa.email &&
+	  newEmpresa.password &&
+	  newEmpresa.photo &&
+	  newEmpresa.description &&
+	  newEmpresa.job_area &&
+	  newEmpresa.webPage
+
     ) {
       dispatch(postCompany(newEmpresa))
       setTimeout(() => {
@@ -138,7 +144,13 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
       setTimeout(() => {
         navigate("/empresa")
       }, 1500)
-    }
+    }else{
+		Swal.fire({
+			title: "Faltan datos",
+			text: `Completa todos los campos o carga tu logo`,
+			icon: "error",
+		  });
+	}
   };
 
 
@@ -257,27 +269,16 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
 
 								{image && (
 									<div>
-										<img
-											className={style.image}
-											src={image}
-											alt='Imagen cargada'
-										/>
-										<button
-											style={{ margin: "10px" }}
-											onClick={(event) =>
-												handleRemove(event)
-											}
-										>
-											<BsFillTrashFill />
-										</button>
-										<button
-											onClick={(event) =>
-												handleUpload(event)
-											}
-										>
-											<BsCheckCircleFill />
-										</button>
-									</div>
+									<img className={style.image} src={image} alt='Imagen cargada' />
+									<button className={style.buttonCont}  style={{ margin: "10px" }} onClick={(event) => handleRemove(event)}>
+									  <BsFillTrashFill />
+									  <span className={style.tooltip}>Eliminar</span>
+									</button>
+									<button className={style.buttonCont} onClick={(event) => handleUpload(event)}>
+									  <BsCheckCircleFill />
+									  <span className={style.tooltip}>Subir</span>
+									</button>
+								  </div>
 								)}
 							</div>
 						</Col>

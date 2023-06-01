@@ -28,7 +28,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
     if (!validation(cv)) {
       Swal.fire({
 			title: "Faltan Datos",
-			text: "Completa todos los campos",
+			text: "Completa todos los campos o carga tu foto de perfil",
 			icon: "warning",
 		});
     } else if(validatedLinkedin === false){
@@ -221,12 +221,14 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
                 {image && (
                   <div> 
                     <img className={style.image} src={image} alt="Imagen cargada" />
-                    <button style={{ margin: '5px' }} onClick={(event) => handleRemove(event)}>
-                      <BsFillTrashFill />
-                    </button>
-                    <button onClick={(event) => handleUpload(event)}>
-                      <BsCheckCircleFill />
-                    </button>
+                    <button className={style.buttonCont}  style={{ margin: "10px" }} onClick={(event) => handleRemove(event)}>
+									  <BsFillTrashFill />
+									  <span className={style.tooltip}>Eliminar</span>
+									</button>
+									<button className={style.buttonCont} onClick={(event) => handleUpload(event)}>
+									  <BsCheckCircleFill />
+									  <span className={style.tooltip}>Subir</span>
+									</button>
                   </div>
                 )}
               </div>
