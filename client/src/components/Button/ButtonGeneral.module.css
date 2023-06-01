@@ -36,3 +36,27 @@
     background: var(--jet);
     
   }
+
+  
+@media screen and (max-width: 1900px) {
+
+  .button {
+    color: black;
+    padding: 5%;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    margin: 10vh auto;
+    z-index: 0;
+    overflow: hidden;
+    border: 1px solid var(--oxford-blue) ;
+    color: var(--jet);
+    font-family: 'letters';
+    font-size: 1em;
+    
+  }
+
+}

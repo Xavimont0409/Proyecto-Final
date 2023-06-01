@@ -45,3 +45,16 @@
   font-size: 80%;
   color: red;
 }
+
+
+@media screen and (max-width: 1900px) {
+
+  .Form {
+    font-size: 1rem;
+  }
+
+  .dropzone {
+    width: 12vw;
+    height: 24vh;
+  }
+}
