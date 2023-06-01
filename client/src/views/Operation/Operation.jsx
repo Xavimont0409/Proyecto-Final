@@ -40,7 +40,7 @@ const Operation = ({ setValidateState, setCurrentUserStore2 }) => {
                         </div>
                     </form>
                     <div className={style.botonpago}>
-                            <Wallet className={style.btnPagar} initialization={{ preferenceId: preferenceId }} />
+                            <Wallet initialization={{ preferenceId: preferenceId }} />
                     </div>
                 </div>
             ) : (
