@@ -21,13 +21,13 @@
 }
 
 .paginado a:hover {
-    background-color: #E1ECFC;
+    background-color: #325f92;
     border-radius: 4px;
     color: #fff;
 }
 
 .currentPage {
-    background-color: #331460;
+    background-color: #25476e;
     font-weight: bold;
     border-radius: 3px;
 }
