@@ -18,6 +18,7 @@
     color: #e1ecfc;
     font-family: 'letters';
     background-color: #1c1c1c;
+    margin-bottom: 20vh;
 }
 
 .companyName {
@@ -36,11 +37,13 @@
     justify-content: space-evenly;
     align-items: center;
     gap: 30px;
-    border: 1px solid black;
+    border: 3px solid rgb(37, 37, 37);
     width: 70%;
     height: 100%;
     background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
     color: #e1ecfc;
+    border-radius: 25px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.8);
 }
 
 .companyData {
@@ -51,6 +54,10 @@
     gap: 5px;
 }
 
+.companyData p {
+    margin-bottom: 0;
+}
+
 .Info {
     display: flex;
     flex-direction: column;
@@ -58,13 +65,13 @@
 }
 
 .description {
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .container6 {
+    margin-top: 15vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

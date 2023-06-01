@@ -308,7 +308,6 @@ function App() {
             }
           />
         </Route>
-
         <Route
           element={
             <ProtectedRoute
