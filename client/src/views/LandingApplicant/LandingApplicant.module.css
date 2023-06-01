@@ -76,6 +76,24 @@
 
 @media screen and (max-width: 1900px) {
 
+.planes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 45vw;
+    max-height: fit-content;
+    margin-bottom: 5vh;
+    color: var(--jet);
+}
+
+    .prueba{
+        width: 100%;
+    }
+
+    .planes {
+        width: 60vw;
+    }
+
     .contenedor {
         width: 80vw;
     }
