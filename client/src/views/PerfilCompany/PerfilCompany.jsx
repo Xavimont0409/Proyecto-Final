@@ -63,7 +63,7 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 
 					<div className={style.companyData}>
 						<BsFillFileTextFill />
-						<p style={{color : "yellow"}}>Plan: {companyData.PayMethods[0]?.Operation?.detail}</p>
+						<p style={{color : "yellow"}}>Plan: {companyData.PayMethods?.length > 0 ? companyData.PayMethods[0]?.Operation?.detail : 'ninguno'}</p>
 					</div>
 
 					<div className={style.companyData}>
