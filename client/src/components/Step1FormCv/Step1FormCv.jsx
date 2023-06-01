@@ -271,7 +271,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 
 
         <div style={{ margin: '5px', padding: '1' }}>
-          <FormGroup as={Col} md="6" className="mb-3 ">
+          <FormGroup as={Col} md="6" className="mb-5">
             <ButtonGeneral
               textButton="Siguiente"
               handlerClick={(event) => handleNext(event)}

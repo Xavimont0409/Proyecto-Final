@@ -73,3 +73,35 @@
     margin-bottom: 5vh;
     color: var(--jet);
 }
+
+@media screen and (max-width: 1900px) {
+
+    .container{
+        margin-top: 2vh;
+        width: 100vh;
+    }
+    
+.titlePlan {
+    margin-top: 10vh;
+}
+
+.contenedor {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 30vh;
+}
+
+.prueba {
+    height: 85vh;
+    width: 50vh;
+}
+
+.planes {
+    width: 85vw;
+    height: 85vh;
+    margin-bottom: 5vh;
+border: 1px solid #fff;
+}
+
+
+}
