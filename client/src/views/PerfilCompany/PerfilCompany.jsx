@@ -21,7 +21,7 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 
 	useEffect(() => {
 		dispatch(getCompanyDetail(userType.id));
-	}, [dispatch, userType]);
+	}, [dispatch, userType.id]);
 
 	return (
 		<div className={style.container}>
@@ -65,7 +65,7 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 
 					<div className={style.companyData}>
 						<BsFillFileTextFill />
-						<p>Plan: {companyData.PayMethods?.Operation?.detail}</p>
+						<p style={{color : "yellow"}}>Plan: {companyData.PayMethods[0]?.Operation?.detail}</p>
 					</div>
 
 					<div className={style.companyData}>

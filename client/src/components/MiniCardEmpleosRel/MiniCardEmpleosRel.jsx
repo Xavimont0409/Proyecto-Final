@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllVacants, getVacantDetail } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 
-function MiniCardEmpleosRel({idEmpleoSelected, title}) {
+function MiniCardEmpleosRel({idEmpleoSelected, title, setValidate}) {
   
 // eslint-disable-next-line no-unused-vars
 const navigation = useNavigate();
@@ -48,7 +48,10 @@ const empleos = useSelector(state => state.Vacant);
                        Método: {empleo.WorkMethod.name}
                       </Card.Text>
                       <Link to={`/empleoDetail/${empleo.id}`}>
-                      <Button onClick={() => dispatch(getVacantDetail(empleo.id))} className={style.btn} variant="outline-success">VER DETALLE</Button>{' '}
+                      <Button onClick={() => {
+                        dispatch(getVacantDetail(empleo.id))
+                        setValidate(false)
+                        }} className={style.btn} variant="outline-success">VER DETALLE</Button>{' '}
                       </Link>
                     </Card.Body>
                     <Card.Footer className="text-muted">2 days ago</Card.Footer>
