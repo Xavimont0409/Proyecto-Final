@@ -2,6 +2,7 @@ import style from './RatingList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getCompanyDetail } from '../../Redux/Actions/actionsFunction/actionsCompanys';
+import { Container } from 'react-bootstrap';
 
 const RatingListDiv = () => {
     const userType = JSON.parse(localStorage.getItem("currentUser2"));
@@ -30,28 +31,31 @@ const RatingListDiv = () => {
     };
     
     return (
-        <div className={style.table}>
-            <div className={style.titles}>
-                <div className={style.titleStars}>
-                    <p>Stars</p>
+        <div className={style.container}>
+            <div className={style.table}>
+                <div className={style.titles}>
+                    <div className={style.titleStars}>
+                        <p>Stars</p>
+                    </div>
+                    <div className={style.titleComments}>
+                        <p>Comments</p>
+                    </div>
                 </div>
-                <div className={style.titleComments}>
-                    <p>Comments</p>
-                </div>
-            </div>
-            <div className={style.reviewsColumn}>
-                <div className={style.starRow}>
+                <div className={style.reviewsColumn}>
+                    <div className={style.starRow}>
                         <p className={style.pText}>{averageNumber}</p>
+                    </div>
+                    <div className={style.textRow}>
+                        {
+                            companyDetails?.map((description) => {
+                                return (
+                                    <p key={description.id} className={style.pText}>{description.text}</p>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
-                <div className={style.textRow}>
-                    {
-                        companyDetails?.map((description) => {
-                            return (
-                                <p key={description.id} className={style.pText}>{description.text}</p>
-                            )
-                        })
-                    }</div>
-            </div>
+            </div>   
         </div>
     )
 };
