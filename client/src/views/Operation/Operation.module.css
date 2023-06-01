@@ -81,26 +81,4 @@
     background-color: antiquewhite;
 }
 
-@media screen and (max-width: 1900px) {
 
-    .botonpago {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        font-size: 0.5rem;
-        width: 90vw;
-    }
-
-    .btnPagar {
-    padding: 10px 20px;
-    background-color: #008000;
-    /* Cambia el color de fondo según tus preferencias */
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-  }
