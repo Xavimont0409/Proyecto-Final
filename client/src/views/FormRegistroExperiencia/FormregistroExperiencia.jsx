@@ -38,7 +38,7 @@ useEffect(() => {
     still_working: false,
     CvId: "",
   });
-
+  console.log(experiencia);
   const fecharequired = experiencia.still_working;
 
 	useEffect(() => {

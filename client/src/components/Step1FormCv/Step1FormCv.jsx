@@ -143,7 +143,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
                 placeholder="Número de celular"
                 value={cv.phone}
                 onChange={(event) => handlerChange(event, cv, setCv)}
-                type="number"
+                type="text"
                 required />
               <Form.Control.Feedback type="invalid">
                 Rellena este campo
