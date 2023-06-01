@@ -91,11 +91,19 @@ export const relationVacantApplicant = (payload) =>{
 
 
     } catch (error) {
-      return Swal.fire({
+      if(`${error.response.data.error}` === 'Validation error'){
+        return Swal.fire({
         title: "Error",
-        text: `${error.response.data.error}`,
+        text: `Ya se encuentra registrado`,
         icon: 'error'
       })
+      }else{
+        return Swal.fire({
+          title: "Error",
+          text: `${error.response.data.error}`,
+          icon: 'error'
+        })
+      }
     }
   }
 }
