@@ -29,7 +29,6 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 				<NavBar setValidateState={setValidateState}  setCurrentUserStore2={setCurrentUserStore2}/>
 			</div>
 			<h1 className={style.title}>Perfil de la Empresa</h1>
-
 			<div className={style.datosCompany}>
 				<div>
 					<img
@@ -38,7 +37,6 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 						alt='Profile'
 					/>
 				</div>
-
 				<div className={style.companyName}>
 					<h1>{companyData.name}</h1>
 				</div>
