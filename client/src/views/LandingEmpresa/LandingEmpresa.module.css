@@ -57,8 +57,8 @@
 .Button{
     border: 1px solid #284c75;
     border-radius: 10px;
-    width: 7vw;
-    height: 12vh;
+    width: 9vw;
+    height: 14vh;
     background-color: #1C1C1C;
     color: #e1ecfc;
     margin: 1vh;
@@ -66,6 +66,7 @@
     background: linear-gradient(0deg, #25476e, #1e3a5a, #172a41);
     transition: all ease 0.3s;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, .5);
+    font-size: 100%;
 }
 
 .Button:hover{
