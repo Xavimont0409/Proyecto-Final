@@ -45,7 +45,7 @@ const EmpleoDetail = ({ setValidateState, setCurrentUserStore2 }) => {
           <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />
         <div className={style.mainContainer2}>
           <div className={style.containerEmpleosRel}>
-            <MiniCardEmpleosRel setValidate={setValidate} idEmpleoSelected={empleoSelected.id} title={empleoSelected.title}/>   
+            <MiniCardEmpleosRel companyId={companyId} setValidate={setValidate} idEmpleoSelected={empleoSelected.id} title={empleoSelected.title}/>   
           </div>
           <div className={style.mainContainer3}>
           <Tabs
