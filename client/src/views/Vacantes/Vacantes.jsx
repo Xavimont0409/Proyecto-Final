@@ -18,9 +18,7 @@ const Vacantes = () => {
       <div className={style.containerNav}>
         <NavBar />
       </div>
-
       <h1 className={style.title}>Mis Vacantes</h1>
-
       <Table className={style.table}>
         <thead className={style.tHead}>
           <tr>
