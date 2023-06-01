@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
 import NavBar from "../../components/NavBar/NavBar";
 
-const Vacantes = () => {
+const Vacantes = ({ setValidateState, setCurrentUserStore2 }) => {
   const userType = JSON.parse(localStorage.getItem("currentUser2"));
   const companyDetail = useSelector((state) => state.CompanyDetail);
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Vacantes = () => {
   return (
     <div className={style.container}>
       <div className={style.containerNav}>
-        <NavBar />
+        <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>
       </div>
 
       <h1 className={style.title}>Mis Vacantes</h1>

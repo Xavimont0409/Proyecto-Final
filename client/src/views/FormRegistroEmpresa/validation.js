@@ -6,7 +6,7 @@ export const validate = (company) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const urlRegex = /^(https?:\/\/)?([A-Za-z\d.-]+)\.([A-Za-z.]{2,6})(\/[\w .-]*)*\/?$/;
   const passwordRegex = /^(?=.*[A-Z])(?=.*[\W_])(?!.*\s).{1,10}$/;
-  const regexSimbol = /[\*\!]{1,2}/;
+  const regexSimbol = /[^a-zA-Z0-9\s]*[^a-zA-Z0-9\s]?[^a-zA-Z0-9\s]?/;
   const regexMayus = /[A-Z]{1}/;
   const regexNum = /\d.*\d/;
 
@@ -26,10 +26,10 @@ export const validate = (company) => {
     if(!emailRegex.test(company.email)) errors.email = "Email no valido"
   }
   if(company.password){
-    if(!regexSimbol.test(company.password)) errors.password = "Debe tener almenos 1 simbolo"
+    if(!regexSimbol.test(company.password)) errors.password = "Debe tener almenos 2 simbolo"
     if(!regexMayus.test(company.password)) errors.password ="Debe tener una letra mayuscula"
     if(!regexNum.test(company.password)) errors.password = "Debe tener almenos 2 numeros"
-    if(company.password.length >= 12) errors.password = "Debe tener menos de 12 caracteres"
+    if(company.password.length >= 15) errors.password = "Debe tener menos de 15 caracteres"
   }
   if(company.webPage){
     if(!urlRegex.test(company.webPage)) errors.webPage = "Url no valido"

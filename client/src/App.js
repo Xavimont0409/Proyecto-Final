@@ -127,7 +127,7 @@ function App() {
             />
           }
         />
-        <Route path="/ratings" element={<Ratings />} />
+        <Route path="/ratings" element={<Ratings setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
         <Route

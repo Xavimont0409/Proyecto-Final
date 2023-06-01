@@ -3,7 +3,7 @@ export const validation = (applicant) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneNumberRegex = /^\+?\d{1,3}[\s-]?\d{1,14}$/;
   const passwordRegex = /^(?=.*[A-Z])(?=.*[\W_])(?!.*\s).{1,10}$/;
-  const regexSimbol = /[\*\!]{1,2}/;
+  const regexSimbol = /[^a-zA-Z0-9\s]*[^a-zA-Z0-9\s]?[^a-zA-Z0-9\s]?/;
   const regexMayus = /[A-Z]{1}/;
   const regexNum = /\d.*\d/;
 
@@ -23,10 +23,10 @@ export const validation = (applicant) => {
     if(!phoneNumberRegex.test(applicant.cellphone)) errors.cellphone = "Telefono no valido"
   }
   if(applicant.password){
-    if(!regexSimbol.test(applicant.password)) errors.password = "Debe tener almenos 1 simbolo"
+    if(!regexSimbol.test(applicant.password)) errors.password = "Debe tener almenos 2 simbolo"
     if(!regexMayus.test(applicant.password)) errors.password ="Debe tener una letra mayuscula"
     if(!regexNum.test(applicant.password)) errors.password = "Debe tener almenos 2 numeros"
-    if(applicant.password.length >= 12) errors.password = "Debe tener menos de 12 caracteres"
+    if(applicant.password.length >= 15) errors.password = "Debe tener menos de 15 caracteres"
   }
   return errors
 };

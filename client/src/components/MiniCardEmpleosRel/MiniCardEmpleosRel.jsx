@@ -5,10 +5,10 @@ import style from "./MiniCardEmpleosRel.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getAllVacants, getVacantDetail } from '../../Redux/Actions/actionsFunction/axtionsVacants';
+import { getCompanyDetail } from '../../Redux/Actions/actionsFunction/actionsCompanys'
 
-function MiniCardEmpleosRel({idEmpleoSelected, title, setValidate}) {
+function MiniCardEmpleosRel({ companyId, idEmpleoSelected, title, setValidate}) {
   
-// eslint-disable-next-line no-unused-vars
 const navigation = useNavigate();
 
 const dispatch = useDispatch();
@@ -50,6 +50,7 @@ const empleos = useSelector(state => state.Vacant);
                       <Link to={`/empleoDetail/${empleo.id}`}>
                       <Button onClick={() => {
                         dispatch(getVacantDetail(empleo.id))
+                        dispatch(getCompanyDetail(companyId))
                         setValidate(false)
                         }} className={style.btn} variant="outline-success">VER DETALLE</Button>{' '}
                       </Link>
