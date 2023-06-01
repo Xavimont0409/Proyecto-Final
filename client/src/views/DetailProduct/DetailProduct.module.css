@@ -10,8 +10,8 @@
 
 .box{
     position: relative;
-    width: 20vw;
-    height: 50vh;
+    width: 30vw;
+    height: 52vh;
     background-color: rgb(83, 83, 83);
     border-radius: 20px;
     overflow: hidden;
@@ -26,7 +26,7 @@
     top: -50%;
     left: -50%;
     width: 20vw;
-    height: 80vh;
+    height: 60vh;
     transform-origin: bottom right;
     background: linear-gradient(0deg, transparent, #4a88cea9, #3a6aa1a9);
     animation: animate 6s linear infinite;
@@ -39,7 +39,7 @@
     top: -50%;
     left: -50%;
     width: 20vw;
-    height: 80vh;
+    height: 60vh;
     transform-origin: bottom right;
     background: linear-gradient(0deg, transparent, #4a88cea9, #3a6aa1a9);
     animation: animate 6s linear infinite;
@@ -63,6 +63,7 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    height: 50vh;
 }
 
 .divContenedorInfo{
@@ -121,27 +122,43 @@
 
 
 @media screen and (max-width: 1900px) {
+  
     .box{
-        width: 50vw;
+        width: 40vw;
+        height: 72vh;
+    }
+    
+    .box::before{
+        top: -50%;
+        left: -50%;
+        width: 20vw;
+        height: 72vh;
+    }
+    
+    .box::after{
+        top: -50%;
+        left: -50%;
+        width: 20vw;
+        height: 72vh;
+
+    }
+    
+    .containerDetail{
         height: 50vh;
-       padding: 20px;
     }
 
-    .divFinalInfo{
-        margin-top: 4vh;
+    .divContenedorInfo{
+        background-color: rgb(95, 95, 95);
+        padding: 5vh;
+        height: 69vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: 'letters';
+        border-radius: 20px;
+    
     }
-
-    .nameCard{
-        margin-top: 0.4vh;
-    }
-
-    .p {
-        margin-bottom: 3vh;
-    }
-
-    .containerButton{
-    margin-top: 10vh;
-}
 
 }
 
