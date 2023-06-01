@@ -63,7 +63,7 @@ const Landing = ({ setValidateState, setCurrentUserStore2 }) => {
           <h3 className={style.parrafo2}>
             Únetenos y navega entre las mejores oportunidades laborales{" "}
           </h3>
-          <Link to="/newRegistroApplicant">
+          <Link to="/empleos">
             <Button variant="outline-secondary" className="ms-auto">
               Aplicá ahora
             </Button>
