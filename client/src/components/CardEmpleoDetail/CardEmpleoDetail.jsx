@@ -26,7 +26,7 @@ const CardEmpleoDetail = ({ setValidate, validate, id, CompanyId, title, descrip
     dispatch(getUserDetail(currentUserId));
     dispatch(getCompanyDetail(CompanyId));
     if(vacantPostuled) setValidate(true);
-  }, [dispatch, vacantPostuled]);
+  }, [dispatch]);
 
   const handlerClick = () => {
     if (!user.Cv){
