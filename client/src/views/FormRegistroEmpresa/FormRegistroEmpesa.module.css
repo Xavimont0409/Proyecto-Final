@@ -151,3 +151,15 @@
         background-position: 0 50%;
     }
 }
+
+
+@media screen and (max-width: 1900px) {
+
+  .dropzone{
+    text-align: center;
+    vertical-align: middle;
+    width: 17vw;
+    height: 24vh; 
+  }
+
+}
