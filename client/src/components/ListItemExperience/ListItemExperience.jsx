@@ -6,18 +6,18 @@ import { es } from 'date-fns/locale';
 const ListItem = ({ charge, company, startDate, endDate }) => {
 
   const formatDate = (date) => {
-    const formattedDate = format(new Date(date), 'MMMM yyyy', { locale: es });
+    const formattedDate = format(new Date(date), 'MMM yyyy', { locale: es });
     return formattedDate;
   };
 
   return (
     <div className={style.container1}>
-      <h6>{charge}</h6>
-      <h7>{company}</h7>
+      <h4>{charge}</h4>
+      <h5>{company}</h5>
       <div className={style.container2}>
-      <p>{formatDate(startDate)}</p>
+      <p style={{'fontSize':'20px'}}>{formatDate(startDate)}</p>
       <p>-</p>
-      <p>{endDate === 'Actualmente'? endDate :formatDate(endDate)}</p>
+      <p style={{'fontSize':'20px'}}>{endDate === 'Actualmente'? endDate :formatDate(endDate)}</p>
       </div>
     </div>
   );

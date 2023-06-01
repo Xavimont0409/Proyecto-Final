@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs, FAQ , PlansAndPrices } from './views';
+import { DetailProduct, EmpleoDetail, Empleos, Landing, LandingEmpresa, Failure, FormCv, FormEmpresa, FormVacante, Pending, Profiles, DetailProfile, ProfilesCompany, PerfilCompany, MiPerfil, LandingApplicant, Registro, FormRegisterEmpresa, FormRegistroUsuario, Operation, Success, FormRegistroExperincia, FormRegistroEstudio, Vacantes, MyApplications, Ratings, NewRegistroApplicant, NewRegistroCompany, AboutUs, FAQ,  PlansAndPrices } from './views';
 import { Error404, ProtectedRoute, ServerMaintenance, TermsAndConditions, Footer, Loading, LoginApplicant, LoginCompany } from './components';
 import axios from 'axios';
 import { useSelector } from 'react-redux'
@@ -11,7 +11,6 @@ import { useLocalStorage } from './useLocalStorage/useLocalStorage';
 
 //axios.defaults.baseURL = 'http://localhost:3001'
 axios.defaults.baseURL = "https://proyecto-final-production-9e7e.up.railway.app/"
-
 
 function App() {
   const currentUser = useSelector(state => state.dataEmail[0]);
@@ -128,7 +127,7 @@ function App() {
             />
           }
         />
-        <Route path="/ratings" element={<Ratings />} />
+        <Route path="/ratings" element={<Ratings setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error404 />} />
         <Route
@@ -171,9 +170,8 @@ function App() {
             />
           }
         />
-
-        <Route element={<ProtectedRoute isAutenticate={validate} /> /*Todos*/}>
-          <Route
+        <Route path="/FAQ'S" element={<FAQ setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+         <Route
             path="/plansAndPrices"
             element={
               <PlansAndPrices
@@ -191,6 +189,7 @@ function App() {
               />
             }
           />
+        <Route element={<ProtectedRoute isAutenticate={validate} /> /*Todos*/}>
           <Route
             path="/empleoDetail/:detailId"
             element={
@@ -236,7 +235,7 @@ function App() {
               />
             }
           /> 
-<Route path="/FAQ'S" element={<FAQ setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />} />
+        
           <Route path="/success" element={<Success />} />
           <Route path="/failure" element={<Failure />} />
           <Route path="/pending" element={<Pending />} />
@@ -309,7 +308,6 @@ function App() {
             }
           />
         </Route>
-
         <Route
           element={
             <ProtectedRoute

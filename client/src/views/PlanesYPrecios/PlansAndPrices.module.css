@@ -68,8 +68,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    max-width: 15vw;
+    max-width: 75vw;
     max-height: fit-content;
     margin-bottom: 5vh;
     color: var(--jet);
+}
+
+@media screen and (max-width: 1900px) {
+
+    
+
+
 }

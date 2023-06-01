@@ -1,4 +1,3 @@
-
 .mainContainer{
     display: flex;
     flex-direction: column;
@@ -7,12 +6,13 @@
     height: fit-content;
     width: 30vw;
     border-radius: 0 15%;
-    border: 5px solid var(--battleship-gray);
+    border: 5px solid #363636;
     padding: 2%;
     margin-top: 3vh;
     background: #1c1c1c;
     font-family: 'letters';
     color: #e1ecfc;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.8);
 }
 
 .infoContainer{
@@ -77,4 +77,43 @@
 
 .webSite :hover{
     color: var(--oxford-blue);
+}
+
+
+@media screen and (max-width: 1900px) {
+
+    .mainContainer{
+        width: 28vw;
+        min-height: 120vh;
+        padding: 10%;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+    }
+
+    .infoContainer{
+        height: 40vh;
+        margin-top: 5vh;
+    }
+
+    .img{
+        width: 110px;
+        height: 110px;
+    }
+
+.title{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 5vh;
+}
+
+.item{
+    font-size: 0.9rem;
+}
+
+.text{
+    height: fit-content;
+    font-size: 0.9rem;
+}
+
+
 }

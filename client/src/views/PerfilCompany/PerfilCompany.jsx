@@ -21,7 +21,7 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 
 	useEffect(() => {
 		dispatch(getCompanyDetail(userType.id));
-	}, [dispatch, userType]);
+	}, [dispatch, userType.id]);
 
 	return (
 		<div className={style.container}>
@@ -29,7 +29,6 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 				<NavBar setValidateState={setValidateState}  setCurrentUserStore2={setCurrentUserStore2}/>
 			</div>
 			<h1 className={style.title}>Perfil de la Empresa</h1>
-
 			<div className={style.datosCompany}>
 				<div>
 					<img
@@ -38,7 +37,6 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 						alt='Profile'
 					/>
 				</div>
-
 				<div className={style.companyName}>
 					<h1>{companyData.name}</h1>
 				</div>
@@ -65,7 +63,7 @@ export default function PerfilCompany({ setValidateState, setCurrentUserStore2 }
 
 					<div className={style.companyData}>
 						<BsFillFileTextFill />
-						<p>Plan: {companyData.PayMethods?.Operation?.detail}</p>
+						<p style={{color : "yellow"}}>Plan: {companyData.PayMethods?.length > 0 ? companyData.PayMethods[0]?.Operation?.detail : 'ninguno'}</p>
 					</div>
 
 					<div className={style.companyData}>

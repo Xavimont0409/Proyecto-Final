@@ -4,20 +4,23 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import NavBar from '../../components/NavBar/NavBar'
-import { getUserDetail } from '../../Redux/Actions/actionsFunction/actionsUsers';
-import { deleteVacant, getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants';
+import { getUserDetail, updateMyApplications } from '../../Redux/Actions/actionsFunction/actionsUsers';
+import { getAllVacants } from '../../Redux/Actions/actionsFunction/axtionsVacants';
 import { BsFillTrashFill } from 'react-icons/bs'
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 
 const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
-    const userType = JSON.parse(localStorage.getItem("currentUser2"));
-    const userDetail = useSelector(state=> state.UserDetail);
-    const empresas = useSelector(state => state.Company)
-    const vacantes = useSelector(state => state.Vacant)
-    const dispatch = useDispatch();
-    const {confirm} = window;
+  const userType = JSON.parse(localStorage.getItem("currentUser2"));
+  const userDetail = useSelector(state => state.UserDetail);
+  const myVacants = userDetail.Vacants;
+  const empresas = useSelector(state => state.Company)
+  const vacantes = useSelector(state => state.Vacant)
+  const dispatch = useDispatch();
 
-  const handlerClick = (id, title) => {
+  const [vacant, setVacant] = useState(false);
+
+  const handlerClick = (idVacnt, id, title, myVacants) => {
 
     Swal.fire({
       title: "Consulta",
@@ -26,9 +29,15 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
       showCancelButton: true,
 
       preConfirm: () => {
-        return dispatch(deleteVacant(id))
+        const vacantFilter ={
+          id: id,
+          Vacants: myVacants.filter(vac => vac.id !== idVacnt)
+        } 
+        console.log(vacantFilter)
+         dispatch(updateMyApplications(id, title, vacantFilter))
           .then(response => {
             if (!response.ok) {
+              vacant? setVacant(false): setVacant(true)
               throw new Error(response.statusText)
             }
             return response.name + " fue eliminada"
@@ -47,7 +56,7 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
         dispatch(getUserDetail(userType.id))
         dispatch(getAllCompanys())
         dispatch(getAllVacants())
-    }, [dispatch, userType.id])
+    }, [dispatch, userType.id, vacant])
 
 
     return (
@@ -55,8 +64,6 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
             <div className={style.containerNav}>
                 <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />
             </div>
-
-                  <h1 className={style.title}>Mis Postulaciones</h1>
     
     <Table className={style.table}>
       <thead className={style.tHead}>
@@ -74,7 +81,6 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
       <tbody className={style.tBody}>
         {
            userDetail.Vacants?.map((elem) => 
-
              <tr key={elem.id}>
                <td>{empresas.filter(emp => emp.id === elem.CompanyId)[0]?.business_name}</td>
                <td>{elem.title}</td>
@@ -83,7 +89,7 @@ const MyApplications = ({ setValidateState, setCurrentUserStore2 }) => {
                <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Seniority?.name}</td>
                <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.WorkMethod?.name}</td>
                <td>{vacantes.filter(vac => vac.id === elem.id)[0]?.Workday?.name}</td>
-               <td style={{ textAlign: 'center', margin: 'auto' }} ><button onClick={() => handlerClick(elem.id, elem.title)} ><BsFillTrashFill /></button></td>
+               <td style={{ textAlign: 'center', margin: 'auto' }} ><button onClick={() => handlerClick(elem.id, userType.id, elem.title, myVacants)} ><BsFillTrashFill /></button></td>
              </tr>
            ) 
         }

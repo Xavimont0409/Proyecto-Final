@@ -8,7 +8,7 @@ import { BsFillEnvelopeAtFill, BsFillTelephoneFill, BsGlobeAmericas, BsLinkedin 
 import ListItem from "../../components/ListItemExperience/ListItemExperience";
 import ListItemStudy from "../../components/ListItemStudy/ListItemStudy";
 import { getUserDetail } from "../../Redux/Actions/actionsFunction/actionsUsers";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 
 const DetailProfile = ({ setValidateState, setCurrentUserStore2 }) => {
@@ -102,8 +102,6 @@ const DetailProfile = ({ setValidateState, setCurrentUserStore2 }) => {
         <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} ></NavBar>
         <div className={style.container}>
 
-          <h1>Mi Perfil</h1>
-
           <div id="pdf-content" className={style.container2}>
 
             <div className={style.container1}>
@@ -124,7 +122,9 @@ const DetailProfile = ({ setValidateState, setCurrentUserStore2 }) => {
                       </div>
                       <div className={style.container3}>
                         <BsLinkedin></BsLinkedin>
-                        <p style={{ whiteSpace: 'nowrap', 'marginBottom': '3px' }} >{perfil.linkedin}</p>
+                        <Link to={perfil.linkedin}>
+                        <p style={{ whiteSpace: 'nowrap', 'marginBottom': '3px' }} >{perfil.linkedin.slice(12,35)}...</p>
+                        </Link>
                       </div>
                     </div>
 

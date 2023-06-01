@@ -76,17 +76,10 @@
 
 @media screen and (max-width: 1900px) {
 
-    .contenedor {
-        width: 80vw;
+    .container {
+        margin-bottom: 10vh;
     }
 
-    .prueba{
-        width: 100%;
-    }
-
-    .planes {
-        width: 60vw;
-    }
 
     .containerPrincipal {
       width: 50vw;
@@ -97,12 +90,8 @@
     }
 
     .Button{
-        border: 1px solid #284c75;
-        border-radius: 10px;
         width: 8vw;
         height: 16vh;
-        background-color: #1C1C1C;
-        color: #e1ecfc;
         margin: 1vh;
         font-size: 12px;
     }

@@ -17,7 +17,9 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
   const countriesNames = Object.values(countries.countries).map((country) => country);
 
   const [validated, setValidated] = useState(false);
+  const [validatedLinkedin, setValidatedLinkedin] = useState(false);
   const [image, setImage] = useState(null);
+
 
 
   const handleNext = (event) => {
@@ -26,10 +28,17 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
     if (!validation(cv)) {
       Swal.fire({
 			title: "Faltan Datos",
-			text: "Completa todos los campos",
+			text: "Completa todos los campos o carga tu foto de perfil",
 			icon: "warning",
 		});
-    } else {
+    } else if(validatedLinkedin === false){
+      Swal.fire({
+        title: "Error en campo LinkedIn o sitio web",
+        text: "Debe ingresar una URL que inicie por https://, como se muestra en el ejemplo",
+        icon: "warning",
+      });
+
+    }else {
       setValidated(true)
       nextStep()
     }
@@ -134,7 +143,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
                 placeholder="Número de celular"
                 value={cv.phone}
                 onChange={(event) => handlerChange(event, cv, setCv)}
-                type="number"
+                type="text"
                 required />
               <Form.Control.Feedback type="invalid">
                 Rellena este campo
@@ -168,14 +177,22 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
               <FormLabel>LinkedIn o sitio web</FormLabel>
               <FormControl
                 name="linkedin"
-                placeholder="LinkedIn o sitio web"
+                placeholder="ej: https://www.linkedin.com/usuario"
                 value={cv.linkedin}
-                onChange={(event) => handlerChange(event, cv, setCv)}
+                onChange={(event) => handlerChange(event, cv, setCv, setValidatedLinkedin)}
                 type="text"
                 required />
+
               <Form.Control.Feedback type="invalid">
                 Rellena este campo
               </Form.Control.Feedback>
+
+                {!validatedLinkedin ? (
+                 <div className={style.linkedinError}>Error en Linkedin: la URL debe iniciar por https://</div>
+                ): 
+                (console.log("ok"))
+                }
+              
             </FormGroup>
 
           </Row>
@@ -204,12 +221,14 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
                 {image && (
                   <div> 
                     <img className={style.image} src={image} alt="Imagen cargada" />
-                    <button style={{ margin: '5px' }} onClick={(event) => handleRemove(event)}>
-                      <BsFillTrashFill />
-                    </button>
-                    <button onClick={(event) => handleUpload(event)}>
-                      <BsCheckCircleFill />
-                    </button>
+                    <button className={style.buttonCont}  style={{ margin: "10px" }} onClick={(event) => handleRemove(event)}>
+									  <BsFillTrashFill />
+									  <span className={style.tooltip}>Eliminar</span>
+									</button>
+									<button className={style.buttonCont} onClick={(event) => handleUpload(event)}>
+									  <BsCheckCircleFill />
+									  <span className={style.tooltip}>Subir</span>
+									</button>
                   </div>
                 )}
               </div>
@@ -254,7 +273,7 @@ function Step1FormCv({ cv, setCv, handlerChange, nextStep, currentUser }) {
 
 
         <div style={{ margin: '5px', padding: '1' }}>
-          <FormGroup as={Col} md="6" className="mb-3 ">
+          <FormGroup as={Col} md="6" className="mb-5">
             <ButtonGeneral
               textButton="Siguiente"
               handlerClick={(event) => handleNext(event)}

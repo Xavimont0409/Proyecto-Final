@@ -39,7 +39,8 @@ const Pathname = ({location, id}) => {
         return 'Registrar historial académico';
     case `/empleoDetail/${id}`:
         return 'Detalle de empleo / empresa seleccionadora';
-
+    case "/aboutUs":
+        return 'Sobre JobPortalX'
     default:
         break;
  }

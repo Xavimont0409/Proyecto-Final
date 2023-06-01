@@ -9,6 +9,7 @@ import { postUser } from '../../Redux/Actions/actionsFunction/actionsUsers';
 import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome';
 import { validation } from './validation';
 import { FiEye, FiEyeOff } from "react-icons/fi"
+import Swal from 'sweetalert2';
 
 
 const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState, setCurrentUserStore}) => {
@@ -45,7 +46,8 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
       newUserApplicant.lastName &&
       newUserApplicant.cellphone &&
       newUserApplicant.name &&
-      newUserApplicant.email
+      newUserApplicant.email &&
+	  newUserApplicant.password
     ){
       dispatch(postUser(newUserApplicant))
       setTimeout(()=>{
@@ -57,7 +59,13 @@ const FormRegistroUsuario = ({setCurrentUserStore2, Applicant, setValidateState,
       return setTimeout(()=>{
       navigate("/applicant")
       },1500)
-    }
+    }else{
+		Swal.fire({
+			title: "Faltan datos",
+			text: `Completa todos los campos`,
+			icon: "error",
+		  });
+	}
   };
 
   useEffect(() => {
