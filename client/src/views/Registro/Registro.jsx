@@ -19,13 +19,12 @@ const Registro = () => {
   }
 
   return (
-    <>
       <div className={style.mainContainer}>
         <div className={style.container}>
           <h1 className={style.title}>Selecciona tu perfil</h1>
           <div className={style.cardsContainer}>
-           <Link to='/newRegistroCompany'> 
-           <div className={style.cardContainer1}>
+            <Link to='/newRegistroCompany'> 
+            <div className={style.cardContainer1}>
               <ButtonGeneral
                 textButton="Soy empresa"
               ></ButtonGeneral>
@@ -41,7 +40,6 @@ const Registro = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 
