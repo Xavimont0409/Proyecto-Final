@@ -3,7 +3,8 @@ import {
   GET_USERS_DETAIL,
   POST_USER,
   POST_CV,
-  POST_EXPE
+  POST_EXPE,
+  UPDATE_APPLICATION
 } from "../actions-types/action-types";
 import axios from "axios";
 import Swal from 'sweetalert2';
@@ -119,4 +120,32 @@ export const postExpe = (payload) =>{
     })
   }
   }
+}
+
+
+export  const  updateMyApplications =  (id, title, Vacants) => {
+
+  return async function(dispatch){
+    try {
+       await axios.put(`/applicant/${id}`, Vacants)
+    //   const data = json.data;
+    // dispatch({
+    //     type: UPDATE_APPLICATION,
+    //     payload: data,
+    //   });
+      return Swal.fire({
+        title: "Informacion",
+        text: `Se ha cancelado tu postulacion a la vacante ${title}`,
+        icon: 'success'
+      })
+    } catch (error) {
+      return Swal.fire({
+        title: "Error",
+        text: `${error.response.data.error}`,
+        icon: 'error'
+      })
+    }
+  }
+
+
 }
