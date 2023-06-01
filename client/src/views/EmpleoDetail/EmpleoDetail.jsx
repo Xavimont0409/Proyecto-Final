@@ -18,7 +18,7 @@ const EmpleoDetail = ({ setValidateState, setCurrentUserStore2 }) => {
   const {detailId} = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const empleoSelected = useSelector(state => state.VacantDetail);
-  
+  const [validate, setValidate] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const EmpleoDetail = ({ setValidateState, setCurrentUserStore2 }) => {
           <NavBar setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2} />
         <div className={style.mainContainer2}>
           <div className={style.containerEmpleosRel}>
-            <MiniCardEmpleosRel idEmpleoSelected={empleoSelected.id} title={empleoSelected.title}/>   
+            <MiniCardEmpleosRel setValidate={setValidate} idEmpleoSelected={empleoSelected.id} title={empleoSelected.title}/>   
           </div>
           <div className={style.mainContainer3}>
           <Tabs
@@ -57,6 +57,8 @@ const EmpleoDetail = ({ setValidateState, setCurrentUserStore2 }) => {
             <Tab eventKey="DETALLE DEL EMPLEO" title="DETALLE DEL EMPLEO">
               <div className={style.containerDetail}>
                 <CardEmpleoDetail 
+                validate={validate}
+                setValidate={setValidate}
                 id={empleoSelected.id}
                 CompanyId={empleoSelected.CompanyId}
                 title={empleoSelected.title}
