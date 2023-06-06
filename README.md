@@ -7,7 +7,7 @@ To ensure secure payment transactions, a payment gateway has been integrated usi
 
 Furthermore, a notification system has been established using email or nodemailer to keep users informed about their applications and other relevant updates. A logical deletion approach has been applied, whereby records or roles are deactivated instead of being permanently deleted from the database.
 
-<h2 align="left">🔧 Instalation </h2>
+<h2 align="center">🔧 Instalation </h2>
 
 If you want to be able to have this project, you can apply the following command in your console: 
 
@@ -28,7 +28,7 @@ npm start
 
 Great, now you can see this application running in your browser. Success with those modifications.🚀🚀
 
-<h2 align="left">⚙️ Running the tests </h2>
+<h2 align="center">⚙️ Running the tests </h2>
 
 You can run some tests on the "back", open the terminal in the corresponding folder and type the command:
 
@@ -37,7 +37,7 @@ npm test
 ```
 
 
-<h2 align="left">💻 Technologies </h2>
+<h2 align="center">💻 Technologies </h2>
 
 <table align="center" >
   <tr>
@@ -103,33 +103,33 @@ Includes the following dependencies:
 - jest.
 - supertest
 
-<h2 align="left">✒️ Developers </h2>
+<h2 align="center">✒️ Developers </h2>
 
 
-- [Joel Dupraz]("https://www.linkedin.com/in/joel-dupraz-ardiles/")
+- [Joel Dupraz](https://www.linkedin.com/in/joel-dupraz-ardiles/)
 
 
-- [Leandro Martínez]("https://www.linkedin.com/in/lean0mar")
+- [Leandro Martínez](https://www.linkedin.com/in/lean0mar)
 
 
-- [Xavier Montero]("https://www.linkedin.com/in/xavier-montero-b343b8231/")
+- [Xavier Montero](https://www.linkedin.com/in/xavier-montero-b343b8231/)
 
 
-- [Gaspar Almaraz]("https://www.linkedin.com/in/gaspar-almaraz-b12840209/")
+- [Gaspar Almaraz](https://www.linkedin.com/in/gaspar-almaraz-b12840209/)
 
 
-- [Augusto Viggiano]("https://www.linkedin.com/in/augusto-viggiano-195134213/")
+- [Augusto Viggiano](https://www.linkedin.com/in/augusto-viggiano-195134213/)
 
 
-- [Juan Genovese]("https://www.linkedin.com/in/juancruzgenovese/")
+- [Juan Genovese](https://www.linkedin.com/in/juancruzgenovese/)
 
 
-- [Andrés Pérez]("https://www.linkedin.com/in/andr%C3%A9s-felipe-rojas-p%C3%A9rez-500491262/")
+- [Andrés Pérez](https://www.linkedin.com/in/andr%C3%A9s-felipe-rojas-p%C3%A9rez-500491262/)
 
 
-- [Victor Montalvo]("https://www.linkedin.com/in/victor-rua/")
+- [Victor Montalvo](https://www.linkedin.com/in/victor-rua/)
 
-<h2 align="left">⚡ Acknowledgments</h2>
+<h2 align="center">⚡ Acknowledgments</h2>
 
 - Thanks to the instructors and mentors at [Soy Henry](https://www.soyhenry.com/) for providing the knowledge and support to build this project.
 
