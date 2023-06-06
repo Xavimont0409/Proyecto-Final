@@ -64,7 +64,7 @@ npm test
   </tr>
   <tr>
     <td align="center" width="96"> 
-<a href="https://expressjs.com/en/5x/api.html" target="_blank"> <img src="./Img/express.jpg" alt="express" height="40"/> </a>
+<a href="https://expressjs.com/en/5x/api.html" target="_blank"> <img src="https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg" alt="express" height="40"/> </a>
 <br>Express
     </td>
     <td align="center" width="96">  
@@ -103,23 +103,31 @@ Includes the following dependencies:
 - jest.
 - supertest
 
-<h2 align="left">✒️ Developer </h2>
+<h2 align="left">✒️ Developers </h2>
+
 
 - [Joel Dupraz]("https://www.linkedin.com/in/joel-dupraz-ardiles/")
 
+
 - [Leandro Martínez]("https://www.linkedin.com/in/lean0mar")
+
 
 - [Xavier Montero]("https://www.linkedin.com/in/xavier-montero-b343b8231/")
 
+
 - [Gaspar Almaraz]("https://www.linkedin.com/in/gaspar-almaraz-b12840209/")
+
 
 - [Augusto Viggiano]("https://www.linkedin.com/in/augusto-viggiano-195134213/")
 
+
 - [Juan Genovese]("https://www.linkedin.com/in/juancruzgenovese/")
 
-- [Andrés Rojas Pérez]("https://www.linkedin.com/in/andr%C3%A9s-felipe-rojas-p%C3%A9rez-500491262/")
 
-- [Victor Rua Montalvo]("https://www.linkedin.com/in/victor-rua/")
+- [Andrés Pérez]("https://www.linkedin.com/in/andr%C3%A9s-felipe-rojas-p%C3%A9rez-500491262/")
+
+
+- [Victor Montalvo]("https://www.linkedin.com/in/victor-rua/")
 
 <h2 align="left">⚡ Acknowledgments</h2>
 
