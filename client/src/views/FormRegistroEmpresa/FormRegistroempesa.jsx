@@ -1,26 +1,36 @@
-import Form from 'react-bootstrap/Form';
-import { FormGroup, FormLabel, FormSelect, FormControl, Row, Col } from 'react-bootstrap';
+import Form from "react-bootstrap/Form";
+import {
+  FormGroup,
+  FormLabel,
+  FormSelect,
+  FormControl,
+  Row,
+  Col,
+} from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { postCompany } from '../../Redux/Actions/actionsFunction/actionsCompanys';
-import Loading from '../../components/Loading/Loading';
-import style from './FormRegistroEmpesa.module.css';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { postCompany } from "../../Redux/Actions/actionsFunction/actionsCompanys";
+import Loading from "../../components/Loading/Loading";
+import style from "./FormRegistroEmpesa.module.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import countries from "countries-list";
-import { getEmail } from '../../Redux/Actions/actionsFunction/FiltersHome'
+import { getEmail } from "../../Redux/Actions/actionsFunction/FiltersHome";
 import Dropzone from "react-dropzone";
 import Swal from "sweetalert2";
-import { BsCheckCircleFill, BsFillTrashFill } from 'react-icons/bs'
-import { FiEye, FiEyeOff } from "react-icons/fi"
-import { validate } from './validation'
+import { BsCheckCircleFill, BsFillTrashFill } from "react-icons/bs";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+import { validate } from "./validation";
 
-
-const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState }) => {
+const FormRegisterEmpresa = ({
+  Company,
+  setCurrentUserStore,
+  setValidateState,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [ pass, setPass ] = useState(false)
+  const [pass, setPass] = useState(false);
 
   const [image, setImage] = useState(null);
 
@@ -37,8 +47,8 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     job_area: "",
     webPage: "",
   });
-  const [ errors, setErrors ] = useState({
-	business_name: "",
+  const [errors, setErrors] = useState({
+    business_name: "",
     cuit: "",
     country: "",
     registed: true,
@@ -49,8 +59,7 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     description: "",
     job_area: "",
     webPage: "",
-  })
-
+  });
 
   const handleDrop = async (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -59,17 +68,17 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
     reader.onload = () => {
       setImage(reader.result);
     };
-	Swal.fire({
-        title: "Info",
-        text: `Por favor haz click en confirmar tu imagen o elimínala`,
-        icon: "info",
-      });
+    Swal.fire({
+      title: "Info",
+      text: `Por favor haz click en confirmar tu imagen o elimínala`,
+      icon: "info",
+    });
 
     reader.readAsDataURL(file);
   };
 
   const handleUpload = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
       const response = await fetch(image);
       const data = await response.blob();
@@ -87,14 +96,13 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
       );
 
       const uploadData = await uploadResponse.json();
-      setNewEmpresa({ ...newEmpresa, photo: uploadData.secure_url })
+      setNewEmpresa({ ...newEmpresa, photo: uploadData.secure_url });
       Swal.fire({
         title: "Éxito",
         text: "Imagen cargada correctamente",
         icon: "success",
       });
       // setImage(null)
-
     } catch (error) {
       Swal.fire({
         title: "Error",
@@ -105,54 +113,51 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
   };
 
   const handleRemove = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     setImage(null);
   };
-
 
   const countriesNames = Object.values(countries.countries).map(
     (country) => country
   );
-  
+
   const handleInputChange = (event) => {
     const property = event.target.name;
     const value = event.target.value;
     setNewEmpresa({ ...newEmpresa, [property]: value });
-    setErrors(validate({ ...newEmpresa, [property]: value }))
-  }
+    setErrors(validate({ ...newEmpresa, [property]: value }));
+  };
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (
       newEmpresa.business_name &&
       newEmpresa.cuit &&
       newEmpresa.country &&
       newEmpresa.name &&
       newEmpresa.email &&
-	  newEmpresa.password &&
-	  newEmpresa.photo &&
-	  newEmpresa.description &&
-	  newEmpresa.job_area &&
-	  newEmpresa.webPage
-
+      newEmpresa.password &&
+      newEmpresa.photo &&
+      newEmpresa.description &&
+      newEmpresa.job_area &&
+      newEmpresa.webPage
     ) {
-      dispatch(postCompany(newEmpresa))
+      dispatch(postCompany(newEmpresa));
       setTimeout(() => {
-        dispatch(getEmail(newEmpresa.email))
-      }, 1000)
-      setCurrentUserStore(newEmpresa)
-      setValidateState(true)
+        dispatch(getEmail(newEmpresa.email));
+      }, 1000);
+      setCurrentUserStore(newEmpresa);
+      setValidateState(true);
       setTimeout(() => {
-        navigate("/empresa")
-      }, 1500)
-    }else{
-		Swal.fire({
-			title: "Faltan datos",
-			text: `Completa todos los campos o carga tu logo`,
-			icon: "error",
-		  });
-	}
+        navigate("/empresa");
+      }, 1500);
+    } else {
+      Swal.fire({
+        title: "Faltan datos",
+        text: `Completa todos los campos o carga tu logo`,
+        icon: "error",
+      });
+    }
   };
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -165,211 +170,229 @@ const FormRegisterEmpresa = ({ Company, setCurrentUserStore, setValidateState })
   }
 
   return (
-		<div className={style.mainContainer}>
-			<div className={style.containerFirst}>{/* no quitar */}</div>
-			<div className={style.containerSecond}>
-				<div className={style.title}>
-					<h2 style={{ margin: "20px" }}>Registro Empresa</h2>
-				</div>
-				<Form className={style.Form}>
-					<Row>
-						<FormGroup as={Col} md='6'>
-							<FormLabel>Nombre</FormLabel>
-							<FormControl
-								name='name'
-								placeholder='Nombre del reclutador'
-								value={newEmpresa.name}
-								type='text'
-								onChange={handleInputChange}
-								required
-							/>
-            <p className={style.errors}>{errors.name}</p>
-						</FormGroup>
-						<FormGroup as={Col} md='6'>
-							<FormLabel>Nombre comercial</FormLabel>
-							<FormControl
-								name='business_name'
-								placeholder='Nombre de la empresa'
-								value={newEmpresa.business_name}
-								type='text'
-								onChange={handleInputChange}
-								required
-							/>
+    <div className={style.mainContainer}>
+      <div className={style.containerFirst}>{/* no quitar */}</div>
+      <div className={style.containerSecond}>
+        <div className={style.title}>
+          <h2 style={{ margin: "20px" }}>Registro Empresa</h2>
+        </div>
+        <Form className={style.Form}>
+          <Row>
+            <FormGroup as={Col} md="6">
+              <FormLabel>Nombre</FormLabel>
+              <FormControl
+                name="name"
+                placeholder="Nombre del reclutador"
+                value={newEmpresa.name}
+                type="text"
+                onChange={handleInputChange}
+                required
+              />
+              <p className={style.errors}>{errors.name}</p>
+            </FormGroup>
+            <FormGroup as={Col} md="6">
+              <FormLabel>Nombre comercial</FormLabel>
+              <FormControl
+                name="business_name"
+                placeholder="Nombre de la empresa"
+                value={newEmpresa.business_name}
+                type="text"
+                onChange={handleInputChange}
+                required
+              />
               <p className={style.errors}>{errors.business_name}</p>
-						</FormGroup>
-					</Row>
-					<Row>
-						<Form.Group as={Col} md='6' className='mb-3'>
-							<FormLabel>CUIT</FormLabel>
-							<FormControl
-								name='cuit'
-								placeholder='Cuit'
-								value={newEmpresa.cuit}
-								type='text'
-								onChange={handleInputChange}
-								required
-							/>
+            </FormGroup>
+          </Row>
+          <Row>
+            <Form.Group as={Col} md="6" className="mb-3">
+              <FormLabel>CUIT</FormLabel>
+              <FormControl
+                name="cuit"
+                placeholder="Cuit"
+                value={newEmpresa.cuit}
+                type="text"
+                onChange={handleInputChange}
+                required
+              />
               <p className={style.errors}>{errors.cuit}</p>
-						</Form.Group>
-						<FormGroup as={Col} md='6'>
-							<FormLabel>País</FormLabel>
-							<FormSelect
-								name='country'
-								value={newEmpresa.country}
-								onChange={handleInputChange}
-								required
-							>
-								<option disabled></option>
-								{countriesNames.map((count) => (
-									<option
-										key={count.emoji}
-										id={count.emoji}
-										value={count.name}
-									>
-										{count.name}
-									</option>
-								))}
-							</FormSelect>
-						</FormGroup>
-					</Row>
+            </Form.Group>
+            <FormGroup as={Col} md="6">
+              <FormLabel>País</FormLabel>
+              <FormSelect
+                name="country"
+                value={newEmpresa.country}
+                onChange={handleInputChange}
+                required
+              >
+                <option disabled></option>
+                {countriesNames.map((count) => (
+                  <option key={count.emoji} id={count.emoji} value={count.name}>
+                    {count.name}
+                  </option>
+                ))}
+              </FormSelect>
+            </FormGroup>
+          </Row>
 
-					<Row>
-						<Col md={6}>
-							<div
-								style={{
-									display: "flex",
-									alignItems: "start",
-									flexDirection: "column",
-								}}
-							>
-								<FormLabel style={{ marginRight: "10px" }}>
-									Logo
-								</FormLabel>
+          <Row>
+            <Col md={6}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "start",
+                  flexDirection: "column",
+                }}
+              >
+                <FormLabel style={{ marginRight: "10px" }}>Logo</FormLabel>
 
-								<div
-									className={!image ? style.dropzone : "none"}
-								>
-									<Dropzone onDrop={handleDrop}>
-										{({ getRootProps, getInputProps }) => (
-											<div {...getRootProps()}>
-												<input {...getInputProps()} />
+                <div className={!image ? style.dropzone : "none"}>
+                  <Dropzone onDrop={handleDrop}>
+                    {({ getRootProps, getInputProps }) => (
+                      <div {...getRootProps()}>
+                        <input {...getInputProps()} />
 
-												{!image ? (
-													<p style={{'color':'gray'}}>
-														Selecciona o arrastra
-														una imagen
-													</p>
-												) : (
-													<></>
-												)}
-											</div>
-										)}
-									</Dropzone>
-								</div>
+                        {!image ? (
+                          <p style={{ color: "gray" }}>
+                            Selecciona o arrastra una imagen
+                          </p>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                    )}
+                  </Dropzone>
+                </div>
 
-								{image && (
-									<div>
-									<img className={style.image} src={image} alt='Imagen cargada' />
-									<button className={style.buttonCont}  style={{ margin: "10px" }} onClick={(event) => handleRemove(event)}>
-									  <BsFillTrashFill />
-									  <span className={style.tooltip}>Eliminar</span>
-									</button>
-									<button className={style.buttonCont} onClick={(event) => handleUpload(event)}>
-									  <BsCheckCircleFill />
-									  <span className={style.tooltip}>Subir</span>
-									</button>
-								  </div>
-								)}
-							</div>
-						</Col>
+                {image && (
+                  <div>
+                    <img
+                      className={style.image}
+                      src={image}
+                      alt="Imagen cargada"
+                    />
+                    <button
+                      className={style.buttonCont}
+                      style={{ margin: "10px" }}
+                      onClick={(event) => handleRemove(event)}
+                    >
+                      <BsFillTrashFill />
+                      <span className={style.tooltip}>Eliminar</span>
+                    </button>
+                    <button
+                      className={style.buttonCont}
+                      onClick={(event) => handleUpload(event)}
+                    >
+                      <BsCheckCircleFill />
+                      <span className={style.tooltip}>Subir</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </Col>
 
-						<Col md={6}>
-							<FormGroup>
-								<FormLabel>Página web</FormLabel>
-								<FormControl
-									name='webPage'
-									placeholder='Página web'
-									value={newEmpresa.webPage}
-									type='text'
-									onChange={handleInputChange}
-									required
-								/>
+            <Col md={6}>
+              <FormGroup>
+                <FormLabel>Página web</FormLabel>
+                <FormControl
+                  name="webPage"
+                  placeholder="Página web"
+                  value={newEmpresa.webPage}
+                  type="text"
+                  onChange={handleInputChange}
+                  required
+                />
                 <p className={style.errors}>{errors.webPage}</p>
-							</FormGroup>
+              </FormGroup>
 
-							<FormGroup>
-								<FormLabel>Área de trabajo</FormLabel>
-								<FormControl
-									name='job_area'
-									placeholder='Área de trabajo'
-									value={newEmpresa.job_area}
-									type='text'
-									onChange={handleInputChange}
-									required
-								/>
+              <FormGroup>
+                <FormLabel>Área de trabajo</FormLabel>
+                <FormControl
+                  name="job_area"
+                  placeholder="Área de trabajo"
+                  value={newEmpresa.job_area}
+                  type="text"
+                  onChange={handleInputChange}
+                  required
+                />
                 <p className={style.errors}>{errors.job_area}</p>
-							</FormGroup>
-						</Col>
-					</Row>
+              </FormGroup>
+            </Col>
+          </Row>
 
-					<FormGroup as={Col} md='12'>
-						<FormLabel>Descripción</FormLabel>
-						<Form.Control
-							name='description'
-							placeholder='Escribe una breve descripcion de tu empresa (max. 200 caracteres)'
-							value={newEmpresa.description}
-							onChange={handleInputChange}
-							as='textarea'
-							rows={5}
-							maxLength={200}
-							required
-						/>
-					</FormGroup>
+          <FormGroup as={Col} md="12">
+            <FormLabel>Descripción</FormLabel>
+            <Form.Control
+              name="description"
+              placeholder="Escribe una breve descripcion de tu empresa (max. 200 caracteres)"
+              value={newEmpresa.description}
+              onChange={handleInputChange}
+              as="textarea"
+              rows={5}
+              maxLength={200}
+              required
+            />
+          </FormGroup>
 
-					<Row>
-						<FormGroup as={Col} md='6' className='mb-3'>
-							<FormLabel>Email</FormLabel>
-							<FormControl
-								name='email'
-								placeholder='Email'
-								value={newEmpresa.email}
-								type='text'
-								onChange={handleInputChange}
-								required
-								disabled={
-									newEmpresa.email === Company?.email
-										? true
-										: false
-								}
-							/>
-              {Company ? <p></p>: <p className={style.errors}>{errors.email}</p>}
-						</FormGroup>
-						<FormGroup as={Col} md='6'>
-							<FormLabel>Contraseña</FormLabel>
-							{pass ?	<FiEye className={style.icon} onClick={() => setPass(false)}></FiEye>  : <FiEyeOff className={style.icon} onClick={() => setPass(true)}></FiEyeOff> }
-							<FormControl
-								name='password'
-								placeholder='Password'
-								value={newEmpresa.password}
-								type={Company ? "password" :( pass ? 'text': 'password' )}
-								onChange={handleInputChange}
-								required
-								disabled={
-									newEmpresa.password === Company?.contraseña
-										? true
-										: false
-									}
-							/>
-              {Company ? <p></p> : <p className={style.errors}>{errors.password}</p>}
-						</FormGroup>
-					</Row>
-				</Form>
-				<button className={style.button} type='submit' onClick={(event) => handleSubmit(event)}>
-					{" "}
-					Registrate
-				</button>
-			</div>
-		</div>
+          <Row>
+            <FormGroup as={Col} md="6" className="mb-3">
+              <FormLabel>Email</FormLabel>
+              <FormControl
+                name="email"
+                placeholder="Email"
+                value={newEmpresa.email}
+                type="text"
+                onChange={handleInputChange}
+                required
+                disabled={newEmpresa.email === Company?.email ? true : false}
+              />
+              {Company ? (
+                <p></p>
+              ) : (
+                <p className={style.errors}>{errors.email}</p>
+              )}
+            </FormGroup>
+            <FormGroup as={Col} md="6">
+              <FormLabel>Contraseña</FormLabel>
+              {pass ? (
+                <FiEye
+                  className={style.icon}
+                  onClick={() => setPass(false)}
+                ></FiEye>
+              ) : (
+                <FiEyeOff
+                  className={style.icon}
+                  onClick={() => setPass(true)}
+                ></FiEyeOff>
+              )}  
+              <FormControl
+                name="password"
+                placeholder="Password"
+                value={newEmpresa.password}
+                type={Company ? "password" : pass ? "text" : "password"}
+                onChange={handleInputChange}
+                required
+                disabled={
+                  newEmpresa.password === Company?.contraseña ? true : false
+                }
+              />
+              {Company ? (
+                <p></p>
+              ) : (
+                <p className={style.errors}>{errors.password}</p>
+              )}
+            </FormGroup>
+          </Row>
+        </Form>
+        <button
+          className={style.button}
+          type="submit"
+          onClick={(event) => handleSubmit(event)}
+        >
+          {" "}
+          Registrate
+        </button>
+      </div>
+    </div>
   );
 };
 

@@ -34,8 +34,7 @@ function App() {
       setCurrentUserStore2("")
       setValidateState(false)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  }, [currentUser, setCurrentUserStore]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -190,24 +189,8 @@ function App() {
             }
           />
         <Route element={<ProtectedRoute isAutenticate={validate} /> /*Todos*/}>
-          <Route
-            path="/empleoDetail/:detailId"
-            element={
-              <EmpleoDetail
-                setValidateState={setValidateState}
-                setCurrentUserStore2={setCurrentUserStore2}
-              />
-            }
-          />
-          <Route
-            path="/profiles-company"
-            element={
-              <ProfilesCompany
-                setValidateState={setValidateState}
-                setCurrentUserStore2={setCurrentUserStore2}
-              />
-            }
-          />
+          <Route path="/empleoDetail/:detailId" element={<EmpleoDetail setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>}/>
+          <Route path="/profiles-company" element={<ProfilesCompany setValidateState={setValidateState} setCurrentUserStore2={setCurrentUserStore2}/>}/>
           <Route
             path="/profiles"
             element={
